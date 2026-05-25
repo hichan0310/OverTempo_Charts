@@ -1,4 +1,4 @@
-# OverTempo Chart Editor v3
+# OverTempo Chart Editor
 
 `OverTempo_Charts/Tools/chart-editor`에 넣고 실행하는 로컬 채보 에디터입니다.
 
