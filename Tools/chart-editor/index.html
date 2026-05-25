@@ -1,0 +1,948 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>4K Speed-Coef Chart Editor v5</title>
+<style>
+:root{--bg:#0b0c11;--panel:#171a23;--panel2:#222635;--line:#3b4257;--text:#edf0f7;--muted:#9fa8bd;--accent:#86d7ff;--c1:#79e69b;--c0:#ffd267;--danger:#ff6b7a;--cursor:#ff7aa8;--select:#a78bfa;--wave:#72d7ff}*{box-sizing:border-box}body{margin:0;height:100vh;overflow:hidden;background:var(--bg);color:var(--text);font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,input,select,textarea{font:inherit;color:var(--text);background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:7px 9px}button{cursor:pointer;user-select:none}button:hover{border-color:var(--accent)}button.active{border-color:var(--accent);background:#26364b}button.danger:hover{border-color:var(--danger)}button:disabled{opacity:.45;cursor:default}label{color:var(--muted);font-size:12px;display:flex;align-items:center;gap:6px;white-space:nowrap}input[type=number]{width:86px}input[type=text]{width:160px}input[type=range]{width:106px}textarea{width:100%;min-height:56px;resize:vertical}.app{height:100vh;display:grid;grid-template-rows:auto 1fr auto}.topbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:9px 10px;background:var(--panel);border-bottom:1px solid var(--line)}.group{display:flex;gap:6px;align-items:center;padding-right:9px;border-right:1px solid var(--line)}.group:last-child{border-right:none}.main{min-height:0;display:grid;grid-template-columns:1fr 386px}.canvas-wrap{position:relative;overflow:hidden;background:#090b10;min-width:0}canvas{display:block;width:100%;height:100%;cursor:crosshair}.help{display:none}.side{background:var(--panel);border-left:1px solid var(--line);overflow:auto;padding:11px}.card{border:1px solid var(--line);background:rgba(255,255,255,.025);border-radius:14px;padding:11px;margin-bottom:11px}.card h3{margin:0 0 10px;font-size:14px}.row{display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin-bottom:8px}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}.grid2 label,.stack label,.stack{align-items:flex-start;flex-direction:column;gap:4px}.grid2 input,.stack input,.stack select{width:100%}.cover{width:74px;height:74px;border-radius:12px;border:1px solid var(--line);background:var(--panel2);object-fit:cover}.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;color:var(--muted)}.small{font-size:12px;color:var(--muted);line-height:1.45}.hidden{display:none}.note-list{max-height:205px;overflow:auto;border:1px solid var(--line);border-radius:10px}.note-item{display:grid;grid-template-columns:56px 38px 50px 1fr;gap:6px;padding:6px 8px;border-bottom:1px solid rgba(255,255,255,.06);font-size:12px;cursor:pointer}.note-item:hover{background:rgba(134,215,255,.08)}.note-item.selected{background:rgba(167,139,250,.18)}.statusbar{display:flex;gap:18px;align-items:center;white-space:nowrap;padding:6px 12px;background:var(--panel);border-top:1px solid var(--line);color:var(--muted);font-size:12px}.project-group select{max-width:170px}.project-group .mono{max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+</style>
+</head>
+<body>
+<div class="app">
+<div class="topbar">
+<div class="group project-group">
+  <button id="projectRefreshBtn">Refresh</button>
+  <button id="projectNewSongBtn">New Song</button>
+  <button id="projectNewChartBtn">New Chart</button>
+  <label>Song <select id="projectSongSelect"><option value="">Songs...</option></select></label>
+  <label>Chart <select id="projectChartSelect"><option value="">Charts...</option></select></label>
+  <label>Audio <select id="projectAudioSelect"><option value="">Audio...</option></select></label>
+  <button id="projectLoadBtn">Load</button>
+  <button id="projectSaveBtn">Save Chart</button>
+  <input id="projectNewSongAudioInput" class="hidden" type="file" accept="audio/*">
+  <span id="projectStatus" class="mono">project: local</span>
+</div>
+<div class="group"><button id="playBtn">Play</button><button id="stopBtn">Stop</button><button id="playFromViewBtn">From View</button><button id="previewBtn">Preview</button><label><input id="loopToggle" type="checkbox">Loop</label></div>
+<div class="group"><label>Music <input id="audioFile" type="file" accept="audio/*"></label><label>Cover <input id="coverFile" type="file" accept="image/*"></label><label>Music <input id="musicVolume" type="range" min="0" max="1" step="0.01" value="0.8"></label><label>Hit <input id="hitVolume" type="range" min="0" max="1" step="0.01" value="0.65"></label>
+      <label>Rate <input id="playbackRate" type="range" min="1" max="2" step="0.01" value="1"></label>
+      <span id="playbackRateLabel" class="mono">1.00x</span><label>Wave <input id="waveGain" type="range" min="1" max="10" step="0.1" value="5.0"></label></div>
+<div class="group"><label>BPM <input id="bpmInput" type="number" value="180" min="1" step="0.01"></label><label>Offset <input id="offsetInput" type="number" value="0" step="1"></label><label>Snap <select id="snapInput"><option value="1">1/1</option><option value="2">1/2</option><option value="3">1/3</option><option value="4" selected>1/4</option><option value="6">1/6</option><option value="8">1/8</option><option value="12">1/12</option><option value="16">1/16</option><option value="24">1/24</option><option value="32">1/32</option></select></label><label>Zoom <input id="zoomInput" type="range" min="45" max="2000" step="1" value="160"></label></div>
+<div class="group"><button id="toolPlaceBtn" class="active">Place [N]</button><button id="toolSelectBtn">Select [S]</button><button id="toolPlayBtn">Playhead [P]</button></div>
+<div class="group"><button id="coef1Btn" class="active">Coef 1</button><button id="coef0Btn">Coef 0</button><button id="tapModeBtn" class="active">Tap</button><button id="holdModeBtn">Hold</button><label><input id="recordToggle" type="checkbox">Record</label></div>
+<div class="group"><button id="undoBtn">Undo</button><button id="redoBtn">Redo</button><button id="copyBtn">Copy</button><button id="pasteBtn">Paste</button><button id="mirrorBtn">Mirror</button></div>
+</div>
+<div class="main">
+<div class="canvas-wrap"><canvas id="editorCanvas"></canvas><div class="help">Timeline goes bottom to top. The waveform is shown in the large left rail and behind lanes. Use Wave to amplify it.<br>Wheel: scroll. Ctrl/Alt+Wheel: zoom. Click: place/select. Ctrl/Shift+Click: multi-select. Drag empty: marquee. Drag selected: move.<br>1/0: coef. T/H: tap/hold. Del: delete. Ctrl+C/V/Z/Y. M: mirror. Space: play. D F J K = current coef input.</div></div>
+<aside class="side">
+<div class="card"><h3>Controls</h3><div class="small">
+시간은 아래에서 위로 진행됩니다. 마우스 휠 방향을 반대로 수정했습니다.<br>
+D/F/J/K는 4개 레인 입력이고, 현재 선택된 speedupCoef(1 또는 0)로 노트가 기록됩니다. coef별 별도 키는 없습니다.<br>
+offset은 chart timeline 위에서 audio 0ms가 놓이는 위치입니다. 노란 점선이 AUDIO 0 위치입니다.
+</div></div><div class="card"><h3>Song Metadata</h3><div class="row"><img id="coverPreview" class="cover" alt="cover"><div class="stack" style="flex:1;min-width:0"><label>Title <input id="metaTitle" type="text" value="Untitled"></label><label>Artist <input id="metaArtist" type="text"></label></div></div><div class="grid2"><label>Source / Album <input id="metaSource" type="text"></label><label>Mapper <input id="metaMapper" type="text"></label></div><div class="grid2"><label>Preview Start(ms) <input id="previewStartInput" type="number" value="0" step="10"></label><label>Preview End(ms) <input id="previewEndInput" type="number" value="15000" step="10"></label></div><label class="stack">Extra Info <textarea id="metaExtra"></textarea></label></div>
+<div class="card"><h3>Difficulty</h3><div class="grid2"><label>Name <input id="diffName" type="text" value="Normal"></label><label>Level <input id="diffLevel" type="number" value="1" step="0.1"></label></div><div class="grid2"><label>Scroll <input id="diffScroll" type="number" value="1" step="0.05"></label><label>Base Speed <input id="diffBaseSpeed" type="number" value="1" step="0.01"></label></div><label class="stack">Difficulty Notes <textarea id="diffNotes"></textarea></label></div>
+<div class="card"><h3>BPM / Snap Helper</h3><div class="row"><button id="jumpPrevMeasureBtn">Prev Bar</button><button id="jumpNextMeasureBtn">Next Bar</button><button id="jumpPrevBeatBtn">Prev Beat</button><button id="jumpNextBeatBtn">Next Beat</button></div><div class="row"><button id="jumpPrevSnapBtn">Prev Snap</button><button id="jumpNextSnapBtn">Next Snap</button><button id="snapPlayheadBtn">Snap Playhead</button></div><div class="mono" id="snapInfo">beat 333.33ms</div></div>
+<div class="card"><h3>Chart</h3><div class="row"><button id="exportBtn">Save Chart</button><button id="importBtn">Import JSON</button><input id="importFile" class="hidden" type="file" accept="application/json,.json"><button id="clearBtn" class="danger">Clear</button></div><div class="row"><button id="sampleBtn">Sample Pattern</button><button id="quantizeBtn">Quantize Selected</button><button id="deleteSelectedBtn2" class="danger">Delete Selected</button></div><div class="mono" id="chartStats">notes: 0</div></div>
+<div class="card"><h3>Auto Coef / Difficulty Curve</h3>
+<div class="small">
+노트 밀도를 Gaussian smoothing으로 분석해서 <code>coef 1</code> 노트에 곱할 최종 multiplier를 만듭니다.<br>
+저장 시 <code>speedupCoef = baseSpeedupCoef × densityMultiplier × rampMultiplier × manualMultiplier</code> 형태로 기록됩니다.
+다시 불러올 때는 <code>baseSpeedupCoef</code> 기준으로 에디터의 coef 0/1 상태를 복원합니다.
+</div>
+<div class="grid2"><label>Sigma(ms) <input id="autoSigmaInput" type="number" value="1600" min="100" step="100"></label><label>Step(ms) <input id="autoStepInput" type="number" value="100" min="25" step="25"></label></div>
+<div class="grid2"><label>Density Min <input id="autoMinInput" type="number" value="0.2" min="0" step="0.05"></label><label>Density Max <input id="autoMaxInput" type="number" value="1" min="0" step="0.05"></label></div>
+<div class="grid2"><label>Density Power <input id="autoPowerInput" type="number" value="1.15" min="0.1" step="0.05"></label><label>Output Cap <input id="autoCapInput" type="number" value="1.1" min="0.1" step="0.05"></label></div>
+<div class="grid2"><label>Ramp Start <input id="autoRampStartInput" type="number" value="1" min="0" step="0.01"></label><label>Ramp End <input id="autoRampEndInput" type="number" value="1.05" min="0" step="0.01"></label></div>
+<div class="grid2"><label>Ramp Power <input id="autoRampPowerInput" type="number" value="1.2" min="0.1" step="0.1"></label><label>Curve Axis Max <input id="autoAxisMaxInput" type="number" value="1.1" min="0.1" step="0.05"></label></div>
+<label class="stack">Manual Anchors <textarea id="autoAnchorsInput" placeholder="선택 사항. timeMs,multiplier 예:&#10;0,1.0&#10;60000,0.95&#10;120000,1.08"></textarea></label>
+<div class="row"><button id="autoGenerateBtn">Generate Curve</button><button id="autoExportBtn">Generate + Save Chart</button><label><input id="autoShowCurveToggle" type="checkbox" checked>Show Curve</label></div>
+<div class="small">
+<span style="color:#72d7ff">cyan</span>: density multiplier /
+<span style="color:#ffd267">yellow</span>: global ramp /
+<span style="color:#a78bfa">purple</span>: final multiplier
+</div>
+<div class="mono" id="autoCurveStats">curve: none</div></div>
+<div class="card"><h3>Loop / Preview</h3><div class="row"><button id="setLoopStartBtn">Set Start</button><button id="setLoopEndBtn">Set End</button><button id="setPreviewStartBtn">Set Preview Start</button></div><div class="grid2"><label>Loop Start <input id="loopStartInput" type="number" value="0" step="10"></label><label>Loop End <input id="loopEndInput" type="number" value="8000" step="10"></label></div></div>
+<div class="card"><h3>Selected Notes</h3><div id="selectedEmpty" class="small">No selected notes.</div><div id="selectedPanel" class="hidden"><div class="mono" id="selectedSummary">selected: 0</div><div class="grid2"><label>Time <input id="selTime" type="number" step="1"></label><label>Lane <input id="selLane" type="number" min="1" max="4" step="1"></label></div><div class="grid2"><label>Duration <input id="selDuration" type="number" min="0" step="1"></label><label>Speedup Coef <select id="selCoef"><option value="1">1</option><option value="0">0</option></select></label></div><div class="row"><button id="applySelectedBtn">Apply to First</button><button id="auditionSelectedBtn">Audition</button><button id="deleteSelectedBtn" class="danger">Delete</button></div></div></div>
+<div class="card"><h3>Nearby Notes</h3><div class="note-list" id="noteList"></div></div>
+<div class="card"><h3>Format</h3><div class="mono">note = { timeMs, lane: 0..3, speedupCoef: 0|1, durationMs }<br>durationMs = 0: tap. durationMs &gt; 0: hold.<br>Save Chart writes final float speedupCoef plus baseSpeedupCoef, density/ramp/manual multipliers, and autoSpeedupCoefMultiplier. Load restores editor coef buttons from baseSpeedupCoef.</div></div>
+</aside>
+</div>
+<div class="statusbar"><span id="timeStatus">time 0 ms</span><span id="viewStatus">bottom 0 ms</span><span id="snapStatus">snap 83.33 ms</span><span id="modeStatus">Coef 1 / Tap</span><span id="selectStatus">selected 0</span><span id="audioStatus">audio: none / waveform: none</span></div>
+</div>
+<script>
+(()=>{
+const $=id=>document.getElementById(id),canvas=$('editorCanvas'),ctx=canvas.getContext('2d');
+const lanes=4,chartKeys=['d','f','j','k'];
+const state={notes:[],selectedIds:new Set(),clipboard:[],toolMode:'place',currentCoef:1,currentMode:'tap',playbackRate:1,bpm:180,snapDiv:4,offsetMs:0,pxPerSecond:160,viewStartMs:0,playheadMs:0,isPlaying:false,loop:false,loopStartMs:0,loopEndMs:8000,audioFileName:'',audioDurationMs:0,coverDataUrl:'',recordKeys:false,drag:null,meta:{title:'Untitled',artist:'',source:'',mapper:'',previewStartMs:0,previewEndMs:15000,extra:''},difficulty:{name:'Normal',level:1,scroll:1,baseSpeed:1,notes:''},project:{available:false,songs:[],songName:'',chartName:'',audioName:'',pendingNewSong:null},autoCoef:{curve:[],settings:{sigmaMs:1600,stepMs:100,minMultiplier:.2,maxMultiplier:1,densityPower:1.15,rampGain:.05,rampStartMultiplier:1,rampEndMultiplier:1.05,rampPower:1.2,cap:1.1,axisMax:1.1,showCurve:true,anchors:''}}};
+let audioCtx=null,audioBuffer=null,waveformPeaks=null,nextId=1,lastFrame=performance.now(),playbackStartPerf=0,playbackStartChartMs=0,audioStartedForThisPlayback=false,bgmSource=null,bgmGain=null,bgmActive=false,bgmStartedChartMs=0,bgmStartedCtxTime=0,bgmAudioOffsetSec=0;
+const history={undo:[],redo:[],max:150};
+function ensureAudioCtx(){if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();if(audioCtx.state==='suspended')audioCtx.resume();}
+function snapshot(){return JSON.stringify({notes:state.notes.map(n=>({...n})),meta:{...state.meta},difficulty:{...state.difficulty},bpm:state.bpm,snapDiv:state.snapDiv,offsetMs:state.offsetMs,loopStartMs:state.loopStartMs,loopEndMs:state.loopEndMs,coverDataUrl:state.coverDataUrl,autoCoef:{settings:{...state.autoCoef.settings},curve:state.autoCoef.curve||[]}});}
+function restore(s){const d=JSON.parse(s);state.notes=(d.notes||[]).map(n=>({...n}));state.meta={...state.meta,...(d.meta||{})};state.difficulty={...state.difficulty,...(d.difficulty||{})};state.bpm=d.bpm??state.bpm;state.snapDiv=d.snapDiv??state.snapDiv;state.offsetMs=d.offsetMs??state.offsetMs;state.loopStartMs=d.loopStartMs??state.loopStartMs;state.loopEndMs=d.loopEndMs??state.loopEndMs;state.coverDataUrl=d.coverDataUrl||'';if(d.autoCoef){state.autoCoef={...state.autoCoef,...d.autoCoef,settings:{...state.autoCoef.settings,...(d.autoCoef.settings||{})},curve:d.autoCoef.curve||[]};autoCoefSyncSettingsToUi();autoCoefUpdateStats()}nextId=Math.max(1,...state.notes.map(n=>n.id||0))+1;state.selectedIds.clear();syncStateToUi();updatePanels();}
+function pushHistory(){history.undo.push(snapshot());if(history.undo.length>history.max)history.undo.shift();history.redo=[];updateUndoRedoButtons();}
+function undo(){if(!history.undo.length)return;history.redo.push(snapshot());restore(history.undo.pop());updateUndoRedoButtons();}
+function redo(){if(!history.redo.length)return;history.undo.push(snapshot());restore(history.redo.pop());updateUndoRedoButtons();}
+function updateUndoRedoButtons(){$('undoBtn').disabled=!history.undo.length;$('redoBtn').disabled=!history.redo.length;}
+function beatMs(){return 60000/Math.max(1,state.bpm)}function barMs(){return beatMs()*4}function snapMs(){return beatMs()/state.snapDiv}function snapTime(ms){return Math.round(ms/snapMs())*snapMs()}
+function msToY(ms){const H=canvas._cssH||canvas.height;return H-((ms-state.viewStartMs)/1000)*state.pxPerSecond}function yToMs(y){const H=canvas._cssH||canvas.height;return state.viewStartMs+((H-y)/state.pxPerSecond)*1000}
+function autoCoefCurveReserveEnabled(){return !!(state.autoCoef&&state.autoCoef.settings&&state.autoCoef.settings.showCurve)}
+function laneArea(cssW=canvas._cssW||canvas.width){
+ const left=116,outerRight=cssW-34,total=Math.max(260,outerRight-left);
+ if(autoCoefCurveReserveEnabled()){
+  const unit=total/(lanes+1.5);
+  const width=unit*lanes;
+  const right=left+width;
+  const curveLeft=right+6;
+  const curveRight=outerRight;
+  return{left,right,width,laneW:unit,curveLeft,curveRight,curveWidth:Math.max(24,curveRight-curveLeft)};
+ }
+ const right=outerRight,width=right-left;
+ return{left,right,width,laneW:width/lanes,curveLeft:right+6,curveRight:outerRight,curveWidth:Math.max(24,outerRight-(right+6))}
+}
+function xToLane(x){const a=laneArea();return Math.max(0,Math.min(lanes-1,Math.floor((x-a.left)/a.laneW)))}function laneToX(lane){const a=laneArea();return a.left+lane*a.laneW}function coefColor(c,a=1){return Number(c)===1?`rgba(121,230,155,${a})`:`rgba(255,210,103,${a})`}
+function resize(){const r=canvas.parentElement.getBoundingClientRect(),dpr=window.devicePixelRatio||1;canvas.width=Math.max(300,Math.floor(r.width*dpr));canvas.height=Math.max(300,Math.floor(r.height*dpr));canvas._cssW=r.width;canvas._cssH=r.height;ctx.setTransform(dpr,0,0,dpr,0,0)}function clearCanvas(){const dpr=window.devicePixelRatio||1;ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,canvas._cssW||canvas.width,canvas._cssH||canvas.height)}
+function draw(){const W=canvas._cssW||canvas.width,H=canvas._cssH||canvas.height,a=laneArea(W);clearCanvas();ctx.fillStyle='#090b10';ctx.fillRect(0,0,W,H);drawWaveform(W,H,a);drawLanes(W,H,a);drawGrid(W,H,a);drawAudioOffsetMarker(W,a);drawLoopRegion(a);drawAutoCoefCurve(W,H,a);drawNotes(a);drawDragPreview(a);drawMarquee();drawPlayhead(W,a)}
+function chartToAudioMs(chartMs){return chartMs-state.offsetMs}
+function audioToChartMs(audioMs){return audioMs+state.offsetMs}
+function wavePeakAt(tMs,gain){if(!waveformPeaks||!state.audioDurationMs)return 0;const audioMs=chartToAudioMs(tMs);if(audioMs<0||audioMs>state.audioDurationMs)return 0;const idx=Math.floor((audioMs/state.audioDurationMs)*waveformPeaks.length),p=waveformPeaks[Math.max(0,Math.min(waveformPeaks.length-1,idx))]||0;return Math.min(1,Math.pow(p*gain,.72))}
+function drawWaveform(W,H,a){const centerX=58;ctx.save();ctx.fillStyle='rgba(114,215,255,.06)';ctx.fillRect(0,0,112,H);ctx.strokeStyle='rgba(114,215,255,.35)';ctx.strokeRect(7,8,96,H-16);if(!waveformPeaks||!state.audioDurationMs){ctx.fillStyle='rgba(114,215,255,.58)';ctx.font='13px ui-monospace,monospace';ctx.save();ctx.translate(32,H-22);ctx.rotate(-Math.PI/2);ctx.fillText('WAVEFORM AREA',0,0);ctx.restore();ctx.restore();return}const gain=parseFloat($('waveGain').value)||5;ctx.beginPath();for(let y=H;y>=0;y--){const hw=Math.min(46,wavePeakAt(yToMs(y),gain)*46);if(y===H)ctx.moveTo(centerX+hw,y);else ctx.lineTo(centerX+hw,y)}for(let y=0;y<=H;y++){const hw=Math.min(46,wavePeakAt(yToMs(y),gain)*46);ctx.lineTo(centerX-hw,y)}ctx.closePath();const grad=ctx.createLinearGradient(8,0,104,0);grad.addColorStop(0,'rgba(114,215,255,.12)');grad.addColorStop(.5,'rgba(114,215,255,.62)');grad.addColorStop(1,'rgba(114,215,255,.12)');ctx.fillStyle=grad;ctx.fill();ctx.strokeStyle='rgba(210,248,255,.78)';ctx.lineWidth=1.2;ctx.stroke();ctx.save();ctx.beginPath();ctx.rect(a.left,0,a.width,H);ctx.clip();for(let pass=0;pass<2;pass++){ctx.beginPath();for(let y=0;y<=H;y+=2){const p=wavePeakAt(yToMs(y),gain),mid=a.left+a.width/2,hw=Math.min(a.width*.48,p*a.width*(pass===0?.48:.28));if(y===0)ctx.moveTo(mid-hw,y);else ctx.lineTo(mid-hw,y)}for(let y=H;y>=0;y-=2){const p=wavePeakAt(yToMs(y),gain),mid=a.left+a.width/2,hw=Math.min(a.width*.48,p*a.width*(pass===0?.48:.28));ctx.lineTo(mid+hw,y)}ctx.closePath();ctx.fillStyle=pass===0?'rgba(114,215,255,.085)':'rgba(255,255,255,.04)';ctx.fill()}ctx.restore();ctx.restore()}
+function drawLanes(W,H,a){for(let i=0;i<lanes;i++){const x=a.left+i*a.laneW;ctx.fillStyle=i%2===0?'rgba(255,255,255,.025)':'rgba(255,255,255,.045)';ctx.fillRect(x,0,a.laneW,H);ctx.strokeStyle='rgba(255,255,255,.18)';ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();ctx.fillStyle='rgba(255,255,255,.42)';ctx.font='12px ui-monospace,monospace';ctx.fillText(String(i+1),x+8,H-10)}ctx.strokeStyle='rgba(255,255,255,.25)';ctx.strokeRect(a.left,0,a.width,H)}
+function drawGrid(W,H,a){const start=state.viewStartMs,end=state.viewStartMs+(H/state.pxPerSecond)*1000,sm=snapMs(),bm=beatMs(),br=barMs(),first=Math.floor(start/sm)*sm;for(let t=first;t<end+sm;t+=sm){const y=msToY(t),bi=Math.round(t/bm),bari=Math.round(t/br),isBeat=Math.abs(t-bi*bm)<.5,isBar=Math.abs(t-bari*br)<.5;ctx.strokeStyle=isBar?'rgba(255,255,255,.43)':isBeat?'rgba(134,215,255,.32)':'rgba(255,255,255,.085)';ctx.lineWidth=isBar?1.7:isBeat?1.2:1;ctx.beginPath();ctx.moveTo(a.left,y);ctx.lineTo(a.right,y);ctx.stroke();if(isBar||(isBeat&&state.pxPerSecond>88)){ctx.fillStyle=isBar?'rgba(255,255,255,.62)':'rgba(255,255,255,.38)';ctx.font='11px ui-monospace,monospace';const barNo=Math.floor(t/br)+1,beatNo=Math.floor((t%br)/bm)+1;ctx.fillText(isBar?`bar ${barNo}`:`${barNo}:${beatNo}`,8,y-4)}}}
+function drawAudioOffsetMarker(W,a){const y=msToY(state.offsetMs);if(y<-30||y>(canvas._cssH||canvas.height)+30)return;ctx.strokeStyle='rgba(255,210,103,.95)';ctx.lineWidth=2;ctx.setLineDash([6,5]);ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle='rgba(255,210,103,.95)';ctx.font='12px ui-monospace,monospace';ctx.fillText(`AUDIO 0 / offset ${Math.round(state.offsetMs)}ms`,a.left+8,y-7)}
+function drawLoopRegion(a){if(state.loopEndMs<=state.loopStartMs)return;const y1=msToY(state.loopStartMs),y2=msToY(state.loopEndMs),top=Math.min(y1,y2),h=Math.abs(y2-y1);ctx.fillStyle='rgba(134,215,255,.052)';ctx.fillRect(a.left,top,a.width,h);ctx.strokeStyle='rgba(134,215,255,.45)';ctx.beginPath();ctx.moveTo(a.left,y1);ctx.lineTo(a.right,y1);ctx.stroke();ctx.beginPath();ctx.moveTo(a.left,y2);ctx.lineTo(a.right,y2);ctx.stroke()}
+
+function drawAutoCoefCurve(W,H,a){
+ if(!state.autoCoef?.settings?.showCurve)return;
+ const curve=state.autoCoef.curve||[];
+ const visibleStart=state.viewStartMs,visibleEnd=state.viewStartMs+(H/state.pxPerSecond)*1000;
+ const st=state.autoCoef.settings||{};
+ const x0=a.curveLeft??(a.right+6),x1=a.curveRight??(W-8),w=Math.max(24,x1-x0);
+ const axisMax=Math.max(.1,Number(st.axisMax||st.cap||1.1));
+ const axisMin=0;
+ const xForVal=v=>x0+Math.max(0,Math.min(1,(Number(v)-axisMin)/Math.max(.001,axisMax-axisMin)))*w;
+ ctx.save();
+ ctx.fillStyle='rgba(167,139,250,.07)';ctx.fillRect(x0,0,w,H);
+ ctx.strokeStyle='rgba(167,139,250,.32)';ctx.strokeRect(x0,0,w,H);
+ ctx.strokeStyle='rgba(167,139,250,.16)';ctx.lineWidth=1;
+ for(let i=1;i<4;i++){const x=x0+w*i/4;ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke()}
+ ctx.fillStyle='rgba(255,255,255,.72)';ctx.font='11px ui-monospace,monospace';ctx.fillText('coef curves',x0+6,15);
+ ctx.fillStyle='rgba(114,215,255,.88)';ctx.fillText('density',x0+6,30);
+ ctx.fillStyle='rgba(255,210,103,.9)';ctx.fillText('ramp',x0+6,45);
+ ctx.fillStyle='rgba(167,139,250,1)';ctx.fillText('final',x0+6,60);
+ ctx.fillStyle='rgba(255,255,255,.42)';ctx.font='10px ui-monospace,monospace';ctx.fillText('0',x0+4,H-8);ctx.fillText(axisMax.toFixed(2),Math.max(x0+4,x1-38),H-8);
+ if(curve.length<2){ctx.fillStyle='rgba(255,255,255,.45)';ctx.font='12px ui-monospace,monospace';ctx.save();ctx.translate(x0+8,80);ctx.rotate(Math.PI/2);ctx.fillText('Generate Curve',0,0);ctx.restore();ctx.restore();return}
+
+ const drawLine=(field,color,width=2,dash=null)=>{
+   ctx.beginPath();let started=false;
+   for(const p of curve){
+    if(p.timeMs<visibleStart-1000||p.timeMs>visibleEnd+1000)continue;
+    const y=msToY(p.timeMs);
+    const x=xForVal(p[field]??0);
+    if(!started){ctx.moveTo(x,y);started=true}else ctx.lineTo(x,y);
+   }
+   if(started){
+    ctx.save();
+    if(dash)ctx.setLineDash(dash);
+    ctx.strokeStyle=color;ctx.lineWidth=width;ctx.stroke();
+    ctx.restore();
+   }
+ };
+
+ drawLine('densityMultiplier','rgba(114,215,255,.95)',2,[5,4]);
+ drawLine('rampMultiplier','rgba(255,210,103,.95)',2,[2,5]);
+ drawLine('multiplier','rgba(167,139,250,1)',3,null);
+ ctx.restore();
+}
+function drawNotes(a){const H=canvas._cssH||canvas.height,start=state.viewStartMs-500,end=state.viewStartMs+(H/state.pxPerSecond)*1000+500;state.notes.filter(n=>n.timeMs+Math.max(1,n.durationMs||0)>=start&&n.timeMs<=end).sort((p,q)=>p.timeMs-q.timeMs||p.lane-q.lane).forEach(n=>drawNote(n,a,false))}
+function drawNote(n,a,preview=false){const x=laneToX(n.lane)+6,w=a.laneW-12,y=msToY(n.timeMs),isHold=(n.durationMs||0)>0,sel=state.selectedIds.has(n.id),coef=Number(n.speedupCoef);if(isHold){const y2=msToY(n.timeMs+n.durationMs),top=Math.min(y,y2),h=Math.abs(y2-y);ctx.fillStyle=coefColor(coef,preview?.20:.38);ctx.fillRect(x+w*.30,top,w*.40,h);ctx.strokeStyle=coefColor(coef,sel?1:.78);ctx.lineWidth=sel?3:1.4;ctx.strokeRect(x+w*.30,top,w*.40,h)}ctx.fillStyle=coefColor(coef,preview?.45:.96);ctx.strokeStyle=sel?'rgba(167,139,250,1)':'rgba(0,0,0,.65)';ctx.lineWidth=sel?3:1.5;const h=isHold?14:18;roundRect(ctx,x,y-h/2,w,h,6,true,true);ctx.fillStyle='rgba(13,15,20,.84)';ctx.font='bold 11px ui-monospace,monospace';ctx.fillText(coef===1?'1':'0',x+8,y+4);if(isHold){const y2=msToY(n.timeMs+n.durationMs);ctx.fillStyle=coefColor(coef,preview?.45:.92);roundRect(ctx,x,y2-7,w,14,6,true,true)}
+ if(isHold&&!preview){
+  const y2=msToY(n.timeMs+n.durationMs);
+  ctx.fillStyle=sel?'rgba(255,255,255,.95)':'rgba(255,255,255,.55)';
+  ctx.strokeStyle='rgba(0,0,0,.55)';ctx.lineWidth=1;
+  roundRect(ctx,x+w-15,y-6,10,12,4,true,true);
+  roundRect(ctx,x+w-15,y2-6,10,12,4,true,true);
+ }
+}
+function drawDragPreview(a){if(!state.drag)return;if(state.drag.kind==='newHold'){const t1=Math.min(state.drag.startMs,state.drag.currentMs),t2=Math.max(state.drag.startMs,state.drag.currentMs);drawNote({id:-1,timeMs:t1,lane:state.drag.lane,speedupCoef:state.currentCoef,durationMs:Math.max(snapMs(),t2-t1)},a,true)}}function drawMarquee(){if(!state.drag||state.drag.kind!=='marquee')return;const x=Math.min(state.drag.startX,state.drag.currentX),y=Math.min(state.drag.startY,state.drag.currentY),w=Math.abs(state.drag.currentX-state.drag.startX),h=Math.abs(state.drag.currentY-state.drag.startY);ctx.fillStyle='rgba(167,139,250,.13)';ctx.strokeStyle='rgba(167,139,250,.75)';ctx.lineWidth=1.5;ctx.fillRect(x,y,w,h);ctx.strokeRect(x,y,w,h)}function drawPlayhead(W,a){const y=msToY(state.playheadMs);ctx.strokeStyle='rgba(255,122,168,.98)';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();ctx.fillStyle='rgba(255,122,168,.98)';ctx.font='12px ui-monospace,monospace';ctx.fillText(`${Math.round(state.playheadMs)}ms`,a.right-90,y-6)}function roundRect(ctx,x,y,w,h,r,fill,stroke){const rr=Math.min(r,w/2,h/2);ctx.beginPath();ctx.moveTo(x+rr,y);ctx.arcTo(x+w,y,x+w,y+h,rr);ctx.arcTo(x+w,y+h,x,y+h,rr);ctx.arcTo(x,y+h,x,y,rr);ctx.arcTo(x,y,x+w,y,rr);ctx.closePath();if(fill)ctx.fill();if(stroke)ctx.stroke()}
+function sortNotes(){state.notes.sort((a,b)=>a.timeMs-b.timeMs||a.lane-b.lane||Number(b.speedupCoef)-Number(a.speedupCoef))}
+function normNoteRange(note){const start=Math.max(0,Math.round(Number(note.timeMs)||0)),dur=Math.max(0,Math.round(Number(note.durationMs)||0));return{lane:Math.max(0,Math.min(3,Number(note.lane)||0)),start,end:start+dur}}
+function rangesOverlap(aStart,aEnd,bStart,bEnd){return Math.max(aStart,bStart)<=Math.min(aEnd,bEnd)}
+function noteConflictsWithList(candidate,list,ignoreIds=new Set()){const c=normNoteRange(candidate);for(const n of list){if(ignoreIds.has(n.id))continue;const r=normNoteRange(n);if(r.lane===c.lane&&rangesOverlap(c.start,c.end,r.start,r.end))return n}return null}
+function findNoteConflict(timeMs,lane,durationMs=0,ignoreIds=new Set()){return noteConflictsWithList({timeMs,lane,durationMs},state.notes,ignoreIds)}
+function dedupeAndRemoveOverlapsKeepFirst(notes){const kept=[],dropped=[];for(const n of notes.slice().sort((a,b)=>a.timeMs-b.timeMs||a.lane-b.lane||Number(b.speedupCoef)-Number(a.speedupCoef))){if(noteConflictsWithList(n,kept))dropped.push(n);else kept.push(n)}return{notes:kept,dropped}}
+function enforceNoOverlap(){const r=dedupeAndRemoveOverlapsKeepFirst(state.notes);state.notes=r.notes;sortNotes();return r.dropped.length}
+function addNote(note,select=true){const timeMs=Math.max(0,Math.round(note.timeMs)),lane=Math.max(0,Math.min(3,note.lane|0)),durationMs=Math.max(0,Math.round(note.durationMs||0));const existing=findNoteConflict(timeMs,lane,durationMs);if(existing){if(select){state.selectedIds.clear();state.selectedIds.add(existing.id)}updatePanels();return existing}const n={id:nextId++,timeMs,lane,speedupCoef:Number(note.speedupCoef)===0?0:1,durationMs};state.notes.push(n);sortNotes();if(select){state.selectedIds.clear();state.selectedIds.add(n.id)}updatePanels();return n}function selectedNotes(){return state.notes.filter(n=>state.selectedIds.has(n.id))}function firstSelected(){return selectedNotes().sort((a,b)=>a.timeMs-b.timeMs||a.lane-b.lane)[0]||null}
+function findNoteAt(x,y){const lane=xToLane(x);let best=null,bestDist=Infinity;for(const n of state.notes){if(n.lane!==lane)continue;const ys=msToY(n.timeMs),ye=msToY(n.timeMs+(n.durationMs||0)),ds=Math.abs(y-ys),de=Math.abs(y-ye);if(ds<13&&ds<bestDist){best=n;bestDist=ds}if((n.durationMs||0)>0&&de<13&&de<bestDist){best=n;bestDist=de}if((n.durationMs||0)>0&&y>=Math.min(ys,ye)&&y<=Math.max(ys,ye)){const lx=laneToX(n.lane),la=laneArea();if(x>=lx&&x<=lx+la.laneW&&bestDist>10){best=n;bestDist=10}}}return best}function notesInRect(x1,y1,x2,y2){const minX=Math.min(x1,x2),maxX=Math.max(x1,x2),minY=Math.min(y1,y2),maxY=Math.max(y1,y2);return state.notes.filter(n=>{const x=laneToX(n.lane)+laneArea().laneW/2,y=msToY(n.timeMs),y2=msToY(n.timeMs+(n.durationMs||0));return x>=minX&&x<=maxX&&((y>=minY&&y<=maxY)||(y2>=minY&&y2<=maxY)||(y<=minY&&y2>=maxY))})}
+function deleteSelected(){if(!state.selectedIds.size)return;pushHistory();state.notes=state.notes.filter(n=>!state.selectedIds.has(n.id));state.selectedIds.clear();updatePanels()}function copySelected(){const s=selectedNotes();if(!s.length)return;const base=Math.min(...s.map(n=>n.timeMs));state.clipboard=s.map(n=>({timeOffsetMs:n.timeMs-base,lane:n.lane,speedupCoef:n.speedupCoef,durationMs:n.durationMs}));updatePanels()}function pasteClipboard(mirror=false){if(!state.clipboard.length)return;pushHistory();state.selectedIds.clear();const base=snapTime(state.playheadMs),created=[];for(const c of state.clipboard){const cand={timeMs:Math.max(0,Math.round(base+c.timeOffsetMs)),lane:mirror?3-c.lane:c.lane,speedupCoef:c.speedupCoef,durationMs:c.durationMs};if(noteConflictsWithList(cand,state.notes)||noteConflictsWithList(cand,created))continue;const n=addNote(cand,false);state.selectedIds.add(n.id);created.push(n)}sortNotes();updatePanels()}function mirrorSelected(){if(!state.selectedIds.size)return;const selected=selectedNotes(),ids=new Set(selected.map(n=>n.id)),proposed=selected.map(n=>({...n,lane:3-n.lane}));let blocked=false;for(const p of proposed){if(noteConflictsWithList(p,state.notes,ids)){blocked=true;break}const others=proposed.filter(x=>x.id!==p.id);if(noteConflictsWithList(p,others)){blocked=true;break}}if(blocked){alert('대칭 이동하면 같은 레인/시간에 노트가 겹쳐서 취소했습니다.');return}pushHistory();for(const n of selected)n.lane=3-n.lane;sortNotes();updatePanels()}function quantizeSelected(){const s=selectedNotes();if(!s.length)return;const ids=new Set(s.map(n=>n.id)),proposed=s.map(n=>{const oldEnd=n.timeMs+n.durationMs,nn={...n};nn.timeMs=Math.round(snapTime(n.timeMs));if(nn.durationMs>0)nn.durationMs=Math.max(Math.round(snapMs()),Math.round(snapTime(oldEnd)-nn.timeMs));return nn});let blocked=false;for(const p of proposed){if(noteConflictsWithList(p,state.notes,ids)){blocked=true;break}const others=proposed.filter(x=>x.id!==p.id);if(noteConflictsWithList(p,others)){blocked=true;break}}if(blocked){alert('Quantize 결과가 다른 노트와 겹쳐서 취소했습니다.');return}pushHistory();for(const p of proposed){const n=state.notes.find(x=>x.id===p.id);if(n){n.timeMs=p.timeMs;n.durationMs=p.durationMs}}sortNotes();updatePanels()}
+function syncUiToState(){state.meta.title=$('metaTitle').value;state.meta.artist=$('metaArtist').value;state.meta.source=$('metaSource').value;state.meta.mapper=$('metaMapper').value;state.meta.previewStartMs=Number($('previewStartInput').value)||0;state.meta.previewEndMs=Number($('previewEndInput').value)||0;state.meta.extra=$('metaExtra').value;state.difficulty.name=$('diffName').value;state.difficulty.level=Number($('diffLevel').value)||0;state.difficulty.scroll=Number($('diffScroll').value)||1;state.difficulty.baseSpeed=Number($('diffBaseSpeed').value)||1;state.difficulty.notes=$('diffNotes').value}function syncStateToUi(){$('metaTitle').value=state.meta.title||'';$('metaArtist').value=state.meta.artist||'';$('metaSource').value=state.meta.source||'';$('metaMapper').value=state.meta.mapper||'';$('previewStartInput').value=state.meta.previewStartMs||0;$('previewEndInput').value=state.meta.previewEndMs||0;$('metaExtra').value=state.meta.extra||'';$('diffName').value=state.difficulty.name||'';$('diffLevel').value=state.difficulty.level??1;$('diffScroll').value=state.difficulty.scroll??1;$('diffBaseSpeed').value=state.difficulty.baseSpeed??1;$('diffNotes').value=state.difficulty.notes||'';$('bpmInput').value=state.bpm;$('snapInput').value=state.snapDiv;$('offsetInput').value=state.offsetMs;$('loopStartInput').value=state.loopStartMs;$('loopEndInput').value=state.loopEndMs;$('coverPreview').src=state.coverDataUrl||''}
+function updatePanels(){syncUiToState();const s=selectedNotes(),first=firstSelected();$('selectedEmpty').classList.toggle('hidden',s.length>0);$('selectedPanel').classList.toggle('hidden',s.length===0);if(first){$('selectedSummary').textContent=`selected: ${s.length}`;$('selTime').value=Math.round(first.timeMs);$('selLane').value=first.lane+1;$('selDuration').value=Math.round(first.durationMs||0);$('selCoef').value=String(first.speedupCoef)}$('chartStats').textContent=`notes: ${state.notes.length} / holds: ${state.notes.filter(x=>x.durationMs>0).length} / coef1: ${state.notes.filter(x=>Number(x.speedupCoef)===1).length} / coef0: ${state.notes.filter(x=>Number(x.speedupCoef)===0).length}`;$('snapInfo').textContent=`beat ${beatMs().toFixed(2)}ms / snap ${snapMs().toFixed(2)}ms / bar ${barMs().toFixed(2)}ms`;$('snapStatus').textContent=`snap ${snapMs().toFixed(2)} ms`;$('modeStatus').textContent=`${state.toolMode==='place'?'Place':state.toolMode==='select'?'Select':'Playhead'} / Coef ${state.currentCoef} / ${state.currentMode==='tap'?'Tap':'Hold'}`;$('selectStatus').textContent=`selected ${state.selectedIds.size}`;if($('playbackRateLabel'))$('playbackRateLabel').textContent=state.playbackRate.toFixed(2)+'x';if($('rateStatus'))$('rateStatus').textContent='rate '+state.playbackRate.toFixed(2)+'x';$('audioStatus').textContent=`${state.audioFileName?'audio: '+state.audioFileName:'audio: none'} / ${waveformPeaks?'waveform: ready':'waveform: none'} / up-scroll`;$('coef1Btn').classList.toggle('active',state.currentCoef===1);$('coef0Btn').classList.toggle('active',state.currentCoef===0);$('tapModeBtn').classList.toggle('active',state.currentMode==='tap');$('holdModeBtn').classList.toggle('active',state.currentMode==='hold');$('toolPlaceBtn').classList.toggle('active',state.toolMode==='place');$('toolSelectBtn').classList.toggle('active',state.toolMode==='select');$('toolPlayBtn').classList.toggle('active',state.toolMode==='playhead');canvas.style.cursor=state.toolMode==='place'?'crosshair':state.toolMode==='select'?'default':'ns-resize';autoCoefUpdateStats();updateNoteList();updateUndoRedoButtons()}function updateLightStatus(){$('timeStatus').textContent=`time ${Math.round(state.playheadMs)} ms`;$('viewStatus').textContent=`bottom ${Math.round(state.viewStartMs)} ms`}
+function updateNoteList(){const list=$('noteList');list.innerHTML='';const near=state.notes.slice().sort((a,b)=>Math.abs(a.timeMs-state.playheadMs)-Math.abs(b.timeMs-state.playheadMs)).slice(0,90).sort((a,b)=>a.timeMs-b.timeMs||a.lane-b.lane);for(const n of near){const item=document.createElement('div');item.className='note-item'+(state.selectedIds.has(n.id)?' selected':'');item.innerHTML=`<span>${Math.round(n.timeMs)}</span><span>L${n.lane+1}</span><span>coef${n.speedupCoef}</span><span>${n.durationMs>0?`hold ${Math.round(n.durationMs)}`:'tap'}</span>`;item.onclick=e=>{if(e.ctrlKey||e.metaKey||e.shiftKey){if(state.selectedIds.has(n.id))state.selectedIds.delete(n.id);else state.selectedIds.add(n.id)}else{state.selectedIds.clear();state.selectedIds.add(n.id)}state.playheadMs=n.timeMs;state.viewStartMs=Math.max(0,n.timeMs-1600);updatePanels()};list.appendChild(item)}}
+function playHit(coef=1,lane=0,when=0){ensureAudioCtx();const vol=parseFloat($('hitVolume').value);if(vol<=0)return;const now=audioCtx.currentTime+when,base=680,osc=audioCtx.createOscillator(),gain=audioCtx.createGain(),filter=audioCtx.createBiquadFilter();osc.type='triangle';osc.frequency.setValueAtTime(base+lane*48,now);osc.frequency.exponentialRampToValueAtTime((base+lane*48)*.72,now+.045);filter.type='lowpass';filter.frequency.setValueAtTime(2400,now);gain.gain.setValueAtTime(.0001,now);gain.gain.exponentialRampToValueAtTime(vol*.17,now+.006);gain.gain.exponentialRampToValueAtTime(.0001,now+.075);osc.connect(filter);filter.connect(gain);gain.connect(audioCtx.destination);osc.start(now);osc.stop(now+.09)}async function loadAudioFile(file){ensureAudioCtx();stopBgm();state.audioFileName=file.name;const arr=await file.arrayBuffer();audioBuffer=await audioCtx.decodeAudioData(arr.slice(0));state.audioDurationMs=audioBuffer.duration*1000;waveformPeaks=computeWaveformPeaks(audioBuffer,9000);updatePanels()}
+async function loadAudioUrl(url,fileName){
+  ensureAudioCtx();
+  stopBgm();
+  state.audioFileName=fileName||url.split('/').pop()||'audio';
+  const res=await fetch(url);
+  if(!res.ok)throw new Error(`audio fetch failed: ${res.status} ${res.statusText}`);
+  const arr=await res.arrayBuffer();
+  audioBuffer=await audioCtx.decodeAudioData(arr.slice(0));
+  state.audioDurationMs=audioBuffer.duration*1000;
+  waveformPeaks=computeWaveformPeaks(audioBuffer,9000);
+  updatePanels();
+}
+function computeWaveformPeaks(buffer,count){const ch0=buffer.getChannelData(0),ch1=buffer.numberOfChannels>1?buffer.getChannelData(1):null,peaks=new Float32Array(count),block=Math.max(1,Math.floor(buffer.length/count));for(let i=0;i<count;i++){let max=0,start=i*block,end=Math.min(buffer.length,start+block);for(let j=start;j<end;j++){const v=Math.abs(ch0[j])+(ch1?Math.abs(ch1[j]):0);if(v>max)max=v}peaks[i]=Math.min(1,max/(ch1?2:1))}return peaks}
+function stopBgm(){
+  if(bgmSource){
+    try{bgmSource.onended=null;bgmSource.stop()}catch(e){}
+    try{bgmSource.disconnect()}catch(e){}
+  }
+  if(bgmGain){
+    try{bgmGain.disconnect()}catch(e){}
+  }
+  bgmSource=null;
+  bgmGain=null;
+  bgmActive=false;
+  audioStartedForThisPlayback=false;
+}
+function startBgmAtChartTime(chartMs){
+  if(!audioBuffer)return false;
+  ensureAudioCtx();
+  stopBgm();
+  const audioMs=chartToAudioMs(chartMs);
+  if(audioMs<0){return false}
+  const offsetSec=Math.max(0,audioMs/1000);
+  if(offsetSec>=audioBuffer.duration){return false}
+  bgmGain=audioCtx.createGain();
+  bgmGain.gain.value=parseFloat($('musicVolume').value)||0.8;
+  bgmGain.connect(audioCtx.destination);
+  const src=audioCtx.createBufferSource();
+  src.buffer=audioBuffer;
+  src.playbackRate.value=state.playbackRate;
+  src.connect(bgmGain);
+  bgmSource=src;
+  bgmStartedChartMs=chartMs;
+  bgmStartedCtxTime=audioCtx.currentTime;
+  bgmAudioOffsetSec=offsetSec;
+  bgmActive=true;
+  audioStartedForThisPlayback=true;
+  src.onended=()=>{if(bgmSource===src){bgmSource=null;bgmActive=false;audioStartedForThisPlayback=false}};
+  try{src.start(0,offsetSec)}catch(e){console.error('BGM start failed',e);stopBgm();return false}
+  return true;
+}
+function syncAudioToChartTime(chartMs){
+  return startBgmAtChartTime(chartMs);
+}
+function startPlayback(fromMs=state.playheadMs){ensureAudioCtx();state.playheadMs=Math.max(0,fromMs);state.isPlaying=true;playbackStartChartMs=state.playheadMs;playbackStartPerf=performance.now();audioStartedForThisPlayback=false;for(const n of state.notes)n._lastPlayedAt=undefined;syncAudioToChartTime(state.playheadMs);$('playBtn').textContent='Pause'}
+function pausePlayback(){state.isPlaying=false;stopBgm();$('playBtn').textContent='Play'}
+function stopPlayback(){pausePlayback();state.playheadMs=state.loop?state.loopStartMs:state.viewStartMs;updatePanels()}
+function tick(){const now=performance.now(),dt=now-lastFrame;lastFrame=now;if(state.isPlaying){state.playheadMs=playbackStartChartMs+(now-playbackStartPerf)*state.playbackRate;if(audioBuffer){const audioMs=chartToAudioMs(state.playheadMs);if(audioMs>=0&&audioMs<state.audioDurationMs){if(!bgmActive){syncAudioToChartTime(state.playheadMs)}else{const expected=audioMs/1000;const actual=bgmAudioOffsetSec+(audioCtx.currentTime-bgmStartedCtxTime)*state.playbackRate;if(Math.abs(actual-expected)>0.20)syncAudioToChartTime(state.playheadMs)}}else if(bgmActive){stopBgm()}}if(state.loop&&state.loopEndMs>state.loopStartMs&&state.playheadMs>=state.loopEndMs)startPlayback(state.loopStartMs);auditionCrossedNotes(dt);const visibleEnd=state.viewStartMs+((canvas._cssH||canvas.height)/state.pxPerSecond)*1000;if(state.playheadMs>visibleEnd-900)state.viewStartMs=Math.max(0,state.playheadMs-(((canvas._cssH||canvas.height)/state.pxPerSecond)*1000)+900)}draw();updateLightStatus();requestAnimationFrame(tick)}
+function auditionCrossedNotes(dt){const from=state.playheadMs-Math.max(42,dt+20),to=state.playheadMs+8;for(const n of state.notes.filter(n=>n.timeMs>=from&&n.timeMs<to)){if(n._lastPlayedAt===undefined||Math.abs(n._lastPlayedAt-n.timeMs)>1){playHit(n.speedupCoef,n.lane);n._lastPlayedAt=n.timeMs}}}
+function mousePos(evt){const r=canvas.getBoundingClientRect();return{x:evt.clientX-r.left,y:evt.clientY-r.top}}
+function hitHoldEndpointAt(x,y){
+ const lane=xToLane(x);let best=null,bestDist=Infinity;
+ for(const n of state.notes){
+  if(n.lane!==lane||!(n.durationMs>0))continue;
+  const ys=msToY(n.timeMs),ye=msToY(n.timeMs+n.durationMs),ds=Math.abs(y-ys),de=Math.abs(y-ye);
+  const lx=laneToX(n.lane),la=laneArea();
+  if(x<lx||x>lx+la.laneW)continue;
+  if(ds<18&&ds<bestDist){best={note:n,handle:'start'};bestDist=ds}
+  if(de<18&&de<bestDist){best={note:n,handle:'end'};bestDist=de}
+  if(y>=Math.min(ys,ye)&&y<=Math.max(ys,ye)&&bestDist===Infinity){
+    best={note:n,handle:ds<de?'start':'end'};bestDist=Math.min(ds,de)+20;
+  }
+ }
+ return best;
+}
+canvas.addEventListener('contextmenu',evt=>evt.preventDefault());
+canvas.addEventListener('mousedown',evt=>{ensureAudioCtx();const p=mousePos(evt);
+
+ if(state.toolMode==='playhead'){
+  state.playheadMs=Math.max(0,snapTime(yToMs(p.y)));
+  state.drag={kind:'playhead'};
+  updatePanels();
+  return;
+ }
+
+ if(state.toolMode==='select'){
+  if(evt.button===2){
+   const hit=hitHoldEndpointAt(p.x,p.y);
+   if(hit){
+    state.selectedIds.clear();state.selectedIds.add(hit.note.id);
+    state.drag={kind:'resizeHold',id:hit.note.id,handle:hit.handle,before:snapshot(),origStart:hit.note.timeMs,origEnd:hit.note.timeMs+hit.note.durationMs,origLane:hit.note.lane};
+    updatePanels();return;
+   }
+  }
+  const existing=findNoteAt(p.x,p.y);
+  if(existing){
+   if(evt.ctrlKey||evt.metaKey||evt.shiftKey){
+    if(state.selectedIds.has(existing.id))state.selectedIds.delete(existing.id);else state.selectedIds.add(existing.id);
+    updatePanels();return;
+   }
+   if(!state.selectedIds.has(existing.id)){state.selectedIds.clear();state.selectedIds.add(existing.id)}
+   state.drag={kind:'moveNotes',startX:p.x,startY:p.y,before:snapshot(),originals:selectedNotes().map(n=>({id:n.id,timeMs:n.timeMs,lane:n.lane}))};
+   updatePanels();return;
+  }
+  if(!(evt.ctrlKey||evt.metaKey||evt.shiftKey))state.selectedIds.clear();
+  state.drag={kind:'marquee',startX:p.x,startY:p.y,currentX:p.x,currentY:p.y,additive:(evt.ctrlKey||evt.metaKey||evt.shiftKey)};
+  updatePanels();
+  return;
+ }
+
+ if(evt.button===2){
+  const hit=hitHoldEndpointAt(p.x,p.y);
+  if(hit){
+   state.selectedIds.clear();state.selectedIds.add(hit.note.id);
+   state.drag={kind:'resizeHold',id:hit.note.id,handle:hit.handle,before:snapshot(),origStart:hit.note.timeMs,origEnd:hit.note.timeMs+hit.note.durationMs,origLane:hit.note.lane};
+   updatePanels();return;
+  }
+ }
+
+ const existing=findNoteAt(p.x,p.y);
+ if(existing){
+  if(!state.selectedIds.has(existing.id)){state.selectedIds.clear();state.selectedIds.add(existing.id)}
+  state.drag={kind:'moveNotes',startX:p.x,startY:p.y,before:snapshot(),originals:selectedNotes().map(n=>({id:n.id,timeMs:n.timeMs,lane:n.lane}))};
+  updatePanels();return;
+ }
+
+ const lane=xToLane(p.x),t=Math.max(0,snapTime(yToMs(p.y)));state.playheadMs=t;
+ if(state.currentMode==='tap'){pushHistory();const n=addNote({timeMs:t,lane,speedupCoef:state.currentCoef,durationMs:0});playHit(n.speedupCoef,n.lane)}
+ else state.drag={kind:'newHold',lane,startMs:t,currentMs:t+snapMs()};
+});window.addEventListener('mousemove',evt=>{if(!state.drag)return;const p=mousePos(evt);
+ if(state.drag.kind==='playhead'){
+  state.playheadMs=Math.max(0,snapTime(yToMs(p.y)));
+  updatePanels();
+ }
+ else if(state.drag.kind==='newHold')state.drag.currentMs=Math.max(0,snapTime(yToMs(p.y)));
+ else if(state.drag.kind==='moveNotes'){const dtMs=snapTime(yToMs(p.y))-snapTime(yToMs(state.drag.startY)),laneDelta=xToLane(p.x)-xToLane(state.drag.startX),ids=new Set(state.drag.originals.map(o=>o.id));const proposed=[];let blocked=false;for(const o of state.drag.originals){const orig=state.notes.find(x=>x.id===o.id);if(!orig)continue;const cand={...orig,timeMs:Math.max(0,snapTime(o.timeMs+dtMs)),lane:Math.max(0,Math.min(3,o.lane+laneDelta))};if(noteConflictsWithList(cand,state.notes,ids)||noteConflictsWithList(cand,proposed)){blocked=true;break}proposed.push(cand)}if(!blocked){for(const c of proposed){const n=state.notes.find(x=>x.id===c.id);if(n){n.timeMs=c.timeMs;n.lane=c.lane}}sortNotes();updatePanels()}}
+ else if(state.drag.kind==='resizeHold'){
+  const n=state.notes.find(x=>x.id===state.drag.id);
+  if(n){
+   const minDur=Math.max(1,Math.round(snapMs()));
+   const t=Math.max(0,snapTime(yToMs(p.y)));
+   let cand;if(state.drag.handle==='start'){
+     const newStart=Math.min(t,state.drag.origEnd-minDur);
+     cand={...n,timeMs:Math.max(0,newStart),durationMs:Math.max(minDur,state.drag.origEnd-Math.max(0,newStart))};
+   }else{
+     const newEnd=Math.max(t,state.drag.origStart+minDur);
+     cand={...n,timeMs:state.drag.origStart,durationMs:Math.max(minDur,newEnd-state.drag.origStart)};
+   }
+   if(!noteConflictsWithList(cand,state.notes,new Set([n.id]))){
+     n.timeMs=cand.timeMs;n.durationMs=cand.durationMs;
+     state.playheadMs=state.drag.handle==='start'?n.timeMs:n.timeMs+n.durationMs;
+     updatePanels();
+   }
+  }
+ }
+ else if(state.drag.kind==='marquee'){state.drag.currentX=p.x;state.drag.currentY=p.y}
+});window.addEventListener('mouseup',()=>{if(!state.drag)return;
+ if(state.drag.kind==='newHold'){
+  pushHistory();const t1=Math.min(state.drag.startMs,state.drag.currentMs),t2=Math.max(state.drag.startMs,state.drag.currentMs),n=addNote({timeMs:t1,lane:state.drag.lane,speedupCoef:state.currentCoef,durationMs:Math.max(snapMs(),t2-t1)});playHit(n.speedupCoef,n.lane)
+ }else if(state.drag.kind==='moveNotes'){
+  history.undo.push(state.drag.before);if(history.undo.length>history.max)history.undo.shift();history.redo=[];updateUndoRedoButtons()
+ }else if(state.drag.kind==='resizeHold'){
+  history.undo.push(state.drag.before);if(history.undo.length>history.max)history.undo.shift();history.redo=[];updateUndoRedoButtons()
+ }else if(state.drag.kind==='marquee'){
+  const found=notesInRect(state.drag.startX,state.drag.startY,state.drag.currentX,state.drag.currentY);
+  if(!state.drag.additive)state.selectedIds.clear();
+  for(const n of found)state.selectedIds.add(n.id)
+ }
+ state.drag=null;sortNotes();updatePanels()
+});canvas.addEventListener('wheel',evt=>{evt.preventDefault();const p=mousePos(evt),before=yToMs(p.y);if(evt.ctrlKey||evt.altKey){const factor=evt.deltaY<0?1.12:.89;state.pxPerSecond=Math.max(45,Math.min(2000,state.pxPerSecond*factor));$('zoomInput').value=Math.round(state.pxPerSecond);const after=yToMs(p.y);state.viewStartMs+=before-after}else state.viewStartMs=Math.max(0,state.viewStartMs-evt.deltaY*(1000/state.pxPerSecond));state.viewStartMs=Math.max(0,state.viewStartMs);updatePanels()},{passive:false});
+
+
+function autoCoefReadSettings(){
+  const st=state.autoCoef.settings;
+  const read=(id,fallback)=>{const el=$(id);const v=el?Number(el.value):fallback;return Number.isFinite(v)?v:fallback};
+  st.sigmaMs=Math.max(100,read('autoSigmaInput',st.sigmaMs));
+  st.stepMs=Math.max(25,read('autoStepInput',st.stepMs));
+  st.minMultiplier=Math.max(0,read('autoMinInput',st.minMultiplier));
+  st.maxMultiplier=Math.max(st.minMultiplier,read('autoMaxInput',st.maxMultiplier));
+  st.densityPower=Math.max(.1,read('autoPowerInput',st.densityPower));
+  if(!Number.isFinite(Number(st.rampStartMultiplier)))st.rampStartMultiplier=1;
+  if(!Number.isFinite(Number(st.rampEndMultiplier)))st.rampEndMultiplier=1+(Number(st.rampGain)||0);
+  st.rampStartMultiplier=Math.max(0,read('autoRampStartInput',st.rampStartMultiplier));
+  st.rampEndMultiplier=Math.max(0,read('autoRampEndInput',st.rampEndMultiplier));
+  st.rampGain=Math.max(0,st.rampEndMultiplier-st.rampStartMultiplier);
+  st.rampPower=Math.max(.1,read('autoRampPowerInput',st.rampPower));
+  st.cap=Math.max(.1,read('autoCapInput',st.cap));
+  st.axisMax=Math.max(.1,read('autoAxisMaxInput',st.axisMax||st.cap));
+  const show=$('autoShowCurveToggle');st.showCurve=show?show.checked:st.showCurve;
+  const anchors=$('autoAnchorsInput');st.anchors=anchors?anchors.value:st.anchors;
+  return st;
+}
+function autoCoefSyncSettingsToUi(){
+  const st=state.autoCoef.settings;
+  if(!Number.isFinite(Number(st.rampStartMultiplier)))st.rampStartMultiplier=1;
+  if(!Number.isFinite(Number(st.rampEndMultiplier)))st.rampEndMultiplier=1+(Number(st.rampGain)||0);
+  if(!Number.isFinite(Number(st.axisMax)))st.axisMax=st.cap||1.1;
+  const set=(id,val)=>{const el=$(id);if(el)el.value=val};
+  set('autoSigmaInput',st.sigmaMs);
+  set('autoStepInput',st.stepMs);
+  set('autoMinInput',st.minMultiplier);
+  set('autoMaxInput',st.maxMultiplier);
+  set('autoPowerInput',st.densityPower);
+  set('autoRampStartInput',st.rampStartMultiplier);
+  set('autoRampEndInput',st.rampEndMultiplier);
+  set('autoRampPowerInput',st.rampPower);
+  set('autoCapInput',st.cap);
+  set('autoAxisMaxInput',st.axisMax);
+  set('autoAnchorsInput',st.anchors||'');
+  const show=$('autoShowCurveToggle');if(show)show.checked=!!st.showCurve;
+}
+function autoCoefDurationMs(){
+  const lastNote=state.notes.reduce((m,n)=>Math.max(m,(Number(n.timeMs)||0)+(Number(n.durationMs)||0)),0);
+  return Math.max(30000,state.audioDurationMs||0,lastNote+4000,state.meta.previewEndMs||0,state.loopEndMs||0);
+}
+function autoCoefParseAnchors(text){
+  const rows=String(text||'').split(/\n+/).map(x=>x.trim()).filter(Boolean);const out=[];
+  for(const row of rows){
+    const parts=row.split(/[,:\s]+/).map(x=>x.trim()).filter(Boolean);
+    if(parts.length<2)continue;
+    const t=Number(parts[0]),v=Number(parts[1]);
+    if(Number.isFinite(t)&&Number.isFinite(v))out.push({timeMs:Math.max(0,t),multiplier:Math.max(0,v)});
+  }
+  out.sort((a,b)=>a.timeMs-b.timeMs);
+  return out;
+}
+function autoCoefAnchorAt(t,anchors){
+  if(!anchors.length)return 1;
+  if(t<=anchors[0].timeMs)return anchors[0].multiplier;
+  for(let i=1;i<anchors.length;i++){
+    const a=anchors[i-1],b=anchors[i];
+    if(t<=b.timeMs){const k=(t-a.timeMs)/Math.max(1,b.timeMs-a.timeMs);return a.multiplier+(b.multiplier-a.multiplier)*k}
+  }
+  return anchors[anchors.length-1].multiplier;
+}
+function autoCoefGenerateCurve(){
+  const st=autoCoefReadSettings();
+  const duration=autoCoefDurationMs();
+  const step=st.stepMs,sigma=st.sigmaMs;
+  const samples=[];
+  const noteEvents=[];
+  for(const n of state.notes){
+    const dur=Number(n.durationMs)||0;
+    const weight=1+Math.min(2,dur/Math.max(1,beatMs())*.5);
+    noteEvents.push({timeMs:(Number(n.timeMs)||0)+dur*.5,weight});
+  }
+  let maxDensity=0;
+  for(let t=0;t<=duration;t+=step){
+    let density=0;
+    const window=sigma*4;
+    for(const ev of noteEvents){
+      const d=t-ev.timeMs;if(Math.abs(d)>window)continue;
+      density+=ev.weight*Math.exp(-.5*(d*d)/(sigma*sigma));
+    }
+    if(density>maxDensity)maxDensity=density;
+    samples.push({timeMs:Math.round(t),density});
+  }
+  const anchors=autoCoefParseAnchors(st.anchors);
+  for(const p of samples){
+    const density01=maxDensity>0?p.density/maxDensity:0;
+    const difficulty01=Math.pow(Math.max(0,Math.min(1,density01)),st.densityPower);
+    const densityMultiplier=st.minMultiplier+(st.maxMultiplier-st.minMultiplier)*difficulty01;
+    const pos=Math.max(0,Math.min(1,p.timeMs/Math.max(1,duration)));
+    const rampMultiplier=st.rampStartMultiplier+(st.rampEndMultiplier-st.rampStartMultiplier)*Math.pow(pos,st.rampPower);
+    const manualMultiplier=autoCoefAnchorAt(p.timeMs,anchors);
+    const uncapped=densityMultiplier*rampMultiplier*manualMultiplier;
+    p.density01=density01;
+    p.difficulty01=difficulty01;
+    p.densityMultiplier=densityMultiplier;
+    p.rampMultiplier=rampMultiplier;
+    p.manualMultiplier=manualMultiplier;
+    p.finalUncapped=uncapped;
+    p.multiplier=Math.max(0,Math.min(st.cap,uncapped));
+  }
+  state.autoCoef.curve=samples;
+  autoCoefUpdateStats();
+  updatePanels();
+  return samples;
+}
+function autoCoefAt(timeMs){
+  const curve=state.autoCoef.curve;
+  if(!curve||curve.length===0)autoCoefGenerateCurve();
+  const c=state.autoCoef.curve;
+  if(!c.length)return 1;
+  if(timeMs<=c[0].timeMs)return c[0].multiplier;
+  for(let i=1;i<c.length;i++){
+    if(timeMs<=c[i].timeMs){const a=c[i-1],b=c[i],k=(timeMs-a.timeMs)/Math.max(1,b.timeMs-a.timeMs);return a.multiplier+(b.multiplier-a.multiplier)*k}
+  }
+  return c[c.length-1].multiplier;
+}
+function autoCoefPointAt(timeMs){
+  const curve=state.autoCoef.curve;
+  if(!curve||curve.length===0)autoCoefGenerateCurve();
+  const c=state.autoCoef.curve;
+  if(!c.length)return {densityMultiplier:1,rampMultiplier:1,manualMultiplier:1,finalUncapped:1,multiplier:1};
+  if(timeMs<=c[0].timeMs)return c[0];
+  for(let i=1;i<c.length;i++){
+    if(timeMs<=c[i].timeMs){
+      const a=c[i-1],b=c[i],k=(timeMs-a.timeMs)/Math.max(1,b.timeMs-a.timeMs);
+      const lerp=f=>(Number(a[f]||0)+(Number(b[f]||0)-Number(a[f]||0))*k);
+      return {
+        timeMs,
+        density01:lerp('density01'),
+        difficulty01:lerp('difficulty01'),
+        densityMultiplier:lerp('densityMultiplier'),
+        rampMultiplier:lerp('rampMultiplier') || 1,
+        manualMultiplier:lerp('manualMultiplier') || 1,
+        finalUncapped:lerp('finalUncapped'),
+        multiplier:lerp('multiplier')
+      };
+    }
+  }
+  return c[c.length-1];
+}
+function autoCoefUpdateStats(){
+  const el=$('autoCurveStats');if(!el)return;
+  const c=state.autoCoef.curve||[];
+  if(!c.length){el.textContent='curve: none';return}
+  const vals=c.map(p=>Number(p.multiplier)||0),dens=c.map(p=>Number(p.density01)||0),ramps=c.map(p=>Number(p.rampMultiplier)||1);
+  const min=Math.min(...vals),max=Math.max(...vals),avg=vals.reduce((a,b)=>a+b,0)/vals.length,peakDensity=Math.max(...dens);
+  const rampMin=Math.min(...ramps),rampMax=Math.max(...ramps);
+  el.textContent=`curve: ${c.length} samples / final ${min.toFixed(2)}~${max.toFixed(2)} avg ${avg.toFixed(2)} / ramp ${rampMin.toFixed(2)}~${rampMax.toFixed(2)} / density peak ${(peakDensity*100).toFixed(0)}%`;
+}
+function autoCoefBuildOptimizedPayload(){
+  return projectBuildPayload();
+}
+async function autoCoefExportOptimizedJson(){
+  autoCoefGenerateCurve();
+  await projectSaveSelected();
+}
+function projectSetStatus(msg){
+  const el=$('projectStatus');
+  if(el)el.textContent=msg;
+}
+function projectSongByName(name){
+  return (state.project.songs||[]).find(s=>s.name===name)||null;
+}
+function projectSelectedSongName(){
+  const el=$('projectSongSelect');
+  return el?el.value:'';
+}
+function projectSelectedChartName(){
+  const el=$('projectChartSelect');
+  return el?el.value:'';
+}
+function projectSelectedAudioName(){
+  const el=$('projectAudioSelect');
+  return el?el.value:'';
+}
+async function projectFetchJson(url,options){
+  const res=await fetch(url,options);
+  if(!res.ok){
+    let body='';
+    try{body=await res.text()}catch{}
+    throw new Error(`${res.status} ${res.statusText}${body?': '+body.slice(0,220):''}`);
+  }
+  return await res.json();
+}
+function projectSafeBaseName(s){
+  return String(s||'chart').trim().replace(/[\\/:*?"<>|]+/g,'_').replace(/\s+/g,'_').replace(/_+/g,'_').replace(/^_+|_+$/g,'')||'chart';
+}
+function projectPromptNumber(message, defaultValue){
+  const raw=prompt(message, String(defaultValue));
+  if(raw===null)return null;
+  const n=Number(raw);
+  if(!Number.isFinite(n))return defaultValue;
+  return n;
+}
+function projectPopulateCharts(preferred){
+  const songName=projectSelectedSongName();
+  const chartSel=$('projectChartSelect');
+  if(!chartSel)return;
+  const old=preferred||chartSel.value;
+  chartSel.innerHTML='';
+  const song=projectSongByName(songName);
+  if(!song){
+    chartSel.innerHTML='<option value="">Charts...</option>';
+    return;
+  }
+  const charts=song.charts||[];
+  if(!charts.length){
+    chartSel.innerHTML='<option value="">No chart json</option>';
+    return;
+  }
+  for(const chart of charts){
+    const opt=document.createElement('option');
+    opt.value=chart;
+    opt.textContent=chart;
+    chartSel.appendChild(opt);
+  }
+  if(old&&charts.includes(old))chartSel.value=old;
+}
+function projectPopulateAudio(preferred){
+  const songName=projectSelectedSongName();
+  const audioSel=$('projectAudioSelect');
+  if(!audioSel)return;
+  const old=preferred||audioSel.value;
+  audioSel.innerHTML='';
+  const song=projectSongByName(songName);
+  if(!song){
+    audioSel.innerHTML='<option value="">Audio...</option>';
+    return;
+  }
+  const audioFiles=song.audio||[];
+  if(!audioFiles.length){
+    audioSel.innerHTML='<option value="">No audio</option>';
+    return;
+  }
+  for(const file of audioFiles){
+    const opt=document.createElement('option');
+    opt.value=file;
+    opt.textContent=file;
+    audioSel.appendChild(opt);
+  }
+  if(old&&audioFiles.includes(old))audioSel.value=old;
+}
+async function projectRefreshSongs(showAlert,preferredSong,preferredChart,preferredAudio){
+  const songSel=$('projectSongSelect');
+  const chartSel=$('projectChartSelect');
+  if(!songSel||!chartSel)return;
+  try{
+    projectSetStatus('project: loading...');
+    const data=await projectFetchJson('/api/songs');
+    state.project.available=true;
+    state.project.songs=data.songs||[];
+    const oldSong=preferredSong||songSel.value||state.project.songName;
+    songSel.innerHTML='';
+    if(!state.project.songs.length){
+      songSel.innerHTML='<option value="">No Songs found</option>';
+      chartSel.innerHTML='<option value="">No charts</option>';
+      if($('projectAudioSelect'))$('projectAudioSelect').innerHTML='<option value="">No audio</option>';
+      projectSetStatus('project: no songs');
+      return;
+    }
+    for(const song of state.project.songs){
+      const opt=document.createElement('option');
+      opt.value=song.name;
+      opt.textContent=song.name;
+      songSel.appendChild(opt);
+    }
+    if(oldSong&&state.project.songs.some(s=>s.name===oldSong))songSel.value=oldSong;
+    projectPopulateCharts(preferredChart||state.project.chartName);
+    projectPopulateAudio(preferredAudio||state.project.audioName);
+    projectSetStatus(`project: ${state.project.songs.length} song(s)`);
+  }catch(e){
+    state.project.available=false;
+    projectSetStatus('project: server off');
+    if(showAlert!==false){
+      console.warn(e);
+      alert('Songs 연동 서버에 연결할 수 없습니다.\n\nTools/chart-editor/server.py로 실행했는지 확인하세요.\n\n'+e.message);
+    }
+  }
+}
+
+function baseCoefFromNote(n){
+  if(n&&n.baseSpeedupCoef!==undefined)return Number(n.baseSpeedupCoef)>0?1:0;
+  return Number(n?.speedupCoef??n?.coef??1)>0?1:0;
+}
+function projectImportChartData(data){
+  nextId=1;
+  state.notes=(data.notes||[]).map(n=>({
+    id:nextId++,
+    timeMs:Math.max(0,Math.round(n.timeMs||n.time||0)),
+    lane:Math.max(0,Math.min(3,Number(n.lane||0))),
+    speedupCoef:baseCoefFromNote(n),
+    durationMs:Math.max(0,Math.round(n.durationMs||n.duration||0))
+  }));
+  state.meta={...state.meta,...(data.meta||{})};
+  state.difficulty={...state.difficulty,...(data.difficulty||{})};
+  if(data.timing){
+    state.bpm=Number(data.timing.bpm||state.bpm);
+    state.offsetMs=Number(data.timing.offsetMs||0);
+    state.snapDiv=Number(data.timing.snapDiv||state.snapDiv);
+  }
+  if(data.preview){
+    state.meta.previewStartMs=Number(data.preview.startMs||0);
+    state.meta.previewEndMs=Number(data.preview.endMs||state.meta.previewEndMs);
+  }
+  if(data.autoCoef){
+    if(data.autoCoef.settings){
+      state.autoCoef.settings={...state.autoCoef.settings,...data.autoCoef.settings};
+    }
+    state.autoCoef.curve=Array.isArray(data.autoCoef.curve)?data.autoCoef.curve.map(p=>({
+      timeMs:Number(p.timeMs)||0,
+      density01:Number(p.density01)||0,
+      difficulty01:Number(p.difficulty01)||0,
+      densityMultiplier:Number(p.densityMultiplier)||0,
+      rampMultiplier:Number(p.rampMultiplier)||1,
+      manualMultiplier:Number(p.manualMultiplier)||1,
+      finalUncapped:Number(p.finalUncapped)||Number(p.multiplier)||1,
+      multiplier:Number(p.multiplier)||1
+    })):[];
+    autoCoefSyncSettingsToUi();
+    autoCoefUpdateStats();
+  }else{
+    state.autoCoef.curve=[];
+    autoCoefUpdateStats();
+  }
+  state.coverDataUrl=data.meta?.coverDataUrl||state.coverDataUrl||'';
+  const cleaned=dedupeAndRemoveOverlapsKeepFirst(state.notes);
+  state.notes=cleaned.notes;
+  state.selectedIds.clear();
+  sortNotes();
+  syncStateToUi();
+  updatePanels();
+  return cleaned.dropped.length;
+}
+function projectBuildBasePayload(){
+  syncUiToState();
+  enforceNoOverlap();
+  const selectedAudio=projectSelectedAudioName();
+  const audioFileName=selectedAudio||state.audioFileName||state.meta.audioFileName||'';
+  return {
+    version:2,
+    meta:{...state.meta,coverDataUrl:state.coverDataUrl,audioFileName},
+    difficulty:{...state.difficulty,lanes:4},
+    timing:{bpm:state.bpm,offsetMs:state.offsetMs,snapDiv:state.snapDiv},
+    preview:{startMs:state.meta.previewStartMs,endMs:state.meta.previewEndMs},
+    notes:state.notes.slice().sort((a,b)=>a.timeMs-b.timeMs||a.lane-b.lane).map(n=>({
+      timeMs:Math.round(n.timeMs),
+      lane:n.lane,
+      baseSpeedupCoef:Number(n.speedupCoef)>0?1:0,
+      speedupCoef:Number(n.speedupCoef)>0?1:0,
+      durationMs:Math.round(n.durationMs||0)
+    }))
+  };
+}
+function projectBuildPayload(){
+  autoCoefGenerateCurve();
+  const payload=projectBuildBasePayload();
+  const st=autoCoefReadSettings();
+  payload.autoCoef={
+    schemaVersion:1,
+    generatedAt:new Date().toISOString(),
+    description:'Final speedupCoef = baseSpeedupCoef * autoSpeedupCoefMultiplier. Load restores editable coef 0/1 from baseSpeedupCoef.',
+    settings:{...st},
+    curve:state.autoCoef.curve.map(p=>({
+      timeMs:p.timeMs,
+      density01:+Number(p.density01||0).toFixed(6),
+      difficulty01:+Number(p.difficulty01||0).toFixed(6),
+      densityMultiplier:+Number(p.densityMultiplier||0).toFixed(6),
+      rampMultiplier:+Number(p.rampMultiplier||1).toFixed(6),
+      manualMultiplier:+Number(p.manualMultiplier||1).toFixed(6),
+      finalUncapped:+Number(p.finalUncapped||p.multiplier||1).toFixed(6),
+      multiplier:+Number(p.multiplier||1).toFixed(6)
+    }))
+  };
+  payload.notes=state.notes.slice().sort((a,b)=>a.timeMs-b.timeMs||a.lane-b.lane).map(n=>{
+    const base=Number(n.speedupCoef)>0?1:0;
+    const point=base?autoCoefPointAt(n.timeMs):{densityMultiplier:0,rampMultiplier:0,manualMultiplier:0,finalUncapped:0,multiplier:0};
+    const mult=base?Number(point.multiplier||0):0;
+    return {
+      timeMs:Math.round(n.timeMs),
+      lane:n.lane,
+      baseSpeedupCoef:base,
+      densitySpeedupCoefMultiplier:+Number(point.densityMultiplier||0).toFixed(6),
+      rampSpeedupCoefMultiplier:+Number(point.rampMultiplier||0).toFixed(6),
+      manualSpeedupCoefMultiplier:+Number(point.manualMultiplier||0).toFixed(6),
+      autoSpeedupCoefMultiplier:+mult.toFixed(6),
+      speedupCoef:+(base*mult).toFixed(6),
+      durationMs:Math.round(n.durationMs||0)
+    };
+  });
+  return payload;
+}
+async function projectLoadAudioForSong(songName,audioName){
+  if(!songName||!audioName)return;
+  projectSetStatus('project: loading audio...');
+  await loadAudioUrl(`/api/media?song=${encodeURIComponent(songName)}&file=${encodeURIComponent(audioName)}`,audioName);
+  state.project.audioName=audioName;
+  const audioSel=$('projectAudioSelect');
+  if(audioSel&&[...audioSel.options].some(o=>o.value===audioName))audioSel.value=audioName;
+}
+async function projectLoadSelected(){
+  const songName=projectSelectedSongName();
+  const chartName=projectSelectedChartName();
+  if(!songName||!chartName){
+    alert('Song과 Chart를 선택하세요.');
+    return;
+  }
+  try{
+    projectSetStatus('project: loading chart...');
+    const song=projectSongByName(songName);
+    const url=`/api/chart?song=${encodeURIComponent(songName)}&chart=${encodeURIComponent(chartName)}`;
+    const data=await projectFetchJson(url);
+    pushHistory();
+    const dropped=projectImportChartData(data);
+    state.project.songName=songName;
+    state.project.chartName=chartName;
+
+    const audioFiles=(song&&song.audio)||[];
+    const chartAudio=data.meta&&data.meta.audioFileName?data.meta.audioFileName:'';
+    const selectedAudio=projectSelectedAudioName();
+    const preferredAudio=(chartAudio&&audioFiles.includes(chartAudio))?chartAudio:(selectedAudio&&audioFiles.includes(selectedAudio))?selectedAudio:audioFiles[0];
+    if(preferredAudio){
+      await projectLoadAudioForSong(songName,preferredAudio);
+      state.meta.audioFileName=preferredAudio;
+    }else{
+      state.audioFileName='';
+      state.audioDurationMs=0;
+      waveformPeaks=null;
+      projectSetStatus('loaded chart / no audio');
+    }
+
+    const coverFiles=(song&&song.covers)||[];
+    const chartCover=data.meta&&data.meta.coverFileName?data.meta.coverFileName:'';
+    const preferredCover=(chartCover&&coverFiles.includes(chartCover))?chartCover:coverFiles[0];
+    if(preferredCover){
+      state.coverDataUrl=`/api/media?song=${encodeURIComponent(songName)}&file=${encodeURIComponent(preferredCover)}`;
+      $('coverPreview').src=state.coverDataUrl;
+    }
+
+    syncStateToUi();
+    updatePanels();
+    projectSetStatus(`loaded: ${songName}/${chartName}`);
+    if(dropped>0)alert(`겹치는 노트 ${dropped}개를 제거하고 불러왔습니다.`);
+  }catch(e){
+    console.error(e);
+    projectSetStatus('project: load failed');
+    alert('Chart load failed: '+e.message);
+  }
+}
+async function projectSaveSelected(){
+  const songName=projectSelectedSongName();
+  const chartName=projectSelectedChartName();
+  if(!songName||!chartName){
+    alert('Song과 Chart를 선택하세요.');
+    return;
+  }
+  try{
+    projectSetStatus('project: saving...');
+    const payload=projectBuildPayload();
+    const url=`/api/chart?song=${encodeURIComponent(songName)}&chart=${encodeURIComponent(chartName)}`;
+    const res=await projectFetchJson(url,{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(payload,null,2)
+    });
+    state.project.songName=songName;
+    state.project.chartName=chartName;
+    projectSetStatus(`saved optimized: ${res.chart||chartName}`);
+    alert(`저장 완료: ${songName}/${chartName}\nbaseSpeedupCoef와 auto multiplier를 포함한 최종 speedupCoef로 저장했습니다.`);
+  }catch(e){
+    console.error(e);
+    projectSetStatus('project: save failed');
+    alert('Chart save failed: '+e.message);
+  }
+}
+function projectNewSongPrompt(){
+  const songName=prompt('새 노래 폴더 이름을 입력하세요. 예: My Song');
+  if(!songName)return;
+  const title=prompt('곡 제목을 입력하세요.', songName) || songName;
+  const artist=prompt('아티스트를 입력하세요.', '') || '';
+  const bpm=projectPromptNumber('BPM을 입력하세요.', state.bpm||180);
+  if(bpm===null)return;
+  const offsetMs=projectPromptNumber('Offset(ms)을 입력하세요.', state.offsetMs||0);
+  if(offsetMs===null)return;
+  const difficultyName=prompt('처음 만들 난이도 이름을 입력하세요.', 'Normal') || 'Normal';
+  const difficultyLevel=projectPromptNumber('난이도 레벨을 입력하세요.', state.difficulty.level||1);
+  if(difficultyLevel===null)return;
+  state.project.pendingNewSong={songName,title,artist,bpm,offsetMs,difficultyName,difficultyLevel};
+  $('projectNewSongAudioInput').value='';
+  $('projectNewSongAudioInput').click();
+}
+async function projectCreateSongWithAudio(file){
+  const p=state.project.pendingNewSong;
+  state.project.pendingNewSong=null;
+  if(!p||!file)return;
+  try{
+    projectSetStatus('project: creating song...');
+    const form=new FormData();
+    form.append('songName',p.songName);
+    form.append('title',p.title);
+    form.append('artist',p.artist);
+    form.append('bpm',String(p.bpm));
+    form.append('offsetMs',String(p.offsetMs));
+    form.append('difficultyName',p.difficultyName);
+    form.append('difficultyLevel',String(p.difficultyLevel));
+    form.append('audioFile',file,file.name);
+    const res=await projectFetchJson('/api/song',{method:'POST',body:form});
+    await projectRefreshSongs(false,res.song,res.chart,res.audio);
+    const songSel=$('projectSongSelect'),chartSel=$('projectChartSelect'),audioSel=$('projectAudioSelect');
+    if(songSel)songSel.value=res.song;
+    projectPopulateCharts(res.chart);
+    projectPopulateAudio(res.audio);
+    if(chartSel)chartSel.value=res.chart;
+    if(audioSel)audioSel.value=res.audio;
+    await projectLoadSelected();
+    projectSetStatus(`created: ${res.song}`);
+  }catch(e){
+    console.error(e);
+    projectSetStatus('project: create song failed');
+    alert('New Song failed: '+e.message);
+  }
+}
+async function projectNewChartPrompt(){
+  const songName=projectSelectedSongName();
+  if(!songName){
+    alert('먼저 Song을 선택하세요.');
+    return;
+  }
+  const song=projectSongByName(songName);
+  const difficultyName=prompt('새 채보 난이도 이름을 입력하세요. 예: Hard', 'Normal');
+  if(!difficultyName)return;
+  const difficultyLevel=projectPromptNumber('난이도 레벨을 입력하세요.', state.difficulty.level||1);
+  if(difficultyLevel===null)return;
+  const defaultFile=`${projectSafeBaseName(songName)}_${projectSafeBaseName(difficultyName)}.4k-speedcoef.json`;
+  const chartName=prompt('저장할 json 파일명을 입력하세요.', defaultFile);
+  if(!chartName)return;
+  const audioFileName=projectSelectedAudioName()||((song&&song.audio&&song.audio[0])||state.audioFileName||'');
+  const payload={
+    song:songName,
+    chart:chartName,
+    title:state.meta.title&&state.meta.title!=='Untitled'?state.meta.title:songName,
+    artist:state.meta.artist||'',
+    mapper:state.meta.mapper||'',
+    audioFileName,
+    difficultyName,
+    difficultyLevel,
+    bpm:state.bpm||180,
+    offsetMs:state.offsetMs||0,
+    snapDiv:state.snapDiv||4
+  };
+  try{
+    projectSetStatus('project: creating chart...');
+    const res=await projectFetchJson('/api/new-chart',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(payload)
+    });
+    await projectRefreshSongs(false,res.song,res.chart,audioFileName);
+    const songSel=$('projectSongSelect'),chartSel=$('projectChartSelect'),audioSel=$('projectAudioSelect');
+    if(songSel)songSel.value=res.song;
+    projectPopulateCharts(res.chart);
+    projectPopulateAudio(audioFileName);
+    if(chartSel)chartSel.value=res.chart;
+    if(audioSel&&audioFileName)audioSel.value=audioFileName;
+    await projectLoadSelected();
+    projectSetStatus(`created chart: ${res.chart}`);
+  }catch(e){
+    console.error(e);
+    projectSetStatus('project: create chart failed');
+    alert('New Chart failed: '+e.message);
+  }
+}
+function setPlaybackRate(rate){state.playbackRate=Math.max(1,Math.min(2,Number(rate)||1));if($('playbackRate'))$('playbackRate').value=state.playbackRate;if($('playbackRateLabel'))$('playbackRateLabel').textContent=state.playbackRate.toFixed(2)+'x';if($('rateStatus'))$('rateStatus').textContent='rate '+state.playbackRate.toFixed(2)+'x';if(bgmSource)bgmSource.playbackRate.value=state.playbackRate;if(state.isPlaying){playbackStartChartMs=state.playheadMs;playbackStartPerf=performance.now();syncAudioToChartTime(state.playheadMs)}updatePanels();}window.addEventListener('keydown',evt=>{const tag=document.activeElement.tagName.toLowerCase();if(['input','select','textarea'].includes(tag))return;const key=evt.key.toLowerCase();if((evt.ctrlKey||evt.metaKey)&&key==='z'){evt.preventDefault();undo();return}if((evt.ctrlKey||evt.metaKey)&&(key==='y'||(evt.shiftKey&&key==='z'))){evt.preventDefault();redo();return}if((evt.ctrlKey||evt.metaKey)&&key==='c'){evt.preventDefault();copySelected();return}if((evt.ctrlKey||evt.metaKey)&&key==='v'){evt.preventDefault();pasteClipboard(false);return}if(key===' '){evt.preventDefault();state.isPlaying?pausePlayback():startPlayback();return}if(key==='delete'||key==='backspace'){deleteSelected();return}if(key==='n'){setTool('place');return}if(key==='s'){setTool('select');return}if(key==='p'){setTool('playhead');return}if(key==='1'){setCoef(1);return}if(key==='0'){setCoef(0);return}if(key==='t'){setMode('tap');return}if(key==='h'){setMode('hold');return}if(key==='m'){mirrorSelected();return}if(key==='arrowup'){state.viewStartMs=Math.max(0,state.viewStartMs+beatMs());return}if(key==='arrowdown'){state.viewStartMs=Math.max(0,state.viewStartMs-beatMs());return}const lane=chartKeys.indexOf(key);if(lane>=0){const coef=state.currentCoef;playHit(coef,lane);if(state.recordKeys){pushHistory();addNote({timeMs:snapTime(state.playheadMs),lane,speedupCoef:coef,durationMs:0},false)}}});
+function setTool(mode){state.toolMode=mode;updatePanels()}function setCoef(c){state.currentCoef=Number(c)===0?0:1;updatePanels()}function setMode(m){state.currentMode=m;updatePanels()}function exportJson(){syncUiToState();enforceNoOverlap();const payload={version:2,meta:{...state.meta,coverDataUrl:state.coverDataUrl,audioFileName:state.audioFileName},difficulty:{...state.difficulty,lanes:4},timing:{bpm:state.bpm,offsetMs:state.offsetMs,snapDiv:state.snapDiv},preview:{startMs:state.meta.previewStartMs,endMs:state.meta.previewEndMs},notes:state.notes.slice().sort((a,b)=>a.timeMs-b.timeMs||a.lane-b.lane).map(n=>({timeMs:Math.round(n.timeMs),lane:n.lane,speedupCoef:Number(n.speedupCoef),durationMs:Math.round(n.durationMs||0)}))};const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`${(state.meta.title||'chart').replace(/[^a-z0-9_-]+/gi,'_')}.4k-speedcoef.json`;a.click();URL.revokeObjectURL(url)}function importJsonFile(file){const reader=new FileReader();reader.onload=()=>{try{pushHistory();const data=JSON.parse(reader.result);state.notes=(data.notes||[]).map(n=>({id:nextId++,timeMs:Math.max(0,Math.round(n.timeMs||n.time||0)),lane:Math.max(0,Math.min(3,Number(n.lane||0))),speedupCoef:baseCoefFromNote(n),durationMs:Math.max(0,Math.round(n.durationMs||n.duration||0))}));state.meta={...state.meta,...(data.meta||{})};state.difficulty={...state.difficulty,...(data.difficulty||{})};if(data.timing){state.bpm=Number(data.timing.bpm||state.bpm);state.offsetMs=Number(data.timing.offsetMs||0);state.snapDiv=Number(data.timing.snapDiv||state.snapDiv)}if(data.preview){state.meta.previewStartMs=Number(data.preview.startMs||0);state.meta.previewEndMs=Number(data.preview.endMs||state.meta.previewEndMs)}state.coverDataUrl=data.meta?.coverDataUrl||'';const cleaned=dedupeAndRemoveOverlapsKeepFirst(state.notes);state.notes=cleaned.notes;state.selectedIds.clear();sortNotes();syncStateToUi();updatePanels();if(cleaned.dropped.length>0)alert(`겹치는 노트 ${cleaned.dropped.length}개를 제거하고 import했습니다.`)}catch(e){alert('JSON import failed: '+e.message)}};reader.readAsText(file)}function addSamplePattern(){pushHistory();state.notes=[];nextId=1;const b=beatMs();for(let i=0;i<96;i++){const t=Math.round(i*b/2),lane=i%4,coef=(i%12<8)?1:0;addNote({timeMs:t,lane,speedupCoef:coef,durationMs:0},false);if(i%16===4)addNote({timeMs:t,lane:3-lane,speedupCoef:coef?0:1,durationMs:Math.round(b*1.5)},false)}state.selectedIds.clear();state.viewStartMs=0;state.playheadMs=0;updatePanels()}function jump(delta){state.playheadMs=Math.max(0,snapTime(state.playheadMs+delta));state.viewStartMs=Math.max(0,state.playheadMs-1600);if(state.isPlaying)startPlayback(state.playheadMs);updatePanels()}
+$('playBtn').onclick=()=>state.isPlaying?pausePlayback():startPlayback();$('stopBtn').onclick=stopPlayback;$('playFromViewBtn').onclick=()=>startPlayback(state.viewStartMs);$('previewBtn').onclick=()=>startPlayback(Number($('previewStartInput').value)||0);$('loopToggle').onchange=e=>state.loop=e.target.checked;$('audioFile').onchange=e=>{if(e.target.files[0])loadAudioFile(e.target.files[0])};$('coverFile').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{pushHistory();state.coverDataUrl=r.result;$('coverPreview').src=state.coverDataUrl;updatePanels()};r.readAsDataURL(f)};for(const id of ['metaTitle','metaArtist','metaSource','metaMapper','previewStartInput','previewEndInput','metaExtra','diffName','diffLevel','diffScroll','diffBaseSpeed','diffNotes']){$(id).addEventListener('change',()=>{pushHistory();syncUiToState();updatePanels()});$(id).addEventListener('input',()=>{syncUiToState();updatePanels()})}$('musicVolume').oninput=e=>{if(bgmGain)bgmGain.gain.value=parseFloat(e.target.value)||0};$('bpmInput').oninput=e=>{state.bpm=Number(e.target.value)||120;updatePanels()};$('bpmInput').onchange=()=>pushHistory();$('snapInput').onchange=e=>{pushHistory();state.snapDiv=Number(e.target.value)||4;updatePanels()};$('offsetInput').oninput=e=>{state.offsetMs=Number(e.target.value)||0;updatePanels()};$('offsetInput').onchange=()=>pushHistory();$('zoomInput').oninput=e=>{state.pxPerSecond=Number(e.target.value);updatePanels()};$('waveGain').oninput=()=>updatePanels();$('recordToggle').onchange=e=>state.recordKeys=e.target.checked;if($('playbackRate'))$('playbackRate').oninput=e=>setPlaybackRate(e.target.value);$('toolPlaceBtn').onclick=()=>setTool('place');$('toolSelectBtn').onclick=()=>setTool('select');$('toolPlayBtn').onclick=()=>setTool('playhead');$('coef1Btn').onclick=()=>setCoef(1);$('coef0Btn').onclick=()=>setCoef(0);$('tapModeBtn').onclick=()=>setMode('tap');$('holdModeBtn').onclick=()=>setMode('hold');$('undoBtn').onclick=undo;$('redoBtn').onclick=redo;$('copyBtn').onclick=copySelected;$('pasteBtn').onclick=()=>pasteClipboard(false);$('mirrorBtn').onclick=mirrorSelected;$('exportBtn').onclick=()=>projectSaveSelected();$('importBtn').onclick=()=>$('importFile').click();$('importFile').onchange=e=>{if(e.target.files[0])importJsonFile(e.target.files[0])};$('clearBtn').onclick=()=>{if(confirm('Delete all notes?')){pushHistory();state.notes=[];state.selectedIds.clear();updatePanels()}};$('sampleBtn').onclick=addSamplePattern;$('quantizeBtn').onclick=quantizeSelected;$('deleteSelectedBtn').onclick=deleteSelected;$('deleteSelectedBtn2').onclick=deleteSelected;$('setLoopStartBtn').onclick=()=>{state.loopStartMs=Math.round(state.playheadMs);$('loopStartInput').value=state.loopStartMs;updatePanels()};$('setLoopEndBtn').onclick=()=>{state.loopEndMs=Math.round(state.playheadMs);$('loopEndInput').value=state.loopEndMs;updatePanels()};$('setPreviewStartBtn').onclick=()=>{state.meta.previewStartMs=Math.round(state.playheadMs);$('previewStartInput').value=state.meta.previewStartMs;updatePanels()};$('loopStartInput').oninput=e=>{state.loopStartMs=Number(e.target.value)||0;updatePanels()};$('loopEndInput').oninput=e=>{state.loopEndMs=Number(e.target.value)||0;updatePanels()};$('jumpPrevMeasureBtn').onclick=()=>jump(-barMs());$('jumpNextMeasureBtn').onclick=()=>jump(barMs());$('jumpPrevBeatBtn').onclick=()=>jump(-beatMs());$('jumpNextBeatBtn').onclick=()=>jump(beatMs());$('jumpPrevSnapBtn').onclick=()=>jump(-snapMs());$('jumpNextSnapBtn').onclick=()=>jump(snapMs());$('snapPlayheadBtn').onclick=()=>{state.playheadMs=Math.max(0,snapTime(state.playheadMs));updatePanels()};$('applySelectedBtn').onclick=()=>{const n=firstSelected();if(!n)return;pushHistory();n.timeMs=Math.max(0,Math.round(Number($('selTime').value)||0));n.lane=Math.max(0,Math.min(3,Math.round(Number($('selLane').value)-1)));n.durationMs=Math.max(0,Math.round(Number($('selDuration').value)||0));n.speedupCoef=Number($('selCoef').value)===0?0:1;state.playheadMs=n.timeMs;sortNotes();updatePanels()};$('auditionSelectedBtn').onclick=()=>{const n=firstSelected();if(n)playHit(n.speedupCoef,n.lane)};
+
+['autoSigmaInput','autoStepInput','autoMinInput','autoMaxInput','autoPowerInput','autoRampStartInput','autoRampEndInput','autoRampPowerInput','autoCapInput','autoAxisMaxInput','autoAnchorsInput'].forEach(id=>{const el=$(id);if(el){el.addEventListener('change',()=>{autoCoefReadSettings();autoCoefGenerateCurve()});el.addEventListener('input',()=>{autoCoefReadSettings();autoCoefUpdateStats()})}});
+$('autoShowCurveToggle').onchange=e=>{state.autoCoef.settings.showCurve=e.target.checked;updatePanels()};
+$('autoGenerateBtn').onclick=()=>autoCoefGenerateCurve();
+$('autoExportBtn').onclick=()=>autoCoefExportOptimizedJson();
+autoCoefSyncSettingsToUi();
+$('projectRefreshBtn').onclick=()=>projectRefreshSongs(true);
+$('projectNewSongBtn').onclick=()=>projectNewSongPrompt();
+$('projectNewChartBtn').onclick=()=>projectNewChartPrompt();
+$('projectNewSongAudioInput').onchange=e=>{if(e.target.files[0])projectCreateSongWithAudio(e.target.files[0])};
+$('projectSongSelect').onchange=()=>{projectPopulateCharts();projectPopulateAudio();projectSetStatus('project: song selected')};
+$('projectChartSelect').onchange=()=>projectSetStatus('project: chart selected');
+$('projectAudioSelect').onchange=()=>{const songName=projectSelectedSongName(),audioName=projectSelectedAudioName();if(songName&&audioName)projectLoadAudioForSong(songName,audioName).catch(e=>alert('Audio load failed: '+e.message))};
+$('projectLoadBtn').onclick=()=>projectLoadSelected();
+$('projectSaveBtn').onclick=()=>projectSaveSelected();
+window.addEventListener('resize',resize);resize();syncStateToUi();updatePanels();projectRefreshSongs(false);tick();
+})();
+</script>
+</body>
+</html>
