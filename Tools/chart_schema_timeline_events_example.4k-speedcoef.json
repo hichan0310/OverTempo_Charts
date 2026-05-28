@@ -1,0 +1,51 @@
+{
+  "version": 3,
+  "meta": {
+    "title": "Timeline Event Test",
+    "artist": "",
+    "source": "",
+    "mapper": "",
+    "previewStartMs": 0,
+    "previewEndMs": 15000,
+    "extra": "",
+    "audioFileName": ""
+  },
+  "difficulty": {
+    "name": "Test",
+    "level": 1,
+    "scroll": 1,
+    "baseSpeed": 1,
+    "notes": "",
+    "lanes": 4
+  },
+  "timing": {
+    "bpm": 180,
+    "offsetMs": 0,
+    "snapDiv": 4
+  },
+  "preview": {
+    "startMs": 0,
+    "endMs": 15000
+  },
+  "speedLimitLines": [
+    {
+      "timeMs": 8000,
+      "maxSpeed": 1.25
+    }
+  ],
+  "stageDeltaLines": [
+    {
+      "timeMs": 4000,
+      "stageDelta": 20
+    }
+  ],
+  "notes": [
+    {
+      "timeMs": 1000,
+      "lane": 0,
+      "baseSpeedupCoef": 1,
+      "speedupCoef": 1,
+      "durationMs": 0
+    }
+  ]
+}

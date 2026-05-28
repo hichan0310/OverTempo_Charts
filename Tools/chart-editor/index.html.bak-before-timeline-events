@@ -42,21 +42,6 @@ offset은 chart timeline 위에서 audio 0ms가 놓이는 위치입니다. 노�
 <div class="card"><h3>Difficulty</h3><div class="grid2"><label>Name <input id="diffName" type="text" value="Normal"></label><label>Level <input id="diffLevel" type="number" value="1" step="0.1"></label></div><div class="grid2"><label>Scroll <input id="diffScroll" type="number" value="1" step="0.05"></label><label>Base Speed <input id="diffBaseSpeed" type="number" value="1" step="0.01"></label></div><label class="stack">Difficulty Notes <textarea id="diffNotes"></textarea></label></div>
 <div class="card"><h3>BPM / Snap Helper</h3><div class="row"><button id="jumpPrevMeasureBtn">Prev Bar</button><button id="jumpNextMeasureBtn">Next Bar</button><button id="jumpPrevBeatBtn">Prev Beat</button><button id="jumpNextBeatBtn">Next Beat</button></div><div class="row"><button id="jumpPrevSnapBtn">Prev Snap</button><button id="jumpNextSnapBtn">Next Snap</button><button id="snapPlayheadBtn">Snap Playhead</button></div><div class="mono" id="snapInfo">beat 333.33ms</div></div>
 <div class="card"><h3>Chart</h3><div class="row"><button id="exportBtn">Save Chart</button><button id="importBtn">Import JSON</button><input id="importFile" class="hidden" type="file" accept="application/json,.json"><button id="clearBtn" class="danger">Clear</button></div><div class="row"><button id="sampleBtn">Sample Pattern</button><button id="quantizeBtn">Quantize Selected</button><button id="deleteSelectedBtn2" class="danger">Delete Selected</button></div><div class="mono" id="chartStats">notes: 0</div></div>
-<div class="card"><h3>Timeline Events</h3>
-<div class="small">
-Speed Limit Line: 해당 시점에서 현재 배속이 max보다 크면 제한합니다.<br>
-Stage Delta Line: 해당 시점에서 stage에 delta를 더합니다.
-</div>
-<div class="grid2">
-<label>Limit Max Speed <input id="speedLimitMaxInput" type="number" value="1.25" min="1" step="0.01"></label>
-<label>Stage Delta <input id="stageDeltaInput" type="number" value="-5" step="0.1"></label>
-</div>
-<div class="row">
-<button id="addSpeedLimitLineBtn">Add Limit @ Playhead</button>
-<button id="addStageDeltaLineBtn">Add Delta @ Playhead</button>
-</div>
-<div class="note-list" id="timelineEventList"></div>
-</div>
 <div class="card"><h3>Auto Coef / Difficulty Curve</h3>
 <div class="small">
 노트 밀도를 Gaussian smoothing으로 분석해서 <code>coef 1</code> 노트에 곱할 최종 multiplier를 만듭니다.<br>
@@ -88,12 +73,12 @@ Stage Delta Line: 해당 시점에서 stage에 delta를 더합니다.
 (()=>{
 const $=id=>document.getElementById(id),canvas=$('editorCanvas'),ctx=canvas.getContext('2d');
 const lanes=4,chartKeys=['d','f','j','k'];
-const state={notes:[],selectedIds:new Set(),clipboard:[],toolMode:'place',currentCoef:1,currentMode:'tap',playbackRate:1,bpm:180,snapDiv:4,offsetMs:0,pxPerSecond:160,viewStartMs:0,playheadMs:0,isPlaying:false,loop:false,loopStartMs:0,loopEndMs:8000,audioFileName:'',audioDurationMs:0,coverDataUrl:'',recordKeys:false,drag:null,meta:{title:'Untitled',artist:'',source:'',mapper:'',previewStartMs:0,previewEndMs:15000,extra:''},difficulty:{name:'Normal',level:1,scroll:1,baseSpeed:1,notes:''},project:{available:false,songs:[],songName:'',chartName:'',audioName:'',pendingNewSong:null},speedLimitLines:[],stageDeltaLines:[],autoCoef:{curve:[],settings:{sigmaMs:1600,stepMs:100,minMultiplier:.2,maxMultiplier:1,densityPower:1.15,rampGain:.05,rampStartMultiplier:1,rampEndMultiplier:1.05,rampPower:1.2,cap:1.1,axisMax:1.1,showCurve:true,anchors:''}}};
+const state={notes:[],selectedIds:new Set(),clipboard:[],toolMode:'place',currentCoef:1,currentMode:'tap',playbackRate:1,bpm:180,snapDiv:4,offsetMs:0,pxPerSecond:160,viewStartMs:0,playheadMs:0,isPlaying:false,loop:false,loopStartMs:0,loopEndMs:8000,audioFileName:'',audioDurationMs:0,coverDataUrl:'',recordKeys:false,drag:null,meta:{title:'Untitled',artist:'',source:'',mapper:'',previewStartMs:0,previewEndMs:15000,extra:''},difficulty:{name:'Normal',level:1,scroll:1,baseSpeed:1,notes:''},project:{available:false,songs:[],songName:'',chartName:'',audioName:'',pendingNewSong:null},autoCoef:{curve:[],settings:{sigmaMs:1600,stepMs:100,minMultiplier:.2,maxMultiplier:1,densityPower:1.15,rampGain:.05,rampStartMultiplier:1,rampEndMultiplier:1.05,rampPower:1.2,cap:1.1,axisMax:1.1,showCurve:true,anchors:''}}};
 let audioCtx=null,audioBuffer=null,waveformPeaks=null,nextId=1,lastFrame=performance.now(),playbackStartPerf=0,playbackStartChartMs=0,audioStartedForThisPlayback=false,bgmSource=null,bgmGain=null,bgmActive=false,bgmStartedChartMs=0,bgmStartedCtxTime=0,bgmAudioOffsetSec=0;
 const history={undo:[],redo:[],max:150};
 function ensureAudioCtx(){if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();if(audioCtx.state==='suspended')audioCtx.resume();}
-function snapshot(){return JSON.stringify({notes:state.notes.map(n=>({...n})),meta:{...state.meta},difficulty:{...state.difficulty},bpm:state.bpm,snapDiv:state.snapDiv,offsetMs:state.offsetMs,loopStartMs:state.loopStartMs,loopEndMs:state.loopEndMs,coverDataUrl:state.coverDataUrl,speedLimitLines:(state.speedLimitLines||[]).map(x=>({...x})),stageDeltaLines:(state.stageDeltaLines||[]).map(x=>({...x})),autoCoef:{settings:{...state.autoCoef.settings},curve:state.autoCoef.curve||[]}});}
-function restore(s){const d=JSON.parse(s);state.notes=(d.notes||[]).map(n=>({...n}));state.meta={...state.meta,...(d.meta||{})};state.difficulty={...state.difficulty,...(d.difficulty||{})};state.bpm=d.bpm??state.bpm;state.snapDiv=d.snapDiv??state.snapDiv;state.offsetMs=d.offsetMs??state.offsetMs;state.loopStartMs=d.loopStartMs??state.loopStartMs;state.loopEndMs=d.loopEndMs??state.loopEndMs;state.coverDataUrl=d.coverDataUrl||'';state.speedLimitLines=(d.speedLimitLines||[]).map(x=>({...x}));state.stageDeltaLines=(d.stageDeltaLines||[]).map(x=>({...x}));if(d.autoCoef){state.autoCoef={...state.autoCoef,...d.autoCoef,settings:{...state.autoCoef.settings,...(d.autoCoef.settings||{})},curve:d.autoCoef.curve||[]};autoCoefSyncSettingsToUi();autoCoefUpdateStats()}nextId=Math.max(1,...state.notes.map(n=>n.id||0))+1;state.selectedIds.clear();syncStateToUi();updatePanels();}
+function snapshot(){return JSON.stringify({notes:state.notes.map(n=>({...n})),meta:{...state.meta},difficulty:{...state.difficulty},bpm:state.bpm,snapDiv:state.snapDiv,offsetMs:state.offsetMs,loopStartMs:state.loopStartMs,loopEndMs:state.loopEndMs,coverDataUrl:state.coverDataUrl,autoCoef:{settings:{...state.autoCoef.settings},curve:state.autoCoef.curve||[]}});}
+function restore(s){const d=JSON.parse(s);state.notes=(d.notes||[]).map(n=>({...n}));state.meta={...state.meta,...(d.meta||{})};state.difficulty={...state.difficulty,...(d.difficulty||{})};state.bpm=d.bpm??state.bpm;state.snapDiv=d.snapDiv??state.snapDiv;state.offsetMs=d.offsetMs??state.offsetMs;state.loopStartMs=d.loopStartMs??state.loopStartMs;state.loopEndMs=d.loopEndMs??state.loopEndMs;state.coverDataUrl=d.coverDataUrl||'';if(d.autoCoef){state.autoCoef={...state.autoCoef,...d.autoCoef,settings:{...state.autoCoef.settings,...(d.autoCoef.settings||{})},curve:d.autoCoef.curve||[]};autoCoefSyncSettingsToUi();autoCoefUpdateStats()}nextId=Math.max(1,...state.notes.map(n=>n.id||0))+1;state.selectedIds.clear();syncStateToUi();updatePanels();}
 function pushHistory(){history.undo.push(snapshot());if(history.undo.length>history.max)history.undo.shift();history.redo=[];updateUndoRedoButtons();}
 function undo(){if(!history.undo.length)return;history.redo.push(snapshot());restore(history.undo.pop());updateUndoRedoButtons();}
 function redo(){if(!history.redo.length)return;history.undo.push(snapshot());restore(history.redo.pop());updateUndoRedoButtons();}
@@ -116,7 +101,7 @@ function laneArea(cssW=canvas._cssW||canvas.width){
 }
 function xToLane(x){const a=laneArea();return Math.max(0,Math.min(lanes-1,Math.floor((x-a.left)/a.laneW)))}function laneToX(lane){const a=laneArea();return a.left+lane*a.laneW}function coefColor(c,a=1){return Number(c)===1?`rgba(121,230,155,${a})`:`rgba(255,210,103,${a})`}
 function resize(){const r=canvas.parentElement.getBoundingClientRect(),dpr=window.devicePixelRatio||1;canvas.width=Math.max(300,Math.floor(r.width*dpr));canvas.height=Math.max(300,Math.floor(r.height*dpr));canvas._cssW=r.width;canvas._cssH=r.height;ctx.setTransform(dpr,0,0,dpr,0,0)}function clearCanvas(){const dpr=window.devicePixelRatio||1;ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,canvas._cssW||canvas.width,canvas._cssH||canvas.height)}
-function draw(){const W=canvas._cssW||canvas.width,H=canvas._cssH||canvas.height,a=laneArea(W);clearCanvas();ctx.fillStyle='#090b10';ctx.fillRect(0,0,W,H);drawWaveform(W,H,a);drawLanes(W,H,a);drawGrid(W,H,a);drawAudioOffsetMarker(W,a);drawLoopRegion(a);drawAutoCoefCurve(W,H,a);drawTimelineEvents(W,H,a);drawNotes(a);drawDragPreview(a);drawMarquee();drawPlayhead(W,a)}
+function draw(){const W=canvas._cssW||canvas.width,H=canvas._cssH||canvas.height,a=laneArea(W);clearCanvas();ctx.fillStyle='#090b10';ctx.fillRect(0,0,W,H);drawWaveform(W,H,a);drawLanes(W,H,a);drawGrid(W,H,a);drawAudioOffsetMarker(W,a);drawLoopRegion(a);drawAutoCoefCurve(W,H,a);drawNotes(a);drawDragPreview(a);drawMarquee();drawPlayhead(W,a)}
 function chartToAudioMs(chartMs){return chartMs-state.offsetMs}
 function audioToChartMs(audioMs){return audioMs+state.offsetMs}
 function wavePeakAt(tMs,gain){if(!waveformPeaks||!state.audioDurationMs)return 0;const audioMs=chartToAudioMs(tMs);if(audioMs<0||audioMs>state.audioDurationMs)return 0;const idx=Math.floor((audioMs/state.audioDurationMs)*waveformPeaks.length),p=waveformPeaks[Math.max(0,Math.min(waveformPeaks.length-1,idx))]||0;return Math.min(1,Math.pow(p*gain,.72))}
@@ -168,42 +153,6 @@ function drawAutoCoefCurve(W,H,a){
  drawLine('multiplier','rgba(167,139,250,1)',3,null);
  ctx.restore();
 }
-function drawTimelineEvents(W,H,a){
- const start=state.viewStartMs-500;
- const end=state.viewStartMs+(H/state.pxPerSecond)*1000+500;
- const drawEventLine=(timeMs,text,color)=>{
-  if(timeMs<start||timeMs>end)return;
-  const y=msToY(timeMs);
-  ctx.save();
-  ctx.strokeStyle=color;
-  ctx.lineWidth=2;
-  ctx.setLineDash([7,5]);
-  ctx.beginPath();
-  ctx.moveTo(a.left,y);
-  ctx.lineTo(a.right,y);
-  ctx.stroke();
-  ctx.setLineDash([]);
-  ctx.fillStyle=color;
-  ctx.font='12px ui-monospace,monospace';
-  ctx.fillText(text,a.left+8,y-6);
-  ctx.restore();
- };
- for(const line of state.speedLimitLines||[]){
-  drawEventLine(
-   Number(line.timeMs)||0,
-   `LIMIT <= ${Number(line.maxSpeed||1).toFixed(2)}x`,
-   'rgba(255,107,122,.95)'
-  );
- }
- for(const line of state.stageDeltaLines||[]){
-  const d=Number(line.stageDelta)||0;
-  drawEventLine(
-   Number(line.timeMs)||0,
-   `STAGE ${d>=0?'+':''}${d.toFixed(2)}`,
-   'rgba(134,215,255,.95)'
-  );
- }
-}
 function drawNotes(a){const H=canvas._cssH||canvas.height,start=state.viewStartMs-500,end=state.viewStartMs+(H/state.pxPerSecond)*1000+500;state.notes.filter(n=>n.timeMs+Math.max(1,n.durationMs||0)>=start&&n.timeMs<=end).sort((p,q)=>p.timeMs-q.timeMs||p.lane-q.lane).forEach(n=>drawNote(n,a,false))}
 function drawNote(n,a,preview=false){const x=laneToX(n.lane)+6,w=a.laneW-12,y=msToY(n.timeMs),isHold=(n.durationMs||0)>0,sel=state.selectedIds.has(n.id),coef=Number(n.speedupCoef);if(isHold){const y2=msToY(n.timeMs+n.durationMs),top=Math.min(y,y2),h=Math.abs(y2-y);ctx.fillStyle=coefColor(coef,preview?.20:.38);ctx.fillRect(x+w*.30,top,w*.40,h);ctx.strokeStyle=coefColor(coef,sel?1:.78);ctx.lineWidth=sel?3:1.4;ctx.strokeRect(x+w*.30,top,w*.40,h)}ctx.fillStyle=coefColor(coef,preview?.45:.96);ctx.strokeStyle=sel?'rgba(167,139,250,1)':'rgba(0,0,0,.65)';ctx.lineWidth=sel?3:1.5;const h=isHold?14:18;roundRect(ctx,x,y-h/2,w,h,6,true,true);ctx.fillStyle='rgba(13,15,20,.84)';ctx.font='bold 11px ui-monospace,monospace';ctx.fillText(coef===1?'1':'0',x+8,y+4);if(isHold){const y2=msToY(n.timeMs+n.durationMs);ctx.fillStyle=coefColor(coef,preview?.45:.92);roundRect(ctx,x,y2-7,w,14,6,true,true)}
  if(isHold&&!preview){
@@ -226,88 +175,8 @@ function addNote(note,select=true){const timeMs=Math.max(0,Math.round(note.timeM
 function findNoteAt(x,y){const lane=xToLane(x);let best=null,bestDist=Infinity;for(const n of state.notes){if(n.lane!==lane)continue;const ys=msToY(n.timeMs),ye=msToY(n.timeMs+(n.durationMs||0)),ds=Math.abs(y-ys),de=Math.abs(y-ye);if(ds<13&&ds<bestDist){best=n;bestDist=ds}if((n.durationMs||0)>0&&de<13&&de<bestDist){best=n;bestDist=de}if((n.durationMs||0)>0&&y>=Math.min(ys,ye)&&y<=Math.max(ys,ye)){const lx=laneToX(n.lane),la=laneArea();if(x>=lx&&x<=lx+la.laneW&&bestDist>10){best=n;bestDist=10}}}return best}function notesInRect(x1,y1,x2,y2){const minX=Math.min(x1,x2),maxX=Math.max(x1,x2),minY=Math.min(y1,y2),maxY=Math.max(y1,y2);return state.notes.filter(n=>{const x=laneToX(n.lane)+laneArea().laneW/2,y=msToY(n.timeMs),y2=msToY(n.timeMs+(n.durationMs||0));return x>=minX&&x<=maxX&&((y>=minY&&y<=maxY)||(y2>=minY&&y2<=maxY)||(y<=minY&&y2>=maxY))})}
 function deleteSelected(){if(!state.selectedIds.size)return;pushHistory();state.notes=state.notes.filter(n=>!state.selectedIds.has(n.id));state.selectedIds.clear();updatePanels()}function copySelected(){const s=selectedNotes();if(!s.length)return;const base=Math.min(...s.map(n=>n.timeMs));state.clipboard=s.map(n=>({timeOffsetMs:n.timeMs-base,lane:n.lane,speedupCoef:n.speedupCoef,durationMs:n.durationMs}));updatePanels()}function pasteClipboard(mirror=false){if(!state.clipboard.length)return;pushHistory();state.selectedIds.clear();const base=snapTime(state.playheadMs),created=[];for(const c of state.clipboard){const cand={timeMs:Math.max(0,Math.round(base+c.timeOffsetMs)),lane:mirror?3-c.lane:c.lane,speedupCoef:c.speedupCoef,durationMs:c.durationMs};if(noteConflictsWithList(cand,state.notes)||noteConflictsWithList(cand,created))continue;const n=addNote(cand,false);state.selectedIds.add(n.id);created.push(n)}sortNotes();updatePanels()}function mirrorSelected(){if(!state.selectedIds.size)return;const selected=selectedNotes(),ids=new Set(selected.map(n=>n.id)),proposed=selected.map(n=>({...n,lane:3-n.lane}));let blocked=false;for(const p of proposed){if(noteConflictsWithList(p,state.notes,ids)){blocked=true;break}const others=proposed.filter(x=>x.id!==p.id);if(noteConflictsWithList(p,others)){blocked=true;break}}if(blocked){alert('대칭 이동하면 같은 레인/시간에 노트가 겹쳐서 취소했습니다.');return}pushHistory();for(const n of selected)n.lane=3-n.lane;sortNotes();updatePanels()}function quantizeSelected(){const s=selectedNotes();if(!s.length)return;const ids=new Set(s.map(n=>n.id)),proposed=s.map(n=>{const oldEnd=n.timeMs+n.durationMs,nn={...n};nn.timeMs=Math.round(snapTime(n.timeMs));if(nn.durationMs>0)nn.durationMs=Math.max(Math.round(snapMs()),Math.round(snapTime(oldEnd)-nn.timeMs));return nn});let blocked=false;for(const p of proposed){if(noteConflictsWithList(p,state.notes,ids)){blocked=true;break}const others=proposed.filter(x=>x.id!==p.id);if(noteConflictsWithList(p,others)){blocked=true;break}}if(blocked){alert('Quantize 결과가 다른 노트와 겹쳐서 취소했습니다.');return}pushHistory();for(const p of proposed){const n=state.notes.find(x=>x.id===p.id);if(n){n.timeMs=p.timeMs;n.durationMs=p.durationMs}}sortNotes();updatePanels()}
 function syncUiToState(){state.meta.title=$('metaTitle').value;state.meta.artist=$('metaArtist').value;state.meta.source=$('metaSource').value;state.meta.mapper=$('metaMapper').value;state.meta.previewStartMs=Number($('previewStartInput').value)||0;state.meta.previewEndMs=Number($('previewEndInput').value)||0;state.meta.extra=$('metaExtra').value;state.difficulty.name=$('diffName').value;state.difficulty.level=Number($('diffLevel').value)||0;state.difficulty.scroll=Number($('diffScroll').value)||1;state.difficulty.baseSpeed=Number($('diffBaseSpeed').value)||1;state.difficulty.notes=$('diffNotes').value}function syncStateToUi(){$('metaTitle').value=state.meta.title||'';$('metaArtist').value=state.meta.artist||'';$('metaSource').value=state.meta.source||'';$('metaMapper').value=state.meta.mapper||'';$('previewStartInput').value=state.meta.previewStartMs||0;$('previewEndInput').value=state.meta.previewEndMs||0;$('metaExtra').value=state.meta.extra||'';$('diffName').value=state.difficulty.name||'';$('diffLevel').value=state.difficulty.level??1;$('diffScroll').value=state.difficulty.scroll??1;$('diffBaseSpeed').value=state.difficulty.baseSpeed??1;$('diffNotes').value=state.difficulty.notes||'';$('bpmInput').value=state.bpm;$('snapInput').value=state.snapDiv;$('offsetInput').value=state.offsetMs;$('loopStartInput').value=state.loopStartMs;$('loopEndInput').value=state.loopEndMs;$('coverPreview').src=state.coverDataUrl||''}
-function updatePanels(){syncUiToState();const s=selectedNotes(),first=firstSelected();$('selectedEmpty').classList.toggle('hidden',s.length>0);$('selectedPanel').classList.toggle('hidden',s.length===0);if(first){$('selectedSummary').textContent=`selected: ${s.length}`;$('selTime').value=Math.round(first.timeMs);$('selLane').value=first.lane+1;$('selDuration').value=Math.round(first.durationMs||0);$('selCoef').value=String(first.speedupCoef)}$('chartStats').textContent=`notes: ${state.notes.length} / holds: ${state.notes.filter(x=>x.durationMs>0).length} / coef1: ${state.notes.filter(x=>Number(x.speedupCoef)===1).length} / coef0: ${state.notes.filter(x=>Number(x.speedupCoef)===0).length}`;$('snapInfo').textContent=`beat ${beatMs().toFixed(2)}ms / snap ${snapMs().toFixed(2)}ms / bar ${barMs().toFixed(2)}ms`;$('snapStatus').textContent=`snap ${snapMs().toFixed(2)} ms`;$('modeStatus').textContent=`${state.toolMode==='place'?'Place':state.toolMode==='select'?'Select':'Playhead'} / Coef ${state.currentCoef} / ${state.currentMode==='tap'?'Tap':'Hold'}`;$('selectStatus').textContent=`selected ${state.selectedIds.size}`;if($('playbackRateLabel'))$('playbackRateLabel').textContent=state.playbackRate.toFixed(2)+'x';if($('rateStatus'))$('rateStatus').textContent='rate '+state.playbackRate.toFixed(2)+'x';$('audioStatus').textContent=`${state.audioFileName?'audio: '+state.audioFileName:'audio: none'} / ${waveformPeaks?'waveform: ready':'waveform: none'} / up-scroll`;$('coef1Btn').classList.toggle('active',state.currentCoef===1);$('coef0Btn').classList.toggle('active',state.currentCoef===0);$('tapModeBtn').classList.toggle('active',state.currentMode==='tap');$('holdModeBtn').classList.toggle('active',state.currentMode==='hold');$('toolPlaceBtn').classList.toggle('active',state.toolMode==='place');$('toolSelectBtn').classList.toggle('active',state.toolMode==='select');$('toolPlayBtn').classList.toggle('active',state.toolMode==='playhead');canvas.style.cursor=state.toolMode==='place'?'crosshair':state.toolMode==='select'?'default':'ns-resize';autoCoefUpdateStats();updateNoteList();updateTimelineEventList();updateUndoRedoButtons()}function updateLightStatus(){$('timeStatus').textContent=`time ${Math.round(state.playheadMs)} ms`;$('viewStatus').textContent=`bottom ${Math.round(state.viewStartMs)} ms`}
+function updatePanels(){syncUiToState();const s=selectedNotes(),first=firstSelected();$('selectedEmpty').classList.toggle('hidden',s.length>0);$('selectedPanel').classList.toggle('hidden',s.length===0);if(first){$('selectedSummary').textContent=`selected: ${s.length}`;$('selTime').value=Math.round(first.timeMs);$('selLane').value=first.lane+1;$('selDuration').value=Math.round(first.durationMs||0);$('selCoef').value=String(first.speedupCoef)}$('chartStats').textContent=`notes: ${state.notes.length} / holds: ${state.notes.filter(x=>x.durationMs>0).length} / coef1: ${state.notes.filter(x=>Number(x.speedupCoef)===1).length} / coef0: ${state.notes.filter(x=>Number(x.speedupCoef)===0).length}`;$('snapInfo').textContent=`beat ${beatMs().toFixed(2)}ms / snap ${snapMs().toFixed(2)}ms / bar ${barMs().toFixed(2)}ms`;$('snapStatus').textContent=`snap ${snapMs().toFixed(2)} ms`;$('modeStatus').textContent=`${state.toolMode==='place'?'Place':state.toolMode==='select'?'Select':'Playhead'} / Coef ${state.currentCoef} / ${state.currentMode==='tap'?'Tap':'Hold'}`;$('selectStatus').textContent=`selected ${state.selectedIds.size}`;if($('playbackRateLabel'))$('playbackRateLabel').textContent=state.playbackRate.toFixed(2)+'x';if($('rateStatus'))$('rateStatus').textContent='rate '+state.playbackRate.toFixed(2)+'x';$('audioStatus').textContent=`${state.audioFileName?'audio: '+state.audioFileName:'audio: none'} / ${waveformPeaks?'waveform: ready':'waveform: none'} / up-scroll`;$('coef1Btn').classList.toggle('active',state.currentCoef===1);$('coef0Btn').classList.toggle('active',state.currentCoef===0);$('tapModeBtn').classList.toggle('active',state.currentMode==='tap');$('holdModeBtn').classList.toggle('active',state.currentMode==='hold');$('toolPlaceBtn').classList.toggle('active',state.toolMode==='place');$('toolSelectBtn').classList.toggle('active',state.toolMode==='select');$('toolPlayBtn').classList.toggle('active',state.toolMode==='playhead');canvas.style.cursor=state.toolMode==='place'?'crosshair':state.toolMode==='select'?'default':'ns-resize';autoCoefUpdateStats();updateNoteList();updateUndoRedoButtons()}function updateLightStatus(){$('timeStatus').textContent=`time ${Math.round(state.playheadMs)} ms`;$('viewStatus').textContent=`bottom ${Math.round(state.viewStartMs)} ms`}
 function updateNoteList(){const list=$('noteList');list.innerHTML='';const near=state.notes.slice().sort((a,b)=>Math.abs(a.timeMs-state.playheadMs)-Math.abs(b.timeMs-state.playheadMs)).slice(0,90).sort((a,b)=>a.timeMs-b.timeMs||a.lane-b.lane);for(const n of near){const item=document.createElement('div');item.className='note-item'+(state.selectedIds.has(n.id)?' selected':'');item.innerHTML=`<span>${Math.round(n.timeMs)}</span><span>L${n.lane+1}</span><span>coef${n.speedupCoef}</span><span>${n.durationMs>0?`hold ${Math.round(n.durationMs)}`:'tap'}</span>`;item.onclick=e=>{if(e.ctrlKey||e.metaKey||e.shiftKey){if(state.selectedIds.has(n.id))state.selectedIds.delete(n.id);else state.selectedIds.add(n.id)}else{state.selectedIds.clear();state.selectedIds.add(n.id)}state.playheadMs=n.timeMs;state.viewStartMs=Math.max(0,n.timeMs-1600);updatePanels()};list.appendChild(item)}}
-function sortTimelineEvents(){
- state.speedLimitLines=(state.speedLimitLines||[]).sort((a,b)=>(Number(a.timeMs)||0)-(Number(b.timeMs)||0));
- state.stageDeltaLines=(state.stageDeltaLines||[]).sort((a,b)=>(Number(a.timeMs)||0)-(Number(b.timeMs)||0));
-}
-function updateTimelineEventList(){
- const list=$('timelineEventList');
- if(!list)return;
- sortTimelineEvents();
- list.innerHTML='';
- const rows=[];
- (state.speedLimitLines||[]).forEach((line,index)=>{
-  rows.push({
-   kind:'limit',
-   index,
-   timeMs:Number(line.timeMs)||0,
-   text:`${Math.round(Number(line.timeMs)||0)}ms / LIMIT <= ${Number(line.maxSpeed||1).toFixed(2)}x`
-  });
- });
- (state.stageDeltaLines||[]).forEach((line,index)=>{
-  const d=Number(line.stageDelta)||0;
-  rows.push({
-   kind:'delta',
-   index,
-   timeMs:Number(line.timeMs)||0,
-   text:`${Math.round(Number(line.timeMs)||0)}ms / STAGE ${d>=0?'+':''}${d.toFixed(2)}`
-  });
- });
- rows.sort((a,b)=>a.timeMs-b.timeMs);
- for(const row of rows){
-  const item=document.createElement('div');
-  item.className='note-item';
-  item.style.gridTemplateColumns='1fr auto';
-  item.innerHTML=`<span>${row.text}</span><button data-kind="${row.kind}" data-index="${row.index}">Delete</button>`;
-  item.onclick=e=>{
-   if(e.target&&e.target.tagName==='BUTTON')return;
-   state.playheadMs=row.timeMs;
-   state.viewStartMs=Math.max(0,row.timeMs-1600);
-   updatePanels();
-  };
-  item.querySelector('button').onclick=()=>{
-   pushHistory();
-   if(row.kind==='limit')state.speedLimitLines.splice(row.index,1);
-   else state.stageDeltaLines.splice(row.index,1);
-   updatePanels();
-  };
-  list.appendChild(item);
- }
-}
-function addSpeedLimitLineAtPlayhead(){
- const maxSpeed=Math.max(1,Number($('speedLimitMaxInput').value)||1);
- pushHistory();
- state.speedLimitLines.push({
-  timeMs:Math.max(0,Math.round(snapTime(state.playheadMs))),
-  maxSpeed
- });
- updatePanels();
-}
-function addStageDeltaLineAtPlayhead(){
- const stageDelta=Number($('stageDeltaInput').value)||0;
- pushHistory();
- state.stageDeltaLines.push({
-  timeMs:Math.max(0,Math.round(snapTime(state.playheadMs))),
-  stageDelta
- });
- updatePanels();
-}
-function exportSpeedLimitLines(){
- sortTimelineEvents();
- return (state.speedLimitLines||[]).map(line=>({
-  timeMs:Math.max(0,Math.round(Number(line.timeMs)||0)),
-  maxSpeed:Math.max(1,Number(line.maxSpeed)||1)
- }));
-}
-function exportStageDeltaLines(){
- sortTimelineEvents();
- return (state.stageDeltaLines||[]).map(line=>({
-  timeMs:Math.max(0,Math.round(Number(line.timeMs)||0)),
-  stageDelta:Number(line.stageDelta)||0
- }));
-}
 function playHit(coef=1,lane=0,when=0){ensureAudioCtx();const vol=parseFloat($('hitVolume').value);if(vol<=0)return;const now=audioCtx.currentTime+when,base=680,osc=audioCtx.createOscillator(),gain=audioCtx.createGain(),filter=audioCtx.createBiquadFilter();osc.type='triangle';osc.frequency.setValueAtTime(base+lane*48,now);osc.frequency.exponentialRampToValueAtTime((base+lane*48)*.72,now+.045);filter.type='lowpass';filter.frequency.setValueAtTime(2400,now);gain.gain.setValueAtTime(.0001,now);gain.gain.exponentialRampToValueAtTime(vol*.17,now+.006);gain.gain.exponentialRampToValueAtTime(.0001,now+.075);osc.connect(filter);filter.connect(gain);gain.connect(audioCtx.destination);osc.start(now);osc.stop(now+.09)}async function loadAudioFile(file){ensureAudioCtx();stopBgm();state.audioFileName=file.name;const arr=await file.arrayBuffer();audioBuffer=await audioCtx.decodeAudioData(arr.slice(0));state.audioDurationMs=audioBuffer.duration*1000;waveformPeaks=computeWaveformPeaks(audioBuffer,9000);updatePanels()}
 async function loadAudioUrl(url,fileName){
   ensureAudioCtx();
@@ -776,14 +645,6 @@ function projectImportChartData(data){
     speedupCoef:baseCoefFromNote(n),
     durationMs:Math.max(0,Math.round(n.durationMs||n.duration||0))
   }));
-  state.speedLimitLines=(data.speedLimitLines||[]).map(line=>({
-   timeMs:Math.max(0,Math.round(Number(line.timeMs)||0)),
-   maxSpeed:Math.max(1,Number(line.maxSpeed)||1)
-  }));
-  state.stageDeltaLines=(data.stageDeltaLines||[]).map(line=>({
-   timeMs:Math.max(0,Math.round(Number(line.timeMs)||0)),
-   stageDelta:Number(line.stageDelta)||0
-  }));
   state.meta={...state.meta,...(data.meta||{})};
   state.difficulty={...state.difficulty,...(data.difficulty||{})};
   if(data.timing){
@@ -835,8 +696,6 @@ function projectBuildBasePayload(){
     difficulty:{...state.difficulty,lanes:4},
     timing:{bpm:state.bpm,offsetMs:state.offsetMs,snapDiv:state.snapDiv},
     preview:{startMs:state.meta.previewStartMs,endMs:state.meta.previewEndMs},
-    speedLimitLines:exportSpeedLimitLines(),
-    stageDeltaLines:exportStageDeltaLines(),
     notes:state.notes.slice().sort((a,b)=>a.timeMs-b.timeMs||a.lane-b.lane).map(n=>({
       timeMs:Math.round(n.timeMs),
       lane:n.lane,
@@ -1065,7 +924,7 @@ async function projectNewChartPrompt(){
   }
 }
 function setPlaybackRate(rate){state.playbackRate=Math.max(1,Math.min(2,Number(rate)||1));if($('playbackRate'))$('playbackRate').value=state.playbackRate;if($('playbackRateLabel'))$('playbackRateLabel').textContent=state.playbackRate.toFixed(2)+'x';if($('rateStatus'))$('rateStatus').textContent='rate '+state.playbackRate.toFixed(2)+'x';if(bgmSource)bgmSource.playbackRate.value=state.playbackRate;if(state.isPlaying){playbackStartChartMs=state.playheadMs;playbackStartPerf=performance.now();syncAudioToChartTime(state.playheadMs)}updatePanels();}window.addEventListener('keydown',evt=>{const tag=document.activeElement.tagName.toLowerCase();if(['input','select','textarea'].includes(tag))return;const key=evt.key.toLowerCase();if((evt.ctrlKey||evt.metaKey)&&key==='z'){evt.preventDefault();undo();return}if((evt.ctrlKey||evt.metaKey)&&(key==='y'||(evt.shiftKey&&key==='z'))){evt.preventDefault();redo();return}if((evt.ctrlKey||evt.metaKey)&&key==='c'){evt.preventDefault();copySelected();return}if((evt.ctrlKey||evt.metaKey)&&key==='v'){evt.preventDefault();pasteClipboard(false);return}if(key===' '){evt.preventDefault();state.isPlaying?pausePlayback():startPlayback();return}if(key==='delete'||key==='backspace'){deleteSelected();return}if(key==='n'){setTool('place');return}if(key==='s'){setTool('select');return}if(key==='p'){setTool('playhead');return}if(key==='1'){setCoef(1);return}if(key==='0'){setCoef(0);return}if(key==='t'){setMode('tap');return}if(key==='h'){setMode('hold');return}if(key==='m'){mirrorSelected();return}if(key==='arrowup'){state.viewStartMs=Math.max(0,state.viewStartMs+beatMs());return}if(key==='arrowdown'){state.viewStartMs=Math.max(0,state.viewStartMs-beatMs());return}const lane=chartKeys.indexOf(key);if(lane>=0){const coef=state.currentCoef;playHit(coef,lane);if(state.recordKeys){pushHistory();addNote({timeMs:snapTime(state.playheadMs),lane,speedupCoef:coef,durationMs:0},false)}}});
-function setTool(mode){state.toolMode=mode;updatePanels()}function setCoef(c){state.currentCoef=Number(c)===0?0:1;updatePanels()}function setMode(m){state.currentMode=m;updatePanels()}function exportJson(){syncUiToState();enforceNoOverlap();const payload={version:2,meta:{...state.meta,coverDataUrl:state.coverDataUrl,audioFileName:state.audioFileName},difficulty:{...state.difficulty,lanes:4},timing:{bpm:state.bpm,offsetMs:state.offsetMs,snapDiv:state.snapDiv},preview:{startMs:state.meta.previewStartMs,endMs:state.meta.previewEndMs},speedLimitLines:exportSpeedLimitLines(),stageDeltaLines:exportStageDeltaLines(),notes:state.notes.slice().sort((a,b)=>a.timeMs-b.timeMs||a.lane-b.lane).map(n=>({timeMs:Math.round(n.timeMs),lane:n.lane,speedupCoef:Number(n.speedupCoef),durationMs:Math.round(n.durationMs||0)}))};const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`${(state.meta.title||'chart').replace(/[^a-z0-9_-]+/gi,'_')}.4k-speedcoef.json`;a.click();URL.revokeObjectURL(url)}function importJsonFile(file){const reader=new FileReader();reader.onload=()=>{try{pushHistory();const data=JSON.parse(reader.result);state.notes=(data.notes||[]).map(n=>({id:nextId++,timeMs:Math.max(0,Math.round(n.timeMs||n.time||0)),lane:Math.max(0,Math.min(3,Number(n.lane||0))),speedupCoef:baseCoefFromNote(n),durationMs:Math.max(0,Math.round(n.durationMs||n.duration||0))}));state.speedLimitLines=(data.speedLimitLines||[]).map(line=>({ timeMs:Math.max(0,Math.round(Number(line.timeMs)||0)), maxSpeed:Math.max(1,Number(line.maxSpeed)||1)}));state.stageDeltaLines=(data.stageDeltaLines||[]).map(line=>({ timeMs:Math.max(0,Math.round(Number(line.timeMs)||0)), stageDelta:Number(line.stageDelta)||0}));state.meta={...state.meta,...(data.meta||{})};state.difficulty={...state.difficulty,...(data.difficulty||{})};if(data.timing){state.bpm=Number(data.timing.bpm||state.bpm);state.offsetMs=Number(data.timing.offsetMs||0);state.snapDiv=Number(data.timing.snapDiv||state.snapDiv)}if(data.preview){state.meta.previewStartMs=Number(data.preview.startMs||0);state.meta.previewEndMs=Number(data.preview.endMs||state.meta.previewEndMs)}state.coverDataUrl=data.meta?.coverDataUrl||'';const cleaned=dedupeAndRemoveOverlapsKeepFirst(state.notes);state.notes=cleaned.notes;state.selectedIds.clear();sortNotes();syncStateToUi();updatePanels();if(cleaned.dropped.length>0)alert(`겹치는 노트 ${cleaned.dropped.length}개를 제거하고 import했습니다.`)}catch(e){alert('JSON import failed: '+e.message)}};reader.readAsText(file)}function addSamplePattern(){pushHistory();state.notes=[];nextId=1;const b=beatMs();for(let i=0;i<96;i++){const t=Math.round(i*b/2),lane=i%4,coef=(i%12<8)?1:0;addNote({timeMs:t,lane,speedupCoef:coef,durationMs:0},false);if(i%16===4)addNote({timeMs:t,lane:3-lane,speedupCoef:coef?0:1,durationMs:Math.round(b*1.5)},false)}state.selectedIds.clear();state.viewStartMs=0;state.playheadMs=0;updatePanels()}function jump(delta){state.playheadMs=Math.max(0,snapTime(state.playheadMs+delta));state.viewStartMs=Math.max(0,state.playheadMs-1600);if(state.isPlaying)startPlayback(state.playheadMs);updatePanels()}
+function setTool(mode){state.toolMode=mode;updatePanels()}function setCoef(c){state.currentCoef=Number(c)===0?0:1;updatePanels()}function setMode(m){state.currentMode=m;updatePanels()}function exportJson(){syncUiToState();enforceNoOverlap();const payload={version:2,meta:{...state.meta,coverDataUrl:state.coverDataUrl,audioFileName:state.audioFileName},difficulty:{...state.difficulty,lanes:4},timing:{bpm:state.bpm,offsetMs:state.offsetMs,snapDiv:state.snapDiv},preview:{startMs:state.meta.previewStartMs,endMs:state.meta.previewEndMs},notes:state.notes.slice().sort((a,b)=>a.timeMs-b.timeMs||a.lane-b.lane).map(n=>({timeMs:Math.round(n.timeMs),lane:n.lane,speedupCoef:Number(n.speedupCoef),durationMs:Math.round(n.durationMs||0)}))};const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`${(state.meta.title||'chart').replace(/[^a-z0-9_-]+/gi,'_')}.4k-speedcoef.json`;a.click();URL.revokeObjectURL(url)}function importJsonFile(file){const reader=new FileReader();reader.onload=()=>{try{pushHistory();const data=JSON.parse(reader.result);state.notes=(data.notes||[]).map(n=>({id:nextId++,timeMs:Math.max(0,Math.round(n.timeMs||n.time||0)),lane:Math.max(0,Math.min(3,Number(n.lane||0))),speedupCoef:baseCoefFromNote(n),durationMs:Math.max(0,Math.round(n.durationMs||n.duration||0))}));state.meta={...state.meta,...(data.meta||{})};state.difficulty={...state.difficulty,...(data.difficulty||{})};if(data.timing){state.bpm=Number(data.timing.bpm||state.bpm);state.offsetMs=Number(data.timing.offsetMs||0);state.snapDiv=Number(data.timing.snapDiv||state.snapDiv)}if(data.preview){state.meta.previewStartMs=Number(data.preview.startMs||0);state.meta.previewEndMs=Number(data.preview.endMs||state.meta.previewEndMs)}state.coverDataUrl=data.meta?.coverDataUrl||'';const cleaned=dedupeAndRemoveOverlapsKeepFirst(state.notes);state.notes=cleaned.notes;state.selectedIds.clear();sortNotes();syncStateToUi();updatePanels();if(cleaned.dropped.length>0)alert(`겹치는 노트 ${cleaned.dropped.length}개를 제거하고 import했습니다.`)}catch(e){alert('JSON import failed: '+e.message)}};reader.readAsText(file)}function addSamplePattern(){pushHistory();state.notes=[];nextId=1;const b=beatMs();for(let i=0;i<96;i++){const t=Math.round(i*b/2),lane=i%4,coef=(i%12<8)?1:0;addNote({timeMs:t,lane,speedupCoef:coef,durationMs:0},false);if(i%16===4)addNote({timeMs:t,lane:3-lane,speedupCoef:coef?0:1,durationMs:Math.round(b*1.5)},false)}state.selectedIds.clear();state.viewStartMs=0;state.playheadMs=0;updatePanels()}function jump(delta){state.playheadMs=Math.max(0,snapTime(state.playheadMs+delta));state.viewStartMs=Math.max(0,state.playheadMs-1600);if(state.isPlaying)startPlayback(state.playheadMs);updatePanels()}
 $('playBtn').onclick=()=>state.isPlaying?pausePlayback():startPlayback();$('stopBtn').onclick=stopPlayback;$('playFromViewBtn').onclick=()=>startPlayback(state.viewStartMs);$('previewBtn').onclick=()=>startPlayback(Number($('previewStartInput').value)||0);$('loopToggle').onchange=e=>state.loop=e.target.checked;$('audioFile').onchange=e=>{if(e.target.files[0])loadAudioFile(e.target.files[0])};$('coverFile').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{pushHistory();state.coverDataUrl=r.result;$('coverPreview').src=state.coverDataUrl;updatePanels()};r.readAsDataURL(f)};for(const id of ['metaTitle','metaArtist','metaSource','metaMapper','previewStartInput','previewEndInput','metaExtra','diffName','diffLevel','diffScroll','diffBaseSpeed','diffNotes']){$(id).addEventListener('change',()=>{pushHistory();syncUiToState();updatePanels()});$(id).addEventListener('input',()=>{syncUiToState();updatePanels()})}$('musicVolume').oninput=e=>{if(bgmGain)bgmGain.gain.value=parseFloat(e.target.value)||0};$('bpmInput').oninput=e=>{state.bpm=Number(e.target.value)||120;updatePanels()};$('bpmInput').onchange=()=>pushHistory();$('snapInput').onchange=e=>{pushHistory();state.snapDiv=Number(e.target.value)||4;updatePanels()};$('offsetInput').oninput=e=>{state.offsetMs=Number(e.target.value)||0;updatePanels()};$('offsetInput').onchange=()=>pushHistory();$('zoomInput').oninput=e=>{state.pxPerSecond=Number(e.target.value);updatePanels()};$('waveGain').oninput=()=>updatePanels();$('recordToggle').onchange=e=>state.recordKeys=e.target.checked;if($('playbackRate'))$('playbackRate').oninput=e=>setPlaybackRate(e.target.value);$('toolPlaceBtn').onclick=()=>setTool('place');$('toolSelectBtn').onclick=()=>setTool('select');$('toolPlayBtn').onclick=()=>setTool('playhead');$('coef1Btn').onclick=()=>setCoef(1);$('coef0Btn').onclick=()=>setCoef(0);$('tapModeBtn').onclick=()=>setMode('tap');$('holdModeBtn').onclick=()=>setMode('hold');$('undoBtn').onclick=undo;$('redoBtn').onclick=redo;$('copyBtn').onclick=copySelected;$('pasteBtn').onclick=()=>pasteClipboard(false);$('mirrorBtn').onclick=mirrorSelected;$('exportBtn').onclick=()=>projectSaveSelected();$('importBtn').onclick=()=>$('importFile').click();$('importFile').onchange=e=>{if(e.target.files[0])importJsonFile(e.target.files[0])};$('clearBtn').onclick=()=>{if(confirm('Delete all notes?')){pushHistory();state.notes=[];state.selectedIds.clear();updatePanels()}};$('sampleBtn').onclick=addSamplePattern;$('quantizeBtn').onclick=quantizeSelected;$('deleteSelectedBtn').onclick=deleteSelected;$('deleteSelectedBtn2').onclick=deleteSelected;$('setLoopStartBtn').onclick=()=>{state.loopStartMs=Math.round(state.playheadMs);$('loopStartInput').value=state.loopStartMs;updatePanels()};$('setLoopEndBtn').onclick=()=>{state.loopEndMs=Math.round(state.playheadMs);$('loopEndInput').value=state.loopEndMs;updatePanels()};$('setPreviewStartBtn').onclick=()=>{state.meta.previewStartMs=Math.round(state.playheadMs);$('previewStartInput').value=state.meta.previewStartMs;updatePanels()};$('loopStartInput').oninput=e=>{state.loopStartMs=Number(e.target.value)||0;updatePanels()};$('loopEndInput').oninput=e=>{state.loopEndMs=Number(e.target.value)||0;updatePanels()};$('jumpPrevMeasureBtn').onclick=()=>jump(-barMs());$('jumpNextMeasureBtn').onclick=()=>jump(barMs());$('jumpPrevBeatBtn').onclick=()=>jump(-beatMs());$('jumpNextBeatBtn').onclick=()=>jump(beatMs());$('jumpPrevSnapBtn').onclick=()=>jump(-snapMs());$('jumpNextSnapBtn').onclick=()=>jump(snapMs());$('snapPlayheadBtn').onclick=()=>{state.playheadMs=Math.max(0,snapTime(state.playheadMs));updatePanels()};$('applySelectedBtn').onclick=()=>{const n=firstSelected();if(!n)return;pushHistory();n.timeMs=Math.max(0,Math.round(Number($('selTime').value)||0));n.lane=Math.max(0,Math.min(3,Math.round(Number($('selLane').value)-1)));n.durationMs=Math.max(0,Math.round(Number($('selDuration').value)||0));n.speedupCoef=Number($('selCoef').value)===0?0:1;state.playheadMs=n.timeMs;sortNotes();updatePanels()};$('auditionSelectedBtn').onclick=()=>{const n=firstSelected();if(n)playHit(n.speedupCoef,n.lane)};
 
 ['autoSigmaInput','autoStepInput','autoMinInput','autoMaxInput','autoPowerInput','autoRampStartInput','autoRampEndInput','autoRampPowerInput','autoCapInput','autoAxisMaxInput','autoAnchorsInput'].forEach(id=>{const el=$(id);if(el){el.addEventListener('change',()=>{autoCoefReadSettings();autoCoefGenerateCurve()});el.addEventListener('input',()=>{autoCoefReadSettings();autoCoefUpdateStats()})}});
@@ -1081,7 +940,7 @@ $('projectSongSelect').onchange=()=>{projectPopulateCharts();projectPopulateAudi
 $('projectChartSelect').onchange=()=>projectSetStatus('project: chart selected');
 $('projectAudioSelect').onchange=()=>{const songName=projectSelectedSongName(),audioName=projectSelectedAudioName();if(songName&&audioName)projectLoadAudioForSong(songName,audioName).catch(e=>alert('Audio load failed: '+e.message))};
 $('projectLoadBtn').onclick=()=>projectLoadSelected();
-$('projectSaveBtn').onclick=()=>projectSaveSelected();$('addSpeedLimitLineBtn').onclick=addSpeedLimitLineAtPlayhead;$('addStageDeltaLineBtn').onclick=addStageDeltaLineAtPlayhead;
+$('projectSaveBtn').onclick=()=>projectSaveSelected();
 window.addEventListener('resize',resize);resize();syncStateToUi();updatePanels();projectRefreshSongs(false);tick();
 })();
 </script>

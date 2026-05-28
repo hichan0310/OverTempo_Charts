@@ -122,8 +122,6 @@ def make_blank_chart(*, title: str, artist: str, mapper: str, audio_file: str, d
             "startMs": 0,
             "endMs": 15000,
         },
-        "speedLimitLines": [],
-        "stageDeltaLines": [],
         "notes": [],
     }
 
