@@ -3658,7 +3658,7 @@
   ],
   "autoCoef": {
     "schemaVersion": 1,
-    "generatedAt": "2026-05-28T17:22:34.001Z",
+    "generatedAt": "2026-05-28T17:52:51.012Z",
     "description": "Final speedupCoef = baseSpeedupCoef * autoSpeedupCoefMultiplier. Load restores editable coef 0/1 from baseSpeedupCoef.",
     "settings": {
       "sigmaMs": 1600,
