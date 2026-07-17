@@ -9,7 +9,7 @@
     "previewEndMs": 15000,
     "extra": "",
     "audioFileName": "4-03 Chronomia.mp3",
-    "coverDataUrl": "/api/media?song=Chronomia&file=preview.png"
+    "coverDataUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAAB9CAMAAABzqbqsAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAzUExURQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKMFRskAAAARdFJOUwB2/0qFuO4vZ9wiyzwTllio+7Rm3wAAAAlwSFlzAAAXEQAAFxEByibzPwAAA6xJREFUeF7tmumWoyAQRrHcd9//aed8bJY2Ih05Y2ZO3R8zhibhBrBAKkoJgiAIgiAIgvBvUxAV57K/TlnVDRHVVWtef4FU15OnHlDyulQ77kqwQtnbUi3Gra+mWSk1Ff1XSMGp6fbX5YJ/35Wa4WRnN+NdqSXo9K7UQETrufBtqcXebWeM1LT0RP2igwQgIqWmTf8H5s5GN19D1USTUuvWENUd7p0PaMIdZaQWFyVcFdisusRUgpGhcm+E1OxizBiYGPdM/kufgJR30l8eEFFrCvAKPeYZba/UROUe90b+makUF6OHP/RES6tUi7ZtJSLaaLNjBed+HZQaViwIOpJoqZ6ablBKuwWH4YaCdfyBgoga2z9o3Yjgy9vGdSe7a13F1K73XsMoftJV9dVNBikXUWffIvrG1aiZE3sFKTeTyqvJEScm5ZvH5DG1mOlA1LCbqyVq9MXBdZ+NvyEmtY+rD1p+HBVuQtZRSvW2gzDRfaGJD7+lINrOZZpD8ORSP8osm23/4PGZVMdHiZMidWjPvc4ghVtoj8aMN6UQ0YOTKkWK7XeyDp/eJIS66laqO0300XZ5DinsEkIx/VYKMYCFhMFNzhxSaPD4lX1xXAoxgL3Ph7IsUuj3w2q+/twOB6WwW+DLjO23PFJmn7Gt8BrKKvTgEJRCi25BZktvHik149MZqVJ+16Rx24FMUkrprYfD7DMTpNRc+Tf1fmnJJqWf2vHZ44aNEEiRUmrQb+s3tmvKKCUIgiAIgiAIjIL60MPsq+BhNvDY+C5fKaWqLxw+QYhylf+ZixG5U32soq+bzT/4sofgudvw/F9/kmW45Cr/o/O5yEAgKeLquDjgpeb97WO++/Eq/7P6xprBO/kTTy+FM13HJ8mPIJf5n4bq0uaNFuSCZjXA0yQYuFSjk+MtPijTCEbyP/b4X2fabGoXCTZz+uOlWn9KU11lDH7Ndf7Hnbcib+SPqcNnnAZ/KPuUSP6HT3rfWMGsz1I/jrE+JZL/8W16ETPa5qT7KDWVxaLDyl70gMPJ3UUCgdcJSM0dOwR19R6RkmqJS7Fo8TVS5hczW9FNU7Y5lZL/iUptRKOrmUsqJf8Tk0K8cIsLrl29R6Tkf2JSE1tbkCBx189IyP+kSmGVctfPSMj/xKSw7tiKejly9R5yn/+JSaF7sFbP5Uj7D3Qec5//iUrhhxGGJttET8n/RKXwV+PUZgsJmpv8T1zK/NhqLOZ8cUoQBEEQBEEQBEEQBEH4T/gDA6IfMYMNNWQAAAAASUVORK5CYII="
   },
   "difficulty": {
     "name": "Normal",
@@ -9349,7 +9349,7 @@
   ],
   "autoCoef": {
     "schemaVersion": 1,
-    "generatedAt": "2026-05-29T10:58:13.906Z",
+    "generatedAt": "2026-05-29T11:22:03.650Z",
     "description": "Final speedupCoef = baseSpeedupCoef * autoSpeedupCoefMultiplier. Load restores editable coef 0/1 from baseSpeedupCoef.",
     "settings": {
       "sigmaMs": 1600,
