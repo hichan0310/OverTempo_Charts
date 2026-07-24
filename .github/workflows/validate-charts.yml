@@ -1,0 +1,28 @@
+name: Validate charts
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Test chart editor
+        run: node Tools/chart-editor/test_editor_core.mjs
+
+      - name: Test chart server and manifest validation
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+        run: python3 -m unittest Tools/chart-editor/test_server.py Tools/test_build_manifest.py
+
+      - name: Build release manifest from committed charts
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+        run: python3 Tools/build_manifest.py --repo . --output-dir "$RUNNER_TEMP/chart-manifest"
