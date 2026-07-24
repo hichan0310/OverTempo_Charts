@@ -1,9 +1,16 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import base64
+import binascii
+import io
 import json
+import math
 import mimetypes
+import os
 import re
+import shutil
+import tempfile
 import threading
 import urllib.parse
 import webbrowser
@@ -20,6 +27,11 @@ SONGS_DIR = REPO_ROOT / "Songs"
 AUDIO_EXTS = {".mp3", ".ogg", ".wav", ".flac", ".m4a"}
 COVER_EXTS = {".jpg", ".jpeg", ".png", ".webp"}
 CHART_SUFFIX = ".4k-speedcoef.json"
+ENCRYPTED_CHART_SUFFIX = ".otchart"
+ARG_ID_PATTERN = re.compile(r"^[a-z0-9][a-z0-9._-]*$")
+SONG_ID_PATTERN = re.compile(r"^[a-z0-9][a-z0-9._-]*$")
+MAX_AUDIO_BYTES = 2 * 1024 * 1024 * 1024
+UPLOAD_CHUNK_BYTES = 1024 * 1024
 
 
 def json_bytes(data: object, status: int = 200) -> tuple[int, bytes, str]:
@@ -53,6 +65,76 @@ def chart_filename(name: str) -> str:
     return name
 
 
+def encrypted_chart_filename(name: str) -> str:
+    name = clean_filename(name, "NewChart.4k-speedcoef.json")
+    if name.endswith(CHART_SUFFIX):
+        name = name[: -len(CHART_SUFFIX)]
+    elif name.endswith(".json"):
+        name = name[:-5]
+    elif name.endswith(ENCRYPTED_CHART_SUFFIX):
+        name = name[: -len(ENCRYPTED_CHART_SUFFIX)]
+    return (name or "NewChart") + ENCRYPTED_CHART_SUFFIX
+
+
+def validate_song_id(song_id: str) -> str:
+    song_id = (song_id or "").strip()
+    if not SONG_ID_PATTERN.fullmatch(song_id):
+        raise ValueError(
+            "songId must start with a lowercase ASCII letter or digit and contain only "
+            "lowercase ASCII letters, digits, dots, underscores, or hyphens"
+        )
+    return song_id
+
+
+def validate_encrypted_envelope(data: object) -> dict:
+    if not isinstance(data, dict):
+        raise ValueError("encrypted chart envelope must be an object")
+
+    required = {
+        "schemaVersion",
+        "argId",
+        "cipher",
+        "kdf",
+        "iterations",
+        "salt",
+        "iv",
+        "ciphertext",
+        "tag",
+    }
+    missing = sorted(required - data.keys())
+    if missing:
+        raise ValueError(f"encrypted chart envelope missing: {', '.join(missing)}")
+    if data["schemaVersion"] != 1:
+        raise ValueError("unsupported encrypted chart schemaVersion")
+    if data["cipher"] != "AES-256-CBC+HMAC-SHA256":
+        raise ValueError("unsupported encrypted chart cipher")
+    if data["kdf"] != "PBKDF2-HMAC-SHA256":
+        raise ValueError("unsupported encrypted chart kdf")
+    if not ARG_ID_PATTERN.fullmatch(str(data["argId"])):
+        raise ValueError("invalid encrypted chart argId")
+
+    iterations = data["iterations"]
+    if not isinstance(iterations, int) or isinstance(iterations, bool) or not 100000 <= iterations <= 2000000:
+        raise ValueError("encrypted chart iterations must be an integer from 100000 to 2000000")
+
+    decoded: dict[str, bytes] = {}
+    for field in ("salt", "iv", "ciphertext", "tag"):
+        try:
+            decoded[field] = base64.b64decode(str(data[field]), validate=True)
+        except (binascii.Error, ValueError) as exc:
+            raise ValueError(f"encrypted chart {field} is not valid Base64") from exc
+
+    if len(decoded["salt"]) != 16:
+        raise ValueError("encrypted chart salt must be 16 bytes")
+    if len(decoded["iv"]) != 16:
+        raise ValueError("encrypted chart iv must be 16 bytes")
+    if len(decoded["tag"]) != 32:
+        raise ValueError("encrypted chart tag must be 32 bytes")
+    if not decoded["ciphertext"] or len(decoded["ciphertext"]) % 16:
+        raise ValueError("encrypted chart ciphertext must be non-empty AES blocks")
+    return data
+
+
 def safe_song_dir(song: str) -> Path:
     song = safe_component(song, field="song name")
     path = (SONGS_DIR / song).resolve()
@@ -71,6 +153,17 @@ def ensure_song_dir(song: str) -> Path:
         raise ValueError("path traversal rejected")
     path.mkdir(parents=True, exist_ok=False)
     return path
+
+
+def new_song_target(song: str) -> tuple[str, Path]:
+    song = safe_component(song, field="song name")
+    SONGS_DIR.mkdir(parents=True, exist_ok=True)
+    path = (SONGS_DIR / song).resolve()
+    if SONGS_DIR.resolve() not in path.parents:
+        raise ValueError("path traversal rejected")
+    if path.exists():
+        raise FileExistsError(f"song already exists: {song}")
+    return song, path
 
 
 def safe_song_file(song: str, filename: str) -> Path:
@@ -117,6 +210,7 @@ def make_blank_chart(*, title: str, artist: str, mapper: str, audio_file: str, d
             "bpm": bpm,
             "offsetMs": offset_ms,
             "snapDiv": snap_div,
+            "bpmChanges": [],
         },
         "preview": {
             "startMs": 0,
@@ -132,6 +226,110 @@ def write_chart(path: Path, data: dict, *, backup: bool = True) -> None:
     if backup and path.exists():
         path.with_suffix(path.suffix + ".bak").write_bytes(path.read_bytes())
     path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+
+def write_encrypted_chart(path: Path, data: dict) -> None:
+    body = (json.dumps(data, ensure_ascii=False, indent=2) + "\n").encode("utf-8")
+    with tempfile.NamedTemporaryFile(
+        mode="wb",
+        prefix=f".{path.name}.",
+        suffix=".tmp",
+        dir=path.parent,
+        delete=False,
+    ) as handle:
+        temp_path = Path(handle.name)
+        handle.write(body)
+        handle.flush()
+        os.fsync(handle.fileno())
+    try:
+        os.replace(temp_path, path)
+    finally:
+        if temp_path.exists():
+            temp_path.unlink()
+
+
+def create_song_from_stream(
+    stream,
+    content_length: int,
+    *,
+    song_name: str,
+    song_id: str,
+    title: str,
+    artist: str,
+    audio_filename: str,
+    bpm: float,
+    offset_ms: float,
+    difficulty_name: str,
+    difficulty_level: float,
+    snap_div: int = 4,
+) -> dict:
+    song, final_dir = new_song_target(song_name)
+    song_id = validate_song_id(song_id)
+    audio_name = clean_filename(audio_filename, "audio.wav")
+    if Path(audio_name).suffix.lower() not in AUDIO_EXTS:
+        raise ValueError(f"unsupported audio extension: {audio_name}")
+    if not 0 < content_length <= MAX_AUDIO_BYTES:
+        raise ValueError("audio upload size is missing or too large")
+    if not math.isfinite(bpm) or bpm <= 0:
+        raise ValueError("BPM must be greater than zero")
+    if not math.isfinite(offset_ms):
+        raise ValueError("offsetMs must be finite")
+    if not math.isfinite(difficulty_level):
+        raise ValueError("difficultyLevel must be finite")
+    if snap_div < 1 or snap_div > 192:
+        raise ValueError("snapDiv is out of range")
+
+    temp_dir = Path(tempfile.mkdtemp(prefix=".new-song-", dir=SONGS_DIR))
+    try:
+        audio_path = target_song_file(temp_dir, audio_name)
+        remaining = content_length
+        with audio_path.open("wb") as output:
+            while remaining:
+                chunk = stream.read(min(UPLOAD_CHUNK_BYTES, remaining))
+                if not chunk:
+                    raise ConnectionError("audio upload ended before Content-Length bytes were received")
+                output.write(chunk)
+                remaining -= len(chunk)
+            output.flush()
+            os.fsync(output.fileno())
+
+        chart = chart_filename(f"{song}_{difficulty_name}.4k-speedcoef.json")
+        chart_path = target_song_file(temp_dir, chart)
+        blank = make_blank_chart(
+            title=title or song,
+            artist=artist,
+            mapper="",
+            audio_file=audio_name,
+            difficulty_name=difficulty_name or "Normal",
+            difficulty_level=difficulty_level,
+            bpm=bpm,
+            offset_ms=offset_ms,
+            snap_div=snap_div,
+        )
+        write_chart(chart_path, blank, backup=False)
+        patch_path = target_song_file(temp_dir, "song.patch.json")
+        write_chart(
+            patch_path,
+            {
+                "id": song_id,
+                "title": title or song,
+                "artist": artist,
+                "enabled": True,
+            },
+            backup=False,
+        )
+        temp_dir.rename(final_dir)
+        return {
+            "ok": True,
+            "song": song,
+            "songId": song_id,
+            "chart": chart,
+            "audio": audio_name,
+            "songDir": str(final_dir),
+        }
+    except Exception:
+        shutil.rmtree(temp_dir, ignore_errors=True)
+        raise
 
 
 def list_songs() -> dict:
@@ -241,6 +439,34 @@ class Handler(SimpleHTTPRequestHandler):
     def do_POST(self) -> None:
         parsed = urllib.parse.urlparse(self.path)
 
+        if parsed.path == "/api/song-upload":
+            try:
+                q = urllib.parse.parse_qs(parsed.query)
+
+                def value(name: str, default_value: str = "") -> str:
+                    return q.get(name, [default_value])[0]
+
+                result = create_song_from_stream(
+                    self.rfile,
+                    int(self.headers.get("Content-Length", "0")),
+                    song_name=value("songName"),
+                    song_id=value("songId"),
+                    title=value("title"),
+                    artist=value("artist"),
+                    audio_filename=value("audioFileName", "audio.wav"),
+                    bpm=float(value("bpm", "180")),
+                    offset_ms=float(value("offsetMs", "0")),
+                    difficulty_name=value("difficultyName", "Normal"),
+                    difficulty_level=float(value("difficultyLevel", "1")),
+                    snap_div=int(value("snapDiv", "4")),
+                )
+                status, body, ctype = json_bytes(result)
+                self.send_blob(status, body, ctype)
+            except Exception as exc:
+                status, body, ctype = error_bytes(str(exc), 400)
+                self.send_blob(status, body, ctype)
+            return
+
         if parsed.path == "/api/chart":
             try:
                 q = urllib.parse.parse_qs(parsed.query)
@@ -255,6 +481,28 @@ class Handler(SimpleHTTPRequestHandler):
                 write_chart(path, data, backup=True)
 
                 status, body, ctype = json_bytes({"ok": True, "song": song, "chart": chart, "path": str(path)})
+                self.send_blob(status, body, ctype)
+            except Exception as exc:
+                status, body, ctype = error_bytes(str(exc), 400)
+                self.send_blob(status, body, ctype)
+            return
+
+        if parsed.path == "/api/encrypted-chart":
+            try:
+                q = urllib.parse.parse_qs(parsed.query)
+                song = q.get("song", [""])[0]
+                chart = encrypted_chart_filename(q.get("chart", [""])[0])
+                song_dir = safe_song_dir(song)
+                path = target_song_file(song_dir, chart)
+
+                length = int(self.headers.get("Content-Length", "0"))
+                raw = self.rfile.read(length)
+                data = validate_encrypted_envelope(json.loads(raw.decode("utf-8")))
+                write_encrypted_chart(path, data)
+
+                status, body, ctype = json_bytes(
+                    {"ok": True, "song": song, "chart": chart, "path": str(path)}
+                )
                 self.send_blob(status, body, ctype)
             except Exception as exc:
                 status, body, ctype = error_bytes(str(exc), 400)
@@ -297,47 +545,24 @@ class Handler(SimpleHTTPRequestHandler):
                 raw = self.rfile.read(length)
                 fields, files = parse_multipart(self.headers.get("Content-Type", ""), raw)
 
-                song = safe_component(fields.get("songName", ""), field="song name")
-                song_dir = ensure_song_dir(song)
-
                 if "audioFile" not in files:
                     raise ValueError("audioFile is required")
                 audio_name, audio_body, _ = files["audioFile"]
-                if Path(audio_name).suffix.lower() not in AUDIO_EXTS:
-                    raise ValueError(f"unsupported audio extension: {audio_name}")
-                audio_path = target_song_file(song_dir, audio_name)
-                audio_path.write_bytes(audio_body)
-
-                title = fields.get("title") or song
-                artist = fields.get("artist") or ""
-                difficulty_name = fields.get("difficultyName") or "Normal"
-                difficulty_level = float(fields.get("difficultyLevel") or 1)
-                bpm = float(fields.get("bpm") or 180)
-                offset_ms = float(fields.get("offsetMs") or 0)
-                snap_div = int(fields.get("snapDiv") or 4)
-
-                chart = chart_filename(f"{song}_{difficulty_name}.4k-speedcoef.json")
-                chart_path = target_song_file(song_dir, chart)
-                blank = make_blank_chart(
-                    title=title,
-                    artist=artist,
-                    mapper="",
-                    audio_file=audio_name,
-                    difficulty_name=difficulty_name,
-                    difficulty_level=difficulty_level,
-                    bpm=bpm,
-                    offset_ms=offset_ms,
-                    snap_div=snap_div,
+                result = create_song_from_stream(
+                    io.BytesIO(audio_body),
+                    len(audio_body),
+                    song_name=fields.get("songName", ""),
+                    song_id=fields.get("songId", ""),
+                    title=fields.get("title", ""),
+                    artist=fields.get("artist", ""),
+                    audio_filename=audio_name,
+                    bpm=float(fields.get("bpm") or 180),
+                    offset_ms=float(fields.get("offsetMs") or 0),
+                    difficulty_name=fields.get("difficultyName") or "Normal",
+                    difficulty_level=float(fields.get("difficultyLevel") or 1),
+                    snap_div=int(fields.get("snapDiv") or 4),
                 )
-                write_chart(chart_path, blank, backup=False)
-
-                status, body, ctype = json_bytes({
-                    "ok": True,
-                    "song": song,
-                    "chart": chart,
-                    "audio": audio_name,
-                    "songDir": str(song_dir),
-                })
+                status, body, ctype = json_bytes(result)
                 self.send_blob(status, body, ctype)
             except Exception as exc:
                 status, body, ctype = error_bytes(str(exc), 400)

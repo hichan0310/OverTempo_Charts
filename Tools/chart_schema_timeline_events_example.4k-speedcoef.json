@@ -21,7 +21,13 @@
   "timing": {
     "bpm": 180,
     "offsetMs": 0,
-    "snapDiv": 4
+    "snapDiv": 4,
+    "bpmChanges": [
+      {
+        "timeMs": 12000,
+        "bpm": 210
+      }
+    ]
   },
   "preview": {
     "startMs": 0,

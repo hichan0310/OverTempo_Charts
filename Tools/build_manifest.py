@@ -51,14 +51,45 @@ def should_zip(path: Path) -> bool:
         return False
     if path.suffix.lower() == ".zip":
         return False
+    if path.suffix.lower() in {".bak", ".tmp"} or path.name.endswith("~"):
+        return False
     if any(part.startswith(".") for part in path.parts):
         return False
     return path.is_file()
 
 def validate_song(song_dir: Path, meta: dict) -> None:
     charts = list(song_dir.glob("*.osu")) + list(song_dir.glob("*.4k-speedcoef.json"))
-    if not charts:
+    encrypted_charts = list(song_dir.glob("*.otchart"))
+    encrypted = meta.get("encrypted") is True
+
+    if encrypted:
+        leaked = charts + list(song_dir.glob("*.bak")) + list(song_dir.glob("*~"))
+        if leaked:
+            names = ", ".join(path.name for path in leaked)
+            die(f"encrypted song contains plaintext or backup chart files: {song_dir}: {names}")
+        if not encrypted_charts:
+            die(f"encrypted song has no .otchart file: {song_dir}")
+
+        for encrypted_chart in encrypted_charts:
+            envelope = load_json(encrypted_chart)
+            required = {
+                "schemaVersion", "argId", "cipher", "kdf", "iterations",
+                "salt", "iv", "ciphertext", "tag"
+            }
+            missing = sorted(required - set(envelope))
+            if missing:
+                die(f"invalid encrypted chart envelope {encrypted_chart}: missing {', '.join(missing)}")
+            if envelope.get("schemaVersion") != 1:
+                die(f"unsupported encrypted chart schema: {encrypted_chart}")
+            if envelope.get("cipher") != "AES-256-CBC+HMAC-SHA256":
+                die(f"unsupported encrypted chart cipher: {encrypted_chart}")
+            if envelope.get("kdf") != "PBKDF2-HMAC-SHA256":
+                die(f"unsupported encrypted chart KDF: {encrypted_chart}")
+    elif not charts:
         die(f"no chart file found in {song_dir}")
+
+    if not encrypted and encrypted_charts:
+        die(f"song has .otchart files but song.patch.json is not marked encrypted: {song_dir}")
 
     for osu in song_dir.glob("*.osu"):
         audio = parse_osu_audio(osu)
@@ -130,10 +161,12 @@ def main() -> int:
         zip_name = f"{song_id}_{short_hash}.zip"
         zip_path = build_song_zip(repo, song_dir, song_id, output_songs, zip_name)
 
+        encrypted = meta.get("encrypted") is True
         entries.append({
             "id": song_id,
-            "title": str(meta.get("title", song_id)),
-            "artist": str(meta.get("artist", "")),
+            "title": str(meta.get("publicTitle", "Encrypted Content") if encrypted else meta.get("title", song_id)),
+            "artist": str(meta.get("publicArtist", "") if encrypted else meta.get("artist", "")),
+            "encrypted": encrypted,
             "contentHash": content_hash,
             "file": zip_name,
             "sha256": sha256_file(zip_path),
