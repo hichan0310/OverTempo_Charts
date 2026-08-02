@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Build a four-key Luminaria draft from the imported osu!mania timing map.
 
-The imported Secret chart is used only as a musical-event and lane reference.  The
-selection masks, chord accents, hold constraints, and speed coefficients are tuned
-to the Normal charts for End Time and Chronomia.
+The imported chart contributes musical-event times only. Its lane, chord, and hold
+patterns are discarded; the four-key vocabulary and speed coefficients are tuned to
+the Normal charts for End Time and Chronomia.
 """
 
 from __future__ import annotations
@@ -29,7 +29,7 @@ BPM_CHANGES = [
 # Section start, end, selection mode.  At 227 BPM an even sixteenth mask is an
 # eighth-note stream (7.57 objects/s); medium/dense add short sixteenth bursts.
 SECTIONS = [
-    (0, 18501, "medium"),
+    (0, 18501, "intro"),
     (18501, 31189, "sparse"),
     (31189, 56563, "medium"),
     (56563, 66078, "sparse"),
@@ -77,6 +77,16 @@ AUTO_SETTINGS = {
     "anchors": "",
 }
 
+# Strong audio attacks missing from the imported timing map. Times are snapped to
+# the local 1/16 grid after spectral-flux inspection of the actual MP3.
+SUPPLEMENTAL_TIMES = {
+    660, 726, 858,
+    19757, 20549, 21342, 22135, 22928, 23721, 24250,
+    60726, 61651, 62378, 62973, 63369, 64096,
+    116642, 118360,
+    148095,
+}
+
 
 def section_at(time_ms: int) -> tuple[int, int, str]:
     for section in SECTIONS:
@@ -106,10 +116,7 @@ def selected_time(time_ms: int, source_notes: list[dict]) -> bool:
     phase = tick % 16
     bar = tick // 16
     even = phase % 2 == 0
-    has_hold = any(note.get("durationMs", 0) >= 120 for note in source_notes)
-    source_chord = len(source_notes) >= 2
-
-    if len(source_notes) >= 3:
+    if mode == "intro":
         return True
 
     if mode == "sparse":
@@ -119,175 +126,98 @@ def selected_time(time_ms: int, source_notes: list[dict]) -> bool:
         burst_phase = 9 if bar % 2 == 0 else 13
         keep = even or phase == burst_phase
     elif mode == "dense":
-        # Luminaria's characteristic "roll, tat-tat-tat" phrase: alternating
-        # five/three-hit sixteenth clusters rather than one uninterrupted stream.
-        if bar % 2 == 0:
-            keep = phase in {0, 1, 2, 3, 4, 6, 8, 9, 10, 12, 14}
+        # Keep the recognizable short roll without exceeding an eighth-note
+        # stream on average: one cluster replaces, rather than adds to, its beats.
+        if bar % 4 == 0:
+            keep = phase in {0, 1, 2, 3, 4, 8, 10, 12}
+        elif bar % 2 == 0:
+            keep = phase in {0, 1, 2, 4, 6, 8, 10, 12}
         else:
-            keep = phase in {0, 2, 4, 5, 6, 8, 10, 12, 13, 14}
+            keep = even
     else:  # The tempo-warp passage benefits from retaining its irregular attacks.
-        keep = even or phase in {3, 7, 11, 15}
-
-    # Preserve musically explicit source accents without turning every source chord
-    # back into a dense Secret-chart object.
-    strong_accent = phase % 4 == 0
-    if error <= 0.09 and (has_hold or (source_chord and strong_accent)):
-        keep = True
+        keep = even or phase in {3, 11}
 
     # Do not retain isolated imported micro-offsets solely because of mask rounding.
-    if error > 0.16 and not has_hold:
+    if error > 0.16:
         return False
     return keep and time_ms >= start
-
-
-def choose_lanes(
-    source_notes: list[dict],
-    count: int,
-    occupied: set[int],
-    previous_lane: int | None,
-    recent_lanes: set[int],
-    lane_use: Counter,
-) -> list[dict]:
-    candidates = []
-    for note in source_notes:
-        lane = int(note["lane"])
-        if lane in occupied:
-            continue
-        candidates.append(note)
-
-    # Holds carry arrangement information, so prefer them, then source lanes that
-    # avoid a short jack and keep the four lanes visually balanced.
-    def score(note: dict) -> tuple:
-        lane = int(note["lane"])
-        is_hold = note.get("durationMs", 0) >= 120
-        return (
-            0 if is_hold else 1,
-            0 if lane not in recent_lanes else 1,
-            0 if lane != previous_lane else 1,
-            lane_use[lane],
-            lane,
-        )
-
-    candidates.sort(key=score)
-    picked: list[dict] = []
-    used = set(occupied)
-    for note in candidates:
-        lane = int(note["lane"])
-        if lane not in used:
-            picked.append(note)
-            used.add(lane)
-        if len(picked) == count:
-            break
-
-    if (
-        count == 1
-        and picked
-        and int(picked[0]["lane"]) in recent_lanes
-        and picked[0].get("durationMs", 0) < 120
-    ):
-        alternatives = [lane for lane in range(4) if lane not in occupied and lane not in recent_lanes]
-        if alternatives:
-            lane = min(alternatives, key=lambda item: (lane_use[item], abs(item - int(picked[0]["lane"])), item))
-            picked = [{"lane": lane, "durationMs": 0}]
-
-    # A source group can lose all its lanes to a hold. Remap only in that case.
-    while len(picked) < count:
-        available = [lane for lane in range(4) if lane not in used]
-        if not available:
-            break
-        lane = min(available, key=lambda item: (item == previous_lane, lane_use[item], item))
-        picked.append({"lane": lane, "durationMs": 0})
-        used.add(lane)
-    return picked
 
 
 def build_notes(source: dict) -> list[dict]:
     groups: dict[int, list[dict]] = defaultdict(list)
     for note in source["notes"]:
         groups[round(note["timeMs"])].append(note)
+    for time_ms in SUPPLEMENTAL_TIMES:
+        groups.setdefault(time_ms, [])
 
     output: list[dict] = []
-    active_holds: list[tuple[int, int]] = []
     lane_use: Counter = Counter()
-    previous_lane: int | None = None
+    previous_lanes: set[int] = set()
     previous_time = -10000
-    previous_pressed_lanes: set[int] = set()
-    object_index = 0
+    section_indices: Counter = Counter()
+    chord_index = 0
+
+    single_patterns = [
+        (0, 1, 2, 3, 2, 1),
+        (3, 2, 1, 0, 1, 2),
+        (0, 2, 1, 3),
+        (3, 1, 2, 0),
+    ]
+    chord_patterns = [(0, 3), (1, 2), (0, 1), (2, 3)]
 
     for time_ms in sorted(groups):
         source_notes = groups[time_ms]
-        if not selected_time(time_ms, source_notes):
-            continue
-
-        active_holds = [(end, lane) for end, lane in active_holds if end > time_ms]
-        occupied = {lane for _, lane in active_holds}
-        available_fingers = 4 - len(active_holds)
-        if available_fingers <= 0:
+        if time_ms not in SUPPLEMENTAL_TIMES and not selected_time(time_ms, source_notes):
             continue
 
         tick, _, _ = tempo_grid_at(time_ms)
         phase = tick % 16
-        _, _, mode = section_at(time_ms)
-        source_chord = len(source_notes) >= 2
-        accent = phase % 4 == 0
+        section_start, _, mode = section_at(time_ms)
+        local_index = section_indices[section_start]
+        bar = tick // 16
 
-        desired = 1
-        if available_fingers >= 2:
-            # Source chords survive chiefly on quarter-note accents. Sparse passages
-            # receive a restrained synthetic two-note accent every four bars.
-            if source_chord and (accent or object_index % 3 == 0):
-                desired = 2
-            elif mode in {"sparse", "medium"} and phase == 0 and (tick // 16) % 2 == 0:
-                desired = 2
-        if len(source_notes) >= 3 and accent:
-            desired = min(4, len(source_notes))
-        desired = min(desired, available_fingers)
+        chord = False
+        if phase == 0:
+            if mode in {"intro", "sparse"}:
+                chord = True
+            elif mode == "medium":
+                chord = bar % 2 == 0
+            elif mode == "dense":
+                chord = bar % 4 == 0
+            elif mode == "gimmick":
+                chord = bar % 3 == 0
 
-        recent_lanes = previous_pressed_lanes if time_ms - previous_time <= 140 else set()
-        picked = choose_lanes(source_notes, desired, occupied, previous_lane, recent_lanes, lane_use)
-        if not picked:
-            continue
+        if mode == "ending":
+            lanes = (0, 1, 2, 3)
+        elif chord:
+            lanes = chord_patterns[chord_index % len(chord_patterns)]
+            chord_index += 1
+        else:
+            pattern = single_patterns[bar % len(single_patterns)]
+            lane = pattern[local_index % len(pattern)]
+            if time_ms - previous_time <= 140 and lane in previous_lanes:
+                available = [item for item in range(4) if item not in previous_lanes]
+                lane = min(available, key=lambda item: (lane_use[item], abs(item - lane), item))
+            lanes = (lane,)
 
-        current_lanes: set[int] = set()
-        for position, source_note in enumerate(picked):
-            lane = int(source_note["lane"])
-            duration = max(0, round(source_note.get("durationMs", 0)))
-            if duration < 120:
-                duration = 0
-            # Long imported holds are capped at eight beats. They remain expressive
-            # without monopolising both fingers through an entire phrase.
-            bpm = next(bpm for anchor, bpm in reversed(TEMPO_ANCHORS) if anchor <= time_ms)
-            duration = min(duration, round(8 * 60000 / bpm))
-
-            if duration and lane in occupied:
-                duration = 0
-            if duration:
-                active_holds.append((time_ms + duration, lane))
-                occupied.add(lane)
-
-            # Roughly the same controllable-note ratio as the two reference charts:
-            # structural notes and holds accelerate; decorative fourth objects and
-            # secondary chord notes mostly do not.
+        for position, lane in enumerate(lanes):
             base = 1
-            if position == 1 and object_index % 3 != 0:
+            if position > 0 and chord_index % 3 != 0:
                 base = 0
-            elif position == 0 and not duration and object_index % 4 == 3:
+            elif position == 0 and local_index % 4 == 3:
                 base = 0
-
             output.append(
                 {
                     "timeMs": time_ms,
                     "lane": lane,
                     "baseSpeedupCoef": base,
-                    "durationMs": duration,
+                    "durationMs": 0,
                 }
             )
             lane_use[lane] += 1
-            previous_lane = lane
-            current_lanes.add(lane)
         previous_time = time_ms
-        previous_pressed_lanes = current_lanes
-        object_index += 1
+        previous_lanes = set(lanes)
+        section_indices[section_start] += 1
 
     return sorted(output, key=lambda note: (note["timeMs"], note["lane"]))
 
@@ -307,9 +237,9 @@ def apply_double_staircases(notes: list[dict]) -> tuple[list[dict], list[int]]:
         }
 
     ranges = [
-        (31189, 56563, 4600),
-        (66078, 91453, 3000),
-        (120210, 140033, 3800),
+        (24580, 31189, 4200),
+        (91453, 104140, 5200),
+        (118492, 140033, 6500),
     ]
     motif_starts: list[int] = []
     direction = 1
@@ -348,6 +278,60 @@ def apply_double_staircases(notes: list[dict]) -> tuple[list[dict], list[int]]:
     return result, motif_starts
 
 
+def bridge_phrase_gaps(notes: list[dict], source: dict) -> tuple[list[dict], list[tuple[int, int]]]:
+    """Carry sparse musical passages with holds instead of leaving dead air."""
+    source_times = sorted({round(note["timeMs"]) for note in source["notes"]})
+    groups: dict[int, list[dict]] = defaultdict(list)
+    for note in notes:
+        groups[note["timeMs"]].append(note)
+
+    bridged: list[tuple[int, int]] = []
+    bridge_index = 0
+    for before, after in zip(source_times, source_times[1:]):
+        gap = after - before
+        if gap < 750 or before >= 140033:
+            continue
+        candidates = [time_ms for time_ms in groups if time_ms <= before and before - time_ms <= 150]
+        if not candidates:
+            continue
+        start = max(candidates)
+        group = groups[start]
+        desired_end = after - min(264, max(90, gap // 8))
+        duration = desired_end - start
+        if duration < 400:
+            continue
+
+        note = sorted(group, key=lambda item: (item["durationMs"] > 0, abs(item["lane"] - (bridge_index % 4))))[0]
+        held_lane = note["lane"]
+        for time_ms in sorted(groups):
+            if not start < time_ms < desired_end:
+                continue
+            later_group = groups[time_ms]
+            for later_note in later_group:
+                if later_note["lane"] != held_lane:
+                    continue
+                used = {item["lane"] for item in later_group}
+                alternatives = [lane for lane in range(4) if lane != held_lane and lane not in used]
+                if not alternatives:
+                    desired_end = time_ms
+                    break
+                later_note["lane"] = min(alternatives, key=lambda lane: (abs(lane - held_lane), lane))
+        duration = desired_end - start
+        note["durationMs"] = max(note["durationMs"], duration)
+        bridged.append((start, start + note["durationMs"]))
+        bridge_index += 1
+
+    result = [note for time_ms in sorted(groups) for note in sorted(groups[time_ms], key=lambda item: item["lane"])]
+    return result, bridged
+
+
+def shape_ending(notes: list[dict]) -> list[dict]:
+    for note in notes:
+        if note["timeMs"] == 140033 and note["lane"] in {0, 3}:
+            note["durationMs"] = 148095 - 140033 - 264
+    return notes
+
+
 def interpolate(curve: list[dict], time_ms: int) -> dict:
     if time_ms <= curve[0]["timeMs"]:
         return curve[0]
@@ -369,7 +353,10 @@ def apply_auto_coefficients(notes: list[dict], duration_ms: int) -> tuple[list[d
     events = []
     for note in notes:
         duration = note["durationMs"]
-        bpm = next(bpm for anchor, bpm in reversed(TEMPO_ANCHORS) if anchor <= note["timeMs"])
+        bpm = next(
+            (bpm for anchor, bpm in reversed(TEMPO_ANCHORS) if anchor <= note["timeMs"]),
+            TEMPO_ANCHORS[0][1],
+        )
         beat_ms = 60000 / bpm
         weight = 1 + min(2, duration / beat_ms * 0.5)
         events.append((note["timeMs"] + duration * 0.5, weight))
@@ -472,6 +459,8 @@ def main() -> int:
     source = json.loads(args.source.read_text(encoding="utf-8"))
     notes = build_notes(source)
     notes, double_staircases = apply_double_staircases(notes)
+    notes, gap_holds = bridge_phrase_gaps(notes, source)
+    notes = shape_ending(notes)
     max_fingers = validate_playability(notes)
     notes, curve = apply_auto_coefficients(notes, 149400)
 
@@ -522,6 +511,7 @@ def main() -> int:
     print(f"notes={len(notes)} objects={len(groups)} chords={dict(sorted(chords.items()))}")
     print(f"holds={holds} ({holds / len(notes):.1%}) speedup={positive} ({positive / len(notes):.1%})")
     print(f"double_staircases={len(double_staircases)} starts={double_staircases}")
+    print(f"gap_holds={len(gap_holds)} spans={gap_holds}")
     print(f"maximum_simultaneous_fingers={max_fingers}")
     return 0
 
