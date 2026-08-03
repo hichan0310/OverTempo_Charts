@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 import argparse
-import copy
 import hashlib
 import json
 import re
@@ -10,20 +9,11 @@ import zipfile
 from datetime import datetime, timezone
 from pathlib import Path
 
-try:
-    from .snap_chart_notes import snap_chart
-except ImportError:
-    from snap_chart_notes import snap_chart
-
 SONG_ID_RE = re.compile(r"^[a-z0-9][a-z0-9._-]*$")
-GRID_VALIDATION_EXEMPT_IDS = {"chronomia", "end-time"}
 
 def die(message: str) -> None:
     print(f"ERROR: {message}", file=sys.stderr)
     sys.exit(1)
-
-def warn(message: str) -> None:
-    print(f"WARNING: {message}", file=sys.stderr)
 
 def git(args, cwd: Path) -> str:
     return subprocess.check_output(["git"] + args, cwd=str(cwd), text=True).strip()
@@ -114,16 +104,6 @@ def validate_song(song_dir: Path, meta: dict) -> None:
         audio = ((data.get("meta") or {}).get("audioFileName") or "").strip()
         if audio and not (song_dir / audio).is_file():
             die(f"speedcoef audioFileName target missing: {sc} -> {audio}")
-
-        if meta.get("id") not in GRID_VALIDATION_EXEMPT_IDS:
-            snapped = snap_chart(copy.deepcopy(data))
-            off_grid = sum(
-                original.get("timeMs") != aligned.get("timeMs")
-                or original.get("durationMs", 0) != aligned.get("durationMs", 0)
-                for original, aligned in zip(data.get("notes", []), snapped.get("notes", []))
-            )
-            if off_grid:
-                warn(f"speedcoef chart has {off_grid} note(s) off its declared grid: {sc}")
 
 def build_song_zip(repo: Path, song_dir: Path, song_id: str, output_songs: Path, zip_name: str) -> Path:
     zip_path = output_songs / zip_name

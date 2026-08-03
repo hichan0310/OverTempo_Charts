@@ -1,6 +1,4 @@
 #!/usr/bin/env python3
-import contextlib
-import io
 import json
 import sys
 import tempfile
@@ -47,7 +45,7 @@ class EncryptedSongValidationTests(unittest.TestCase):
         self.assertFalse(build_manifest.should_zip(backup))
 
 
-class GridValidationTests(unittest.TestCase):
+class SpeedcoefValidationTests(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.song = Path(self.temp.name) / "grid-song"
@@ -57,20 +55,20 @@ class GridValidationTests(unittest.TestCase):
     def tearDown(self):
         self.temp.cleanup()
 
-    def test_warns_for_note_off_declared_grid(self):
+    def test_ignores_snap_grid_and_possible_snap_collisions(self):
         (self.song / "chart.4k-speedcoef.json").write_text(
             json.dumps(
                 {
-                    "timing": {"bpm": 250, "snapDiv": 4, "bpmChanges": []},
-                    "notes": [{"timeMs": 965, "lane": 0, "durationMs": 0}],
+                    "timing": {"bpm": 227, "snapDiv": 2, "bpmChanges": []},
+                    "notes": [
+                        {"timeMs": 90990, "lane": 1, "durationMs": 0},
+                        {"timeMs": 91122, "lane": 1, "durationMs": 0},
+                    ],
                 }
             ),
             encoding="utf-8",
         )
-        stderr = io.StringIO()
-        with contextlib.redirect_stderr(stderr):
-            build_manifest.validate_song(self.song, self.meta)
-        self.assertIn("WARNING: speedcoef chart has 1 note(s) off its declared grid", stderr.getvalue())
+        build_manifest.validate_song(self.song, self.meta)
 
 
 if __name__ == "__main__":
