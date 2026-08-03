@@ -22,7 +22,7 @@
   "timing": {
     "bpm": 227.00000000000006,
     "offsetMs": 205,
-    "snapDiv": 2,
+    "snapDiv": 12,
     "bpmChanges": [
       {
         "timeMs": 18501,
@@ -12908,7 +12908,7 @@
   ],
   "autoCoef": {
     "schemaVersion": 1,
-    "generatedAt": "2026-08-03T10:52:42.173Z",
+    "generatedAt": "2026-08-03T11:00:52.809Z",
     "description": "Final speedupCoef = baseSpeedupCoef * autoSpeedupCoefMultiplier. Load restores editable coef 0/1 from baseSpeedupCoef.",
     "settings": {
       "sigmaMs": 1600,
