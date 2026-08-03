@@ -152,7 +152,7 @@ function snapTime(ms){
  for(const boundary of [seg.startMs,seg.endMs]){
   if(Number.isFinite(boundary)&&Math.abs(boundary-t)<Math.abs(best-t))best=boundary;
  }
- return Math.max(0,best);
+ return Math.max(0,Math.round(best));
 }
 function movePlayheadOnGrid(kind,direction){
  const t=Math.max(0,state.playheadMs),seg=tempoSegmentAt(t);
@@ -205,7 +205,7 @@ function drawGrid(W,H,a){
   let t=seg.startMs+snapIndex*sm;
   if(t<segmentStart-.5){snapIndex++;t+=sm}
   for(;t<=segmentEnd+.5;snapIndex++,t=seg.startMs+snapIndex*sm){
-   const y=msToY(t),isBeat=snapIndex%Math.max(1,state.snapDiv)===0;
+   const gridTime=Math.round(t),y=msToY(gridTime),isBeat=snapIndex%Math.max(1,state.snapDiv)===0;
    const beatIndex=Math.floor(snapIndex/Math.max(1,state.snapDiv));
    const isBar=isBeat&&beatIndex%4===0;
    ctx.strokeStyle=isBar?'rgba(255,255,255,.43)':isBeat?'rgba(134,215,255,.32)':'rgba(255,255,255,.085)';

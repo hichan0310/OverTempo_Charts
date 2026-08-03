@@ -15,6 +15,11 @@ from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 
+try:
+    from .snap_chart_notes import snap_chart
+except ImportError:
+    from snap_chart_notes import snap_chart
+
 
 BPM_CHANGES = [
     {"timeMs": 104140, "bpm": 197},
@@ -499,6 +504,7 @@ def main() -> int:
             "curve": curve,
         },
     }
+    snap_chart(chart)
     args.output.write_text(json.dumps(chart, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     groups = defaultdict(list)

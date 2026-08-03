@@ -45,5 +45,29 @@ class EncryptedSongValidationTests(unittest.TestCase):
         self.assertFalse(build_manifest.should_zip(backup))
 
 
+class GridValidationTests(unittest.TestCase):
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.song = Path(self.temp.name) / "grid-song"
+        self.song.mkdir()
+        self.meta = {"id": "grid-song", "enabled": True}
+
+    def tearDown(self):
+        self.temp.cleanup()
+
+    def test_rejects_note_off_declared_grid(self):
+        (self.song / "chart.4k-speedcoef.json").write_text(
+            json.dumps(
+                {
+                    "timing": {"bpm": 250, "snapDiv": 4, "bpmChanges": []},
+                    "notes": [{"timeMs": 965, "lane": 0, "durationMs": 0}],
+                }
+            ),
+            encoding="utf-8",
+        )
+        with self.assertRaises(SystemExit):
+            build_manifest.validate_song(self.song, self.meta)
+
+
 if __name__ == "__main__":
     unittest.main()

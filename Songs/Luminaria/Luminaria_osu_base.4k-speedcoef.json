@@ -121,10 +121,10 @@
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 1,
-      "durationMs": 726
+      "durationMs": 727
     },
     {
-      "timeMs": 1453,
+      "timeMs": 1454,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -135,7 +135,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 1717,
+      "timeMs": 1718,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -146,7 +146,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 1849,
+      "timeMs": 1850,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -157,7 +157,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 2114,
+      "timeMs": 2115,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -168,7 +168,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 2378,
+      "timeMs": 2379,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -179,7 +179,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 2510,
+      "timeMs": 2511,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -190,7 +190,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 2576,
+      "timeMs": 2577,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -201,7 +201,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 2642,
+      "timeMs": 2643,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -212,7 +212,7 @@
       "durationMs": 793
     },
     {
-      "timeMs": 2642,
+      "timeMs": 2643,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -245,7 +245,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 3039,
+      "timeMs": 3040,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -256,7 +256,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 3171,
+      "timeMs": 3172,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -267,7 +267,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 3303,
+      "timeMs": 3304,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -278,7 +278,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 3435,
+      "timeMs": 3436,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -289,7 +289,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 3435,
+      "timeMs": 3436,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -333,7 +333,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 3832,
+      "timeMs": 3833,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -344,7 +344,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 3964,
+      "timeMs": 3965,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -355,7 +355,7 @@
       "durationMs": 33
     },
     {
-      "timeMs": 4030,
+      "timeMs": 4031,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -366,7 +366,7 @@
       "durationMs": 33
     },
     {
-      "timeMs": 4096,
+      "timeMs": 4097,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -377,7 +377,7 @@
       "durationMs": 33
     },
     {
-      "timeMs": 4162,
+      "timeMs": 4163,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -388,7 +388,7 @@
       "durationMs": 33
     },
     {
-      "timeMs": 4228,
+      "timeMs": 4229,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -399,7 +399,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 4228,
+      "timeMs": 4229,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -410,7 +410,7 @@
       "durationMs": 661
     },
     {
-      "timeMs": 4625,
+      "timeMs": 4626,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -421,7 +421,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 4889,
+      "timeMs": 4890,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -432,7 +432,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 5021,
+      "timeMs": 5022,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -443,7 +443,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 5021,
+      "timeMs": 5022,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -456,127 +456,6 @@
     {
       "timeMs": 5286,
       "lane": 0,
-      "baseSpeedupCoef": 1,
-      "densitySpeedupCoefMultiplier": 1,
-      "rampSpeedupCoefMultiplier": 1,
-      "manualSpeedupCoefMultiplier": 1,
-      "autoSpeedupCoefMultiplier": 1,
-      "speedupCoef": 1,
-      "durationMs": 132
-    },
-    {
-      "timeMs": 5286,
-      "lane": 1,
-      "baseSpeedupCoef": 1,
-      "densitySpeedupCoefMultiplier": 1,
-      "rampSpeedupCoefMultiplier": 1,
-      "manualSpeedupCoefMultiplier": 1,
-      "autoSpeedupCoefMultiplier": 1,
-      "speedupCoef": 1,
-      "durationMs": 0
-    },
-    {
-      "timeMs": 5550,
-      "lane": 2,
-      "baseSpeedupCoef": 1,
-      "densitySpeedupCoefMultiplier": 1,
-      "rampSpeedupCoefMultiplier": 1,
-      "manualSpeedupCoefMultiplier": 1,
-      "autoSpeedupCoefMultiplier": 1,
-      "speedupCoef": 1,
-      "durationMs": 132
-    },
-    {
-      "timeMs": 5550,
-      "lane": 3,
-      "baseSpeedupCoef": 1,
-      "densitySpeedupCoefMultiplier": 1,
-      "rampSpeedupCoefMultiplier": 1,
-      "manualSpeedupCoefMultiplier": 1,
-      "autoSpeedupCoefMultiplier": 1,
-      "speedupCoef": 1,
-      "durationMs": 0
-    },
-    {
-      "timeMs": 5814,
-      "lane": 0,
-      "baseSpeedupCoef": 1,
-      "densitySpeedupCoefMultiplier": 1,
-      "rampSpeedupCoefMultiplier": 1,
-      "manualSpeedupCoefMultiplier": 1,
-      "autoSpeedupCoefMultiplier": 1,
-      "speedupCoef": 1,
-      "durationMs": 0
-    },
-    {
-      "timeMs": 5814,
-      "lane": 1,
-      "baseSpeedupCoef": 1,
-      "densitySpeedupCoefMultiplier": 1,
-      "rampSpeedupCoefMultiplier": 1,
-      "manualSpeedupCoefMultiplier": 1,
-      "autoSpeedupCoefMultiplier": 1,
-      "speedupCoef": 1,
-      "durationMs": 265
-    },
-    {
-      "timeMs": 6211,
-      "lane": 2,
-      "baseSpeedupCoef": 1,
-      "densitySpeedupCoefMultiplier": 1,
-      "rampSpeedupCoefMultiplier": 1,
-      "manualSpeedupCoefMultiplier": 1,
-      "autoSpeedupCoefMultiplier": 1,
-      "speedupCoef": 1,
-      "durationMs": 0
-    },
-    {
-      "timeMs": 6211,
-      "lane": 3,
-      "baseSpeedupCoef": 1,
-      "densitySpeedupCoefMultiplier": 1,
-      "rampSpeedupCoefMultiplier": 1,
-      "manualSpeedupCoefMultiplier": 1,
-      "autoSpeedupCoefMultiplier": 1,
-      "speedupCoef": 1,
-      "durationMs": 264
-    },
-    {
-      "timeMs": 6475,
-      "lane": 2,
-      "baseSpeedupCoef": 1,
-      "densitySpeedupCoefMultiplier": 1,
-      "rampSpeedupCoefMultiplier": 1,
-      "manualSpeedupCoefMultiplier": 1,
-      "autoSpeedupCoefMultiplier": 1,
-      "speedupCoef": 1,
-      "durationMs": 0
-    },
-    {
-      "timeMs": 6607,
-      "lane": 0,
-      "baseSpeedupCoef": 1,
-      "densitySpeedupCoefMultiplier": 1,
-      "rampSpeedupCoefMultiplier": 1,
-      "manualSpeedupCoefMultiplier": 1,
-      "autoSpeedupCoefMultiplier": 1,
-      "speedupCoef": 1,
-      "durationMs": 132
-    },
-    {
-      "timeMs": 6607,
-      "lane": 1,
-      "baseSpeedupCoef": 1,
-      "densitySpeedupCoefMultiplier": 1,
-      "rampSpeedupCoefMultiplier": 1,
-      "manualSpeedupCoefMultiplier": 1,
-      "autoSpeedupCoefMultiplier": 1,
-      "speedupCoef": 1,
-      "durationMs": 0
-    },
-    {
-      "timeMs": 6871,
-      "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
       "rampSpeedupCoefMultiplier": 1,
@@ -586,7 +465,29 @@
       "durationMs": 133
     },
     {
-      "timeMs": 6871,
+      "timeMs": 5286,
+      "lane": 1,
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 1,
+      "durationMs": 0
+    },
+    {
+      "timeMs": 5551,
+      "lane": 2,
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 1,
+      "durationMs": 132
+    },
+    {
+      "timeMs": 5551,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -597,7 +498,18 @@
       "durationMs": 0
     },
     {
-      "timeMs": 7136,
+      "timeMs": 5815,
+      "lane": 0,
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 1,
+      "durationMs": 0
+    },
+    {
+      "timeMs": 5815,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -605,10 +517,10 @@
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 1,
-      "durationMs": 132
+      "durationMs": 264
     },
     {
-      "timeMs": 7136,
+      "timeMs": 6211,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -619,7 +531,40 @@
       "durationMs": 0
     },
     {
-      "timeMs": 7400,
+      "timeMs": 6211,
+      "lane": 3,
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 1,
+      "durationMs": 265
+    },
+    {
+      "timeMs": 6476,
+      "lane": 2,
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 1,
+      "durationMs": 0
+    },
+    {
+      "timeMs": 6608,
+      "lane": 0,
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 1,
+      "durationMs": 132
+    },
+    {
+      "timeMs": 6608,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -630,7 +575,62 @@
       "durationMs": 0
     },
     {
-      "timeMs": 7400,
+      "timeMs": 6872,
+      "lane": 2,
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 1,
+      "durationMs": 132
+    },
+    {
+      "timeMs": 6872,
+      "lane": 3,
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 1,
+      "durationMs": 0
+    },
+    {
+      "timeMs": 7137,
+      "lane": 1,
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 1,
+      "durationMs": 132
+    },
+    {
+      "timeMs": 7137,
+      "lane": 2,
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 1,
+      "durationMs": 0
+    },
+    {
+      "timeMs": 7401,
+      "lane": 1,
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 1,
+      "durationMs": 0
+    },
+    {
+      "timeMs": 7401,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -652,7 +652,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 8061,
+      "timeMs": 8062,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -663,7 +663,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 8193,
+      "timeMs": 8194,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -674,7 +674,7 @@
       "durationMs": 793
     },
     {
-      "timeMs": 8193,
+      "timeMs": 8194,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -685,7 +685,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 8457,
+      "timeMs": 8458,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -718,7 +718,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 8986,
+      "timeMs": 8987,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -729,7 +729,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 9118,
+      "timeMs": 9119,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -740,7 +740,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 9250,
+      "timeMs": 9251,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -751,7 +751,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 9250,
+      "timeMs": 9251,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -762,7 +762,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 9382,
+      "timeMs": 9383,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -773,7 +773,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 9382,
+      "timeMs": 9383,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -806,7 +806,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 9647,
+      "timeMs": 9648,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -817,7 +817,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 9647,
+      "timeMs": 9648,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -828,7 +828,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 9779,
+      "timeMs": 9780,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -839,7 +839,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 9779,
+      "timeMs": 9780,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -850,7 +850,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 9911,
+      "timeMs": 9912,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -861,7 +861,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 9911,
+      "timeMs": 9912,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -872,7 +872,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 10043,
+      "timeMs": 10044,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -883,7 +883,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 10043,
+      "timeMs": 10044,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -916,7 +916,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 10572,
+      "timeMs": 10573,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -924,10 +924,10 @@
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 1,
-      "durationMs": 661
+      "durationMs": 660
     },
     {
-      "timeMs": 10572,
+      "timeMs": 10573,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -938,7 +938,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 10968,
+      "timeMs": 10969,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -960,7 +960,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 11365,
+      "timeMs": 11366,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -971,7 +971,7 @@
       "durationMs": 132
     },
     {
-      "timeMs": 11365,
+      "timeMs": 11366,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -982,7 +982,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 11629,
+      "timeMs": 11630,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -993,7 +993,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 11629,
+      "timeMs": 11630,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -1026,7 +1026,7 @@
       "durationMs": 132
     },
     {
-      "timeMs": 12158,
+      "timeMs": 12159,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -1037,7 +1037,7 @@
       "durationMs": 264
     },
     {
-      "timeMs": 12158,
+      "timeMs": 12159,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -1048,7 +1048,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 12554,
+      "timeMs": 12555,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -1056,10 +1056,10 @@
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 1,
-      "durationMs": 265
+      "durationMs": 264
     },
     {
-      "timeMs": 12554,
+      "timeMs": 12555,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -1081,7 +1081,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 12951,
+      "timeMs": 12952,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -1092,7 +1092,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 12951,
+      "timeMs": 12952,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -1103,7 +1103,7 @@
       "durationMs": 132
     },
     {
-      "timeMs": 13215,
+      "timeMs": 13216,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -1114,7 +1114,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 13215,
+      "timeMs": 13216,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -1125,7 +1125,7 @@
       "durationMs": 132
     },
     {
-      "timeMs": 13479,
+      "timeMs": 13480,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -1136,7 +1136,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 13479,
+      "timeMs": 13480,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -1144,7 +1144,7 @@
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 1,
-      "durationMs": 133
+      "durationMs": 132
     },
     {
       "timeMs": 13744,
@@ -1155,7 +1155,7 @@
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 1,
-      "durationMs": 528
+      "durationMs": 529
     },
     {
       "timeMs": 13744,
@@ -1169,7 +1169,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 14140,
+      "timeMs": 14141,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -1213,7 +1213,7 @@
       "durationMs": 793
     },
     {
-      "timeMs": 14801,
+      "timeMs": 14802,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -1224,7 +1224,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 15065,
+      "timeMs": 15066,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -1235,7 +1235,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 15065,
+      "timeMs": 15066,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -1268,7 +1268,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 15462,
+      "timeMs": 15463,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -1279,7 +1279,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 15462,
+      "timeMs": 15463,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -1290,7 +1290,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 15594,
+      "timeMs": 15595,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -1301,7 +1301,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 15594,
+      "timeMs": 15595,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -1312,7 +1312,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 15726,
+      "timeMs": 15727,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -1323,7 +1323,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 15858,
+      "timeMs": 15859,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -1334,7 +1334,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 15990,
+      "timeMs": 15991,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -1345,7 +1345,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 15990,
+      "timeMs": 15991,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -1378,7 +1378,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 16255,
+      "timeMs": 16256,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -1389,7 +1389,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 16255,
+      "timeMs": 16256,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -1400,7 +1400,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 16387,
+      "timeMs": 16388,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -1411,7 +1411,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 16387,
+      "timeMs": 16388,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -1422,7 +1422,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 16651,
+      "timeMs": 16652,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -1433,7 +1433,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 16651,
+      "timeMs": 16652,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -1488,7 +1488,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 17312,
+      "timeMs": 17313,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -1499,7 +1499,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 17312,
+      "timeMs": 17313,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -1510,7 +1510,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 17576,
+      "timeMs": 17577,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -1521,7 +1521,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 17576,
+      "timeMs": 17577,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -1532,7 +1532,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 17708,
+      "timeMs": 17709,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -1543,7 +1543,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 17708,
+      "timeMs": 17709,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -1554,7 +1554,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 17973,
+      "timeMs": 17974,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -1565,7 +1565,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 17973,
+      "timeMs": 17974,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -1576,7 +1576,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 17973,
+      "timeMs": 17974,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -1587,7 +1587,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 18237,
+      "timeMs": 18238,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -1598,7 +1598,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 18237,
+      "timeMs": 18238,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -1609,7 +1609,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 18237,
+      "timeMs": 18238,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -1631,7 +1631,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 24844,
+      "timeMs": 24845,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -1653,7 +1653,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 25637,
+      "timeMs": 25638,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -1664,7 +1664,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 25901,
+      "timeMs": 25902,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -1686,7 +1686,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 26430,
+      "timeMs": 26431,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -1741,7 +1741,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 28280,
+      "timeMs": 28281,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -1917,7 +1917,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 31717,
+      "timeMs": 31718,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -1928,7 +1928,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 31849,
+      "timeMs": 31850,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -1939,7 +1939,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 31981,
+      "timeMs": 31982,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -1950,7 +1950,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 31981,
+      "timeMs": 31982,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -2005,7 +2005,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 32510,
+      "timeMs": 32511,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -2016,7 +2016,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 32510,
+      "timeMs": 32511,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -2027,7 +2027,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 32642,
+      "timeMs": 32643,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -2038,7 +2038,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 32774,
+      "timeMs": 32775,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -2049,7 +2049,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 32774,
+      "timeMs": 32775,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -2093,7 +2093,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 33303,
+      "timeMs": 33304,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -2104,7 +2104,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 33303,
+      "timeMs": 33304,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -2115,7 +2115,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 33435,
+      "timeMs": 33436,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -2126,7 +2126,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 33567,
+      "timeMs": 33568,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -2137,7 +2137,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 33567,
+      "timeMs": 33568,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -2192,7 +2192,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 34228,
+      "timeMs": 34229,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -2203,7 +2203,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 34294,
+      "timeMs": 34295,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -2214,7 +2214,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 34360,
+      "timeMs": 34361,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -2225,7 +2225,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 34360,
+      "timeMs": 34361,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -2236,7 +2236,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 34492,
+      "timeMs": 34493,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -2291,7 +2291,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 35021,
+      "timeMs": 35022,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -2302,7 +2302,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 35153,
+      "timeMs": 35154,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -2313,7 +2313,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 35153,
+      "timeMs": 35154,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -2324,7 +2324,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 35285,
+      "timeMs": 35286,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -2390,7 +2390,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 35814,
+      "timeMs": 35815,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -2401,7 +2401,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 35946,
+      "timeMs": 35947,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -2412,7 +2412,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 35946,
+      "timeMs": 35947,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -2423,7 +2423,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 36078,
+      "timeMs": 36079,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -2489,7 +2489,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 36607,
+      "timeMs": 36608,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -2500,7 +2500,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 36739,
+      "timeMs": 36740,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -2511,7 +2511,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 36739,
+      "timeMs": 36740,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -2522,7 +2522,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 37003,
+      "timeMs": 37004,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -2533,7 +2533,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 37003,
+      "timeMs": 37004,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -2566,7 +2566,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 37532,
+      "timeMs": 37533,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -2577,7 +2577,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 37532,
+      "timeMs": 37533,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -2588,7 +2588,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 37664,
+      "timeMs": 37665,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -2599,7 +2599,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 37796,
+      "timeMs": 37797,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -2643,7 +2643,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 38325,
+      "timeMs": 38326,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -2654,7 +2654,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 38325,
+      "timeMs": 38326,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -2665,7 +2665,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 38457,
+      "timeMs": 38458,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -2676,7 +2676,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 38589,
+      "timeMs": 38590,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -2687,7 +2687,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 38589,
+      "timeMs": 38590,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -2742,7 +2742,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 39118,
+      "timeMs": 39119,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -2753,7 +2753,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 39118,
+      "timeMs": 39119,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -2764,7 +2764,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 39250,
+      "timeMs": 39251,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -2775,7 +2775,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 39382,
+      "timeMs": 39383,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -2786,7 +2786,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 39514,
+      "timeMs": 39515,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -2797,7 +2797,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 39514,
+      "timeMs": 39515,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -2852,7 +2852,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 40043,
+      "timeMs": 40044,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -2863,7 +2863,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 40175,
+      "timeMs": 40176,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -2874,7 +2874,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 40175,
+      "timeMs": 40176,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -2885,7 +2885,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 40307,
+      "timeMs": 40308,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -2962,7 +2962,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 40836,
+      "timeMs": 40837,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -2973,7 +2973,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 40836,
+      "timeMs": 40837,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -2984,7 +2984,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 40968,
+      "timeMs": 40969,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -2995,7 +2995,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 40968,
+      "timeMs": 40969,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -3006,7 +3006,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 41100,
+      "timeMs": 41101,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -3061,7 +3061,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 41629,
+      "timeMs": 41630,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -3072,7 +3072,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 41761,
+      "timeMs": 41762,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -3083,7 +3083,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 41761,
+      "timeMs": 41762,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -3094,7 +3094,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 41893,
+      "timeMs": 41894,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -3160,7 +3160,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 42686,
+      "timeMs": 42687,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -3171,7 +3171,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 42686,
+      "timeMs": 42687,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -3237,7 +3237,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 43347,
+      "timeMs": 43348,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -3248,7 +3248,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 43479,
+      "timeMs": 43480,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -3259,7 +3259,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 43611,
+      "timeMs": 43612,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -3325,7 +3325,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 44140,
+      "timeMs": 44141,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -3336,7 +3336,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 44206,
+      "timeMs": 44207,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -3347,7 +3347,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 44272,
+      "timeMs": 44273,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -3358,7 +3358,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 44338,
+      "timeMs": 44339,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -3369,7 +3369,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 44404,
+      "timeMs": 44405,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -3380,7 +3380,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 44470,
+      "timeMs": 44471,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -3534,7 +3534,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 45792,
+      "timeMs": 45793,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -3545,7 +3545,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 45858,
+      "timeMs": 45859,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -3556,7 +3556,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 45924,
+      "timeMs": 45925,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -3567,7 +3567,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 45990,
+      "timeMs": 45991,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -3578,7 +3578,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 46056,
+      "timeMs": 46057,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -3589,7 +3589,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 46122,
+      "timeMs": 46123,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -3710,7 +3710,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 47444,
+      "timeMs": 47445,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -3721,7 +3721,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 47576,
+      "timeMs": 47577,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -3732,8 +3732,19 @@
       "durationMs": 264
     },
     {
-      "timeMs": 47840,
+      "timeMs": 47841,
       "lane": 1,
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 1,
+      "durationMs": 264
+    },
+    {
+      "timeMs": 48105,
+      "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
       "rampSpeedupCoefMultiplier": 1,
@@ -3744,17 +3755,6 @@
     },
     {
       "timeMs": 48105,
-      "lane": 2,
-      "baseSpeedupCoef": 1,
-      "densitySpeedupCoefMultiplier": 1,
-      "rampSpeedupCoefMultiplier": 1,
-      "manualSpeedupCoefMultiplier": 1,
-      "autoSpeedupCoefMultiplier": 1,
-      "speedupCoef": 1,
-      "durationMs": 264
-    },
-    {
-      "timeMs": 48105,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -3765,7 +3765,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 48369,
+      "timeMs": 48370,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -3776,7 +3776,7 @@
       "durationMs": 264
     },
     {
-      "timeMs": 48369,
+      "timeMs": 48370,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -3787,7 +3787,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 48633,
+      "timeMs": 48634,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -3798,7 +3798,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 48633,
+      "timeMs": 48634,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -3806,7 +3806,7 @@
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 1,
-      "durationMs": 265
+      "durationMs": 264
     },
     {
       "timeMs": 49030,
@@ -3820,7 +3820,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 49162,
+      "timeMs": 49163,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -3831,7 +3831,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 49426,
+      "timeMs": 49427,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -3842,7 +3842,7 @@
       "durationMs": 793
     },
     {
-      "timeMs": 49426,
+      "timeMs": 49427,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -3886,7 +3886,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 49955,
+      "timeMs": 49956,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -3897,7 +3897,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 50021,
+      "timeMs": 50022,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -3908,7 +3908,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 50087,
+      "timeMs": 50088,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -3919,7 +3919,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 50153,
+      "timeMs": 50154,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -3930,7 +3930,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 50219,
+      "timeMs": 50220,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -3941,7 +3941,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 50285,
+      "timeMs": 50286,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -3952,7 +3952,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 50351,
+      "timeMs": 50352,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -4029,7 +4029,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 50814,
+      "timeMs": 50815,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -4040,7 +4040,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 50880,
+      "timeMs": 50881,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -4051,7 +4051,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 50946,
+      "timeMs": 50947,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -4062,7 +4062,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 51012,
+      "timeMs": 51013,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -4073,7 +4073,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 51078,
+      "timeMs": 51079,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -4084,7 +4084,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 51144,
+      "timeMs": 51145,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -4161,7 +4161,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 51607,
+      "timeMs": 51608,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -4172,7 +4172,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 51673,
+      "timeMs": 51674,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -4183,7 +4183,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 51739,
+      "timeMs": 51740,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -4194,7 +4194,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 51805,
+      "timeMs": 51806,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -4205,7 +4205,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 51871,
+      "timeMs": 51872,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -4216,7 +4216,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 51937,
+      "timeMs": 51938,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -4227,7 +4227,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 52003,
+      "timeMs": 52004,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -4304,7 +4304,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 52466,
+      "timeMs": 52467,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -4315,7 +4315,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 52532,
+      "timeMs": 52533,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -4326,7 +4326,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 52598,
+      "timeMs": 52599,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -4337,7 +4337,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 52664,
+      "timeMs": 52665,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -4348,7 +4348,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 52730,
+      "timeMs": 52731,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -4359,7 +4359,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 52796,
+      "timeMs": 52797,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -4447,7 +4447,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 53325,
+      "timeMs": 53326,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -4458,7 +4458,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 53391,
+      "timeMs": 53392,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -4469,7 +4469,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 53391,
+      "timeMs": 53392,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -4480,7 +4480,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 53523,
+      "timeMs": 53524,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -4491,7 +4491,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 53655,
+      "timeMs": 53656,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -4502,7 +4502,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 53655,
+      "timeMs": 53656,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -4557,7 +4557,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 54184,
+      "timeMs": 54185,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -4568,7 +4568,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 54184,
+      "timeMs": 54185,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -4579,7 +4579,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 54316,
+      "timeMs": 54317,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -4590,7 +4590,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 54448,
+      "timeMs": 54449,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -4601,7 +4601,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 54448,
+      "timeMs": 54449,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -4656,7 +4656,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 54977,
+      "timeMs": 54978,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -4667,7 +4667,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 54977,
+      "timeMs": 54978,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -4678,7 +4678,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 55109,
+      "timeMs": 55110,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -4689,7 +4689,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 55241,
+      "timeMs": 55242,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -4700,7 +4700,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 55241,
+      "timeMs": 55242,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -4777,7 +4777,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 56034,
+      "timeMs": 56035,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -4788,7 +4788,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 56034,
+      "timeMs": 56035,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -4854,7 +4854,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 57091,
+      "timeMs": 57092,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -4865,7 +4865,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 57355,
+      "timeMs": 57356,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -4876,7 +4876,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 57355,
+      "timeMs": 57356,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -4898,7 +4898,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 57884,
+      "timeMs": 57885,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -4909,7 +4909,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 58148,
+      "timeMs": 58149,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -4920,7 +4920,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 58148,
+      "timeMs": 58149,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -4942,7 +4942,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 58677,
+      "timeMs": 58678,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -4953,7 +4953,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 58941,
+      "timeMs": 58942,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -4964,7 +4964,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 58941,
+      "timeMs": 58942,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -4997,7 +4997,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 59734,
+      "timeMs": 59735,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -5008,7 +5008,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 59800,
+      "timeMs": 59801,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -5019,7 +5019,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 59866,
+      "timeMs": 59867,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -5052,7 +5052,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 64492,
+      "timeMs": 64493,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -5063,7 +5063,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 64756,
+      "timeMs": 64757,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -5074,7 +5074,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 64888,
+      "timeMs": 64889,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -5085,7 +5085,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 64888,
+      "timeMs": 64889,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -5129,7 +5129,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 65549,
+      "timeMs": 65550,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -5137,10 +5137,10 @@
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 1,
-      "durationMs": 529
+      "durationMs": 528
     },
     {
-      "timeMs": 65549,
+      "timeMs": 65550,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -5151,7 +5151,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 65549,
+      "timeMs": 65550,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -5250,7 +5250,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 66540,
+      "timeMs": 66541,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -5261,7 +5261,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 66606,
+      "timeMs": 66607,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -5272,7 +5272,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 66672,
+      "timeMs": 66673,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -5283,7 +5283,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 66738,
+      "timeMs": 66739,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -5294,7 +5294,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 66804,
+      "timeMs": 66805,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -5305,7 +5305,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 66870,
+      "timeMs": 66871,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -5382,7 +5382,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 67333,
+      "timeMs": 67334,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -5393,7 +5393,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 67399,
+      "timeMs": 67400,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -5404,7 +5404,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 67465,
+      "timeMs": 67466,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -5415,7 +5415,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 67531,
+      "timeMs": 67532,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -5426,7 +5426,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 67597,
+      "timeMs": 67598,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -5437,7 +5437,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 67663,
+      "timeMs": 67664,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -5448,7 +5448,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 67729,
+      "timeMs": 67730,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -5525,7 +5525,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 68192,
+      "timeMs": 68193,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -5536,7 +5536,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 68258,
+      "timeMs": 68259,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -5547,7 +5547,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 68324,
+      "timeMs": 68325,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -5558,7 +5558,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 68390,
+      "timeMs": 68391,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -5569,7 +5569,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 68456,
+      "timeMs": 68457,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -5580,7 +5580,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 68522,
+      "timeMs": 68523,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -5668,7 +5668,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 69051,
+      "timeMs": 69052,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -5679,7 +5679,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 69117,
+      "timeMs": 69118,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -5690,7 +5690,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 69183,
+      "timeMs": 69184,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -5701,7 +5701,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 69249,
+      "timeMs": 69250,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -5712,7 +5712,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 69315,
+      "timeMs": 69316,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -5723,7 +5723,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 69381,
+      "timeMs": 69382,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -5800,7 +5800,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 69844,
+      "timeMs": 69845,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -5811,7 +5811,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 69910,
+      "timeMs": 69911,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -5822,7 +5822,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 69976,
+      "timeMs": 69977,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -5833,7 +5833,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 70042,
+      "timeMs": 70043,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -5844,7 +5844,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 70108,
+      "timeMs": 70109,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -5855,7 +5855,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 70174,
+      "timeMs": 70175,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -5866,7 +5866,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 70240,
+      "timeMs": 70241,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -5943,7 +5943,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 70703,
+      "timeMs": 70704,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -5954,7 +5954,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 70769,
+      "timeMs": 70770,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -5965,7 +5965,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 70835,
+      "timeMs": 70836,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -5976,7 +5976,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 70901,
+      "timeMs": 70902,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -5987,7 +5987,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 70967,
+      "timeMs": 70968,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -5998,7 +5998,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 71033,
+      "timeMs": 71034,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -6075,7 +6075,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 71496,
+      "timeMs": 71497,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -6086,7 +6086,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 71562,
+      "timeMs": 71563,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -6097,7 +6097,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 71628,
+      "timeMs": 71629,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -6108,7 +6108,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 71694,
+      "timeMs": 71695,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -6119,7 +6119,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 71760,
+      "timeMs": 71761,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -6130,7 +6130,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 71826,
+      "timeMs": 71827,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -6141,7 +6141,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 71892,
+      "timeMs": 71893,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -6218,7 +6218,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 72355,
+      "timeMs": 72356,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -6229,7 +6229,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 72421,
+      "timeMs": 72422,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -6240,7 +6240,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 72421,
+      "timeMs": 72422,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -6251,7 +6251,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 72487,
+      "timeMs": 72488,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -6262,7 +6262,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 72553,
+      "timeMs": 72554,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -6273,7 +6273,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 72619,
+      "timeMs": 72620,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -6284,7 +6284,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 72685,
+      "timeMs": 72686,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -6372,7 +6372,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 73214,
+      "timeMs": 73215,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -6383,7 +6383,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 73280,
+      "timeMs": 73281,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -6394,7 +6394,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 73346,
+      "timeMs": 73347,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -6405,7 +6405,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 73412,
+      "timeMs": 73413,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -6416,7 +6416,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 73478,
+      "timeMs": 73479,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -6427,7 +6427,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 73544,
+      "timeMs": 73545,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -6504,7 +6504,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 74007,
+      "timeMs": 74008,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -6515,7 +6515,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 74073,
+      "timeMs": 74074,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -6526,7 +6526,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 74139,
+      "timeMs": 74140,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -6537,7 +6537,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 74205,
+      "timeMs": 74206,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -6548,7 +6548,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 74271,
+      "timeMs": 74272,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -6559,7 +6559,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 74337,
+      "timeMs": 74338,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -6570,7 +6570,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 74403,
+      "timeMs": 74404,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -6647,7 +6647,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 74866,
+      "timeMs": 74867,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -6658,7 +6658,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 74932,
+      "timeMs": 74933,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -6669,7 +6669,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 74998,
+      "timeMs": 74999,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -6680,7 +6680,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 75064,
+      "timeMs": 75065,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -6691,7 +6691,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 75130,
+      "timeMs": 75131,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -6702,7 +6702,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 75196,
+      "timeMs": 75197,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -6790,7 +6790,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 75725,
+      "timeMs": 75726,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -6801,7 +6801,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 75791,
+      "timeMs": 75792,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -6812,7 +6812,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 75857,
+      "timeMs": 75858,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -6823,7 +6823,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 75923,
+      "timeMs": 75924,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -6834,7 +6834,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 75989,
+      "timeMs": 75990,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -6845,7 +6845,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 76055,
+      "timeMs": 76056,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -6922,7 +6922,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 76518,
+      "timeMs": 76519,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -6933,7 +6933,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 76584,
+      "timeMs": 76585,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -6944,7 +6944,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 76650,
+      "timeMs": 76651,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -6955,7 +6955,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 76716,
+      "timeMs": 76717,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -6966,7 +6966,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 76782,
+      "timeMs": 76783,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -6977,7 +6977,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 76848,
+      "timeMs": 76849,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -7054,7 +7054,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 77575,
+      "timeMs": 77576,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -7065,7 +7065,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 77707,
+      "timeMs": 77708,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -7076,7 +7076,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 77707,
+      "timeMs": 77708,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -7131,7 +7131,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 78170,
+      "timeMs": 78171,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -7142,7 +7142,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 78236,
+      "timeMs": 78237,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -7153,7 +7153,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 78302,
+      "timeMs": 78303,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -7164,7 +7164,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 78368,
+      "timeMs": 78369,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -7175,7 +7175,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 78434,
+      "timeMs": 78435,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -7186,7 +7186,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 78500,
+      "timeMs": 78501,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -7197,7 +7197,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 78566,
+      "timeMs": 78567,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -7285,7 +7285,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 79029,
+      "timeMs": 79030,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -7296,7 +7296,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 79095,
+      "timeMs": 79096,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -7307,7 +7307,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 79161,
+      "timeMs": 79162,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -7318,7 +7318,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 79227,
+      "timeMs": 79228,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -7329,7 +7329,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 79293,
+      "timeMs": 79294,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -7340,7 +7340,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 79359,
+      "timeMs": 79360,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -7428,7 +7428,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 79888,
+      "timeMs": 79889,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -7439,7 +7439,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 79954,
+      "timeMs": 79955,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -7450,7 +7450,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 80020,
+      "timeMs": 80021,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -7461,7 +7461,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 80086,
+      "timeMs": 80087,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -7472,7 +7472,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 80152,
+      "timeMs": 80153,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -7483,7 +7483,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 80218,
+      "timeMs": 80219,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -7560,7 +7560,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 80681,
+      "timeMs": 80682,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -7571,7 +7571,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 80747,
+      "timeMs": 80748,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -7582,7 +7582,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 80813,
+      "timeMs": 80814,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -7593,7 +7593,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 80879,
+      "timeMs": 80880,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -7604,7 +7604,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 80945,
+      "timeMs": 80946,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -7615,7 +7615,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 81011,
+      "timeMs": 81012,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -7703,7 +7703,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 81540,
+      "timeMs": 81541,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -7714,7 +7714,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 81606,
+      "timeMs": 81607,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -7725,7 +7725,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 81672,
+      "timeMs": 81673,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -7736,7 +7736,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 81738,
+      "timeMs": 81739,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -7747,7 +7747,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 81804,
+      "timeMs": 81805,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -7758,7 +7758,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 81870,
+      "timeMs": 81871,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -7835,7 +7835,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 82333,
+      "timeMs": 82334,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -7846,7 +7846,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 82399,
+      "timeMs": 82400,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -7857,7 +7857,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 82465,
+      "timeMs": 82466,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -7868,7 +7868,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 82531,
+      "timeMs": 82532,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -7879,7 +7879,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 82597,
+      "timeMs": 82598,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -7890,7 +7890,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 82663,
+      "timeMs": 82664,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -7901,7 +7901,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 82729,
+      "timeMs": 82730,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -7978,7 +7978,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 83192,
+      "timeMs": 83193,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -7989,7 +7989,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 83258,
+      "timeMs": 83259,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -8000,7 +8000,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 83324,
+      "timeMs": 83325,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -8011,7 +8011,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 83390,
+      "timeMs": 83391,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -8022,7 +8022,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 83456,
+      "timeMs": 83457,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -8033,7 +8033,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 83522,
+      "timeMs": 83523,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -8121,7 +8121,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 84051,
+      "timeMs": 84052,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -8132,7 +8132,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 84117,
+      "timeMs": 84118,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -8143,7 +8143,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 84183,
+      "timeMs": 84184,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -8154,7 +8154,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 84249,
+      "timeMs": 84250,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -8165,7 +8165,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 84315,
+      "timeMs": 84316,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -8176,7 +8176,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 84381,
+      "timeMs": 84382,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -8253,7 +8253,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 84844,
+      "timeMs": 84845,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -8264,7 +8264,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 84910,
+      "timeMs": 84911,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -8275,7 +8275,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 84976,
+      "timeMs": 84977,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -8286,7 +8286,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 85042,
+      "timeMs": 85043,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -8297,7 +8297,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 85108,
+      "timeMs": 85109,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -8308,7 +8308,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 85108,
+      "timeMs": 85109,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -8319,7 +8319,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 85174,
+      "timeMs": 85175,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -8330,7 +8330,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 85240,
+      "timeMs": 85241,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -8407,7 +8407,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 85703,
+      "timeMs": 85704,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -8418,7 +8418,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 85769,
+      "timeMs": 85770,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -8429,7 +8429,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 85835,
+      "timeMs": 85836,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -8440,7 +8440,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 85901,
+      "timeMs": 85902,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -8451,7 +8451,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 85967,
+      "timeMs": 85968,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -8462,7 +8462,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 86033,
+      "timeMs": 86034,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -8539,7 +8539,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 86496,
+      "timeMs": 86497,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -8550,7 +8550,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 86562,
+      "timeMs": 86563,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -8561,7 +8561,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 86628,
+      "timeMs": 86629,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -8572,7 +8572,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 86694,
+      "timeMs": 86695,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -8583,7 +8583,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 86694,
+      "timeMs": 86695,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -8594,7 +8594,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 86826,
+      "timeMs": 86827,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -8649,7 +8649,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 87355,
+      "timeMs": 87356,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -8660,7 +8660,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 87355,
+      "timeMs": 87356,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -8671,7 +8671,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 87487,
+      "timeMs": 87488,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -8682,7 +8682,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 87487,
+      "timeMs": 87488,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -8712,10 +8712,10 @@
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 1,
-      "durationMs": 264
+      "durationMs": 265
     },
     {
-      "timeMs": 88280,
+      "timeMs": 88281,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -8726,7 +8726,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 88280,
+      "timeMs": 88281,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -8737,7 +8737,7 @@
       "durationMs": 793
     },
     {
-      "timeMs": 88412,
+      "timeMs": 88413,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -8748,7 +8748,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 88544,
+      "timeMs": 88545,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -8803,7 +8803,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 89073,
+      "timeMs": 89074,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -8814,7 +8814,7 @@
       "durationMs": 793
     },
     {
-      "timeMs": 89073,
+      "timeMs": 89074,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -8825,7 +8825,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 89073,
+      "timeMs": 89074,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -8836,7 +8836,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 89205,
+      "timeMs": 89206,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -8847,7 +8847,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 89337,
+      "timeMs": 89338,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -8902,7 +8902,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 89866,
+      "timeMs": 89867,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -8924,7 +8924,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 90130,
+      "timeMs": 90131,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -8979,7 +8979,7 @@
       "durationMs": 794
     },
     {
-      "timeMs": 90923,
+      "timeMs": 90924,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -8990,7 +8990,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 90989,
+      "timeMs": 90990,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -9001,7 +9001,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 91055,
+      "timeMs": 91056,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -9089,7 +9089,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 92774,
+      "timeMs": 92775,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -9100,7 +9100,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 93038,
+      "timeMs": 93039,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -9111,7 +9111,7 @@
       "durationMs": 529
     },
     {
-      "timeMs": 93567,
+      "timeMs": 93568,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -9122,7 +9122,7 @@
       "durationMs": 264
     },
     {
-      "timeMs": 93831,
+      "timeMs": 93832,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -9130,7 +9130,7 @@
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 1,
-      "durationMs": 133
+      "durationMs": 132
     },
     {
       "timeMs": 93964,
@@ -9163,10 +9163,10 @@
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 1,
-      "durationMs": 264
+      "durationMs": 265
     },
     {
-      "timeMs": 94624,
+      "timeMs": 94625,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -9174,7 +9174,7 @@
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 1,
-      "durationMs": 529
+      "durationMs": 528
     },
     {
       "timeMs": 95153,
@@ -9185,10 +9185,10 @@
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 1,
-      "durationMs": 132
+      "durationMs": 133
     },
     {
-      "timeMs": 95417,
+      "timeMs": 95418,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -9199,7 +9199,7 @@
       "durationMs": 1586
     },
     {
-      "timeMs": 95549,
+      "timeMs": 95550,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -9243,7 +9243,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 96078,
+      "timeMs": 96079,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -9254,7 +9254,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 96210,
+      "timeMs": 96211,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -9265,7 +9265,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 96342,
+      "timeMs": 96343,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -9309,7 +9309,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 96871,
+      "timeMs": 96872,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -9320,7 +9320,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 97003,
+      "timeMs": 97004,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -9331,7 +9331,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 97135,
+      "timeMs": 97136,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -9342,7 +9342,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 97267,
+      "timeMs": 97268,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -9375,7 +9375,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 97796,
+      "timeMs": 97797,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -9386,7 +9386,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 97796,
+      "timeMs": 97797,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -9419,7 +9419,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 99382,
+      "timeMs": 99383,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -9427,7 +9427,7 @@
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 1,
-      "durationMs": 529
+      "durationMs": 528
     },
     {
       "timeMs": 99911,
@@ -9449,10 +9449,10 @@
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 1,
-      "durationMs": 132
+      "durationMs": 133
     },
     {
-      "timeMs": 100307,
+      "timeMs": 100308,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -9463,7 +9463,7 @@
       "durationMs": 132
     },
     {
-      "timeMs": 100439,
+      "timeMs": 100440,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -9471,7 +9471,7 @@
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 1,
-      "durationMs": 265
+      "durationMs": 264
     },
     {
       "timeMs": 100704,
@@ -9551,7 +9551,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 102818,
+      "timeMs": 102819,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -9562,7 +9562,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 102950,
+      "timeMs": 102951,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -9573,7 +9573,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 102950,
+      "timeMs": 102951,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -9639,7 +9639,7 @@
       "durationMs": 33
     },
     {
-      "timeMs": 103545,
+      "timeMs": 103546,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -9650,7 +9650,7 @@
       "durationMs": 33
     },
     {
-      "timeMs": 103611,
+      "timeMs": 103612,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -9661,7 +9661,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 103743,
+      "timeMs": 103744,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -9672,7 +9672,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 103875,
+      "timeMs": 103876,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -9683,7 +9683,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 103875,
+      "timeMs": 103876,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -9727,7 +9727,7 @@
       "durationMs": 913
     },
     {
-      "timeMs": 104444,
+      "timeMs": 104445,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -9738,7 +9738,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 104596,
+      "timeMs": 104597,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -9782,7 +9782,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 105194,
+      "timeMs": 105195,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -9804,7 +9804,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 105477,
+      "timeMs": 105478,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -9826,7 +9826,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 105760,
+      "timeMs": 105761,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -9845,7 +9845,7 @@
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 1,
-      "durationMs": 792
+      "durationMs": 793
     },
     {
       "timeMs": 105902,
@@ -9859,7 +9859,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 106430,
+      "timeMs": 106431,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -9870,7 +9870,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 106562,
+      "timeMs": 106563,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -9881,7 +9881,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 106694,
+      "timeMs": 106695,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -9947,7 +9947,7 @@
       "durationMs": 33
     },
     {
-      "timeMs": 107157,
+      "timeMs": 107158,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -9958,7 +9958,7 @@
       "durationMs": 33
     },
     {
-      "timeMs": 107223,
+      "timeMs": 107224,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -9969,7 +9969,7 @@
       "durationMs": 33
     },
     {
-      "timeMs": 107289,
+      "timeMs": 107290,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -9980,7 +9980,7 @@
       "durationMs": 33
     },
     {
-      "timeMs": 107355,
+      "timeMs": 107356,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -9991,7 +9991,7 @@
       "durationMs": 33
     },
     {
-      "timeMs": 107421,
+      "timeMs": 107422,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -10013,7 +10013,7 @@
       "durationMs": 35
     },
     {
-      "timeMs": 107557,
+      "timeMs": 107558,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -10021,10 +10021,10 @@
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 1,
-      "durationMs": 36
+      "durationMs": 35
     },
     {
-      "timeMs": 107628,
+      "timeMs": 107629,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -10043,7 +10043,7 @@
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 1,
-      "durationMs": 35
+      "durationMs": 36
     },
     {
       "timeMs": 107770,
@@ -10098,10 +10098,10 @@
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 1,
-      "durationMs": 132
+      "durationMs": 133
     },
     {
-      "timeMs": 108298,
+      "timeMs": 108299,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -10109,10 +10109,10 @@
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 1,
-      "durationMs": 529
+      "durationMs": 528
     },
     {
-      "timeMs": 108562,
+      "timeMs": 108563,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -10120,10 +10120,10 @@
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 1,
-      "durationMs": 265
+      "durationMs": 264
     },
     {
-      "timeMs": 108562,
+      "timeMs": 108563,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -10131,7 +10131,7 @@
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 1,
-      "durationMs": 265
+      "durationMs": 264
     },
     {
       "timeMs": 108827,
@@ -10197,10 +10197,10 @@
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 1,
-      "durationMs": 132
+      "durationMs": 133
     },
     {
-      "timeMs": 109619,
+      "timeMs": 109620,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -10211,7 +10211,7 @@
       "durationMs": 132
     },
     {
-      "timeMs": 109751,
+      "timeMs": 109752,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -10222,7 +10222,7 @@
       "durationMs": 132
     },
     {
-      "timeMs": 109883,
+      "timeMs": 109884,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -10233,7 +10233,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 109883,
+      "timeMs": 109884,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -10354,7 +10354,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 110412,
+      "timeMs": 110413,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -10365,7 +10365,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 110412,
+      "timeMs": 110413,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -10373,7 +10373,7 @@
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 1,
-      "durationMs": 284
+      "durationMs": 283
     },
     {
       "timeMs": 110696,
@@ -10453,7 +10453,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 111158,
+      "timeMs": 111159,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -10464,7 +10464,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 111224,
+      "timeMs": 111225,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -10475,7 +10475,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 111290,
+      "timeMs": 111291,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -10486,7 +10486,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 111356,
+      "timeMs": 111357,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -10497,7 +10497,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 111422,
+      "timeMs": 111423,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -10508,7 +10508,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 111488,
+      "timeMs": 111489,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -10519,7 +10519,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 111488,
+      "timeMs": 111489,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -10596,7 +10596,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 111951,
+      "timeMs": 111952,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -10607,7 +10607,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 112017,
+      "timeMs": 112018,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -10618,7 +10618,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 112083,
+      "timeMs": 112084,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -10629,7 +10629,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 112149,
+      "timeMs": 112150,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -10640,7 +10640,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 112215,
+      "timeMs": 112216,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -10651,7 +10651,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 112281,
+      "timeMs": 112282,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -10662,7 +10662,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 112281,
+      "timeMs": 112282,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -10673,7 +10673,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 112347,
+      "timeMs": 112348,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -10750,7 +10750,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 112810,
+      "timeMs": 112811,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -10761,7 +10761,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 112876,
+      "timeMs": 112877,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -10772,7 +10772,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 112942,
+      "timeMs": 112943,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -10783,7 +10783,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 113008,
+      "timeMs": 113009,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -10794,7 +10794,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 113074,
+      "timeMs": 113075,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -10805,7 +10805,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 113140,
+      "timeMs": 113141,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -10893,7 +10893,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 113669,
+      "timeMs": 113670,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -10904,7 +10904,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 113735,
+      "timeMs": 113736,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -10915,7 +10915,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 113801,
+      "timeMs": 113802,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -10934,7 +10934,7 @@
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 1,
-      "durationMs": 3171
+      "durationMs": 3172
     },
     {
       "timeMs": 113867,
@@ -10948,7 +10948,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 115188,
+      "timeMs": 115189,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -10959,7 +10959,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 115320,
+      "timeMs": 115321,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -10970,7 +10970,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 115452,
+      "timeMs": 115453,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -10981,7 +10981,7 @@
       "durationMs": 1454
     },
     {
-      "timeMs": 118492,
+      "timeMs": 118493,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -10992,7 +10992,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 118558,
+      "timeMs": 118559,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -11003,7 +11003,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 118624,
+      "timeMs": 118625,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -11047,7 +11047,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 119285,
+      "timeMs": 119286,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -11058,7 +11058,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 119351,
+      "timeMs": 119352,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -11069,7 +11069,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 119417,
+      "timeMs": 119418,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -11080,7 +11080,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 119417,
+      "timeMs": 119418,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -11091,7 +11091,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 119549,
+      "timeMs": 119550,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -11102,7 +11102,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 119681,
+      "timeMs": 119682,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -11157,7 +11157,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 120144,
+      "timeMs": 120145,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -11176,7 +11176,7 @@
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 1,
-      "durationMs": 792
+      "durationMs": 793
     },
     {
       "timeMs": 120210,
@@ -11212,7 +11212,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 120870,
+      "timeMs": 120871,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -11223,7 +11223,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 121002,
+      "timeMs": 121003,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -11231,10 +11231,10 @@
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 1,
-      "durationMs": 265
+      "durationMs": 264
     },
     {
-      "timeMs": 121002,
+      "timeMs": 121003,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -11264,10 +11264,10 @@
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 1,
-      "durationMs": 264
+      "durationMs": 265
     },
     {
-      "timeMs": 121531,
+      "timeMs": 121532,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -11278,7 +11278,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 121531,
+      "timeMs": 121532,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -11289,7 +11289,7 @@
       "durationMs": 264
     },
     {
-      "timeMs": 121795,
+      "timeMs": 121796,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -11300,7 +11300,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 121795,
+      "timeMs": 121796,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -11308,7 +11308,7 @@
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 1,
-      "durationMs": 397
+      "durationMs": 396
     },
     {
       "timeMs": 122060,
@@ -11330,10 +11330,10 @@
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 1,
-      "durationMs": 396
+      "durationMs": 397
     },
     {
-      "timeMs": 122456,
+      "timeMs": 122457,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -11344,8 +11344,52 @@
       "durationMs": 0
     },
     {
-      "timeMs": 122588,
+      "timeMs": 122589,
       "lane": 0,
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 1,
+      "durationMs": 264
+    },
+    {
+      "timeMs": 122589,
+      "lane": 3,
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 1,
+      "durationMs": 0
+    },
+    {
+      "timeMs": 122853,
+      "lane": 1,
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 1,
+      "durationMs": 0
+    },
+    {
+      "timeMs": 122853,
+      "lane": 2,
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 1,
+      "durationMs": 264
+    },
+    {
+      "timeMs": 123117,
+      "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
       "rampSpeedupCoefMultiplier": 1,
@@ -11355,50 +11399,6 @@
       "durationMs": 265
     },
     {
-      "timeMs": 122588,
-      "lane": 3,
-      "baseSpeedupCoef": 1,
-      "densitySpeedupCoefMultiplier": 1,
-      "rampSpeedupCoefMultiplier": 1,
-      "manualSpeedupCoefMultiplier": 1,
-      "autoSpeedupCoefMultiplier": 1,
-      "speedupCoef": 1,
-      "durationMs": 0
-    },
-    {
-      "timeMs": 122853,
-      "lane": 1,
-      "baseSpeedupCoef": 1,
-      "densitySpeedupCoefMultiplier": 1,
-      "rampSpeedupCoefMultiplier": 1,
-      "manualSpeedupCoefMultiplier": 1,
-      "autoSpeedupCoefMultiplier": 1,
-      "speedupCoef": 1,
-      "durationMs": 0
-    },
-    {
-      "timeMs": 122853,
-      "lane": 2,
-      "baseSpeedupCoef": 1,
-      "densitySpeedupCoefMultiplier": 1,
-      "rampSpeedupCoefMultiplier": 1,
-      "manualSpeedupCoefMultiplier": 1,
-      "autoSpeedupCoefMultiplier": 1,
-      "speedupCoef": 1,
-      "durationMs": 264
-    },
-    {
-      "timeMs": 123117,
-      "lane": 1,
-      "baseSpeedupCoef": 1,
-      "densitySpeedupCoefMultiplier": 1,
-      "rampSpeedupCoefMultiplier": 1,
-      "manualSpeedupCoefMultiplier": 1,
-      "autoSpeedupCoefMultiplier": 1,
-      "speedupCoef": 1,
-      "durationMs": 264
-    },
-    {
       "timeMs": 123117,
       "lane": 3,
       "baseSpeedupCoef": 1,
@@ -11410,7 +11410,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 123381,
+      "timeMs": 123382,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -11421,7 +11421,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 123381,
+      "timeMs": 123382,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -11443,7 +11443,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 124042,
+      "timeMs": 124043,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -11454,7 +11454,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 124174,
+      "timeMs": 124175,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -11465,7 +11465,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 124174,
+      "timeMs": 124175,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -11498,7 +11498,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 124967,
+      "timeMs": 124968,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -11509,7 +11509,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 124967,
+      "timeMs": 124968,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -11520,7 +11520,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 125099,
+      "timeMs": 125100,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -11575,7 +11575,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 125628,
+      "timeMs": 125629,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -11586,7 +11586,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 125628,
+      "timeMs": 125629,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -11597,7 +11597,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 125760,
+      "timeMs": 125761,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -11608,7 +11608,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 125760,
+      "timeMs": 125761,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -11619,7 +11619,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 125892,
+      "timeMs": 125893,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -11630,7 +11630,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 126024,
+      "timeMs": 126025,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -11685,7 +11685,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 126487,
+      "timeMs": 126488,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -11696,7 +11696,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 126553,
+      "timeMs": 126554,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -11707,7 +11707,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 126553,
+      "timeMs": 126554,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -11718,7 +11718,7 @@
       "durationMs": 793
     },
     {
-      "timeMs": 126817,
+      "timeMs": 126818,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -11751,7 +11751,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 127346,
+      "timeMs": 127347,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -11762,7 +11762,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 127346,
+      "timeMs": 127347,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -11773,7 +11773,7 @@
       "durationMs": 264
     },
     {
-      "timeMs": 127610,
+      "timeMs": 127611,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -11781,10 +11781,10 @@
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 1,
-      "durationMs": 265
+      "durationMs": 264
     },
     {
-      "timeMs": 127610,
+      "timeMs": 127611,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -11803,7 +11803,7 @@
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 1,
-      "durationMs": 264
+      "durationMs": 265
     },
     {
       "timeMs": 127875,
@@ -11817,7 +11817,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 128139,
+      "timeMs": 128140,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -11828,7 +11828,7 @@
       "durationMs": 396
     },
     {
-      "timeMs": 128139,
+      "timeMs": 128140,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -11839,7 +11839,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 128403,
+      "timeMs": 128404,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -11850,7 +11850,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 128535,
+      "timeMs": 128536,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -11858,7 +11858,7 @@
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 1,
-      "durationMs": 397
+      "durationMs": 396
     },
     {
       "timeMs": 128800,
@@ -11891,10 +11891,10 @@
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 1,
-      "durationMs": 264
+      "durationMs": 265
     },
     {
-      "timeMs": 129196,
+      "timeMs": 129197,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -11902,10 +11902,10 @@
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 1,
-      "durationMs": 265
+      "durationMs": 264
     },
     {
-      "timeMs": 129196,
+      "timeMs": 129197,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -11960,7 +11960,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 130121,
+      "timeMs": 130122,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -12004,7 +12004,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 130782,
+      "timeMs": 130783,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -12059,7 +12059,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 131575,
+      "timeMs": 131576,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -12070,7 +12070,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 131707,
+      "timeMs": 131708,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -12081,7 +12081,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 131707,
+      "timeMs": 131708,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -12092,7 +12092,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 131839,
+      "timeMs": 131840,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -12158,7 +12158,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 132368,
+      "timeMs": 132369,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -12169,7 +12169,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 132500,
+      "timeMs": 132501,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -12180,7 +12180,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 132632,
+      "timeMs": 132633,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -12191,7 +12191,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 132698,
+      "timeMs": 132699,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -12268,7 +12268,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 133293,
+      "timeMs": 133294,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -12279,7 +12279,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 133293,
+      "timeMs": 133294,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -12367,7 +12367,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 134020,
+      "timeMs": 134021,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -12378,7 +12378,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 134086,
+      "timeMs": 134087,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -12389,7 +12389,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 134152,
+      "timeMs": 134153,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -12400,7 +12400,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 134218,
+      "timeMs": 134219,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -12411,7 +12411,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 134284,
+      "timeMs": 134285,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -12422,7 +12422,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 134350,
+      "timeMs": 134351,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -12488,7 +12488,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 134879,
+      "timeMs": 134880,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -12499,7 +12499,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 134879,
+      "timeMs": 134880,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -12510,7 +12510,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 135143,
+      "timeMs": 135144,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -12521,7 +12521,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 135143,
+      "timeMs": 135144,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -12609,7 +12609,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 135672,
+      "timeMs": 135673,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -12620,7 +12620,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 135738,
+      "timeMs": 135739,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -12631,7 +12631,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 135804,
+      "timeMs": 135805,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -12642,7 +12642,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 135870,
+      "timeMs": 135871,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -12653,7 +12653,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 135936,
+      "timeMs": 135937,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -12664,7 +12664,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 136002,
+      "timeMs": 136003,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -12719,7 +12719,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 136465,
+      "timeMs": 136466,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -12730,7 +12730,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 136465,
+      "timeMs": 136466,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -12741,7 +12741,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 136729,
+      "timeMs": 136730,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -12752,7 +12752,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 136729,
+      "timeMs": 136730,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -12763,7 +12763,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 136861,
+      "timeMs": 136862,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -12840,7 +12840,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 137324,
+      "timeMs": 137325,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -12851,7 +12851,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 137390,
+      "timeMs": 137391,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -12862,7 +12862,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 137456,
+      "timeMs": 137457,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -12873,7 +12873,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 137522,
+      "timeMs": 137523,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -12884,7 +12884,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 137588,
+      "timeMs": 137589,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -12895,7 +12895,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 137654,
+      "timeMs": 137655,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -12906,7 +12906,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 137654,
+      "timeMs": 137655,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -12961,7 +12961,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 138315,
+      "timeMs": 138316,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -12972,7 +12972,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 138315,
+      "timeMs": 138316,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -12983,7 +12983,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 138447,
+      "timeMs": 138448,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -12994,7 +12994,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 138447,
+      "timeMs": 138448,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -13005,7 +13005,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 138447,
+      "timeMs": 138448,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -13049,7 +13049,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 138976,
+      "timeMs": 138977,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -13060,7 +13060,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 138976,
+      "timeMs": 138977,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -13071,7 +13071,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 138976,
+      "timeMs": 138977,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -13082,7 +13082,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 138976,
+      "timeMs": 138977,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -13093,7 +13093,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 139901,
+      "timeMs": 139902,
       "lane": 3,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -13104,7 +13104,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 139945,
+      "timeMs": 139946,
       "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -13115,7 +13115,7 @@
       "durationMs": 0
     },
     {
-      "timeMs": 139989,
+      "timeMs": 139990,
       "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
@@ -13134,7 +13134,7 @@
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 1,
-      "durationMs": 3171
+      "durationMs": 3172
     }
   ]
 }
