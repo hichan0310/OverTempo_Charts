@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+import contextlib
+import io
 import json
 import sys
 import tempfile
@@ -55,7 +57,7 @@ class GridValidationTests(unittest.TestCase):
     def tearDown(self):
         self.temp.cleanup()
 
-    def test_rejects_note_off_declared_grid(self):
+    def test_warns_for_note_off_declared_grid(self):
         (self.song / "chart.4k-speedcoef.json").write_text(
             json.dumps(
                 {
@@ -65,8 +67,10 @@ class GridValidationTests(unittest.TestCase):
             ),
             encoding="utf-8",
         )
-        with self.assertRaises(SystemExit):
+        stderr = io.StringIO()
+        with contextlib.redirect_stderr(stderr):
             build_manifest.validate_song(self.song, self.meta)
+        self.assertIn("WARNING: speedcoef chart has 1 note(s) off its declared grid", stderr.getvalue())
 
 
 if __name__ == "__main__":

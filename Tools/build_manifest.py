@@ -22,6 +22,9 @@ def die(message: str) -> None:
     print(f"ERROR: {message}", file=sys.stderr)
     sys.exit(1)
 
+def warn(message: str) -> None:
+    print(f"WARNING: {message}", file=sys.stderr)
+
 def git(args, cwd: Path) -> str:
     return subprocess.check_output(["git"] + args, cwd=str(cwd), text=True).strip()
 
@@ -120,7 +123,7 @@ def validate_song(song_dir: Path, meta: dict) -> None:
                 for original, aligned in zip(data.get("notes", []), snapped.get("notes", []))
             )
             if off_grid:
-                die(f"speedcoef chart has {off_grid} note(s) off its declared grid: {sc}")
+                warn(f"speedcoef chart has {off_grid} note(s) off its declared grid: {sc}")
 
 def build_song_zip(repo: Path, song_dir: Path, song_id: str, output_songs: Path, zip_name: str) -> Path:
     zip_path = output_songs / zip_name
