@@ -22,7 +22,7 @@
   "timing": {
     "bpm": 220,
     "offsetMs": 0,
-    "snapDiv": 4,
+    "snapDiv": 16,
     "bpmChanges": []
   },
   "editorSettings": {
@@ -33,7 +33,60 @@
     "startMs": 0,
     "endMs": 15000
   },
-  "speedLimitLines": [],
+  "speedLimitLines": [
+    {
+      "timeMs": 78000,
+      "maxSpeed": 1.12
+    },
+    {
+      "timeMs": 78017,
+      "maxSpeed": 1.11
+    },
+    {
+      "timeMs": 78034,
+      "maxSpeed": 1.1
+    },
+    {
+      "timeMs": 78051,
+      "maxSpeed": 1.09
+    },
+    {
+      "timeMs": 78068,
+      "maxSpeed": 1.08
+    },
+    {
+      "timeMs": 78085,
+      "maxSpeed": 1.07
+    },
+    {
+      "timeMs": 78102,
+      "maxSpeed": 1.06
+    },
+    {
+      "timeMs": 78119,
+      "maxSpeed": 1.05
+    },
+    {
+      "timeMs": 78136,
+      "maxSpeed": 1.04
+    },
+    {
+      "timeMs": 78153,
+      "maxSpeed": 1.03
+    },
+    {
+      "timeMs": 78170,
+      "maxSpeed": 1.02
+    },
+    {
+      "timeMs": 78188,
+      "maxSpeed": 1.01
+    },
+    {
+      "timeMs": 78205,
+      "maxSpeed": 1
+    }
+  ],
   "stageDeltaLines": [],
   "notes": [
     {
@@ -8861,7 +8914,7 @@
   ],
   "autoCoef": {
     "schemaVersion": 1,
-    "generatedAt": "2026-08-04T15:21:37.865Z",
+    "generatedAt": "2026-08-04T15:34:35.938Z",
     "description": "Final speedupCoef = baseSpeedupCoef * autoSpeedupCoefMultiplier. Load restores editable coef 0/1 from baseSpeedupCoef.",
     "settings": {
       "sigmaMs": 1600,
