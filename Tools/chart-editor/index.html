@@ -1359,7 +1359,9 @@ $('encryptionArgIdInput').onchange=()=>pushHistory();
 $('buildEncryptedChartBtn').onclick=()=>buildEncryptedRelease();
 function applyEditorCanvasCursor(reason){const c=document.getElementById('editorCanvas'),before=c.style.cursor;c.style.cursor='crosshair';const r=c.getBoundingClientRect();console.info('[OverTempo canvas cursor]',{reason,before,after:c.style.cursor,computed:getComputedStyle(c).cursor,rectWidth:r.width,rectHeight:r.height,cssWidth:c._cssW,cssHeight:c._cssH,backingWidth:c.width,backingHeight:c.height,dpr:window.devicePixelRatio})}
 const updatePanelsBeforeCursorLock=updatePanels;updatePanels=function(){updatePanelsBeforeCursorLock();applyEditorCanvasCursor('updatePanels')};
-window.addEventListener('resize',resize);resize();syncStateToUi();updatePanels();projectRefreshSongs(false);tick();
+function settleEditorCanvas(reason){requestAnimationFrame(()=>requestAnimationFrame(()=>{resize();const r=canvas.getBoundingClientRect();console.info('[OverTempo canvas resize]',{reason,rectWidth:r.width,rectHeight:r.height,cssWidth:canvas._cssW,cssHeight:canvas._cssH,backingWidth:canvas.width,backingHeight:canvas.height,dpr:window.devicePixelRatio})}))}
+const canvasWrapResizeObserver=new ResizeObserver(()=>{const r=canvas.parentElement.getBoundingClientRect();if(Math.abs((canvas._cssW||0)-r.width)>.01||Math.abs((canvas._cssH||0)-r.height)>.01)settleEditorCanvas('canvas-wrap ResizeObserver')});canvasWrapResizeObserver.observe(canvas.parentElement);
+window.addEventListener('load',()=>settleEditorCanvas('window load'),{once:true});window.addEventListener('resize',resize);resize();syncStateToUi();updatePanels();projectRefreshSongs(false).finally(()=>settleEditorCanvas('project refresh complete'));tick();
 })();
 </script>
 </body>
