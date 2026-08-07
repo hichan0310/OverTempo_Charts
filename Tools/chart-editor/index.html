@@ -518,7 +518,7 @@ function hitHoldEndpointAt(x,y){
  return best;
 }
 canvas.addEventListener('contextmenu',evt=>evt.preventDefault());
-canvas.addEventListener('mousedown',evt=>{ensureAudioCtx();const p=mousePos(evt);
+canvas.addEventListener('mousedown',evt=>{ensureAudioCtx();const p=mousePos(evt),r=canvas.getBoundingClientRect();console.info('[OverTempo canvas pointer]',{clientX:evt.clientX,clientY:evt.clientY,rectLeft:r.left,rectTop:r.top,rectWidth:r.width,rectHeight:r.height,canvasX:p.x,canvasY:p.y,cssWidth:canvas._cssW,cssHeight:canvas._cssH,backingWidth:canvas.width,backingHeight:canvas.height,dpr:window.devicePixelRatio,cursor:canvas.style.cursor,computedCursor:getComputedStyle(canvas).cursor});
 
  if(state.toolMode==='playhead'){
   state.playheadMs=Math.max(0,snapTime(yToMs(p.y)));
@@ -1357,7 +1357,8 @@ $('encryptionEnabledInput').onchange=()=>{pushHistory();syncUiToState();updatePa
 $('encryptionArgIdInput').oninput=()=>{syncUiToState();updatePanels()};
 $('encryptionArgIdInput').onchange=()=>pushHistory();
 $('buildEncryptedChartBtn').onclick=()=>buildEncryptedRelease();
-const updatePanelsBeforeCursorLock=updatePanels;updatePanels=function(){updatePanelsBeforeCursorLock();document.getElementById('editorCanvas').style.cursor='crosshair'};
+function applyEditorCanvasCursor(reason){const c=document.getElementById('editorCanvas'),before=c.style.cursor;c.style.cursor='crosshair';const r=c.getBoundingClientRect();console.info('[OverTempo canvas cursor]',{reason,before,after:c.style.cursor,computed:getComputedStyle(c).cursor,rectWidth:r.width,rectHeight:r.height,cssWidth:c._cssW,cssHeight:c._cssH,backingWidth:c.width,backingHeight:c.height,dpr:window.devicePixelRatio})}
+const updatePanelsBeforeCursorLock=updatePanels;updatePanels=function(){updatePanelsBeforeCursorLock();applyEditorCanvasCursor('updatePanels')};
 window.addEventListener('resize',resize);resize();syncStateToUi();updatePanels();projectRefreshSongs(false);tick();
 })();
 </script>
