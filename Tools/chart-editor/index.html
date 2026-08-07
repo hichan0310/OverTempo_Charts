@@ -1357,7 +1357,7 @@ $('encryptionEnabledInput').onchange=()=>{pushHistory();syncUiToState();updatePa
 $('encryptionArgIdInput').oninput=()=>{syncUiToState();updatePanels()};
 $('encryptionArgIdInput').onchange=()=>pushHistory();
 $('buildEncryptedChartBtn').onclick=()=>buildEncryptedRelease();
-window.addEventListener('load',()=>{document.getElementById('editorCanvas').style.cursor='crosshair'},{once:true});
+const updatePanelsBeforeCursorLock=updatePanels;updatePanels=function(){updatePanelsBeforeCursorLock();document.getElementById('editorCanvas').style.cursor='crosshair'};
 window.addEventListener('resize',resize);resize();syncStateToUi();updatePanels();projectRefreshSongs(false);tick();
 })();
 </script>
