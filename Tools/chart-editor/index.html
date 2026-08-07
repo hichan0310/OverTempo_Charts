@@ -1358,7 +1358,10 @@ $('encryptionEnabledInput').onchange=()=>{pushHistory();syncUiToState();updatePa
 $('encryptionArgIdInput').oninput=()=>{syncUiToState();updatePanels()};
 $('encryptionArgIdInput').onchange=()=>pushHistory();
 $('buildEncryptedChartBtn').onclick=()=>buildEncryptedRelease();
-window.addEventListener('resize',resize);resize();syncStateToUi();updatePanels();projectRefreshSongs(false);tick();
+function forceEditorCanvasCrosshair(){if(canvas.style.cursor!=='crosshair')canvas.style.cursor='crosshair'}
+new MutationObserver(forceEditorCanvasCrosshair).observe(canvas,{attributes:true,attributeFilter:['style']});
+window.addEventListener('load',forceEditorCanvasCrosshair);
+window.addEventListener('resize',resize);resize();syncStateToUi();updatePanels();projectRefreshSongs(false);tick();forceEditorCanvasCrosshair();
 })();
 </script>
 </body>
