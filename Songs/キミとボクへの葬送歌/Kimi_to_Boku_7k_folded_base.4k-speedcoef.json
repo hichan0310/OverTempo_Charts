@@ -4,16 +4,16 @@
     "title": "キミとボクへの葬送歌",
     "artist": "ROKINA",
     "source": "",
-    "mapper": "EXCELSIOR",
+    "mapper": "hichan0310",
     "previewStartMs": 0,
     "previewEndMs": 15000,
     "extra": "Imported from BMS _01_exc_b.bms; channels 11,12,13,14,15,18,19; folded 7K->4K (510->505 notes; 0 duplicate taps, 4 overlapping holds, 1 taps inside holds collapsed)",
-    "coverDataUrl": "",
+    "coverDataUrl": "/api/media?song=End%20Time&file=bg.png",
     "audioFileName": "Kimi_to_Boku_official_BMS.wav"
   },
   "difficulty": {
     "name": "7K BEGINNER → 4K Folded",
-    "level": 6,
+    "level": 8,
     "scroll": 1,
     "baseSpeed": 1,
     "notes": "",
@@ -10585,7 +10585,7 @@
   ],
   "autoCoef": {
     "schemaVersion": 1,
-    "generatedAt": "2026-08-04T18:07:18.447Z",
+    "generatedAt": "2026-08-21T13:49:45.677Z",
     "description": "Final speedupCoef = baseSpeedupCoef * autoSpeedupCoefMultiplier. Load restores editable coef 0/1 from baseSpeedupCoef.",
     "settings": {
       "sigmaMs": 1600,

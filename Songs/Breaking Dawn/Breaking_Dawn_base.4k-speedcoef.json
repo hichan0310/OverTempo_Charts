@@ -4,11 +4,11 @@
     "title": "Breaking Dawn feat. 棗いつき",
     "artist": "Getty & Kobaryo",
     "source": "",
-    "mapper": "OverTempo base reconstruction",
+    "mapper": "hichan0310",
     "previewStartMs": 114520,
     "previewEndMs": 129520,
     "extra": "General-purpose 4K tap base rebuilt from the song timing. The tournament LN pattern was discarded; BeatmapID 5318794 was used only as a rhythmic timing reference.",
-    "coverDataUrl": "",
+    "coverDataUrl": "/api/media?song=End%20Time&file=bg.png",
     "audioFileName": "Breaking Dawn feat Itsuki Natsume(Short version).mp3"
   },
   "difficulty": {
@@ -14438,7 +14438,7 @@
   ],
   "autoCoef": {
     "schemaVersion": 1,
-    "generatedAt": "2026-08-05T18:03:28.748Z",
+    "generatedAt": "2026-08-21T13:47:41.858Z",
     "description": "Final speedupCoef = baseSpeedupCoef * autoSpeedupCoefMultiplier. Load restores editable coef 0/1 from baseSpeedupCoef.",
     "settings": {
       "sigmaMs": 1600,

@@ -8,12 +8,12 @@
     "previewStartMs": 103200,
     "previewEndMs": 118200,
     "extra": "Imported from osu!mania calamity.osu; difficulty Easy; BeatmapID 4904323; BeatmapSetID 2288990; first timing point 1338ms",
-    "coverDataUrl": "",
+    "coverDataUrl": "/api/media?song=End%20Time&file=bg.png",
     "audioFileName": "116 Calamity Fortune(2019).wav"
   },
   "difficulty": {
     "name": "Easy",
-    "level": 6.5,
+    "level": 4,
     "scroll": 1,
     "baseSpeed": 1,
     "notes": "",
@@ -5726,7 +5726,7 @@
   ],
   "autoCoef": {
     "schemaVersion": 1,
-    "generatedAt": "2026-08-21T12:15:25.214Z",
+    "generatedAt": "2026-08-21T13:50:05.080Z",
     "description": "Final speedupCoef = baseSpeedupCoef * autoSpeedupCoefMultiplier. Load restores editable coef 0/1 from baseSpeedupCoef.",
     "settings": {
       "sigmaMs": 1600,
