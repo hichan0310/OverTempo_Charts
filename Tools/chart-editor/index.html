@@ -107,7 +107,7 @@ BPM Change: 해당 시점을 새 템포 구간의 첫 박자로 사용합니다.
 (()=>{
 const $=id=>document.getElementById(id),canvas=$('editorCanvas'),ctx=canvas.getContext('2d');
 const lanes=4,chartKeys=['d','f','j','k'];
-const state={notes:[],selectedIds:new Set(),clipboard:[],toolMode:'place',currentCoef:1,currentMode:'tap',playbackRate:1,bpm:180,snapDiv:4,offsetMs:0,pxPerSecond:160,viewStartMs:0,playheadMs:0,isPlaying:false,loop:false,loopStartMs:0,loopEndMs:8000,audioFileName:'',audioDurationMs:0,coverDataUrl:'',recordKeys:false,drag:null,meta:{title:'Untitled',artist:'',source:'',mapper:'',previewStartMs:0,previewEndMs:15000,extra:''},difficulty:{name:'Normal',level:1,scroll:1,baseSpeed:1,notes:''},project:{available:false,songs:[],songName:'',chartName:'',audioName:'',pendingNewSong:null},encryption:{enabled:false,argId:''},bpmChanges:[],speedLimitLines:[],stageDeltaLines:[],autoCoef:{curve:[],settings:{sigmaMs:1600,stepMs:100,minMultiplier:.2,maxMultiplier:1,densityPower:1.15,rampGain:.05,rampStartMultiplier:1,rampEndMultiplier:1.05,rampPower:1.2,cap:1.1,axisMax:1.1,showCurve:true,anchors:''}}};
+const state={notes:[],selectedIds:new Set(),clipboard:[],toolMode:'place',currentCoef:1,currentMode:'tap',playbackRate:1,bpm:180,snapDiv:4,offsetMs:0,pxPerSecond:160,viewStartMs:0,playheadMs:0,isPlaying:false,loop:false,loopStartMs:0,loopEndMs:8000,audioFileName:'',audioDurationMs:0,coverDataUrl:'',recordKeys:false,drag:null,meta:{title:'Untitled',artist:'',source:'',mapper:'',previewStartMs:0,previewEndMs:15000,extra:''},difficulty:{name:'Normal',level:1,scroll:1,baseSpeed:1,notes:''},project:{available:false,songs:[],songName:'',chartName:'',audioName:'',isLoading:false,loadToken:0,loadedSelectionKey:'',pendingNewSong:null},encryption:{enabled:false,argId:''},bpmChanges:[],speedLimitLines:[],stageDeltaLines:[],autoCoef:{curve:[],settings:{sigmaMs:1600,stepMs:100,minMultiplier:.2,maxMultiplier:1,densityPower:1.15,rampGain:.05,rampStartMultiplier:1,rampEndMultiplier:1.05,rampPower:1.2,cap:1.1,axisMax:1.1,showCurve:true,anchors:''}}};
 let audioCtx=null,audioBuffer=null,waveformPeaks=null,nextId=1,lastFrame=performance.now(),playbackStartPerf=0,playbackStartChartMs=0,audioStartedForThisPlayback=false,bgmSource=null,bgmGain=null,bgmActive=false,bgmStartedChartMs=0,bgmStartedCtxTime=0,bgmAudioOffsetSec=0;
 const history={undo:[],redo:[],max:150};
 function ensureAudioCtx(){if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();if(audioCtx.state==='suspended')audioCtx.resume();}
@@ -441,17 +441,20 @@ function exportStageDeltaLines(){
  }));
 }
 function playHit(coef=1,lane=0,when=0){ensureAudioCtx();const vol=parseFloat($('hitVolume').value);if(vol<=0)return;const now=audioCtx.currentTime+when,base=680,osc=audioCtx.createOscillator(),gain=audioCtx.createGain(),filter=audioCtx.createBiquadFilter();osc.type='triangle';osc.frequency.setValueAtTime(base+lane*48,now);osc.frequency.exponentialRampToValueAtTime((base+lane*48)*.72,now+.045);filter.type='lowpass';filter.frequency.setValueAtTime(2400,now);gain.gain.setValueAtTime(.0001,now);gain.gain.exponentialRampToValueAtTime(vol*.17,now+.006);gain.gain.exponentialRampToValueAtTime(.0001,now+.075);osc.connect(filter);filter.connect(gain);gain.connect(audioCtx.destination);osc.start(now);osc.stop(now+.09)}async function loadAudioFile(file){ensureAudioCtx();stopBgm();state.audioFileName=file.name;const arr=await file.arrayBuffer();audioBuffer=await audioCtx.decodeAudioData(arr.slice(0));state.audioDurationMs=audioBuffer.duration*1000;waveformPeaks=computeWaveformPeaks(audioBuffer,9000);updatePanels()}
-async function loadAudioUrl(url,fileName){
+async function loadAudioUrl(url,fileName,guard){
   ensureAudioCtx();
-  stopBgm();
-  state.audioFileName=fileName||url.split('/').pop()||'audio';
   const res=await fetch(url);
   if(!res.ok)throw new Error(`audio fetch failed: ${res.status} ${res.statusText}`);
   const arr=await res.arrayBuffer();
-  audioBuffer=await audioCtx.decodeAudioData(arr.slice(0));
-  state.audioDurationMs=audioBuffer.duration*1000;
-  waveformPeaks=computeWaveformPeaks(audioBuffer,9000);
+  const decodedAudio=await audioCtx.decodeAudioData(arr.slice(0));
+  if(guard&&!guard())return false;
+  stopBgm();
+  state.audioFileName=fileName||url.split('/').pop()||'audio';
+  audioBuffer=decodedAudio;
+  state.audioDurationMs=decodedAudio.duration*1000;
+  waveformPeaks=computeWaveformPeaks(decodedAudio,9000);
   updatePanels();
+  return true;
 }
 function computeWaveformPeaks(buffer,count){const ch0=buffer.getChannelData(0),ch1=buffer.numberOfChannels>1?buffer.getChannelData(1):null,peaks=new Float32Array(count),block=Math.max(1,Math.floor(buffer.length/count));for(let i=0;i<count;i++){let max=0,start=i*block,end=Math.min(buffer.length,start+block);for(let j=start;j<end;j++){const v=Math.abs(ch0[j])+(ch1?Math.abs(ch1[j]):0);if(v>max)max=v}peaks[i]=Math.min(1,max/(ch1?2:1))}return peaks}
 function stopBgm(){
@@ -791,6 +794,29 @@ function projectSelectedAudioName(){
   const el=$('projectAudioSelect');
   return el?el.value:'';
 }
+function projectSelectionKey(songName=projectSelectedSongName(),chartName=projectSelectedChartName()){
+  return songName&&chartName?`${songName}\u0000${chartName}`:'';
+}
+function projectHasLoadedSelection(){
+  const key=projectSelectionKey();
+  return !!key&&!state.project.isLoading&&state.project.loadedSelectionKey===key;
+}
+function projectUpdateActionAvailability(){
+  const ready=projectHasLoadedSelection();
+  for(const id of ['projectSaveBtn','exportBtn','autoExportBtn']){
+    const el=$(id);
+    if(el)el.disabled=!ready;
+  }
+  const loadBtn=$('projectLoadBtn');
+  if(loadBtn)loadBtn.disabled=state.project.isLoading||!projectSelectionKey();
+  const audioSel=$('projectAudioSelect');
+  if(audioSel)audioSel.disabled=state.project.isLoading;
+  const encryptedBtn=$('buildEncryptedChartBtn');
+  if(encryptedBtn)encryptedBtn.disabled=!ready||!state.encryption.enabled;
+}
+function projectLoadIsCurrent(token,key){
+  return token===state.project.loadToken&&key===projectSelectionKey();
+}
 async function projectFetchJson(url,options){
   const res=await fetch(url,options);
   if(!res.ok){
@@ -959,7 +985,7 @@ function projectImportChartData(data){
     state.autoCoef.curve=[];
     autoCoefUpdateStats();
   }
-  state.coverDataUrl=data.meta?.coverDataUrl||state.coverDataUrl||'';
+  state.coverDataUrl=data.meta?.coverDataUrl||'';
   const cleaned=dedupeAndRemoveOverlapsKeepFirst(state.notes);
   state.notes=cleaned.notes;
   state.selectedIds.clear();
@@ -1080,6 +1106,7 @@ async function buildEncryptedRelease(){
  syncUiToState();
  const songName=projectSelectedSongName(),chartName=projectSelectedChartName();
  if(!songName||!chartName){alert('Song과 Chart를 선택하세요.');return}
+ if(!projectHasLoadedSelection()){alert(state.project.isLoading?'채보 로드가 끝난 뒤 암호화하세요.':'현재 선택한 채보가 아직 로드되지 않았습니다.');return}
  if(!state.encryption.enabled){alert('Encrypt release chart를 먼저 켜세요.');return}
  const argId=state.encryption.argId;
  const code=$('encryptionKeyInput').value;
@@ -1110,42 +1137,54 @@ async function buildEncryptedRelease(){
   projectSetStatus('project: encrypted build failed');
   alert('Encrypted build failed: '+e.message);
  }finally{
-  $('buildEncryptedChartBtn').disabled=!state.encryption.enabled;
+  projectUpdateActionAvailability();
  }
 }
-async function projectLoadAudioForSong(songName,audioName){
-  if(!songName||!audioName)return;
+async function projectLoadAudioForSong(songName,audioName,guard){
+  if(!songName||!audioName)return false;
   projectSetStatus('project: loading audio...');
-  await loadAudioUrl(`/api/media?song=${encodeURIComponent(songName)}&file=${encodeURIComponent(audioName)}`,audioName);
+  const applied=await loadAudioUrl(`/api/media?song=${encodeURIComponent(songName)}&file=${encodeURIComponent(audioName)}`,audioName,guard);
+  if(!applied)return false;
   state.project.audioName=audioName;
   const audioSel=$('projectAudioSelect');
   if(audioSel&&[...audioSel.options].some(o=>o.value===audioName))audioSel.value=audioName;
+  return true;
 }
-async function projectLoadSelected(){
+async function projectLoadSelected(options={}){
   const songName=projectSelectedSongName();
   const chartName=projectSelectedChartName();
   if(!songName||!chartName){
-    alert('Song과 Chart를 선택하세요.');
-    return;
+    if(options.showMissingAlert!==false)alert('Song과 Chart를 선택하세요.');
+    return false;
   }
+  const key=projectSelectionKey(songName,chartName);
+  const token=++state.project.loadToken;
+  state.project.isLoading=true;
+  state.project.loadedSelectionKey='';
+  projectUpdateActionAvailability();
   try{
     projectSetStatus('project: loading chart...');
     const song=projectSongByName(songName);
     const url=`/api/chart?song=${encodeURIComponent(songName)}&chart=${encodeURIComponent(chartName)}`;
     const data=await projectFetchJson(url);
-    pushHistory();
+    if(!projectLoadIsCurrent(token,key))return false;
     const dropped=projectImportChartData(data);
-    state.project.songName=songName;
-    state.project.chartName=chartName;
+    history.undo=[];
+    history.redo=[];
+    updateUndoRedoButtons();
 
     const audioFiles=(song&&song.audio)||[];
     const chartAudio=data.meta&&data.meta.audioFileName?data.meta.audioFileName:'';
     const selectedAudio=projectSelectedAudioName();
     const preferredAudio=(chartAudio&&audioFiles.includes(chartAudio))?chartAudio:(selectedAudio&&audioFiles.includes(selectedAudio))?selectedAudio:audioFiles[0];
     if(preferredAudio){
-      await projectLoadAudioForSong(songName,preferredAudio);
+      const applied=await projectLoadAudioForSong(songName,preferredAudio,()=>projectLoadIsCurrent(token,key));
+      if(!applied||!projectLoadIsCurrent(token,key))return false;
       state.meta.audioFileName=preferredAudio;
     }else{
+      if(!projectLoadIsCurrent(token,key))return false;
+      stopBgm();
+      audioBuffer=null;
       state.audioFileName='';
       state.audioDurationMs=0;
       waveformPeaks=null;
@@ -1158,16 +1197,31 @@ async function projectLoadSelected(){
     if(preferredCover){
       state.coverDataUrl=`/api/media?song=${encodeURIComponent(songName)}&file=${encodeURIComponent(preferredCover)}`;
       $('coverPreview').src=state.coverDataUrl;
+    }else{
+      state.coverDataUrl='';
+      $('coverPreview').removeAttribute('src');
     }
 
+    if(!projectLoadIsCurrent(token,key))return false;
+    state.project.songName=songName;
+    state.project.chartName=chartName;
+    state.project.loadedSelectionKey=key;
     syncStateToUi();
     updatePanels();
     projectSetStatus(`loaded: ${songName}/${chartName}`);
     if(dropped>0)alert(`겹치는 노트 ${dropped}개를 제거하고 불러왔습니다.`);
+    return true;
   }catch(e){
+    if(!projectLoadIsCurrent(token,key))return false;
     console.error(e);
     projectSetStatus('project: load failed');
     alert('Chart load failed: '+e.message);
+    return false;
+  }finally{
+    if(token===state.project.loadToken){
+      state.project.isLoading=false;
+      projectUpdateActionAvailability();
+    }
   }
 }
 async function projectSaveSelected(){
@@ -1175,6 +1229,10 @@ async function projectSaveSelected(){
   const chartName=projectSelectedChartName();
   if(!songName||!chartName){
     alert('Song과 Chart를 선택하세요.');
+    return;
+  }
+  if(!projectHasLoadedSelection()){
+    alert(state.project.isLoading?'채보 로드가 끝난 뒤 저장하세요.':'현재 선택한 채보가 아직 로드되지 않았습니다.');
     return;
   }
   try{
@@ -1341,13 +1399,13 @@ $('autoShowCurveToggle').onchange=e=>{state.autoCoef.settings.showCurve=e.target
 $('autoGenerateBtn').onclick=()=>autoCoefGenerateCurve();
 $('autoExportBtn').onclick=()=>autoCoefExportOptimizedJson();
 autoCoefSyncSettingsToUi();
-$('projectRefreshBtn').onclick=()=>projectRefreshSongs(true);
+$('projectRefreshBtn').onclick=async()=>{await projectRefreshSongs(true);await projectLoadSelected({showMissingAlert:false})};
 $('projectNewSongBtn').onclick=()=>projectNewSongPrompt();
 $('projectNewChartBtn').onclick=()=>projectNewChartPrompt();
 $('projectNewSongAudioInput').onchange=e=>{if(e.target.files[0])projectCreateSongWithAudio(e.target.files[0])};
-$('projectSongSelect').onchange=()=>{projectPopulateCharts();projectPopulateAudio();projectSetStatus('project: song selected')};
-$('projectChartSelect').onchange=()=>projectSetStatus('project: chart selected');
-$('projectAudioSelect').onchange=()=>{const songName=projectSelectedSongName(),audioName=projectSelectedAudioName();if(songName&&audioName)projectLoadAudioForSong(songName,audioName).catch(e=>alert('Audio load failed: '+e.message))};
+$('projectSongSelect').onchange=()=>{projectPopulateCharts();projectPopulateAudio();projectLoadSelected({showMissingAlert:false})};
+$('projectChartSelect').onchange=()=>projectLoadSelected({showMissingAlert:false});
+$('projectAudioSelect').onchange=()=>{const songName=projectSelectedSongName(),audioName=projectSelectedAudioName(),token=state.project.loadToken,key=projectSelectionKey();if(songName&&audioName)projectLoadAudioForSong(songName,audioName,()=>token===state.project.loadToken&&key===projectSelectionKey()&&projectHasLoadedSelection()).then(applied=>{if(applied)projectSetStatus(`loaded audio: ${audioName}`)}).catch(e=>alert('Audio load failed: '+e.message))};
 $('projectLoadBtn').onclick=()=>projectLoadSelected();
 $('projectSaveBtn').onclick=()=>projectSaveSelected();
 $('addSpeedLimitLineBtn').onclick=addSpeedLimitLineAtPlayhead;
@@ -1358,10 +1416,10 @@ $('encryptionArgIdInput').oninput=()=>{syncUiToState();updatePanels()};
 $('encryptionArgIdInput').onchange=()=>pushHistory();
 $('buildEncryptedChartBtn').onclick=()=>buildEncryptedRelease();
 function applyEditorCanvasCursor(reason){const c=document.getElementById('editorCanvas'),before=c.style.cursor;c.style.cursor='crosshair';const r=c.getBoundingClientRect();console.info('[OverTempo canvas cursor]',{reason,before,after:c.style.cursor,computed:getComputedStyle(c).cursor,rectWidth:r.width,rectHeight:r.height,cssWidth:c._cssW,cssHeight:c._cssH,backingWidth:c.width,backingHeight:c.height,dpr:window.devicePixelRatio})}
-const updatePanelsBeforeCursorLock=updatePanels;updatePanels=function(){updatePanelsBeforeCursorLock();applyEditorCanvasCursor('updatePanels')};
+const updatePanelsBeforeCursorLock=updatePanels;updatePanels=function(){updatePanelsBeforeCursorLock();projectUpdateActionAvailability();applyEditorCanvasCursor('updatePanels')};
 function settleEditorCanvas(reason){requestAnimationFrame(()=>requestAnimationFrame(()=>{resize();const r=canvas.getBoundingClientRect();console.info('[OverTempo canvas resize]',{reason,rectWidth:r.width,rectHeight:r.height,cssWidth:canvas._cssW,cssHeight:canvas._cssH,backingWidth:canvas.width,backingHeight:canvas.height,dpr:window.devicePixelRatio})}))}
 const canvasWrapResizeObserver=new ResizeObserver(()=>{const r=canvas.parentElement.getBoundingClientRect();if(Math.abs((canvas._cssW||0)-r.width)>.01||Math.abs((canvas._cssH||0)-r.height)>.01)settleEditorCanvas('canvas-wrap ResizeObserver')});canvasWrapResizeObserver.observe(canvas.parentElement);
-window.addEventListener('load',()=>settleEditorCanvas('window load'),{once:true});window.addEventListener('resize',resize);resize();syncStateToUi();updatePanels();projectRefreshSongs(false).finally(()=>settleEditorCanvas('project refresh complete'));tick();
+window.addEventListener('load',()=>settleEditorCanvas('window load'),{once:true});window.addEventListener('resize',resize);resize();syncStateToUi();updatePanels();projectRefreshSongs(false).then(()=>projectLoadSelected({showMissingAlert:false})).finally(()=>settleEditorCanvas('project refresh complete'));tick();
 })();
 </script>
 </body>

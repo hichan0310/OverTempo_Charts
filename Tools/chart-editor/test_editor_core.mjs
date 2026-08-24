@@ -95,4 +95,49 @@ assert.equal(editorTiming.snapMs(1500), 62.5);
 assert.equal(editorTiming.snapTime(1124), 1125);
 assert.equal(editorTiming.snapTime(980), 1000);
 
-console.log("editor crypto and variable-BPM timing tests passed");
+const elements = {
+  projectSongSelect: { value: "Luminaria" },
+  projectChartSelect: { value: "Luminaria_osu_base.4k-speedcoef.json" },
+  projectAudioSelect: { value: "3-12 Luminaria.mp3", disabled: false },
+  projectSaveBtn: { disabled: false },
+  exportBtn: { disabled: false },
+  autoExportBtn: { disabled: false },
+  projectLoadBtn: { disabled: false },
+  buildEncryptedChartBtn: { disabled: false },
+};
+globalThis.$ = id => elements[id] || null;
+globalThis.state.project = {
+  isLoading: true,
+  loadToken: 4,
+  loadedSelectionKey: "",
+};
+globalThis.state.encryption = { enabled: true };
+const projectSelectionSource = sourceBetween(
+  "function projectSelectedSongName",
+  "async function projectFetchJson",
+);
+globalThis.eval(`${projectSelectionSource}
+globalThis.editorProjectSelection = {
+  projectSelectionKey,
+  projectHasLoadedSelection,
+  projectUpdateActionAvailability,
+  projectLoadIsCurrent,
+};`);
+
+editorProjectSelection.projectUpdateActionAvailability();
+assert.equal(elements.projectSaveBtn.disabled, true, "save must stay disabled while loading");
+assert.equal(elements.autoExportBtn.disabled, true, "generated save must stay disabled while loading");
+assert.equal(elements.buildEncryptedChartBtn.disabled, true, "encrypted save must stay disabled while loading");
+const loadedKey = editorProjectSelection.projectSelectionKey();
+state.project.isLoading = false;
+state.project.loadedSelectionKey = loadedKey;
+editorProjectSelection.projectUpdateActionAvailability();
+assert.equal(elements.projectSaveBtn.disabled, false, "save may enable after the selected chart loaded");
+elements.projectChartSelect.value = "Luminaria_Normal.4k-speedcoef.json";
+assert.equal(editorProjectSelection.projectHasLoadedSelection(), false, "changing selection invalidates the loaded chart");
+assert.equal(editorProjectSelection.projectLoadIsCurrent(4, loadedKey), false, "a stale load cannot apply to a new selection");
+
+assert.match(html, /projectSongSelect'\)\.onchange=.*projectLoadSelected/);
+assert.match(html, /projectChartSelect'\)\.onchange=.*projectLoadSelected/);
+
+console.log("editor crypto, variable-BPM timing, and project load gating tests passed");

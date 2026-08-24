@@ -2,13 +2,13 @@
   "version": 2,
   "meta": {
     "title": "Break Through Myself feat. Risa Yuzuki (Short Ver.)",
-    "artist": "DJ Myosuke & Laur",
+    "artist": "DJ Myosuke & Laur    HARDCORE TANO*C",
     "source": "WACCA Reverse",
     "mapper": "hichan0310",
     "previewStartMs": 75637,
     "previewEndMs": 90637,
     "extra": "Imported from osu!mania break.osu; difficulty Hikari's Normal; BeatmapID 3655536; BeatmapSetID 1780278; first timing point 576ms",
-    "coverDataUrl": "/api/media?song=End%20Time&file=bg.png",
+    "coverDataUrl": "",
     "audioFileName": "Break Through Myself(Short).mp3"
   },
   "difficulty": {
@@ -9906,7 +9906,7 @@
   ],
   "autoCoef": {
     "schemaVersion": 1,
-    "generatedAt": "2026-08-21T14:05:09.837Z",
+    "generatedAt": "2026-08-24T09:21:54.941Z",
     "description": "Final speedupCoef = baseSpeedupCoef * autoSpeedupCoefMultiplier. Load restores editable coef 0/1 from baseSpeedupCoef.",
     "settings": {
       "sigmaMs": 1600,

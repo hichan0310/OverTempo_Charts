@@ -2,13 +2,13 @@
   "version": 2,
   "meta": {
     "title": "Breaking Dawn feat. 棗いつき",
-    "artist": "Getty & Kobaryo",
+    "artist": "Getty & Kobaryo    HARDCORE TANO*C",
     "source": "",
     "mapper": "hichan0310",
     "previewStartMs": 114520,
     "previewEndMs": 129520,
     "extra": "General-purpose 4K tap base rebuilt from the song timing. The tournament LN pattern was discarded; BeatmapID 5318794 was used only as a rhythmic timing reference.",
-    "coverDataUrl": "/api/media?song=End%20Time&file=bg.png",
+    "coverDataUrl": "",
     "audioFileName": "Breaking Dawn feat Itsuki Natsume(Short version).mp3"
   },
   "difficulty": {
@@ -14438,7 +14438,7 @@
   ],
   "autoCoef": {
     "schemaVersion": 1,
-    "generatedAt": "2026-08-21T13:47:41.858Z",
+    "generatedAt": "2026-08-24T09:21:28.837Z",
     "description": "Final speedupCoef = baseSpeedupCoef * autoSpeedupCoefMultiplier. Load restores editable coef 0/1 from baseSpeedupCoef.",
     "settings": {
       "sigmaMs": 1600,
