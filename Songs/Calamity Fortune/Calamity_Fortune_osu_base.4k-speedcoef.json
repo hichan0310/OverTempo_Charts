@@ -8,7 +8,7 @@
     "previewStartMs": 103200,
     "previewEndMs": 118200,
     "extra": "Imported from osu!mania calamity.osu; difficulty Easy; BeatmapID 4904323; BeatmapSetID 2288990; first timing point 1338ms",
-    "coverDataUrl": "/api/media?song=End%20Time&file=bg.png",
+    "coverDataUrl": "/api/media?song=Calamity%20Fortune&file=calamityfortune_cover.png",
     "audioFileName": "116 Calamity Fortune(2019).wav"
   },
   "difficulty": {

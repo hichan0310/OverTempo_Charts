@@ -8,7 +8,7 @@
     "previewStartMs": 45823,
     "previewEndMs": 60823,
     "extra": "Imported from osu!mania Lime - Aurora (-NoName-) [Stage 6 Brilliance].osu; difficulty Stage 6: Brilliance; BeatmapID 4443580; BeatmapSetID 2115955; first timing point 2045ms; folded 7K->4K (2962->2484 notes; 478 duplicate taps, 0 overlapping holds, 0 taps inside holds collapsed)",
-    "coverDataUrl": "",
+    "coverDataUrl": "/api/media?song=Aurora&file=aurora_cover.png",
     "audioFileName": "5-07 Aurora.mp3"
   },
   "difficulty": {
