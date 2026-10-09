@@ -1,0 +1,39 @@
+{
+  "version": 2,
+  "meta": {
+    "title": "Change the Game",
+    "artist": "",
+    "source": "",
+    "mapper": "",
+    "previewStartMs": 0,
+    "previewEndMs": 15000,
+    "extra": "Temporary empty chart; no notes have been mapped.",
+    "coverDataUrl": "/api/media?song=Change%20the%20Game&file=changethegame_cover.png",
+    "audioFileName": "Change the Game.wav"
+  },
+  "difficulty": {
+    "name": "Draft",
+    "level": 0,
+    "scroll": 1,
+    "baseSpeed": 1,
+    "notes": "",
+    "lanes": 4
+  },
+  "timing": {
+    "bpm": 120,
+    "offsetMs": 0,
+    "snapDiv": 4,
+    "bpmChanges": []
+  },
+  "editorSettings": {
+    "encryptionEnabled": false,
+    "argId": ""
+  },
+  "preview": {
+    "startMs": 0,
+    "endMs": 15000
+  },
+  "speedLimitLines": [],
+  "stageDeltaLines": [],
+  "notes": []
+}

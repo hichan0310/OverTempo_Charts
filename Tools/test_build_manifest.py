@@ -70,6 +70,18 @@ class SpeedcoefValidationTests(unittest.TestCase):
         )
         build_manifest.validate_song(self.song, self.meta)
 
+    def test_empty_chart_requires_explicit_opt_in(self):
+        (self.song / "draft.4k-speedcoef.json").write_text(
+            json.dumps({"notes": [], "meta": {"audioFileName": "song.wav"}}),
+            encoding="utf-8",
+        )
+        (self.song / "song.wav").write_bytes(b"audio")
+        with self.assertRaises(SystemExit):
+            build_manifest.validate_song(self.song, self.meta)
+
+        self.meta["allowEmptyChart"] = True
+        build_manifest.validate_song(self.song, self.meta)
+
 
 if __name__ == "__main__":
     unittest.main()

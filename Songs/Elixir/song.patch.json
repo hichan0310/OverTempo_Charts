@@ -2,5 +2,6 @@
   "id": "elixir",
   "title": "Elixir",
   "artist": "",
-  "enabled": false
+  "enabled": true,
+  "allowEmptyChart": true
 }

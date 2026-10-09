@@ -99,7 +99,7 @@ def validate_song(song_dir: Path, meta: dict) -> None:
     for sc in song_dir.glob("*.4k-speedcoef.json"):
         data = load_json(sc)
         notes = data.get("notes")
-        if not isinstance(notes, list) or len(notes) == 0:
+        if not isinstance(notes, list) or (not notes and meta.get("allowEmptyChart") is not True):
             die(f"speedcoef chart has no notes: {sc}")
         audio = ((data.get("meta") or {}).get("audioFileName") or "").strip()
         if audio and not (song_dir / audio).is_file():

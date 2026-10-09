@@ -2,5 +2,6 @@
   "id": "change-the-game",
   "title": "Change the Game",
   "artist": "",
-  "enabled": false
+  "enabled": true,
+  "allowEmptyChart": true
 }
