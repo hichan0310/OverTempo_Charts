@@ -8,7 +8,7 @@
     "previewStartMs": 66078,
     "previewEndMs": 81078,
     "extra": "Imported from osu!mania luminaria.osu; difficulty Secret; BeatmapID 4267091; BeatmapSetID 2044437; first timing point 875ms",
-    "coverDataUrl": "",
+    "coverDataUrl": "/api/media?song=Luminaria&file=luminaria_cover_1920x1080.png",
     "audioFileName": "3-12 Luminaria.mp3"
   },
   "difficulty": {

@@ -8,7 +8,7 @@
     "previewStartMs": 75637,
     "previewEndMs": 90637,
     "extra": "Imported from osu!mania break.osu; difficulty Hikari's Normal; BeatmapID 3655536; BeatmapSetID 1780278; first timing point 576ms",
-    "coverDataUrl": "",
+    "coverDataUrl": "/api/media?song=Break%20Through%20Myself&file=breakthroumyself_cover_1920x1080.png",
     "audioFileName": "Break Through Myself(Short).mp3"
   },
   "difficulty": {

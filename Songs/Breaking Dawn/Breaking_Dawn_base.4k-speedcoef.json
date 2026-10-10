@@ -8,7 +8,7 @@
     "previewStartMs": 114520,
     "previewEndMs": 129520,
     "extra": "General-purpose 4K tap base rebuilt from the song timing. The tournament LN pattern was discarded; BeatmapID 5318794 was used only as a rhythmic timing reference.",
-    "coverDataUrl": "",
+    "coverDataUrl": "/api/media?song=Breaking%20Dawn&file=breakingdawn_cover_1920x1080.png",
     "audioFileName": "Breaking Dawn feat Itsuki Natsume(Short version).mp3"
   },
   "difficulty": {
