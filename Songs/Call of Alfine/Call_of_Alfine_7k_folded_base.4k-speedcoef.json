@@ -8,7 +8,7 @@
     "previewStartMs": 0,
     "previewEndMs": 15000,
     "extra": "Imported from BMS _01_alfine_b.bms; channels 11,12,13,14,15,18,19; folded 7K->4K (284->284 notes; 0 duplicate taps, 0 overlapping holds, 0 taps inside holds collapsed)",
-    "coverDataUrl": "",
+    "coverDataUrl": "/api/media?song=Call%20of%20Alfine&file=callofalfine_cover.png",
     "audioFileName": "Call_of_Alfine_official_BMS.wav"
   },
   "difficulty": {

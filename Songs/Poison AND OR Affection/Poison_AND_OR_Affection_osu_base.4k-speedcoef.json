@@ -8,7 +8,7 @@
     "previewStartMs": 101000,
     "previewEndMs": 116000,
     "extra": "Imported from osu!mania poison.osu; difficulty Beginner; BeatmapID 1660989; BeatmapSetID 791804; first timing point 970ms",
-    "coverDataUrl": "",
+    "coverDataUrl": "/api/media?song=Poison%20AND%20OR%20Affection&file=poisonandoraffection_cover.png",
     "audioFileName": "65 Poison AND÷OR Affection.mp3"
   },
   "difficulty": {

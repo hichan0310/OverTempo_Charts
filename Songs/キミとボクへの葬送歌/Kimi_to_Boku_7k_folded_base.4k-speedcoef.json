@@ -8,7 +8,7 @@
     "previewStartMs": 0,
     "previewEndMs": 15000,
     "extra": "Imported from BMS _01_exc_b.bms; channels 11,12,13,14,15,18,19; folded 7K->4K (510->505 notes; 0 duplicate taps, 4 overlapping holds, 1 taps inside holds collapsed)",
-    "coverDataUrl": "",
+    "coverDataUrl": "/api/media?song=%E3%82%AD%E3%83%9F%E3%81%A8%E3%83%9C%E3%82%AF%E3%81%B8%E3%81%AE%E8%91%AC%E9%80%81%E6%AD%8C&file=jangsongga_cover.png",
     "audioFileName": "Kimi_to_Boku_official_BMS.wav"
   },
   "difficulty": {
