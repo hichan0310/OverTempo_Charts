@@ -1,7 +1,6 @@
 {
   "id": "change-the-game",
   "title": "Change the Game",
-  "artist": "",
-  "enabled": true,
-  "allowEmptyChart": true
+  "artist": "REDALiCE & USAO",
+  "enabled": false
 }

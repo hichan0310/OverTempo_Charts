@@ -1,0 +1,34 @@
+{
+  "version": 2,
+  "meta": {
+    "title": "End Time",
+    "artist": "Cres.",
+    "source": "",
+    "mapper": "",
+    "previewStartMs": 0,
+    "previewEndMs": 15000,
+    "extra": "",
+    "audioFileName": "Change the Game.wav"
+  },
+  "difficulty": {
+    "name": "Normal",
+    "level": 10.0,
+    "scroll": 1,
+    "baseSpeed": 1,
+    "notes": "",
+    "lanes": 4
+  },
+  "timing": {
+    "bpm": 180.0,
+    "offsetMs": 19.0,
+    "snapDiv": 8,
+    "bpmChanges": []
+  },
+  "preview": {
+    "startMs": 0,
+    "endMs": 15000
+  },
+  "speedLimitLines": [],
+  "stageDeltaLines": [],
+  "notes": []
+}

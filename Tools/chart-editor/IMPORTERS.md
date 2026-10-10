@@ -79,10 +79,10 @@ python -m unittest test_lane_fold.py test_bms_to_overtempo.py test_osu_mania_to_
 
 ## Render official BMS keysounds to audio
 
-Install the two decoding/mixing dependencies once:
+Install the decoding, mixing, and resampling dependencies once:
 
 ```powershell
-python -m pip install numpy soundfile
+python -m pip install numpy soundfile scipy
 ```
 
 Then render all BGM and playable keysounds referenced by a BMS chart:
@@ -90,7 +90,7 @@ Then render all BGM and playable keysounds referenced by a BMS chart:
 ```powershell
 python .\Tools\chart-editor\bms_audio_renderer.py `
   .\official-package\chart.bms `
-  -o .\rendered.wav
+  -o .\rendered.wav --report .\rendered.report.json
 ```
 
 The renderer only reads the local official BMS package. It schedules channel
@@ -98,3 +98,7 @@ The renderer only reads the local official BMS package. It schedules channel
 overlapping samples; and prevents clipping. Missing `#WAVxx` files and
 conditional `#RANDOM`/`#IF` charts are rejected instead of producing silently
 incomplete audio.
+
+Different sample rates use polyphase resampling with an anti-aliasing filter.
+The optional report records source/sample/output SHA-256 hashes, event counts,
+duration, and clipping-prevention gain for reproducible audio restoration.
