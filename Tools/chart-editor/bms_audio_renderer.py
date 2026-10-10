@@ -6,12 +6,14 @@ keysound. It never downloads audio: all #WAVxx files must already exist beside
 the selected BMS file.
 
 Runtime dependencies:
-    python -m pip install numpy soundfile
+    python -m pip install numpy soundfile scipy
 """
 
 from __future__ import annotations
 
 import argparse
+import hashlib
+import json
 import math
 import re
 from dataclasses import dataclass
@@ -48,6 +50,8 @@ def wav_definitions(parsed: ParsedBms) -> dict[str, str]:
 
 def resolve_sample_path(bms_path: Path, reference: str) -> Path:
     relative = Path(reference.replace("\\", "/"))
+    if relative.is_absolute() or relative.drive or ".." in relative.parts:
+        raise ValueError(f"#WAV path escapes the BMS folder: {reference}")
     candidate = bms_path.parent / relative
     if candidate.is_file():
         return candidate
@@ -165,14 +169,11 @@ def decode_sample(path: Path, output_rate: int, np, sf):
         data = data[:, :2]
 
     if sample_rate != output_rate and len(data):
-        output_frames = max(1, round(len(data) * output_rate / sample_rate))
-        source_positions = np.linspace(0, len(data) - 1, len(data))
-        target_positions = np.linspace(0, len(data) - 1, output_frames)
-        data = np.column_stack(
-            [
-                np.interp(target_positions, source_positions, data[:, channel])
-                for channel in range(2)
-            ]
+        from scipy.signal import resample_poly
+
+        divisor = math.gcd(sample_rate, output_rate)
+        data = resample_poly(
+            data, output_rate // divisor, sample_rate // divisor, axis=0
         ).astype("float32")
     return data
 
@@ -183,6 +184,7 @@ def render_bms_audio(
     *,
     sample_rate: int = 44100,
     tail_seconds: float = 1.0,
+    report_path: Path | None = None,
 ) -> tuple[int, list[str]]:
     text = read_bms_text(bms_path)
     if re.search(r"^\s*#(?:RANDOM|SETRANDOM|IF|ELSEIF|ELSE|ENDIF)\b", text, re.I | re.M):
@@ -226,6 +228,29 @@ def render_bms_audio(
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
     sf.write(output_path, mix, sample_rate, subtype="PCM_16")
+    if report_path is not None:
+        report = {
+            "sourceChart": bms_path.name,
+            "sourceChartSha256": hashlib.sha256(bms_path.read_bytes()).hexdigest(),
+            "output": output_path.name,
+            "outputSha256": hashlib.sha256(output_path.read_bytes()).hexdigest(),
+            "sampleRate": sample_rate,
+            "frames": total_frames,
+            "durationSeconds": total_frames / sample_rate,
+            "tailSeconds": tail_seconds,
+            "scheduledEvents": len(events),
+            "uniqueSamples": len(cache),
+            "peakBeforeGain": peak,
+            "gain": min(1.0, 0.98 / peak) if peak else 1.0,
+            "warnings": warnings,
+            "samples": [
+                {"file": path.relative_to(bms_path.parent).as_posix(),
+                 "sha256": hashlib.sha256(path.read_bytes()).hexdigest()}
+                for path in sorted(cache)
+            ],
+        }
+        report_path.parent.mkdir(parents=True, exist_ok=True)
+        report_path.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     return len(events), warnings
 
 
@@ -235,6 +260,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("-o", "--output", type=Path)
     parser.add_argument("--sample-rate", type=int, default=44100)
     parser.add_argument("--tail-seconds", type=float, default=1.0)
+    parser.add_argument("--report", type=Path, help="write source hashes and rendering statistics as JSON")
     return parser
 
 
@@ -250,6 +276,7 @@ def main(argv: Iterable[str] | None = None) -> int:
         output,
         sample_rate=args.sample_rate,
         tail_seconds=max(0, args.tail_seconds),
+        report_path=args.report,
     )
     print(f"wrote {output} ({count} scheduled keysounds)")
     for warning in warnings:

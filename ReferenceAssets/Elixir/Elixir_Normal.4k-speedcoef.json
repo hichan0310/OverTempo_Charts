@@ -1,0 +1,34 @@
+{
+  "version": 2,
+  "meta": {
+    "title": "Aleph-0",
+    "artist": "LeaF",
+    "source": "",
+    "mapper": "hichan / rhythm reference: jakads",
+    "previewStartMs": 0,
+    "previewEndMs": 15000,
+    "extra": "",
+    "audioFileName": "Elixir_BMS.wav"
+  },
+  "difficulty": {
+    "name": "Normal",
+    "level": 7.0,
+    "scroll": 1,
+    "baseSpeed": 1,
+    "notes": "",
+    "lanes": 4
+  },
+  "timing": {
+    "bpm": 250.0,
+    "offsetMs": 5.0,
+    "snapDiv": 2,
+    "bpmChanges": []
+  },
+  "preview": {
+    "startMs": 0,
+    "endMs": 15000
+  },
+  "speedLimitLines": [],
+  "stageDeltaLines": [],
+  "notes": []
+}

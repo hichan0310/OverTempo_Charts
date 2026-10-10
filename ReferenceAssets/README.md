@@ -1,0 +1,1 @@
+These are artwork and empty chart files brought in by the remote branch during the 2026-10-10 merge. They are retained for reference outside `Songs` because the remote charts carried unrelated song titles and the extra `jacket.png` files could override the intended PNG covers with embedded hints. Only files under `Songs` are packaged as song assets.
