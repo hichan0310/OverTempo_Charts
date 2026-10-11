@@ -3,6 +3,7 @@ import json
 import sys
 import tempfile
 import unittest
+import zipfile
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -81,6 +82,30 @@ class SpeedcoefValidationTests(unittest.TestCase):
 
         self.meta["allowEmptyChart"] = True
         build_manifest.validate_song(self.song, self.meta)
+
+    def test_release_zip_omits_images_and_cover_metadata(self):
+        chart = self.song / "chart.4k-speedcoef.json"
+        chart.write_text(
+            json.dumps({"meta": {"title": "Example", "coverDataUrl": "data:image/png;base64,abc"}, "notes": []}),
+            encoding="utf-8",
+        )
+        (self.song / "cover.png").write_bytes(b"image")
+        (self.song / "bg.JPG").write_bytes(b"image")
+        (self.song / "song.wav").write_bytes(b"audio")
+        output = Path(self.temp.name) / "output"
+        output.mkdir()
+
+        archive_path = build_manifest.build_song_zip(
+            Path(self.temp.name), self.song, "grid-song", output, "song.zip"
+        )
+        with zipfile.ZipFile(archive_path) as archive:
+            self.assertEqual(
+                sorted(archive.namelist()),
+                ["grid-song/chart.4k-speedcoef.json", "grid-song/song.wav"],
+            )
+            packaged_chart = json.loads(archive.read("grid-song/chart.4k-speedcoef.json"))
+            self.assertEqual(packaged_chart["meta"], {"title": "Example"})
+        self.assertEqual(json.loads(chart.read_text())["meta"]["coverDataUrl"], "data:image/png;base64,abc")
 
 
 if __name__ == "__main__":

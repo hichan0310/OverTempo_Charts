@@ -10,6 +10,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 SONG_ID_RE = re.compile(r"^[a-z0-9][a-z0-9._-]*$")
+IMAGE_EXTENSIONS = {".bmp", ".gif", ".jpeg", ".jpg", ".png", ".webp"}
 
 def die(message: str) -> None:
     print(f"ERROR: {message}", file=sys.stderr)
@@ -50,6 +51,8 @@ def should_zip(path: Path) -> bool:
     if path.name in {".DS_Store", "Thumbs.db"}:
         return False
     if path.suffix.lower() == ".zip":
+        return False
+    if path.suffix.lower() in IMAGE_EXTENSIONS:
         return False
     if path.suffix.lower() in {".bak", ".tmp"} or path.name.endswith("~"):
         return False
@@ -114,7 +117,15 @@ def build_song_zip(repo: Path, song_dir: Path, song_id: str, output_songs: Path,
     with zipfile.ZipFile(zip_path, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as zf:
         for path in files:
             rel = path.relative_to(song_dir).as_posix()
-            zf.write(path, f"{song_id}/{rel}")
+            archive_name = f"{song_id}/{rel}"
+            if path.name.endswith(".4k-speedcoef.json"):
+                chart = load_json(path)
+                meta = chart.get("meta")
+                if isinstance(meta, dict) and "coverDataUrl" in meta:
+                    meta.pop("coverDataUrl")
+                    zf.writestr(archive_name, json.dumps(chart, ensure_ascii=False, indent=2) + "\n")
+                    continue
+            zf.write(path, archive_name)
     return zip_path
 
 def main() -> int:
