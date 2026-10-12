@@ -13,12 +13,14 @@ import build_manifest
 class EncryptedSongValidationTests(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
-        self.song = Path(self.temp.name) / "arg-01"
+        self.arg_id = "0123456789abcdef0123456789abcdef"
+        self.song = Path(self.temp.name) / self.arg_id
         self.song.mkdir()
-        self.meta = {"id": "arg-01", "enabled": True, "encrypted": True}
+        self.meta = {"id": self.arg_id, "enabled": True, "encrypted": True,
+                     "publicTitle": "Encrypted Content", "encryptedAssets": {"End_Time_BMS.wav": "audio.wav"}}
         envelope = {
             "schemaVersion": 1,
-            "argId": "arg_self_test",
+            "argId": self.arg_id,
             "cipher": "AES-256-CBC+HMAC-SHA256",
             "kdf": "PBKDF2-HMAC-SHA256",
             "iterations": 600000,
@@ -27,7 +29,9 @@ class EncryptedSongValidationTests(unittest.TestCase):
             "ciphertext": "AA==",
             "tag": "AA==",
         }
-        (self.song / "chart.otchart").write_text(json.dumps(envelope), encoding="utf-8")
+        (self.song / f"{self.arg_id}.otchart").write_text(json.dumps(envelope), encoding="utf-8")
+        (self.song / "End_Time_BMS.wav").write_bytes(b"audio")
+        (self.song / "song.patch.json").write_text(json.dumps(self.meta), encoding="utf-8")
 
     def tearDown(self):
         self.temp.cleanup()
@@ -35,8 +39,22 @@ class EncryptedSongValidationTests(unittest.TestCase):
     def test_accepts_encrypted_only_song(self):
         build_manifest.validate_song(self.song, self.meta)
 
-    def test_rejects_plaintext_leak(self):
-        (self.song / "leaked.4k-speedcoef.json").write_text("{}", encoding="utf-8")
+    def test_packages_only_ciphertext_and_generic_media_from_plaintext_source(self):
+        (self.song / "End_Time.4k-speedcoef.json").write_text('{"meta":{"title":"End Time"}}', encoding="utf-8")
+        (self.song / "End_Time.4k-speedcoef.json.bak").write_text("secret backup", encoding="utf-8")
+        build_manifest.validate_song(self.song, self.meta)
+        output = Path(self.temp.name) / "output"
+        output.mkdir()
+        archive = build_manifest.build_song_zip(Path(self.temp.name), self.song, self.arg_id,
+                                                output, "release.zip", self.meta)
+        with zipfile.ZipFile(archive) as package:
+            self.assertEqual(sorted(package.namelist()),
+                             [f"{self.arg_id}/{self.arg_id}.otchart", f"{self.arg_id}/audio.wav",
+                              f"{self.arg_id}/song.patch.json"])
+            self.assertNotIn(b"End Time", package.read(f"{self.arg_id}/song.patch.json"))
+
+    def test_rejects_unmapped_media(self):
+        (self.song / "endtime_cover.png").write_bytes(b"cover")
         with self.assertRaises(SystemExit):
             build_manifest.validate_song(self.song, self.meta)
 

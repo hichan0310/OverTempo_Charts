@@ -1,6 +1,18 @@
 {
-  "id": "end-time",
+  "id": "a75a2f961573b0e9eec84842d995428d",
   "title": "End Time",
   "artist": "Cres.",
-  "enabled": true
+  "enabled": true,
+  "encrypted": true,
+  "publicTitle": "?",
+  "publicArtist": "?",
+  "retireSongIds": ["end-time"],
+  "encryptedAssets": {
+    "End_Time_BMS.wav": "audio.wav",
+    "audio.mp3": "preview.mp3",
+    "endtime_cover.png": "cover.png",
+    "normal-hitfinish.wav": "normal-hitfinish.wav",
+    "normal-hitnormal.wav": "normal-hitnormal.wav",
+    "normal-hitwhistle.wav": "normal-hitwhistle.wav"
+  }
 }
