@@ -8,17 +8,6 @@ the ignored `.audio-work/` directory.
 
 ## Sources and results
 
-### Elixir — Lime / Kankitsu
-
-- [Official BOF:ET entry](https://manbow.nothing.sh/event/event.cgi?action=More_def&event=140&num=457)
-- [Author-linked BMS archive](https://drive.google.com/file/d/1T0cMTPNkjgaq2n3ifWcicB9ZH5f2SItJ/view)
-- Input: `Lime_Elixir_ogg/_Elixir_hyper7.bme`.
-- Output: `Songs/Elixir/Elixir_BMS.wav`, 145.000 seconds.
-- 7,410 audio events, 955 unique samples, no missing keysounds.
-- This is the BMS version. The original OGG keysounds remain lossy sources;
-  writing WAV avoids another lossy encode but does not restore lost frequencies.
-- Audio and jacket are ready. `enabled: false` until a playable chart is authored.
-
 ### End Time — Cres
 
 - [Official BOF 2006 entry](https://manbow.nothing.sh/event/event.cgi?action=More_def&event=36&num=81)
@@ -53,10 +42,6 @@ the ignored `.audio-work/` directory.
 From the repository root (install `numpy soundfile scipy` in your Python environment):
 
 ```powershell
-python Tools/chart-editor/bms_audio_renderer.py `
-  .audio-work/elixir/Lime_Elixir_ogg/_Elixir_hyper7.bme `
-  -o Songs/Elixir/Elixir_BMS.wav --report Tools/audio-restoration/elixir.report.json
-
 python Tools/chart-editor/bms_audio_renderer.py `
   '.audio-work/endtime/[Cres.]endtime/end_time_h.bms' `
   -o 'Songs/End Time/End_Time_BMS.wav' --report Tools/audio-restoration/end-time.report.json

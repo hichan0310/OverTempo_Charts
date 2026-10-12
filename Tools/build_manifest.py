@@ -10,7 +10,6 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 SONG_ID_RE = re.compile(r"^[a-z0-9][a-z0-9._-]*$")
-IMAGE_EXTENSIONS = {".bmp", ".gif", ".jpeg", ".jpg", ".png", ".webp"}
 
 def die(message: str) -> None:
     print(f"ERROR: {message}", file=sys.stderr)
@@ -51,8 +50,6 @@ def should_zip(path: Path) -> bool:
     if path.name in {".DS_Store", "Thumbs.db"}:
         return False
     if path.suffix.lower() == ".zip":
-        return False
-    if path.suffix.lower() in IMAGE_EXTENSIONS:
         return False
     if path.suffix.lower() in {".bak", ".tmp"} or path.name.endswith("~"):
         return False

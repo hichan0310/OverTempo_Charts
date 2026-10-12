@@ -1,15 +1,15 @@
 {
   "version": 2,
   "meta": {
-    "title": "Elixir",
-    "artist": "Lime / Kankitsu",
+    "title": "Stellaria",
+    "artist": "Lime",
     "source": "",
     "mapper": "",
     "previewStartMs": 0,
     "previewEndMs": 15000,
     "extra": "Temporary empty chart; no notes have been mapped.",
-    "coverDataUrl": "/api/media?song=Elixir&file=elixir_cover.png",
-    "audioFileName": "Elixir_BMS.wav"
+    "coverDataUrl": "/api/media?song=Stellaria&file=stellaria_cover.png",
+    "audioFileName": "4-11 Stellaria.mp3"
   },
   "difficulty": {
     "name": "Draft",

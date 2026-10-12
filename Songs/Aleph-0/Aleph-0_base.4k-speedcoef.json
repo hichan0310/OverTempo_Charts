@@ -8,7 +8,7 @@
     "previewStartMs": 46851,
     "previewEndMs": 61851,
     "extra": "New 4K tap base rebuilt from scratch. Timing map references osu!mania BeatmapID 5230779; rhythmic events reference the osu! Loved Cardinality chart (BeatmapID 1102580). Existing OverTempo patterns were not reused.",
-    "coverDataUrl": "/api/media?song=Aleph-0&file=aleph0_cover.png",
+    "coverDataUrl": "/api/media?song=Aleph-0&file=aleph-0_cover.png",
     "audioFileName": "127 Aleph-0(2022).wav"
   },
   "difficulty": {

@@ -83,7 +83,7 @@ class SpeedcoefValidationTests(unittest.TestCase):
         self.meta["allowEmptyChart"] = True
         build_manifest.validate_song(self.song, self.meta)
 
-    def test_release_zip_omits_images_and_cover_metadata(self):
+    def test_release_zip_preserves_images_and_omits_editor_cover_url(self):
         chart = self.song / "chart.4k-speedcoef.json"
         chart.write_text(
             json.dumps({"meta": {"title": "Example", "coverDataUrl": "data:image/png;base64,abc"}, "notes": []}),
@@ -101,8 +101,9 @@ class SpeedcoefValidationTests(unittest.TestCase):
         with zipfile.ZipFile(archive_path) as archive:
             self.assertEqual(
                 sorted(archive.namelist()),
-                ["grid-song/chart.4k-speedcoef.json", "grid-song/song.wav"],
+                ["grid-song/bg.JPG", "grid-song/chart.4k-speedcoef.json", "grid-song/cover.png", "grid-song/song.wav"],
             )
+            self.assertEqual(archive.read("grid-song/cover.png"), b"image")
             packaged_chart = json.loads(archive.read("grid-song/chart.4k-speedcoef.json"))
             self.assertEqual(packaged_chart["meta"], {"title": "Example"})
         self.assertEqual(json.loads(chart.read_text())["meta"]["coverDataUrl"], "data:image/png;base64,abc")

@@ -8,7 +8,7 @@
     "previewStartMs": 0,
     "previewEndMs": 15000,
     "extra": "",
-    "coverDataUrl": "/api/media?song=Chronomia&file=bg.png",
+    "coverDataUrl": "/api/media?song=Chronomia&file=chronomia_cover.png",
     "audioFileName": "4-03 Chronomia.mp3"
   },
   "difficulty": {

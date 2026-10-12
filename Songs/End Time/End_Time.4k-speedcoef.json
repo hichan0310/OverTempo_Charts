@@ -8,7 +8,7 @@
     "previewStartMs": 0,
     "previewEndMs": 15000,
     "extra": "",
-    "coverDataUrl": "/api/media?song=End%20Time&file=bg.png",
+    "coverDataUrl": "/api/media?song=End%20Time&file=endtime_cover.png",
     "audioFileName": "End_Time_BMS.wav"
   },
   "difficulty": {
