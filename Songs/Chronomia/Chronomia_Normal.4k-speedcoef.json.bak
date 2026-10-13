@@ -2,13 +2,13 @@
   "version": 2,
   "meta": {
     "title": "Chronomia",
-    "artist": "Lime",
+    "artist": "Lime / Kankitsu",
     "source": "",
     "mapper": "hichan0310",
     "previewStartMs": 0,
     "previewEndMs": 15000,
     "extra": "",
-    "coverDataUrl": "/api/media?song=Chronomia&file=bg.png",
+    "coverDataUrl": "/api/media?song=Chronomia&file=chronomia_cover.png",
     "audioFileName": "4-03 Chronomia.mp3"
   },
   "difficulty": {
@@ -9328,7 +9328,7 @@
   ],
   "autoCoef": {
     "schemaVersion": 1,
-    "generatedAt": "2026-08-24T06:12:14.588Z",
+    "generatedAt": "2026-08-24T09:11:13.298Z",
     "description": "Final speedupCoef = baseSpeedupCoef * autoSpeedupCoefMultiplier. Load restores editable coef 0/1 from baseSpeedupCoef.",
     "settings": {
       "sigmaMs": 1600,
