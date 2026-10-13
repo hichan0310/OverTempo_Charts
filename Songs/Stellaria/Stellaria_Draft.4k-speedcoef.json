@@ -4741,12 +4741,12 @@
     {
       "timeMs": 55771,
       "lane": 3,
-      "baseSpeedupCoef": 1,
-      "densitySpeedupCoefMultiplier": 0.934159,
-      "rampSpeedupCoefMultiplier": 1.015927,
-      "manualSpeedupCoefMultiplier": 1,
-      "autoSpeedupCoefMultiplier": 0.949037,
-      "speedupCoef": 0.949037,
+      "baseSpeedupCoef": 0,
+      "densitySpeedupCoefMultiplier": 0,
+      "rampSpeedupCoefMultiplier": 0,
+      "manualSpeedupCoefMultiplier": 0,
+      "autoSpeedupCoefMultiplier": 0,
+      "speedupCoef": 0,
       "durationMs": 0
     },
     {
@@ -5126,12 +5126,12 @@
     {
       "timeMs": 60000,
       "lane": 2,
-      "baseSpeedupCoef": 1,
-      "densitySpeedupCoefMultiplier": 0.781705,
-      "rampSpeedupCoefMultiplier": 1.017387,
-      "manualSpeedupCoefMultiplier": 1,
-      "autoSpeedupCoefMultiplier": 0.795296,
-      "speedupCoef": 0.795296,
+      "baseSpeedupCoef": 0,
+      "densitySpeedupCoefMultiplier": 0,
+      "rampSpeedupCoefMultiplier": 0,
+      "manualSpeedupCoefMultiplier": 0,
+      "autoSpeedupCoefMultiplier": 0,
+      "speedupCoef": 0,
       "durationMs": 0
     },
     {
@@ -5687,12 +5687,12 @@
     {
       "timeMs": 67533,
       "lane": 2,
-      "baseSpeedupCoef": 1,
-      "densitySpeedupCoefMultiplier": 0.385002,
-      "rampSpeedupCoefMultiplier": 1.020038,
-      "manualSpeedupCoefMultiplier": 1,
-      "autoSpeedupCoefMultiplier": 0.392717,
-      "speedupCoef": 0.392717,
+      "baseSpeedupCoef": 0,
+      "densitySpeedupCoefMultiplier": 0,
+      "rampSpeedupCoefMultiplier": 0,
+      "manualSpeedupCoefMultiplier": 0,
+      "autoSpeedupCoefMultiplier": 0,
+      "speedupCoef": 0,
       "durationMs": 0
     },
     {
@@ -5709,12 +5709,12 @@
     {
       "timeMs": 67665,
       "lane": 0,
-      "baseSpeedupCoef": 1,
-      "densitySpeedupCoefMultiplier": 0.372842,
-      "rampSpeedupCoefMultiplier": 1.020085,
-      "manualSpeedupCoefMultiplier": 1,
-      "autoSpeedupCoefMultiplier": 0.38033,
-      "speedupCoef": 0.38033,
+      "baseSpeedupCoef": 0,
+      "densitySpeedupCoefMultiplier": 0,
+      "rampSpeedupCoefMultiplier": 0,
+      "manualSpeedupCoefMultiplier": 0,
+      "autoSpeedupCoefMultiplier": 0,
+      "speedupCoef": 0,
       "durationMs": 0
     },
     {
@@ -5731,7 +5731,7 @@
   ],
   "autoCoef": {
     "schemaVersion": 1,
-    "generatedAt": "2026-10-13T12:29:30.289Z",
+    "generatedAt": "2026-10-13T12:33:41.311Z",
     "description": "Final speedupCoef = baseSpeedupCoef * autoSpeedupCoefMultiplier. Load restores editable coef 0/1 from baseSpeedupCoef.",
     "settings": {
       "sigmaMs": 1600,
