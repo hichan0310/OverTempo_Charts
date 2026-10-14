@@ -2,7 +2,7 @@
   "version": 2,
   "meta": {
     "title": "Stellaria",
-    "artist": "Lime",
+    "artist": "Lime / Kankitsu",
     "source": "",
     "mapper": "",
     "previewStartMs": 70500,
@@ -11649,7 +11649,7 @@
   ],
   "autoCoef": {
     "schemaVersion": 1,
-    "generatedAt": "2026-10-14T06:38:11.875Z",
+    "generatedAt": "2026-10-14T13:53:17.084Z",
     "description": "Final speedupCoef = baseSpeedupCoef * autoSpeedupCoefMultiplier. Load restores editable coef 0/1 from baseSpeedupCoef.",
     "settings": {
       "sigmaMs": 1600,
