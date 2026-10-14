@@ -168,6 +168,8 @@ def main() -> int:
     parser.add_argument("--songs-dir", default="Songs", help="songs directory under repo")
     parser.add_argument("--output-dir", default="output", help="output directory under repo")
     parser.add_argument("--base-url", default="songs/", help="base URL or relative path for song zips")
+    parser.add_argument("--audience", choices=("creators", "full"), default="full",
+                        help="full (default) retains encrypted releases; creators excludes ARG songs")
     args = parser.parse_args()
 
     repo = Path(args.repo).resolve()
@@ -206,6 +208,15 @@ def main() -> int:
             die(f"invalid retired song IDs: {meta_path}")
         removed.update(retired)
 
+        if args.audience == "creators" and (meta.get("encrypted") is True or meta.get("arg") is True
+                                            or any(song_dir.glob("*.otchart"))):
+            # Explicit removal also cleans previously installed developer copies;
+            # the developer launcher otherwise preserves locally authored songs.
+            removed.add(song_id)
+            for stale in output_songs.glob(f"{song_id}_*.zip"):
+                stale.unlink()
+            continue
+
         validate_song(song_dir, meta)
 
         rel_dir = song_dir.relative_to(repo).as_posix()
@@ -231,6 +242,7 @@ def main() -> int:
     manifest = {
         "schemaVersion": 1,
         "sourceCommit": source_commit,
+        "audience": args.audience,
         "generatedAt": datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z"),
         "baseUrl": args.base_url,
         "songs": entries,

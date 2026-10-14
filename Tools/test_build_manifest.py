@@ -3,6 +3,7 @@ import json
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 import zipfile
 from pathlib import Path
 
@@ -125,6 +126,33 @@ class SpeedcoefValidationTests(unittest.TestCase):
             packaged_chart = json.loads(archive.read("grid-song/chart.4k-speedcoef.json"))
             self.assertEqual(packaged_chart["meta"], {"title": "Example"})
         self.assertEqual(json.loads(chart.read_text())["meta"]["coverDataUrl"], "data:image/png;base64,abc")
+
+
+class CreatorReleaseTests(unittest.TestCase):
+    def test_creator_release_excludes_arg_assets_and_retires_previous_copy(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            normal = root / "Songs" / "Visible"
+            hidden = root / "Songs" / "Secret"
+            for folder in (normal, hidden): folder.mkdir(parents=True)
+            (normal / "song.patch.json").write_text(json.dumps({"id":"visible"}))
+            (normal / "test.4k-speedcoef.json").write_text(json.dumps({"notes":[{"timeMs":0,"lane":0}]}))
+            hidden_id = "a" * 32
+            (hidden / "song.patch.json").write_text(json.dumps({"id":hidden_id,"encrypted":True,"retireSongIds":["old-hidden"]}))
+            (hidden / "secret.otchart").write_text("private cipher")
+            (hidden / "secret.wav").write_text("private audio")
+            (hidden / "secret.png").write_text("private art")
+            output = root / "output" / "songs"
+            output.mkdir(parents=True)
+            (output / (hidden_id + "_old.zip")).write_text("stale release")
+            with patch.object(build_manifest, "git", return_value="b" * 40), patch("sys.argv", ["build_manifest.py", "--repo", str(root), "--audience", "creators"]):
+                self.assertEqual(build_manifest.main(),0)
+            manifest = json.loads((root / "output" / "manifest.json").read_text())
+            self.assertEqual(manifest["audience"], "creators")
+            self.assertEqual([song["id"] for song in manifest["songs"]],["visible"])
+            self.assertEqual(set(manifest["removed"]), {hidden_id,"old-hidden"})
+            self.assertEqual(len(list(output.iterdir())),1)
+            self.assertTrue((hidden / "secret.otchart").exists())
 
 
 if __name__ == "__main__":
