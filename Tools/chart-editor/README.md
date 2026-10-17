@@ -74,3 +74,11 @@ http://127.0.0.1:5173/
 `index.html`을 `file://`로 직접 열면 브라우저 보안 때문에 `Songs/` 폴더 자동 연동과 저장이 안 됩니다. 반드시 `server.py`로 띄우세요.
 
 서버는 `127.0.0.1:5173`에만 열립니다. 외부 공개용이 아니라 로컬 작업 도구입니다.
+
+## 커뮤니티 에디터 기능 브랜치 단축키
+
+`feature/community-chart-editor`에서 Q/W/E는 선택/배치/재생 위치, A/S는 coef 0/1, D는 탭/홀드 전환이다. coef와 탭/홀드 변경은 선택한 노트에도 적용된다. 1/2/3은 선택/탭/홀드 별칭이며 Ctrl+S는 저장, Ctrl+Z는 실행 취소, Ctrl+Y 또는 Ctrl+Shift+Z는 다시 실행이다. 텍스트 입력 중에는 편집 단축키가 작동하지 않는다. 기존 N/P/T/H 별칭도 유지한다.
+
+[osu! 공식 단축키](https://osu.ppy.sh/wiki/en/Client/Keyboard_shortcuts)와 [Quaver 문서](https://quavergame.com/docs/editor/editor_keybinds)를 참고했다. 이 브라우저 에디터는 4키용이며 추가 키 모드는 게임 저장소의 인게임 에디터를 사용한다. ARG 완료 후 공개하기 위한 별도 브랜치이므로 현재 배포 브랜치에 병합하지 않는다.
+
+검사: `node --test test_editor_core.mjs test_editor_shortcuts.mjs`
