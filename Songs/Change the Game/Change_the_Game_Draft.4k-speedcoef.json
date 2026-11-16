@@ -37,8 +37,8 @@
     {
       "timeMs": 48600,
       "durationMs": 1200,
-      "speedDelta": 0.585,
-      "effect": "delta"
+      "maxSpeed": 1,
+      "effect": "limit"
     },
     {
       "timeMs": 51000,
@@ -10526,7 +10526,7 @@
   ],
   "autoCoef": {
     "schemaVersion": 1,
-    "generatedAt": "2026-11-16T11:31:25.431Z",
+    "generatedAt": "2026-11-16T12:09:25.379Z",
     "description": "Final speedupCoef = baseSpeedupCoef * autoSpeedupCoefMultiplier. Load restores editable coef 0/1 from baseSpeedupCoef.",
     "settings": {
       "sigmaMs": 1600,
