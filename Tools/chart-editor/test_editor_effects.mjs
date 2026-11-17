@@ -81,5 +81,8 @@ console.log('effects editor tests passed');
  const mdl=context.chartEffectsModel([shift]);const near=(a,b)=>assert.ok(Math.abs(a-b)<1e-5,`${a} != ${b}`);
  near(mdl.visualHitTime('g',.5,5),5);near(mdl.visualHitTime('g',1.5,5),5-.5/12*.5);near(mdl.visualHitTime('g',3,5),5-.5/12);near(mdl.visualHitTime('g',3,12),12-.25/12);near(mdl.visualHitTime('h',3,5),5);
  assert.ok(mdl.hasGroupEffects('g'));
+ assert.equal(context.normalizeEffect({type:'offset',group:'g',timeMs:0,value:-500,fromValue:1000}).value,-500); // no limit
+ assert.equal(context.normalizeEffect({type:'offset',group:'g',timeMs:0,value:-500,fromValue:1000}).fromValue,1000);
+ near(context.chartEffectsModel([context.normalizeEffect({type:'offset',group:'g',timeMs:0,value:-300})]).visualHitTime('g',1,5),5-300*.5/12);
  console.log('offset tests passed');
 }

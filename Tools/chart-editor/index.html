@@ -520,7 +520,7 @@ function normalizeEffect(e){
  const o={type:e.type,timeMs:Math.max(0,Math.round(fxNum(e.timeMs,0))),durationMs:Math.max(0,Math.round(fxNum(e.durationMs,0)))};
  if(fxValidCurve(e.curve))o.curve=fxCleanCurve(e.curve);
  if(e.type==='alpha'||e.type==='speed'||e.type==='offset'){o.group=String(e.group??'');o.value=fxNum(e.value,e.type==='offset'?0:1);o.ease=e.ease||'linear';
-  const lo=e.type==='alpha'?0:e.type==='offset'?-96:-20,hi=e.type==='alpha'?1:e.type==='offset'?96:20;o.value=Math.max(lo,Math.min(hi,o.value));
+  const lo=e.type==='alpha'?0:e.type==='offset'?-Infinity:-20,hi=e.type==='alpha'?1:e.type==='offset'?Infinity:20;o.value=Math.max(lo,Math.min(hi,o.value));
   if(e.fromValue!==undefined&&e.fromValue!==null&&e.fromValue!==''&&Number.isFinite(Number(e.fromValue)))o.fromValue=Math.max(lo,Math.min(hi,Number(e.fromValue)));}
  if(e.type==='glitch'){o.intensity=Math.max(0,Math.min(1,fxNum(e.intensity,.5)));o.intensityEnd=fxNum(e.intensityEnd,-1);o.ease=e.ease||'linear';if(!o.durationMs)o.durationMs=500}
  if(e.type==='shatter'){o.breakMs=Math.max(100,Math.round(fxNum(e.breakMs,1400)));o.shake=Math.max(0,Math.min(1,fxNum(e.shake,.5)));
@@ -577,7 +577,7 @@ function chartEffectsModel(effects=exportEffects()){
  const key=JSON.stringify(effects);if(fxCache.has(key))return fxCache.get(key);
  const by=(type)=>{const m=new Map();effects.filter(e=>e.type===type).forEach(e=>{const g=e.group||'';if(!m.has(g))m.set(g,[]);m.get(g).push(e)});return m};
  const alpha=new Map(),speed=new Map(),offset=new Map();
- by('alpha').forEach((v,k)=>alpha.set(k,buildTrack(v,1,0,1)));by('speed').forEach((v,k)=>speed.set(k,buildTrack(v,1,-20,20)));by('offset').forEach((v,k)=>offset.set(k,buildTrack(v,0,-96,96)));
+ by('alpha').forEach((v,k)=>alpha.set(k,buildTrack(v,1,0,1)));by('speed').forEach((v,k)=>speed.set(k,buildTrack(v,1,-20,20)));by('offset').forEach((v,k)=>offset.set(k,buildTrack(v,0,-Infinity,Infinity)));
  const model={
   alphaAt:(g,t)=>alpha.has(g||'')?alpha.get(g||'').value(t):1,
   speedAt:(g,t)=>speed.has(g||'')?speed.get(g||'').value(t):1,
