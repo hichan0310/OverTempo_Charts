@@ -6,9 +6,11 @@
   "encrypted": true,
   "publicTitle": "?",
   "publicArtist": "?",
-  "retireSongIds": ["end-time"],
+  "retireSongIds": [
+    "end-time"
+  ],
   "encryptedAssets": {
-    "End_Time_BMS.wav": "audio.wav",
+    "End_Time_release.ogg": "audio.ogg",
     "audio.mp3": "preview.mp3",
     "endtime_cover.png": "cover.png",
     "normal-hitfinish.wav": "normal-hitfinish.wav",

@@ -1,6 +1,6 @@
 """git_deploy: commit/push only the chosen files; deploy charts to a launcher's internal branch.
 Uses throwaway local repos for every remote — nothing is pushed anywhere real."""
-import json, subprocess, tempfile, unittest
+import json, os, shutil, subprocess, tempfile, unittest
 from pathlib import Path
 import git_deploy
 
@@ -49,12 +49,21 @@ class DeployDevCharts(unittest.TestCase):
             (launcher / "dev").mkdir(); (launcher / "dev/manifest.json").write_text('{"sourceCommit":"old"}')
             (launcher / "index.html").write_text("public")
             sh(launcher, "add", "."); sh(launcher, "commit", "-qm", "init"); sh(launcher, "push", "-q", "origin", "main:internal")
+            # the real signing tool, with a throwaway key
+            (launcher / "ci").mkdir()
+            shutil.copy2(CHARTS.parent / "OverTempo_Launcher" / "ci" / "sign_manifests.py", launcher / "ci" / "sign_manifests.py")
+            key = root / "signing.pem"
+            subprocess.run(["openssl", "genpkey", "-algorithm", "EC", "-pkeyopt", "ec_paramgen_curve:P-256", "-out", str(key)],
+                           check=True, capture_output=True)
+            os.environ["OVERTEMPO_MANIFEST_SIGNING_KEY"] = str(key)
+            self.addCleanup(os.environ.pop, "OVERTEMPO_MANIFEST_SIGNING_KEY", None)
             logs = []
             result = git_deploy.deploy_dev_charts(CHARTS, logs.append, ref="HEAD", wait_seconds=0, launcher=launcher)
             head = sh(CHARTS, "rev-parse", "HEAD")
             self.assertEqual(result["sourceCommit"], head)
             manifest = json.loads(sh(origin, "show", "internal:dev/manifest.json"))
             self.assertEqual(manifest["sourceCommit"], head)
+            self.assertGreater(len(sh(origin, "show", "internal:dev/manifest.json.sig")), 40)  # signed for the launcher
             songs = sh(origin, "ls-tree", "-r", "-l", "internal", "dev/songs").splitlines()
             self.assertTrue(songs)
             sizes = {line.split("\t")[1].rsplit("/", 1)[-1]: int(line.split()[3]) for line in songs}

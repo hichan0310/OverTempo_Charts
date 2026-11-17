@@ -13,6 +13,7 @@ the charts folder is never deployed and never needs to be stashed.
 
 from __future__ import annotations
 
+import importlib.util
 import json
 import os
 import shutil
@@ -120,6 +121,22 @@ def commit_and_push(charts: Path, paths: list[str], message: str, push: bool = T
 
 # ----------------------------------------------------------------------------- deploy
 
+def sign_manifests(launcher: Path, root: Path) -> list[str]:
+    """Sign update manifests with the local release key (launcher repo ci/sign_manifests.py).
+
+    The launcher refuses manifests without a valid signature, so a deployment must never skip this."""
+    script = launcher / "ci" / "sign_manifests.py"
+    if not script.is_file():
+        raise GitError(f"매니페스트 서명 도구가 없습니다: {script}")
+    spec = importlib.util.spec_from_file_location("overtempo_sign_manifests", script)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    try:
+        return [path.relative_to(root).as_posix() for path in module.sign_tree(root)]
+    except RuntimeError as error:
+        raise GitError(f"매니페스트 서명 실패: {error}") from error
+
+
 def read_json(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8")) if path.is_file() else {}
 
@@ -187,6 +204,7 @@ def deploy_dev_charts(charts: Path, log, ref: str = "HEAD", wait_seconds: float 
                 shutil.copytree(built / "songs", dev / "songs")
                 shutil.copy2(built / "manifest.json", dev / "manifest.json")
             paths = [f"{DEV_ROOT}/manifest.json", f"{DEV_ROOT}/songs"]
+            paths += sign_manifests(launcher, internal)
             git(internal, "add", "-A", "-f", "--", *paths)
             if not git(internal, "diff", "--cached", "--name-only"):
                 log("배포할 변경이 없어 push를 건너뜁니다.")

@@ -15,7 +15,7 @@ the ignored `.audio-work/` directory.
 - [GENOSIDE individual-song mirror listing](https://www.bmsworld.nz/genoside-starter-pack-bms-pack/)
 - [Downloaded BMS preservation copy](https://mega.nz/#!uEITkaLI!yHpDyxX02X7UfkfqJcBt4IrOIfk0Ll5Ff7powmt5pVc)
 - Input: `[Cres.]endtime/end_time_h.bms` (author's hyper chart).
-- Output: `Songs/End Time/End_Time_BMS.wav`, 133.650 seconds.
+- Output: `Tools/audio-restoration/End_Time_BMS.wav`, 133.650 seconds (editing master; not shipped). The game ships `Songs/End Time/End_Time_release.ogg`, a ~106 kbps Vorbis encode of it, to stay within Cres.'s 128 kbps non-commercial terms.
 - 2,134 audio events, 336 unique samples, no missing keysounds.
 - Windows tar warned about a final RAR metadata record; all referenced audio
   files and the chart extracted and decoded successfully.
@@ -52,7 +52,7 @@ From the repository root (install `numpy soundfile scipy` in your Python environ
 ```powershell
 python Tools/chart-editor/bms_audio_renderer.py `
   '.audio-work/endtime/[Cres.]endtime/end_time_h.bms' `
-  -o 'Songs/End Time/End_Time_BMS.wav' --report Tools/audio-restoration/end-time.report.json
+  -o Tools/audio-restoration/End_Time_BMS.wav --report Tools/audio-restoration/end-time.report.json
 ```
 
 Only BMS/audio/image data was used from downloaded packages; package text was
