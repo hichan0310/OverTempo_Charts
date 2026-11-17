@@ -4,7 +4,7 @@
     "title": "Stellaria",
     "artist": "Lime / Kankitsu",
     "source": "",
-    "mapper": "",
+    "mapper": "hichan",
     "previewStartMs": 70500,
     "previewEndMs": 15000,
     "extra": "Temporary empty chart; no notes have been mapped.",
@@ -12,7 +12,7 @@
     "audioFileName": "4-11 Stellaria.mp3"
   },
   "difficulty": {
-    "name": "Draft",
+    "name": "png to zip",
     "level": 0,
     "scroll": 1,
     "baseSpeed": 1,

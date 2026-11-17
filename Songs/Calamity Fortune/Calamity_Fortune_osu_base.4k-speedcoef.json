@@ -4,7 +4,7 @@
     "title": "Calamity Fortune",
     "artist": "LeaF",
     "source": "東方風神録　～ Mountain of Faith.",
-    "mapper": "Usagi_",
+    "mapper": "hichan",
     "previewStartMs": 103200,
     "previewEndMs": 118200,
     "extra": "Imported from osu!mania calamity.osu; difficulty Easy; BeatmapID 4904323; BeatmapSetID 2288990; first timing point 1338ms",
@@ -12,7 +12,7 @@
     "audioFileName": "116 Calamity Fortune(2019).wav"
   },
   "difficulty": {
-    "name": "Easy",
+    "name": "official",
     "level": 4,
     "scroll": 1,
     "baseSpeed": 1,

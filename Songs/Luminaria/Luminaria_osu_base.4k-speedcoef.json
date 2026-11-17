@@ -4,7 +4,7 @@
     "title": "Luminaria",
     "artist": "Lime / Kankitsu",
     "source": "",
-    "mapper": "hichan0310",
+    "mapper": "hichan",
     "previewStartMs": 66078,
     "previewEndMs": 81078,
     "extra": "Imported from osu!mania luminaria.osu; difficulty Secret; BeatmapID 4267091; BeatmapSetID 2044437; first timing point 875ms",
@@ -34,7 +34,7 @@
     }
   },
   "difficulty": {
-    "name": "Secret",
+    "name": "official",
     "level": 9,
     "scroll": 1,
     "baseSpeed": 1,

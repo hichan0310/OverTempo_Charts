@@ -4,7 +4,7 @@
     "title": "Change the Game",
     "artist": "REDALiCE & USAO    HARDCORE TANO*C",
     "source": "",
-    "mapper": "",
+    "mapper": "hichan",
     "previewStartMs": 0,
     "previewEndMs": 15000,
     "extra": "Temporary empty chart; no notes have been mapped.",
@@ -12,7 +12,7 @@
     "audioFileName": "Change the Game (Short).wav"
   },
   "difficulty": {
-    "name": "Draft",
+    "name": "official",
     "level": 0,
     "scroll": 1,
     "baseSpeed": 1,

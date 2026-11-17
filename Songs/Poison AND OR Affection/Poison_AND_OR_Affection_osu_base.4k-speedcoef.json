@@ -4,7 +4,7 @@
     "title": "Poison AND÷OR Affection",
     "artist": "LeaF",
     "source": "osu!",
-    "mapper": "emiIio",
+    "mapper": "hichan",
     "previewStartMs": 101000,
     "previewEndMs": 116000,
     "extra": "Imported from osu!mania poison.osu; difficulty Beginner; BeatmapID 1660989; BeatmapSetID 791804; first timing point 970ms",
@@ -34,7 +34,7 @@
     }
   },
   "difficulty": {
-    "name": "Beginner",
+    "name": "official",
     "level": 4,
     "scroll": 1,
     "baseSpeed": 1,

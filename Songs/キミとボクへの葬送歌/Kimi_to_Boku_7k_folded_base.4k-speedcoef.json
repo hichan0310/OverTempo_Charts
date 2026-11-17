@@ -4,7 +4,7 @@
     "title": "キミとボクへの葬送歌",
     "artist": "ROKINA",
     "source": "",
-    "mapper": "hichan0310",
+    "mapper": "hichan",
     "previewStartMs": 0,
     "previewEndMs": 15000,
     "extra": "Imported from BMS _01_exc_b.bms; channels 11,12,13,14,15,18,19; folded 7K->4K (510->505 notes; 0 duplicate taps, 4 overlapping holds, 1 taps inside holds collapsed)",
@@ -12,7 +12,7 @@
     "audioFileName": "Kimi_to_Boku_official_BMS.wav"
   },
   "difficulty": {
-    "name": "7K BEGINNER → 4K Folded",
+    "name": "official",
     "level": 8,
     "scroll": 1,
     "baseSpeed": 1,

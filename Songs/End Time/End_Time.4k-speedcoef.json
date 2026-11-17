@@ -4,7 +4,7 @@
     "title": "End Time",
     "artist": "Cres.",
     "source": "",
-    "mapper": "",
+    "mapper": "hichan",
     "previewStartMs": 77000,
     "previewEndMs": 92000,
     "extra": "",
@@ -34,7 +34,7 @@
     }
   },
   "difficulty": {
-    "name": "Normal",
+    "name": "official",
     "level": 10,
     "scroll": 1,
     "baseSpeed": 1,

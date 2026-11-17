@@ -4,7 +4,7 @@
     "title": "Aleph-0",
     "artist": "LeaF",
     "source": "",
-    "mapper": "hichan / rhythm reference: jakads",
+    "mapper": "hichan",
     "previewStartMs": 46851,
     "previewEndMs": 61851,
     "extra": "New 4K tap base rebuilt from scratch. Timing map references osu!mania BeatmapID 5230779; rhythmic events reference the osu! Loved Cardinality chart (BeatmapID 1102580). Existing OverTempo patterns were not reused.",
@@ -12,7 +12,7 @@
     "audioFileName": "127 Aleph-0(2022).wav"
   },
   "difficulty": {
-    "name": "Base 4K",
+    "name": "official",
     "level": 7,
     "scroll": 1,
     "baseSpeed": 1,

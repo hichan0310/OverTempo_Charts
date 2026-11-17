@@ -4,7 +4,7 @@
     "title": "Chronomia",
     "artist": "Lime / Kankitsu",
     "source": "",
-    "mapper": "hichan0310",
+    "mapper": "hichan",
     "previewStartMs": 0,
     "previewEndMs": 15000,
     "extra": "",
@@ -12,7 +12,7 @@
     "audioFileName": "4-03 Chronomia.mp3"
   },
   "difficulty": {
-    "name": "Normal",
+    "name": "png to zip",
     "level": 4,
     "scroll": 1,
     "baseSpeed": 1,
