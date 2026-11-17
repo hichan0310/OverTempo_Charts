@@ -663,7 +663,7 @@
       },
       {
         "id": "그룹2",
-        "startMs": 46671,
+        "startMs": 46791,
         "endMs": 55910,
         "lanes": [
           0,
@@ -718,7 +718,7 @@
     },
     {
       "timeMs": 41451,
-      "durationMs": 1200,
+      "durationMs": 1920,
       "speedDelta": 0,
       "effect": "delta"
     },
@@ -989,18 +989,18 @@
       "timeMs": 41451,
       "durationMs": 240,
       "group": "그룹2",
-      "value": 0.1,
+      "value": 0.2,
       "ease": "linear",
-      "fromValue": 0.1
+      "fromValue": 0.2
     },
     {
       "type": "offset",
       "timeMs": 41451,
-      "durationMs": 4800,
+      "durationMs": 5400,
       "group": "그룹2",
       "value": 0,
       "ease": "linear",
-      "fromValue": -96
+      "fromValue": -264
     },
     {
       "type": "glitch",
@@ -1057,6 +1057,41 @@
       "intensity": 1,
       "intensityEnd": 0.1,
       "ease": "linear"
+    },
+    {
+      "type": "speed",
+      "timeMs": 43371,
+      "durationMs": 3720,
+      "curve": [
+        {
+          "t": 0,
+          "v": 0,
+          "inTan": -0.18005,
+          "outTan": -0.18005
+        },
+        {
+          "t": 0.43547,
+          "v": 2.9782,
+          "inTan": -0.06779,
+          "outTan": -0.06779
+        },
+        {
+          "t": 0.7125,
+          "v": 1.8402,
+          "inTan": -7.56658,
+          "outTan": -7.56658
+        },
+        {
+          "t": 1,
+          "v": 1,
+          "inTan": -0.20095,
+          "outTan": -0.20095
+        }
+      ],
+      "group": "그룹2",
+      "value": 1,
+      "ease": "linear",
+      "fromValue": 0.2
     }
   ],
   "images": [],
@@ -10887,7 +10922,7 @@
   ],
   "autoCoef": {
     "schemaVersion": 1,
-    "generatedAt": "2026-11-17T09:50:15.439Z",
+    "generatedAt": "2026-11-17T10:17:44.247Z",
     "description": "Final speedupCoef = baseSpeedupCoef * autoSpeedupCoefMultiplier. Load restores editable coef 0/1 from baseSpeedupCoef.",
     "settings": {
       "sigmaMs": 1600,
