@@ -1,0 +1,87 @@
+{
+  "valid": true,
+  "errors": [],
+  "warnings": [
+    "7 audio attacks need timing review; excluded from notes"
+  ],
+  "grid": {
+    "checkedNotes": 19,
+    "offGridNoteIndices": [],
+    "subdivisionsPerBeat": [
+      4,
+      6,
+      8
+    ]
+  },
+  "stats": {
+    "notes": 19,
+    "attackMoments": 17,
+    "chordRate": 0.118,
+    "laneDistribution": {
+      "0": 5,
+      "1": 5,
+      "2": 5,
+      "3": 4
+    },
+    "peakNps1x": 8,
+    "peakNps2xEstimated": 15
+  },
+  "reviewRequired": [
+    {
+      "attackAudioMs": 25092.8798185941,
+      "attackChartMs": 25092.8798185941,
+      "nearestGridMs": 25077,
+      "deviationMs": 15.87981859410138,
+      "reviewRequired": true,
+      "reason": "attack outside grid tolerance"
+    },
+    {
+      "attackAudioMs": 25359.909297052156,
+      "attackChartMs": 25359.909297052156,
+      "nearestGridMs": 25374,
+      "deviationMs": -14.090702947843965,
+      "reviewRequired": true,
+      "reason": "attack outside grid tolerance"
+    },
+    {
+      "attackAudioMs": 27078.185941043084,
+      "attackChartMs": 27078.185941043084,
+      "nearestGridMs": 27093,
+      "deviationMs": -14.814058956915687,
+      "reviewRequired": true,
+      "reason": "attack outside grid tolerance"
+    },
+    {
+      "attackAudioMs": 27205.895691609978,
+      "attackChartMs": 27205.895691609978,
+      "nearestGridMs": 27192,
+      "deviationMs": 13.895691609977803,
+      "reviewRequired": true,
+      "reason": "attack outside grid tolerance"
+    },
+    {
+      "attackAudioMs": 27472.92517006803,
+      "attackChartMs": 27472.92517006803,
+      "nearestGridMs": 27489,
+      "deviationMs": -16.07482993197118,
+      "reviewRequired": true,
+      "reason": "attack outside grid tolerance"
+    },
+    {
+      "attackAudioMs": 27600.634920634922,
+      "attackChartMs": 27600.634920634922,
+      "nearestGridMs": 27588,
+      "deviationMs": 12.63492063492231,
+      "reviewRequired": true,
+      "reason": "attack outside grid tolerance"
+    },
+    {
+      "attackAudioMs": 27647.074829931975,
+      "attackChartMs": 27647.074829931975,
+      "nearestGridMs": 27654,
+      "deviationMs": -6.9251700680251815,
+      "reviewRequired": true,
+      "reason": "attack outside grid tolerance"
+    }
+  ]
+}

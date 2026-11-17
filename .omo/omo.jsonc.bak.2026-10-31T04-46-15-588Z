@@ -1,0 +1,13 @@
+{
+  "$schema": "https://raw.githubusercontent.com/code-yeongyu/oh-my-openagent/dev/assets/omo.schema.json",
+  // Project-only extension: inherits the existing ~/.omo/omo.jsonc model routing.
+  // Invoke this worker as task(category: "chart-design", prompt: ...).
+  "categories": {
+    "chart-design": {
+      "description": "Design music-grounded four-key OverTempo chart patterns from verified audio attack candidates, not raw timestamps",
+      "model": "anthropic/claude-opus-5-5",
+      "reasoning": "max",
+      "prompt_append": "file://./Tools/ai-chart/OPUS_PROMPT.md"
+    }
+  }
+}

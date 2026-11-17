@@ -427,7 +427,7 @@ def convert_bms(
         + (f"; {'; '.join(warnings)}" if warnings else "")
     )
     chart = {
-        "version": 2,
+        "version": 4,
         "meta": {
             "title": chart_title,
             "artist": chart_artist,
@@ -455,8 +455,7 @@ def convert_bms(
         },
         "editorSettings": {"encryptionEnabled": False, "argId": ""},
         "preview": {"startMs": 0, "endMs": 15000},
-        "speedLimitLines": [],
-        "stageDeltaLines": [],
+        "specialNotes": [],
         "notes": notes,
     }
     return chart, warnings

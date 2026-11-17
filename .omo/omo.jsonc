@@ -1,0 +1,21 @@
+{
+  "$schema": "https://raw.githubusercontent.com/code-yeongyu/oh-my-openagent/dev/assets/omo.schema.json",
+
+  "categories": {
+    "chart-design": {
+      "description": "Design music-grounded four-key OverTempo chart patterns from verified audio attack candidates, not raw timestamps",
+      "model": "anthropic-subscription/claude-opus-5-5",
+      "reasoning": "max",
+      "prompt_append": "file://./Tools/ai-chart/OPUS_PROMPT.md"
+    },
+
+    "artistry": {
+      "model": "anthropic-subscription/claude-opus-5-5",
+      "reasoning": "max"
+    }
+  },
+
+  "_migrations": [
+    "2026-08-reasoning-unification"
+  ]
+}

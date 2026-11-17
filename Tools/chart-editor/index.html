@@ -4,10 +4,24 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>4K Speed-Coef Chart Editor v5</title>
 <style>
-:root{--bg:#0b0c11;--panel:#171a23;--panel2:#222635;--line:#3b4257;--text:#edf0f7;--muted:#9fa8bd;--accent:#86d7ff;--c1:#79e69b;--c0:#ffd267;--danger:#ff6b7a;--cursor:#ff7aa8;--select:#a78bfa;--wave:#72d7ff}*{box-sizing:border-box}body{margin:0;height:100vh;overflow:hidden;background:var(--bg);color:var(--text);font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,input,select,textarea{font:inherit;color:var(--text);background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:7px 9px}button{cursor:pointer;user-select:none}button:hover{border-color:var(--accent)}button.active{border-color:var(--accent);background:#26364b}button.danger:hover{border-color:var(--danger)}button:disabled{opacity:.45;cursor:default}label{color:var(--muted);font-size:12px;display:flex;align-items:center;gap:6px;white-space:nowrap}input[type=number]{width:86px}input[type=text]{width:160px}input[type=range]{width:106px}textarea{width:100%;min-height:56px;resize:vertical}.app{height:100vh;display:grid;grid-template-rows:auto 1fr auto}.topbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:9px 10px;background:var(--panel);border-bottom:1px solid var(--line)}.group{display:flex;gap:6px;align-items:center;padding-right:9px;border-right:1px solid var(--line)}.group:last-child{border-right:none}.main{min-height:0;display:grid;grid-template-columns:1fr 386px}.canvas-wrap{position:relative;overflow:hidden;background:#090b10;min-width:0}canvas{display:block;width:100%;height:100%;cursor:crosshair}.help{display:none}.side{background:var(--panel);border-left:1px solid var(--line);overflow:auto;padding:11px}.card{border:1px solid var(--line);background:rgba(255,255,255,.025);border-radius:14px;padding:11px;margin-bottom:11px}.card h3{margin:0 0 10px;font-size:14px}.row{display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin-bottom:8px}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}.grid2 label,.stack label,.stack{align-items:flex-start;flex-direction:column;gap:4px}.grid2 input,.stack input,.stack select{width:100%}.cover{width:74px;height:74px;border-radius:12px;border:1px solid var(--line);background:var(--panel2);object-fit:cover}.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;color:var(--muted)}.small{font-size:12px;color:var(--muted);line-height:1.45}.hidden{display:none}.note-list{max-height:205px;overflow:auto;border:1px solid var(--line);border-radius:10px}.note-item{display:grid;grid-template-columns:56px 38px 50px 1fr;gap:6px;padding:6px 8px;border-bottom:1px solid rgba(255,255,255,.06);font-size:12px;cursor:pointer}.note-item:hover{background:rgba(134,215,255,.08)}.note-item.selected{background:rgba(167,139,250,.18)}.statusbar{display:flex;gap:18px;align-items:center;white-space:nowrap;padding:6px 12px;background:var(--panel);border-top:1px solid var(--line);color:var(--muted);font-size:12px}.project-group select{max-width:170px}.project-group .mono{max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-</style>
+:root{--bg:#0b0c11;--panel:#171a23;--panel2:#222635;--line:#3b4257;--text:#edf0f7;--muted:#9fa8bd;--accent:#86d7ff;--c1:#79e69b;--c0:#ffd267;--danger:#ff6b7a;--cursor:#ff7aa8;--select:#a78bfa;--wave:#72d7ff}*{box-sizing:border-box}body{margin:0;height:100vh;overflow:hidden;background:var(--bg);color:var(--text);font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,input,select,textarea{font:inherit;color:var(--text);background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:7px 9px}button{cursor:pointer;user-select:none}button:hover{border-color:var(--accent)}button.active{border-color:var(--accent);background:#26364b}button.danger:hover{border-color:var(--danger)}button:disabled{opacity:.45;cursor:default}label{color:var(--muted);font-size:12px;display:flex;align-items:center;gap:6px;white-space:nowrap}input[type=number]{width:86px}input[type=text]{width:160px}input[type=range]{width:106px}textarea{width:100%;min-height:56px;resize:vertical}.app{height:100vh;display:grid;grid-template-rows:auto 1fr auto}.topbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:9px 10px;background:var(--panel);border-bottom:1px solid var(--line)}.group{display:flex;gap:6px;align-items:center;padding-right:9px;border-right:1px solid var(--line)}.group:last-child{border-right:none}.main{min-height:0;display:grid;grid-template-columns:1fr 400px 386px}.main.fx-hidden{grid-template-columns:1fr 386px}.canvas-wrap{position:relative;overflow:hidden;background:#090b10;min-width:0}canvas{display:block;width:100%;height:100%;cursor:crosshair}.help{display:none}.side{background:var(--panel);border-left:1px solid var(--line);overflow:auto;padding:11px}.card{border:1px solid var(--line);background:rgba(255,255,255,.025);border-radius:14px;padding:11px;margin-bottom:11px}.card h3{margin:0 0 10px;font-size:14px}.row{display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin-bottom:8px}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}.grid2 label,.stack label,.stack{align-items:flex-start;flex-direction:column;gap:4px}.grid2 input,.stack input,.stack select{width:100%}.cover{width:74px;height:74px;border-radius:12px;border:1px solid var(--line);background:var(--panel2);object-fit:cover}.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;color:var(--muted)}.small{font-size:12px;color:var(--muted);line-height:1.45}.hidden{display:none}.note-list{max-height:205px;overflow:auto;border:1px solid var(--line);border-radius:10px}.note-item{display:grid;grid-template-columns:56px 38px 50px 1fr;gap:6px;padding:6px 8px;border-bottom:1px solid rgba(255,255,255,.06);font-size:12px;cursor:pointer}.note-item:hover{background:rgba(134,215,255,.08)}.note-item.selected{background:rgba(167,139,250,.18)}.statusbar{display:flex;gap:18px;align-items:center;white-space:nowrap;padding:6px 12px;background:var(--panel);border-top:1px solid var(--line);color:var(--muted);font-size:12px}.project-group select{max-width:170px}.project-group .mono{max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#fxPreviewCanvas,.fx-curve{height:auto!important;}#fxPreviewCanvas{aspect-ratio:16/9;cursor:default}.fx-big{position:fixed!important;left:50%;top:50%;transform:translate(-50%,-50%);width:min(94vw,calc(88vh * 16 / 9))!important;z-index:50;box-shadow:0 0 0 100vmax rgba(0,0,0,.7)}.fx-dock{background:var(--panel);border-left:1px solid var(--line);overflow:auto;padding:11px;min-height:0}.fx-dock.collapsed{display:none}.fx-dock .card{margin:0 0 11px}#placeKindGroup button.active{outline:2px solid var(--accent)}.git-modal{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:100;display:flex;align-items:center;justify-content:center}.git-modal.hidden{display:none}.git-box{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;width:min(760px,94vw);max-height:90vh;overflow:auto}.git-box h3{margin:14px 0 6px}.git-files{max-height:220px;overflow:auto;border:1px solid var(--line);border-radius:8px;padding:6px;margin:6px 0;font:12px ui-monospace,monospace}.git-files label{display:flex;gap:6px;align-items:center;padding:1px 0}.git-log{background:#090b10;border:1px solid var(--line);border-radius:8px;padding:8px;max-height:200px;overflow:auto;white-space:pre-wrap;font-size:12px;min-height:40px}</style>
 </head>
 <body>
+<div id="gitPanel" class="git-modal hidden"><div class="git-box">
+<div class="row" style="justify-content:space-between"><h3 style="margin:0">Git · 배포</h3><button id="gitCloseBtn">닫기</button></div>
+<div class="mono small" id="gitStatus">상태 불러오는 중...</div>
+<h3>1. 커밋 · 푸시 (OverTempo_Charts)</h3>
+<div class="small">체크한 파일만 커밋합니다. 기본으로 지금 연 곡 폴더의 변경만 체크됩니다.</div>
+<div class="row" style="gap:6px"><button id="gitSelectSong">이 곡만</button><button id="gitSelectNone">선택 해제</button><label><input id="gitShowAll" type="checkbox">곡 폴더 밖 변경도 보기</label></div>
+<div id="gitFiles" class="git-files"></div>
+<label>커밋 메시지 <input id="gitMessage" type="text" placeholder="예: Aleph-0: chart effects"></label>
+<div class="row"><label><input id="gitSaveFirst" type="checkbox" checked>커밋 전에 지금 채보 저장</label><label><input id="gitPush" type="checkbox" checked>원격(origin)에 푸시</label><button id="gitCommitBtn">커밋 · 푸시</button></div>
+<h3>2. 런처 dev 채널 배포 (OverTempo_Launcher internal → Netlify /dev)</h3>
+<div class="small">마지막 커밋(HEAD)의 채보를 깨끗한 임시 폴더에서 빌드해 internal 브랜치의 dev/songs, dev/manifest.json에 올리고 Netlify 반영까지 확인합니다. 커밋 안 된 변경은 들어가지 않습니다.</div>
+<div class="row"><button id="gitDeployBtn">dev 채널에 채보 배포</button><span class="mono small" id="gitDeployState"></span></div>
+<pre id="gitLog" class="git-log"></pre>
+</div></div>
 <div class="app">
 <div class="topbar">
 <div class="group project-group">
@@ -19,6 +33,7 @@
   <label>Audio <select id="projectAudioSelect"><option value="">Audio...</option></select></label>
   <button id="projectLoadBtn">Load</button>
   <button id="projectSaveBtn">Save Chart</button>
+  <button id="gitPanelBtn" title="채보 저장소 커밋·푸시, 런처 dev 채널 배포">Git · 배포</button>
   <input id="projectNewSongAudioInput" class="hidden" type="file" accept="audio/*">
   <span id="projectStatus" class="mono">project: local</span>
 </div>
@@ -27,12 +42,58 @@
       <label>Rate <input id="playbackRate" type="range" min="1" max="2" step="0.01" value="1"></label>
       <span id="playbackRateLabel" class="mono">1.00x</span><label>Wave <input id="waveGain" type="range" min="-1" max="10" step="0.1" value="5.0"></label></div>
 <div class="group"><label>BPM <input id="bpmInput" type="number" value="180" min="1" step="0.01"></label><label>Offset <input id="offsetInput" type="number" value="0" step="1"></label><label>Snap <select id="snapInput"><option value="1">1/1</option><option value="2">1/2</option><option value="3">1/3</option><option value="4" selected>1/4</option><option value="6">1/6</option><option value="8">1/8</option><option value="12">1/12</option><option value="16">1/16</option><option value="24">1/24</option><option value="32">1/32</option><option value="48">1/48</option></select></label><label>Zoom <input id="zoomInput" type="range" min="45" max="2000" step="1" value="160"></label></div>
-<div class="group"><button id="toolPlaceBtn" class="active">Place [W]</button><button id="toolSelectBtn">Select [Q / 1]</button><button id="toolPlayBtn">Playhead [E]</button></div>
+<div class="group"><button id="toolPlaceBtn" class="active">Place [W]</button><button id="toolSelectBtn">Select [Q / 1]</button><button id="toolPlayBtn">Playhead [E]</button></div><div class="group" id="placeKindGroup"><span class="small">Place:</span><button data-place-kind="note" class="active">노트 [Z]</button><button data-place-kind="special">특수노트 [X]</button><button data-place-kind="effect" title="FX 트랙(노트 왼쪽)을 클릭/드래그하면 빈 효과가 생깁니다">효과 [C]</button><button id="fxDockToggle">연출 패널 접기</button></div>
 <div class="group"><button id="coef1Btn" class="active">Coef 1</button><button id="coef0Btn">Coef 0</button><button id="tapModeBtn" class="active">Tap</button><button id="holdModeBtn">Hold</button><label><input id="recordToggle" type="checkbox">Record</label></div>
 <div class="group"><button id="undoBtn">Undo</button><button id="redoBtn">Redo</button><button id="copyBtn">Copy</button><button id="pasteBtn">Paste</button><button id="mirrorBtn">Mirror</button></div>
 </div>
 <div class="main">
 <div class="canvas-wrap"><canvas id="editorCanvas"></canvas><div class="help">Timeline goes bottom to top. The waveform is shown in the large left rail and behind lanes. Use Wave to amplify it.<br>Wheel: scroll. Ctrl/Alt+Wheel: zoom. Click: place/select. Ctrl/Shift+Click: multi-select. Drag empty: marquee. Drag selected: move.<br>1/0: coef. T/H: tap/hold. Del: delete. Ctrl+C/V/Z/Y. M: mirror. Space: play. D F J K = current coef input.</div></div>
+<aside class="fx-dock" id="fxDock">
+<div class="card fx-col fx-preview-card"><h3>Preview / 연출 미리보기</h3>
+<div class="small">실제 게임 화면 에셋(<code>game-preview/</code>)으로 플레이헤드 시점을 미리 봅니다. Duration 0은 그 순간 적용, 양수는 그 시간 동안 나누어 변화합니다. 판정 시각은 바뀌지 않습니다.</div>
+<canvas id="fxPreviewCanvas" width="480" height="270" style="width:100%;border-radius:6px;background:#0b0c11;margin:6px 0" title="클릭: 크게 보기 / 닫기"></canvas>
+<div class="row"><label><input id="fxAutoMode" type="checkbox" checked>Auto mode (게임 오토 플레이 속도·가속)</label><button id="fxBigBtn">Large Preview</button></div>
+<div class="grid2"><label>Scroll Speed <input id="fxScrollSpeed" type="number" min="1" max="30" step="0.01" value="5"></label><label>Note Skin <select id="fxSkin"></select></label>
+<label>Speed Text Height <input id="fxSpeedTextHeight" type="range" min="0" max="1" step="0.01" value="0.47"></label><span class="mono" id="fxSettingsInfo"></span></div>
+<div class="row"><button id="fxResetSettingsBtn">게임 설정 다시 불러오기</button></div>
+<div class="row"><span class="mono" id="fxStats"></span></div>
+</div>
+<div class="card fx-col" id="fxEditCard"><h3>선택된 효과 편집</h3><div id="fxEditBody"></div></div>
+<div class="card fx-col"><h3>그룹 / 효과 목록</h3>
+<div class="small">그룹은 FX 트랙의 <b>그룹</b> 타임라인에서 구간을 드래그해 만듭니다. 구간 안 노트가 그 그룹이 됩니다.</div>
+<div class="small mono" id="fxGroupStats"></div>
+<div class="note-list" id="fxList" style="margin-top:6px"></div>
+<input id="imgFile" class="hidden" type="file" accept="image/png,image/jpeg,image/webp">
+</div>
+<div class="card fx-col"><h3>Special Notes / BPM</h3>
+<div class="small">
+특수 노트는 4레인 전체를 채우는 청록색 노트이며 기본 입력은 Space입니다.<br>
+입력 성공 여부와 무관하게 속도 효과가 적용됩니다. 성공은 Perfect, 실패는 Perfect 비율을 낮춥니다.<br>
+Duration 0은 탭, 양수는 홀드입니다. 홀드는 실제 배속을 0.01 단위로 변경합니다.<br>
+BPM Change: 해당 시점을 새 템포 구간의 첫 박자로 사용합니다.
+</div>
+<div class="grid2">
+<label>Limit Max Speed <input id="speedLimitMaxInput" type="number" value="1.25" min="1" step="0.01"></label>
+<label>Speed Delta <input id="speedDeltaInput" type="number" value="-0.20" step="0.01"></label>
+</div>
+<div class="grid2">
+<label>Special Duration (ms) <input id="specialDurationInput" type="number" value="0" min="0" step="1"></label>
+<label>New BPM <input id="bpmChangeInput" type="number" value="180" min="1" step="0.01"></label>
+</div>
+<div class="row">
+<button id="addSpeedLimitLineBtn">Add Limit Note</button>
+<button id="addStageDeltaLineBtn">Add Delta Note</button>
+<button id="addBpmChangeBtn">Add BPM @ Playhead</button>
+</div>
+<div class="note-list" id="timelineEventList"></div>
+</div>
+<div class="card fx-col hidden" id="selectedSpecialPanel"><h3>Selected Special Note</h3>
+<div class="mono" id="selectedSpecialSummary"></div>
+<div class="grid2"><label>Time (ms)<input id="specialSelTime" type="number" min="0" step="1"></label><label>Duration (ms)<input id="specialSelDuration" type="number" min="0" step="1"></label></div>
+<label><span id="specialSelValueLabel">Effect value</span><input id="specialSelValue" type="number" step="0.01"></label>
+<div class="row"><button id="applySpecialSelectedBtn">Apply</button><button id="deleteSpecialSelectedBtn" class="danger">Delete</button></div>
+<div class="small">몸통 드래그: 이동 / 왼쪽 시작 핸들·오른쪽 끝 핸들 드래그: 길이 조절.<br>탭의 오른쪽 핸들을 끌면 홀드로 바뀝니다. Tap/Hold 도구 버튼으로도 전환할 수 있습니다.</div></div>
+</aside>
 <aside class="side">
 <div class="card"><h3>Controls</h3><div class="small">
 시간은 아래에서 위로 진행됩니다. 마우스 휠 방향을 반대로 수정했습니다.<br>
@@ -42,26 +103,6 @@ offset은 chart timeline 위에서 audio 0ms가 놓이는 위치입니다. 노�
 <div class="card"><h3>Difficulty</h3><div class="grid2"><label>Name <input id="diffName" type="text" value="Normal"></label><label>Level <input id="diffLevel" type="number" value="1" step="0.1"></label></div><div class="grid2"><label>Scroll <input id="diffScroll" type="number" value="1" step="0.05"></label><label>Base Speed <input id="diffBaseSpeed" type="number" value="1" step="0.01"></label></div><label class="stack">Difficulty Notes <textarea id="diffNotes"></textarea></label></div>
 <div class="card"><h3>BPM / Snap Helper</h3><div class="row"><button id="jumpPrevMeasureBtn">Prev Bar</button><button id="jumpNextMeasureBtn">Next Bar</button><button id="jumpPrevBeatBtn">Prev Beat</button><button id="jumpNextBeatBtn">Next Beat</button></div><div class="row"><button id="jumpPrevSnapBtn">Prev Snap</button><button id="jumpNextSnapBtn">Next Snap</button><button id="snapPlayheadBtn">Snap Playhead</button></div><div class="mono" id="snapInfo">beat 333.33ms</div></div>
 <div class="card"><h3>Chart</h3><div class="row"><button id="exportBtn">Save Chart</button><button id="importBtn">Import JSON</button><input id="importFile" class="hidden" type="file" accept="application/json,.json"><button id="clearBtn" class="danger">Clear</button></div><div class="row"><button id="sampleBtn">Sample Pattern</button><button id="quantizeBtn">Quantize Selected</button><button id="deleteSelectedBtn2" class="danger">Delete Selected</button></div><div class="mono" id="chartStats">notes: 0</div></div>
-<div class="card"><h3>Timeline Events</h3>
-<div class="small">
-Speed Limit Line: 해당 시점에서 현재 배속이 max보다 크면 제한합니다.<br>
-Stage Delta Line: 해당 시점에서 stage에 delta를 더합니다.<br>
-BPM Change: 해당 시점을 새 템포 구간의 첫 박자로 사용합니다.
-</div>
-<div class="grid2">
-<label>Limit Max Speed <input id="speedLimitMaxInput" type="number" value="1.25" min="1" step="0.01"></label>
-<label>Stage Delta <input id="stageDeltaInput" type="number" value="-5" step="0.1"></label>
-</div>
-<div class="grid2">
-<label>New BPM <input id="bpmChangeInput" type="number" value="180" min="1" step="0.01"></label>
-</div>
-<div class="row">
-<button id="addSpeedLimitLineBtn">Add Limit @ Playhead</button>
-<button id="addStageDeltaLineBtn">Add Delta @ Playhead</button>
-<button id="addBpmChangeBtn">Add BPM @ Playhead</button>
-</div>
-<div class="note-list" id="timelineEventList"></div>
-</div>
 <div class="card"><h3>ARG Chart Encryption</h3>
 <div class="small">
 평문 JSON은 편집 원본으로 저장됩니다. Encrypted Release는 현재 차트를 게임 호환 <code>.otchart</code>로 별도 생성합니다.<br>
@@ -96,6 +137,7 @@ BPM Change: 해당 시점을 새 템포 구간의 첫 박자로 사용합니다.
 </div>
 <div class="mono" id="autoCurveStats">curve: none</div></div>
 <div class="card"><h3>Loop / Preview</h3><div class="row"><button id="setLoopStartBtn">Set Start</button><button id="setLoopEndBtn">Set End</button><button id="setPreviewStartBtn">Set Preview Start</button></div><div class="grid2"><label>Loop Start <input id="loopStartInput" type="number" value="0" step="10"></label><label>Loop End <input id="loopEndInput" type="number" value="8000" step="10"></label></div></div>
+
 <div class="card"><h3>Selected Notes</h3><div id="selectedEmpty" class="small">No selected notes.</div><div id="selectedPanel" class="hidden"><div class="mono" id="selectedSummary">selected: 0</div><div class="grid2"><label>Time <input id="selTime" type="number" step="1"></label><label>Lane <input id="selLane" type="number" min="1" max="4" step="1"></label></div><div class="grid2"><label>Duration <input id="selDuration" type="number" min="0" step="1"></label><label>Speedup Coef <select id="selCoef"><option value="1">1</option><option value="0">0</option></select></label></div><div class="row"><button id="applySelectedBtn">Apply to First</button><button id="auditionSelectedBtn">Audition</button><button id="deleteSelectedBtn" class="danger">Delete</button></div></div></div>
 <div class="card"><h3>Nearby Notes</h3><div class="note-list" id="noteList"></div></div>
 <div class="card"><h3>Format</h3><div class="mono">note = { timeMs, lane: 0..3, speedupCoef: 0|1, durationMs }<br>durationMs = 0: tap. durationMs &gt; 0: hold.<br>Save Chart writes final float speedupCoef plus baseSpeedupCoef, density/ramp/manual multipliers, and autoSpeedupCoefMultiplier. Load restores editor coef buttons from baseSpeedupCoef.</div></div>
@@ -107,12 +149,12 @@ BPM Change: 해당 시점을 새 템포 구간의 첫 박자로 사용합니다.
 (()=>{
 const $=id=>document.getElementById(id),canvas=$('editorCanvas'),ctx=canvas.getContext('2d');
 const lanes=4,chartKeys=['d','f','j','k'];
-const state={notes:[],selectedIds:new Set(),clipboard:[],toolMode:'place',currentCoef:1,currentMode:'tap',playbackRate:1,bpm:180,snapDiv:4,offsetMs:0,pxPerSecond:160,viewStartMs:0,playheadMs:0,isPlaying:false,loop:false,loopStartMs:0,loopEndMs:8000,audioFileName:'',audioDurationMs:0,coverDataUrl:'',recordKeys:false,drag:null,meta:{title:'Untitled',artist:'',source:'',mapper:'',previewStartMs:0,previewEndMs:15000,extra:''},difficulty:{name:'Normal',level:1,scroll:1,baseSpeed:1,notes:''},project:{available:false,songs:[],songName:'',chartName:'',audioName:'',isLoading:false,loadToken:0,loadedSelectionKey:'',pendingNewSong:null},encryption:{enabled:false,argId:''},bpmChanges:[],speedLimitLines:[],stageDeltaLines:[],autoCoef:{curve:[],settings:{sigmaMs:1600,stepMs:100,minMultiplier:.2,maxMultiplier:1,densityPower:1.15,rampGain:.05,rampStartMultiplier:1,rampEndMultiplier:1.05,rampPower:1.2,cap:1.1,axisMax:1.1,showCurve:true,anchors:''}}};
+const state={fxGroupBlocks:[],groupBlocksAuthoritative:false,fxEdit:null,placeKind:'note',effects:[],images:[],selectedFxId:null,selectedImageId:null,notes:[],selectedIds:new Set(),selectedSpecialId:null,clipboard:[],toolMode:'place',currentCoef:1,currentMode:'tap',playbackRate:1,bpm:180,snapDiv:4,offsetMs:0,pxPerSecond:160,viewStartMs:0,playheadMs:0,isPlaying:false,loop:false,loopStartMs:0,loopEndMs:8000,audioFileName:'',audioDurationMs:0,coverDataUrl:'',recordKeys:false,drag:null,meta:{title:'Untitled',artist:'',source:'',mapper:'',previewStartMs:0,previewEndMs:15000,extra:''},difficulty:{name:'Normal',level:1,scroll:1,baseSpeed:1,notes:''},project:{available:false,songs:[],songName:'',chartName:'',audioName:'',isLoading:false,loadToken:0,loadedSelectionKey:'',pendingNewSong:null},encryption:{enabled:false,argId:''},bpmChanges:[],speedLimitLines:[],stageDeltaLines:[],autoCoef:{curve:[],settings:{sigmaMs:1600,stepMs:100,minMultiplier:.2,maxMultiplier:1,densityPower:1.15,rampGain:.05,rampStartMultiplier:1,rampEndMultiplier:1.05,rampPower:1.2,cap:1.1,axisMax:1.1,showCurve:true,anchors:''}}};
 let audioCtx=null,audioBuffer=null,waveformPeaks=null,nextId=1,lastFrame=performance.now(),playbackStartPerf=0,playbackStartChartMs=0,audioStartedForThisPlayback=false,bgmSource=null,bgmGain=null,bgmActive=false,bgmStartedChartMs=0,bgmStartedCtxTime=0,bgmAudioOffsetSec=0;
 const history={undo:[],redo:[],max:150};
 function ensureAudioCtx(){if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();if(audioCtx.state==='suspended')audioCtx.resume();}
-function snapshot(){return JSON.stringify({notes:state.notes.map(n=>({...n})),meta:{...state.meta},difficulty:{...state.difficulty},bpm:state.bpm,snapDiv:state.snapDiv,offsetMs:state.offsetMs,loopStartMs:state.loopStartMs,loopEndMs:state.loopEndMs,coverDataUrl:state.coverDataUrl,encryption:{...state.encryption},bpmChanges:(state.bpmChanges||[]).map(x=>({...x})),speedLimitLines:(state.speedLimitLines||[]).map(x=>({...x})),stageDeltaLines:(state.stageDeltaLines||[]).map(x=>({...x})),autoCoef:{settings:{...state.autoCoef.settings},curve:state.autoCoef.curve||[]}});}
-function restore(s){const d=JSON.parse(s);state.notes=(d.notes||[]).map(n=>({...n}));state.meta={...state.meta,...(d.meta||{})};state.difficulty={...state.difficulty,...(d.difficulty||{})};state.bpm=d.bpm??state.bpm;state.snapDiv=d.snapDiv??state.snapDiv;state.offsetMs=d.offsetMs??state.offsetMs;state.loopStartMs=d.loopStartMs??state.loopStartMs;state.loopEndMs=d.loopEndMs??state.loopEndMs;state.coverDataUrl=d.coverDataUrl||'';state.encryption={...state.encryption,...(d.encryption||{})};state.bpmChanges=(d.bpmChanges||[]).map(x=>({...x}));state.speedLimitLines=(d.speedLimitLines||[]).map(x=>({...x}));state.stageDeltaLines=(d.stageDeltaLines||[]).map(x=>({...x}));if(d.autoCoef){state.autoCoef={...state.autoCoef,...d.autoCoef,settings:{...state.autoCoef.settings,...(d.autoCoef.settings||{})},curve:d.autoCoef.curve||[]};autoCoefSyncSettingsToUi();autoCoefUpdateStats()}nextId=Math.max(1,...state.notes.map(n=>n.id||0))+1;state.selectedIds.clear();syncStateToUi();updatePanels();}
+function snapshot(){return JSON.stringify({notes:state.notes.map(n=>({...n})),meta:{...state.meta},difficulty:{...state.difficulty},bpm:state.bpm,snapDiv:state.snapDiv,offsetMs:state.offsetMs,loopStartMs:state.loopStartMs,loopEndMs:state.loopEndMs,coverDataUrl:state.coverDataUrl,encryption:{...state.encryption},bpmChanges:(state.bpmChanges||[]).map(x=>({...x})),fxGroupBlocks:(state.fxGroupBlocks||[]).map(x=>({...x,lanes:[...(x.lanes||[0,1,2,3])]})),effects:(state.effects||[]).map(x=>({...x})),images:(state.images||[]).map(x=>({...x})),speedLimitLines:(state.speedLimitLines||[]).map(x=>({...x})),stageDeltaLines:(state.stageDeltaLines||[]).map(x=>({...x})),autoCoef:{settings:{...state.autoCoef.settings},curve:state.autoCoef.curve||[]}});}
+function restore(s){const d=JSON.parse(s);state.notes=(d.notes||[]).map(n=>({...n}));state.meta={...state.meta,...(d.meta||{})};state.difficulty={...state.difficulty,...(d.difficulty||{})};state.bpm=d.bpm??state.bpm;state.snapDiv=d.snapDiv??state.snapDiv;state.offsetMs=d.offsetMs??state.offsetMs;state.loopStartMs=d.loopStartMs??state.loopStartMs;state.loopEndMs=d.loopEndMs??state.loopEndMs;state.coverDataUrl=d.coverDataUrl||'';state.encryption={...state.encryption,...(d.encryption||{})};state.effects=(d.effects||[]).map(x=>({...x}));state.fxGroupBlocks=(d.fxGroupBlocks||[]).map(x=>({...x}));if(typeof renderFxEditor==='function')setTimeout(renderFxEditor,0);state.images=(d.images||[]).map(x=>({...x}));if(typeof fxCache!=="undefined")fxCache.clear();state.bpmChanges=(d.bpmChanges||[]).map(x=>({...x}));state.speedLimitLines=(d.speedLimitLines||[]).map(x=>({...x}));state.stageDeltaLines=(d.stageDeltaLines||[]).map(x=>({...x,speedDelta:Number(x.speedDelta??(Number(x.stageDelta)||0)*.065)}));if(d.autoCoef){state.autoCoef={...state.autoCoef,...d.autoCoef,settings:{...state.autoCoef.settings,...(d.autoCoef.settings||{})},curve:d.autoCoef.curve||[]};autoCoefSyncSettingsToUi();autoCoefUpdateStats()}nextId=Math.max(1,...state.notes.map(n=>n.id||0))+1;state.selectedIds.clear();state.selectedSpecialId=null;syncStateToUi();updatePanels();}
 function pushHistory(){history.undo.push(snapshot());if(history.undo.length>history.max)history.undo.shift();history.redo=[];updateUndoRedoButtons();}
 function undo(){if(!history.undo.length)return;history.redo.push(snapshot());restore(history.undo.pop());updateUndoRedoButtons();}
 function redo(){if(!history.redo.length)return;history.undo.push(snapshot());restore(history.redo.pop());updateUndoRedoButtons();}
@@ -174,22 +216,26 @@ function movePlayheadOnGrid(kind,direction){
 }
 function msToY(ms){const H=canvas._cssH||canvas.height;return H-((ms-state.viewStartMs)/1000)*state.pxPerSecond}function yToMs(y){const H=canvas._cssH||canvas.height;return state.viewStartMs+((H-y)/state.pxPerSecond)*1000}
 function autoCoefCurveReserveEnabled(){return !!(state.autoCoef&&state.autoCoef.settings&&state.autoCoef.settings.showCurve)}
+// FX track width: drag the divider between the FX track and the note lanes. Remembered per browser.
+let FX_TRACK_W=(()=>{try{const v=Number(localStorage.getItem('otFxTrackWidth'));return v>=120?v:200}catch{return 200}})();
+function fxTrackMaxWidth(){return Math.max(160,((canvas._cssW||canvas.width)-116)*.6)}
+function nearFxDivider(x){const a=laneArea();return Math.abs(x-(a.fxRight+4))<=6}
 function laneArea(cssW=canvas._cssW||canvas.width){
- const left=116,outerRight=cssW-34,total=Math.max(260,outerRight-left);
+ const fxLeft=116,fxRight=fxLeft+FX_TRACK_W,left=fxRight+8,outerRight=cssW-34,total=Math.max(260,outerRight-left);
  if(autoCoefCurveReserveEnabled()){
   const unit=total/(lanes+1.5);
   const width=unit*lanes;
   const right=left+width;
   const curveLeft=right+6;
   const curveRight=outerRight;
-  return{left,right,width,laneW:unit,curveLeft,curveRight,curveWidth:Math.max(24,curveRight-curveLeft)};
+  return{fxLeft,fxRight,left,right,width,laneW:unit,curveLeft,curveRight,curveWidth:Math.max(24,curveRight-curveLeft)};
  }
  const right=outerRight,width=right-left;
- return{left,right,width,laneW:width/lanes,curveLeft:right+6,curveRight:outerRight,curveWidth:Math.max(24,outerRight-(right+6))}
+ return{fxLeft,fxRight,left,right,width,laneW:width/lanes,curveLeft:right+6,curveRight:outerRight,curveWidth:Math.max(24,outerRight-(right+6))}
 }
 function xToLane(x){const a=laneArea();return Math.max(0,Math.min(lanes-1,Math.floor((x-a.left)/a.laneW)))}function laneToX(lane){const a=laneArea();return a.left+lane*a.laneW}function coefColor(c,a=1){return Number(c)===1?`rgba(121,230,155,${a})`:`rgba(255,210,103,${a})`}
 function resize(){const r=canvas.parentElement.getBoundingClientRect(),dpr=window.devicePixelRatio||1;canvas.width=Math.max(300,Math.floor(r.width*dpr));canvas.height=Math.max(300,Math.floor(r.height*dpr));canvas._cssW=r.width;canvas._cssH=r.height;ctx.setTransform(dpr,0,0,dpr,0,0)}function clearCanvas(){const dpr=window.devicePixelRatio||1;ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,canvas._cssW||canvas.width,canvas._cssH||canvas.height)}
-function draw(){const W=canvas._cssW||canvas.width,H=canvas._cssH||canvas.height,a=laneArea(W);clearCanvas();ctx.fillStyle='#090b10';ctx.fillRect(0,0,W,H);drawWaveform(W,H,a);drawLanes(W,H,a);drawGrid(W,H,a);drawAudioOffsetMarker(W,a);drawLoopRegion(a);drawAutoCoefCurve(W,H,a);drawTimelineEvents(W,H,a);drawNotes(a);drawDragPreview(a);drawMarquee();drawPlayhead(W,a)}
+function draw(){const W=canvas._cssW||canvas.width,H=canvas._cssH||canvas.height,a=laneArea(W);clearCanvas();ctx.fillStyle='#090b10';ctx.fillRect(0,0,W,H);drawWaveform(W,H,a);drawLanes(W,H,a);drawGrid(W,H,a);drawAudioOffsetMarker(W,a);drawLoopRegion(a);drawAutoCoefCurve(W,H,a);drawTimelineEvents(W,H,a);drawEffectTrack(W,H,a);drawSpecialSelection(a);drawNotes(a);drawDragPreview(a);drawMarquee();drawPlayhead(W,a)}
 function chartToAudioMs(chartMs){return chartMs-state.offsetMs}
 function audioToChartMs(audioMs){return audioMs+state.offsetMs}
 function wavePeakAt(tMs,gain){if(!waveformPeaks||!state.audioDurationMs)return 0;const audioMs=chartToAudioMs(tMs);if(audioMs<0||audioMs>state.audioDurationMs)return 0;const idx=Math.floor((audioMs/state.audioDurationMs)*waveformPeaks.length),p=waveformPeaks[Math.max(0,Math.min(waveformPeaks.length-1,idx))]||0;return Math.min(1,Math.pow(Math.max(0,p*gain),.72))}
@@ -211,6 +257,8 @@ function drawGrid(W,H,a){
    ctx.strokeStyle=isBar?'rgba(255,255,255,.43)':isBeat?'rgba(134,215,255,.32)':'rgba(255,255,255,.085)';
    ctx.lineWidth=isBar?1.7:isBeat?1.2:1;
    ctx.beginPath();ctx.moveTo(a.left,y);ctx.lineTo(a.right,y);ctx.stroke();
+   // same bar/beat/snap lines across the group / global / group-effect timelines
+   if(a.fxLeft!=null){ctx.beginPath();ctx.moveTo(a.fxLeft,y);ctx.lineTo(a.fxRight,y);ctx.stroke()}
    if(isBar||(isBeat&&state.pxPerSecond>88)){
     ctx.fillStyle=isBar?'rgba(255,255,255,.62)':'rgba(255,255,255,.38)';
     ctx.font='11px ui-monospace,monospace';
@@ -265,20 +313,114 @@ function drawAutoCoefCurve(W,H,a){
  drawLine('multiplier','rgba(167,139,250,1)',3,null);
  ctx.restore();
 }
+// Special-note canvas editing. Internal identities survive undo but are never exported.
+let nextSpecialEditorId=1;
+function specialEntries(){
+ const entries=[];
+ for(const [kind,lines] of [['limit',state.speedLimitLines||[]],['delta',state.stageDeltaLines||[]]])
+  for(const line of lines){if(!line._editorId)line._editorId='special-'+nextSpecialEditorId++;entries.push({id:line._editorId,kind,line})}
+ return entries;
+}
+function selectedSpecialEntry(){return specialEntries().find(entry=>entry.id===state.selectedSpecialId)||null}
+function selectSpecialEntry(entry){state.selectedSpecialId=entry.id;state.selectedIds.clear()}
+function hitSpecialAt(x,y,button=0){
+ const a=laneArea();if(x<a.left||x>a.right)return null;
+ const entries=specialEntries().sort((a,b)=>Number(b.id===state.selectedSpecialId)-Number(a.id===state.selectedSpecialId));
+ for(const entry of entries){
+  const start=msToY(entry.line.timeMs),end=msToY(entry.line.timeMs+(entry.line.durationMs||0));
+  if(y<Math.min(start,end)-9||y>Math.max(start,end)+9)continue;
+  let handle='move';
+  if(button===2)handle=Math.abs(y-end)<=Math.abs(y-start)?'end':'start';
+  else if(x>=a.right-28&&Math.abs(y-end)<=12)handle='end';
+  else if(entry.line.durationMs>0&&x<=a.left+28&&Math.abs(y-start)<=12)handle='start';
+  return {entry,handle};
+ }
+ return null;
+}
+function beginSpecialDrag(evt,p){
+ const hit=hitSpecialAt(p.x,p.y,evt.button);
+ if(!hit)return false;
+ evt.preventDefault();selectSpecialEntry(hit.entry);
+ state.drag={kind:'editSpecial',id:hit.entry.id,handle:hit.handle,startY:p.y,before:snapshot(),
+  origStart:hit.entry.line.timeMs,origEnd:hit.entry.line.timeMs+(hit.entry.line.durationMs||0)};
+ updatePanels();return true;
+}
+function moveSpecialDrag(p){
+ const drag=state.drag,entry=specialEntries().find(entry=>entry.id===drag.id);if(!entry)return;
+ const line=entry.line,t=Math.max(0,Math.round(snapTime(yToMs(p.y))));
+ if(drag.handle==='move'){
+  const delta=snapTime(yToMs(p.y))-snapTime(yToMs(drag.startY));
+  line.timeMs=Math.max(0,Math.round(drag.origStart+delta));line.durationMs=drag.origEnd-drag.origStart;
+ }else if(drag.handle==='start'){
+  line.timeMs=Math.min(t,drag.origEnd);line.durationMs=drag.origEnd-line.timeMs;
+ }else{line.timeMs=drag.origStart;line.durationMs=Math.max(0,t-drag.origStart)}
+ state.playheadMs=drag.handle==='end'?line.timeMs+line.durationMs:line.timeMs;
+ updatePanels();
+}
+function finishSpecialDrag(){
+ const drag=state.drag;if(!drag||drag.kind!=='editSpecial')return false;
+ if(snapshot()!==drag.before){
+  history.undo.push(drag.before);
+  if(history.undo.length>history.max)history.undo.shift();history.redo=[];updateUndoRedoButtons();
+ }
+ state.drag=null;sortTimelineEvents();updatePanels();return true;
+}
+function deleteSelectedSpecial(){
+ const entry=selectedSpecialEntry();if(!entry)return false;
+ pushHistory();const lines=entry.kind==='limit'?state.speedLimitLines:state.stageDeltaLines;
+ lines.splice(lines.indexOf(entry.line),1);state.selectedSpecialId=null;updatePanels();return true;
+}
+function setSelectedSpecialMode(mode){
+ const entry=selectedSpecialEntry();if(!entry)return;
+ const duration=mode==='tap'?0:entry.line.durationMs||Math.max(1,Math.round(snapMs(entry.line.timeMs)));
+ if(duration===entry.line.durationMs)return;
+ pushHistory();entry.line.durationMs=duration;
+}
+function drawSpecialSelection(a){
+ const entry=selectedSpecialEntry();if(!entry)return;
+ const start=msToY(entry.line.timeMs),end=msToY(entry.line.timeMs+(entry.line.durationMs||0));
+ ctx.save();ctx.strokeStyle='#e0fcff';ctx.lineWidth=2;ctx.setLineDash([]);
+ ctx.strokeRect(a.left+1,Math.min(start,end)-4,a.right-a.left-2,Math.max(8,Math.abs(end-start)+8));
+ ctx.fillStyle='#e0fcff';ctx.strokeStyle='#153f4a';ctx.lineWidth=1;
+ for(const [x,y] of [[a.left+5,start],[a.right-17,end]]){ctx.fillRect(x,y-7,12,14);ctx.strokeRect(x,y-7,12,14)}
+ ctx.restore();
+}
+function refreshSpecialSelectionPanel(){
+ const panel=$('selectedSpecialPanel'),entry=selectedSpecialEntry();if(!panel)return;
+ panel.classList.toggle('hidden',!entry);if(!entry)return;
+ $('selectedSpecialSummary').textContent=`${entry.kind.toUpperCase()} / ${entry.line.durationMs>0?'HOLD':'TAP'}`;
+ for(const [id,value] of [['specialSelTime',entry.line.timeMs],['specialSelDuration',entry.line.durationMs||0],
+  ['specialSelValue',entry.kind==='limit'?entry.line.maxSpeed:entry.line.speedDelta]])
+  if(document.activeElement!==$(id))$(id).value=value;
+ $('specialSelValueLabel').textContent=entry.kind==='limit'?'Target max speed':'Total speed delta';
+}
+function applySelectedSpecial(){
+ const entry=selectedSpecialEntry();if(!entry)return;
+ const time=Number($('specialSelTime').value),duration=Number($('specialSelDuration').value),value=Number($('specialSelValue').value);
+ if(![time,duration,value].every(Number.isFinite))return;
+ pushHistory();entry.line.timeMs=Math.max(0,Math.round(time));entry.line.durationMs=Math.max(0,Math.round(duration));
+ entry.line[entry.kind==='limit'?'maxSpeed':'speedDelta']=entry.kind==='limit'?Math.max(1,value):value;
+ sortTimelineEvents();updatePanels();
+}
+// End special-note canvas editing.
+
 function drawTimelineEvents(W,H,a){
  const start=state.viewStartMs-500;
  const end=state.viewStartMs+(H/state.pxPerSecond)*1000+500;
- const drawEventLine=(timeMs,text,color)=>{
-  if(timeMs<start||timeMs>end)return;
+ const drawEventLine=(timeMs,text,color,durationMs=0)=>{
+  if(timeMs+durationMs<start||timeMs>end)return;
   const y=msToY(timeMs);
   ctx.save();
   ctx.strokeStyle=color;
   ctx.lineWidth=2;
-  ctx.setLineDash([7,5]);
-  ctx.beginPath();
-  ctx.moveTo(a.left,y);
-  ctx.lineTo(a.right,y);
-  ctx.stroke();
+  if(durationMs>0){
+   const tail=msToY(timeMs+durationMs);
+   ctx.fillStyle='rgba(77,217,242,.38)';
+   ctx.fillRect(a.left,Math.min(y,tail),a.right-a.left,Math.abs(tail-y));
+
+  }
+  if(!text.startsWith('BPM')&&durationMs===0){ctx.fillStyle=color;ctx.fillRect(a.left,y-4,a.right-a.left,8)}
+  if(text.startsWith('BPM')){ctx.setLineDash([7,5]);ctx.beginPath();ctx.moveTo(a.left,y);ctx.lineTo(a.right,y);ctx.stroke()}
   ctx.setLineDash([]);
   ctx.fillStyle=color;
   ctx.font='12px ui-monospace,monospace';
@@ -289,15 +431,15 @@ function drawTimelineEvents(W,H,a){
   drawEventLine(
    Number(line.timeMs)||0,
    `LIMIT <= ${Number(line.maxSpeed||1).toFixed(2)}x`,
-   'rgba(255,107,122,.95)'
+   'rgba(77,217,242,.95)',Number(line.durationMs)||0
   );
  }
  for(const line of state.stageDeltaLines||[]){
-  const d=Number(line.stageDelta)||0;
+  const d=Number(line.speedDelta)||0;
   drawEventLine(
    Number(line.timeMs)||0,
    `STAGE ${d>=0?'+':''}${d.toFixed(2)}`,
-   'rgba(134,215,255,.95)'
+   'rgba(77,217,242,.95)',Number(line.durationMs)||0
   );
  }
  for(const line of state.bpmChanges||[]){
@@ -309,7 +451,7 @@ function drawTimelineEvents(W,H,a){
  }
 }
 function drawNotes(a){const H=canvas._cssH||canvas.height,start=state.viewStartMs-500,end=state.viewStartMs+(H/state.pxPerSecond)*1000+500;state.notes.filter(n=>n.timeMs+Math.max(1,n.durationMs||0)>=start&&n.timeMs<=end).sort((p,q)=>p.timeMs-q.timeMs||p.lane-q.lane).forEach(n=>drawNote(n,a,false))}
-function drawNote(n,a,preview=false){const x=laneToX(n.lane)+6,w=a.laneW-12,y=msToY(n.timeMs),isHold=(n.durationMs||0)>0,sel=state.selectedIds.has(n.id),coef=Number(n.speedupCoef);if(isHold){const y2=msToY(n.timeMs+n.durationMs),top=Math.min(y,y2),h=Math.abs(y2-y);ctx.fillStyle=coefColor(coef,preview?.20:.38);ctx.fillRect(x+w*.30,top,w*.40,h);ctx.strokeStyle=coefColor(coef,sel?1:.78);ctx.lineWidth=sel?3:1.4;ctx.strokeRect(x+w*.30,top,w*.40,h)}ctx.fillStyle=coefColor(coef,preview?.45:.96);ctx.strokeStyle=sel?'rgba(167,139,250,1)':'rgba(0,0,0,.65)';ctx.lineWidth=sel?3:1.5;const h=isHold?14:18;roundRect(ctx,x,y-h/2,w,h,6,true,true);ctx.fillStyle='rgba(13,15,20,.84)';ctx.font='bold 11px ui-monospace,monospace';ctx.fillText(coef===1?'1':'0',x+8,y+4);if(isHold){const y2=msToY(n.timeMs+n.durationMs);ctx.fillStyle=coefColor(coef,preview?.45:.92);roundRect(ctx,x,y2-7,w,14,6,true,true)}
+function drawNote(n,a,preview=false){const x=laneToX(n.lane)+6,w=a.laneW-12,y=msToY(n.timeMs),isHold=(n.durationMs||0)>0,sel=state.selectedIds.has(n.id),coef=Number(n.speedupCoef);if(isHold){const y2=msToY(n.timeMs+n.durationMs),top=Math.min(y,y2),h=Math.abs(y2-y);ctx.fillStyle=coefColor(coef,preview?.20:.38);ctx.fillRect(x+w*.30,top,w*.40,h);ctx.strokeStyle=coefColor(coef,sel?1:.78);ctx.lineWidth=sel?3:1.4;ctx.strokeRect(x+w*.30,top,w*.40,h)}ctx.fillStyle=coefColor(coef,preview?.45:.96);ctx.strokeStyle=sel?'rgba(167,139,250,1)':'rgba(0,0,0,.65)';ctx.lineWidth=sel?3:1.5;const h=isHold?14:18;roundRect(ctx,x,y-h/2,w,h,6,true,true);ctx.fillStyle='rgba(13,15,20,.84)';ctx.font='bold 11px ui-monospace,monospace';ctx.fillText(coef===1?'1':'0',x+8,y+4);if(n.group){ctx.fillStyle=groupColor(n.group);ctx.fillRect(x+w-10,y-h/2+2,6,h-4);ctx.font='10px system-ui';ctx.fillText(n.group,x+w-14-ctx.measureText(n.group).width,y+4)}if(isHold){const y2=msToY(n.timeMs+n.durationMs);ctx.fillStyle=coefColor(coef,preview?.45:.92);roundRect(ctx,x,y2-7,w,14,6,true,true)}
  if(isHold&&!preview){
   const y2=msToY(n.timeMs+n.durationMs);
   ctx.fillStyle=sel?'rgba(255,255,255,.95)':'rgba(255,255,255,.55)';
@@ -318,7 +460,7 @@ function drawNote(n,a,preview=false){const x=laneToX(n.lane)+6,w=a.laneW-12,y=ms
   roundRect(ctx,x+w-15,y2-6,10,12,4,true,true);
  }
 }
-function drawDragPreview(a){if(!state.drag)return;if(state.drag.kind==='newHold'){const t1=Math.min(state.drag.startMs,state.drag.currentMs),t2=Math.max(state.drag.startMs,state.drag.currentMs);drawNote({id:-1,timeMs:t1,lane:state.drag.lane,speedupCoef:state.currentCoef,durationMs:Math.max(snapMs(t1),t2-t1)},a,true)}}function drawMarquee(){if(!state.drag||state.drag.kind!=='marquee')return;const x=Math.min(state.drag.startX,state.drag.currentX),y=Math.min(state.drag.startY,state.drag.currentY),w=Math.abs(state.drag.currentX-state.drag.startX),h=Math.abs(state.drag.currentY-state.drag.startY);ctx.fillStyle='rgba(167,139,250,.13)';ctx.strokeStyle='rgba(167,139,250,.75)';ctx.lineWidth=1.5;ctx.fillRect(x,y,w,h);ctx.strokeRect(x,y,w,h)}function drawPlayhead(W,a){const y=msToY(state.playheadMs);ctx.strokeStyle='rgba(255,122,168,.98)';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();ctx.fillStyle='rgba(255,122,168,.98)';ctx.font='12px ui-monospace,monospace';ctx.fillText(`${Math.round(state.playheadMs)}ms`,a.right-90,y-6)}function roundRect(ctx,x,y,w,h,r,fill,stroke){const rr=Math.min(r,w/2,h/2);ctx.beginPath();ctx.moveTo(x+rr,y);ctx.arcTo(x+w,y,x+w,y+h,rr);ctx.arcTo(x+w,y+h,x,y+h,rr);ctx.arcTo(x,y+h,x,y,rr);ctx.arcTo(x,y,x+w,y,rr);ctx.closePath();if(fill)ctx.fill();if(stroke)ctx.stroke()}
+function drawDragPreview(a){if(!state.drag)return;if(state.drag.kind==='newEffect'||state.drag.kind==='newGroup'){const t1=Math.min(state.drag.startMs,state.drag.currentMs),t2=Math.max(state.drag.startMs,state.drag.currentMs),y1=msToY(t1),y2=msToY(Math.max(t2,t1+1));ctx.save();ctx.fillStyle='rgba(255,122,168,.45)';ctx.fillRect(a.fxLeft+2,Math.min(y1,y2)-4,a.fxRight-a.fxLeft-4,Math.max(8,Math.abs(y1-y2)));ctx.restore();return}if(state.drag.kind==='newSpecial'){const t1=Math.min(state.drag.startMs,state.drag.currentMs),t2=Math.max(state.drag.startMs,state.drag.currentMs),y1=msToY(t1),y2=msToY(Math.max(t2,t1+1));ctx.save();ctx.fillStyle=state.drag.kind==='newSpecial'?'rgba(77,217,242,.35)':'rgba(255,122,168,.25)';ctx.fillRect(a.left,Math.min(y1,y2)-4,a.right-a.left,Math.max(8,Math.abs(y1-y2)));ctx.restore();return}if(state.drag.kind==='newHold'){const t1=Math.min(state.drag.startMs,state.drag.currentMs),t2=Math.max(state.drag.startMs,state.drag.currentMs);drawNote({id:-1,timeMs:t1,lane:state.drag.lane,speedupCoef:state.currentCoef,durationMs:Math.max(snapMs(t1),t2-t1)},a,true)}}function drawMarquee(){if(!state.drag||state.drag.kind!=='marquee')return;const x=Math.min(state.drag.startX,state.drag.currentX),y=Math.min(state.drag.startY,state.drag.currentY),w=Math.abs(state.drag.currentX-state.drag.startX),h=Math.abs(state.drag.currentY-state.drag.startY);ctx.fillStyle='rgba(167,139,250,.13)';ctx.strokeStyle='rgba(167,139,250,.75)';ctx.lineWidth=1.5;ctx.fillRect(x,y,w,h);ctx.strokeRect(x,y,w,h)}function drawPlayhead(W,a){const y=msToY(state.playheadMs);ctx.strokeStyle='rgba(255,122,168,.98)';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();ctx.fillStyle='rgba(255,122,168,.98)';ctx.font='12px ui-monospace,monospace';ctx.fillText(`${Math.round(state.playheadMs)}ms`,a.right-90,y-6)}function roundRect(ctx,x,y,w,h,r,fill,stroke){const rr=Math.min(r,w/2,h/2);ctx.beginPath();ctx.moveTo(x+rr,y);ctx.arcTo(x+w,y,x+w,y+h,rr);ctx.arcTo(x+w,y+h,x,y+h,rr);ctx.arcTo(x,y+h,x,y,rr);ctx.arcTo(x,y,x+w,y,rr);ctx.closePath();if(fill)ctx.fill();if(stroke)ctx.stroke()}
 function sortNotes(){state.notes.sort((a,b)=>a.timeMs-b.timeMs||a.lane-b.lane||Number(b.speedupCoef)-Number(a.speedupCoef))}
 function normNoteRange(note){const start=Math.max(0,Math.round(Number(note.timeMs)||0)),dur=Math.max(0,Math.round(Number(note.durationMs)||0));return{lane:Math.max(0,Math.min(3,Number(note.lane)||0)),start,end:start+dur}}
 function rangesOverlap(aStart,aEnd,bStart,bEnd){return Math.max(aStart,bStart)<=Math.min(aEnd,bEnd)}
@@ -328,16 +470,683 @@ function dedupeAndRemoveOverlapsKeepFirst(notes){const kept=[],dropped=[];for(co
 function enforceNoOverlap(){const r=dedupeAndRemoveOverlapsKeepFirst(state.notes);state.notes=r.notes;sortNotes();return r.dropped.length}
 function addNote(note,select=true){const timeMs=Math.max(0,Math.round(note.timeMs)),lane=Math.max(0,Math.min(3,note.lane|0)),durationMs=Math.max(0,Math.round(note.durationMs||0));const existing=findNoteConflict(timeMs,lane,durationMs);if(existing){if(select){state.selectedIds.clear();state.selectedIds.add(existing.id)}updatePanels();return existing}const n={id:nextId++,timeMs,lane,speedupCoef:Number(note.speedupCoef)===0?0:1,durationMs};state.notes.push(n);sortNotes();if(select){state.selectedIds.clear();state.selectedIds.add(n.id)}updatePanels();return n}function selectedNotes(){return state.notes.filter(n=>state.selectedIds.has(n.id))}function firstSelected(){return selectedNotes().sort((a,b)=>a.timeMs-b.timeMs||a.lane-b.lane)[0]||null}
 function findNoteAt(x,y){const lane=xToLane(x);let best=null,bestDist=Infinity;for(const n of state.notes){if(n.lane!==lane)continue;const ys=msToY(n.timeMs),ye=msToY(n.timeMs+(n.durationMs||0)),ds=Math.abs(y-ys),de=Math.abs(y-ye);if(ds<13&&ds<bestDist){best=n;bestDist=ds}if((n.durationMs||0)>0&&de<13&&de<bestDist){best=n;bestDist=de}if((n.durationMs||0)>0&&y>=Math.min(ys,ye)&&y<=Math.max(ys,ye)){const lx=laneToX(n.lane),la=laneArea();if(x>=lx&&x<=lx+la.laneW&&bestDist>10){best=n;bestDist=10}}}return best}function notesInRect(x1,y1,x2,y2){const minX=Math.min(x1,x2),maxX=Math.max(x1,x2),minY=Math.min(y1,y2),maxY=Math.max(y1,y2);return state.notes.filter(n=>{const x=laneToX(n.lane)+laneArea().laneW/2,y=msToY(n.timeMs),y2=msToY(n.timeMs+(n.durationMs||0));return x>=minX&&x<=maxX&&((y>=minY&&y<=maxY)||(y2>=minY&&y2<=maxY)||(y<=minY&&y2>=maxY))})}
-function deleteSelected(){if(!state.selectedIds.size)return;pushHistory();state.notes=state.notes.filter(n=>!state.selectedIds.has(n.id));state.selectedIds.clear();updatePanels()}function copySelected(){const s=selectedNotes();if(!s.length)return;const base=Math.min(...s.map(n=>n.timeMs));state.clipboard=s.map(n=>({timeOffsetMs:n.timeMs-base,lane:n.lane,speedupCoef:n.speedupCoef,durationMs:n.durationMs}));updatePanels()}function pasteClipboard(mirror=false){if(!state.clipboard.length)return;pushHistory();state.selectedIds.clear();const base=snapTime(state.playheadMs),created=[];for(const c of state.clipboard){const cand={timeMs:Math.max(0,Math.round(base+c.timeOffsetMs)),lane:mirror?3-c.lane:c.lane,speedupCoef:c.speedupCoef,durationMs:c.durationMs};if(noteConflictsWithList(cand,state.notes)||noteConflictsWithList(cand,created))continue;const n=addNote(cand,false);state.selectedIds.add(n.id);created.push(n)}sortNotes();updatePanels()}function mirrorSelected(){if(!state.selectedIds.size)return;const selected=selectedNotes(),ids=new Set(selected.map(n=>n.id)),proposed=selected.map(n=>({...n,lane:3-n.lane}));let blocked=false;for(const p of proposed){if(noteConflictsWithList(p,state.notes,ids)){blocked=true;break}const others=proposed.filter(x=>x.id!==p.id);if(noteConflictsWithList(p,others)){blocked=true;break}}if(blocked){alert('대칭 이동하면 같은 레인/시간에 노트가 겹쳐서 취소했습니다.');return}pushHistory();for(const n of selected)n.lane=3-n.lane;sortNotes();updatePanels()}function quantizeSelected(){const s=selectedNotes();if(!s.length)return;const ids=new Set(s.map(n=>n.id)),proposed=s.map(n=>{const oldEnd=n.timeMs+n.durationMs,nn={...n};nn.timeMs=Math.round(snapTime(n.timeMs));if(nn.durationMs>0)nn.durationMs=Math.max(Math.round(snapMs(nn.timeMs)),Math.round(snapTime(oldEnd)-nn.timeMs));return nn});let blocked=false;for(const p of proposed){if(noteConflictsWithList(p,state.notes,ids)){blocked=true;break}const others=proposed.filter(x=>x.id!==p.id);if(noteConflictsWithList(p,others)){blocked=true;break}}if(blocked){alert('Quantize 결과가 다른 노트와 겹쳐서 취소했습니다.');return}pushHistory();for(const p of proposed){const n=state.notes.find(x=>x.id===p.id);if(n){n.timeMs=p.timeMs;n.durationMs=p.durationMs}}sortNotes();updatePanels()}
+function deleteSelected(){if(deleteSelectedSpecial())return;if(!state.selectedIds.size&&state.fxEdit?.kind==='groupBlock'&&state.selectedFxId==null&&state.selectedImageId==null){const b=(state.fxGroupBlocks||[]).find(x=>x.uid===state.fxEdit.id);if(b){deleteFxGroup(b);return}}if(!state.selectedIds.size&&(state.selectedFxId!=null||state.selectedImageId!=null)){if(state.selectedFxId!=null)fxDelete();else imageDelete();return}if(!state.selectedIds.size)return;pushHistory();state.notes=state.notes.filter(n=>!state.selectedIds.has(n.id));state.selectedIds.clear();updatePanels()}function copySelected(){const s=selectedNotes();if(!s.length)return;const base=Math.min(...s.map(n=>n.timeMs));state.clipboard=s.map(n=>({timeOffsetMs:n.timeMs-base,lane:n.lane,speedupCoef:n.speedupCoef,durationMs:n.durationMs}));updatePanels()}function pasteClipboard(mirror=false){if(!state.clipboard.length)return;pushHistory();state.selectedIds.clear();const base=snapTime(state.playheadMs),created=[];for(const c of state.clipboard){const cand={timeMs:Math.max(0,Math.round(base+c.timeOffsetMs)),lane:mirror?3-c.lane:c.lane,speedupCoef:c.speedupCoef,durationMs:c.durationMs};if(noteConflictsWithList(cand,state.notes)||noteConflictsWithList(cand,created))continue;const n=addNote(cand,false);if(n){state.selectedIds.add(n.id);created.push(n)}}sortNotes();updatePanels()}function mirrorSelected(){if(!state.selectedIds.size)return;const selected=selectedNotes(),ids=new Set(selected.map(n=>n.id)),proposed=selected.map(n=>({...n,lane:3-n.lane}));let blocked=false;for(const p of proposed){if(noteConflictsWithList(p,state.notes,ids)){blocked=true;break}const others=proposed.filter(x=>x.id!==p.id);if(noteConflictsWithList(p,others)){blocked=true;break}}if(blocked){alert('대칭 이동하면 같은 레인/시간에 노트가 겹쳐서 취소했습니다.');return}pushHistory();for(const n of selected)n.lane=3-n.lane;sortNotes();updatePanels()}function quantizeSelected(){const s=selectedNotes();if(!s.length)return;const ids=new Set(s.map(n=>n.id)),proposed=s.map(n=>{const oldEnd=n.timeMs+n.durationMs,nn={...n};nn.timeMs=Math.round(snapTime(n.timeMs));if(nn.durationMs>0)nn.durationMs=Math.max(Math.round(snapMs(nn.timeMs)),Math.round(snapTime(oldEnd)-nn.timeMs));return nn});let blocked=false;for(const p of proposed){if(noteConflictsWithList(p,state.notes,ids)){blocked=true;break}const others=proposed.filter(x=>x.id!==p.id);if(noteConflictsWithList(p,others)){blocked=true;break}}if(blocked){alert('Quantize 결과가 다른 노트와 겹쳐서 취소했습니다.');return}pushHistory();for(const p of proposed){const n=state.notes.find(x=>x.id===p.id);if(n){n.timeMs=p.timeMs;n.durationMs=p.durationMs}}sortNotes();updatePanels()}
 function syncUiToState(){state.meta.title=$('metaTitle').value;state.meta.artist=$('metaArtist').value;state.meta.source=$('metaSource').value;state.meta.mapper=$('metaMapper').value;state.meta.previewStartMs=Number($('previewStartInput').value)||0;state.meta.previewEndMs=Number($('previewEndInput').value)||0;state.meta.extra=$('metaExtra').value;state.difficulty.name=$('diffName').value;state.difficulty.level=Number($('diffLevel').value)||0;state.difficulty.scroll=Number($('diffScroll').value)||1;state.difficulty.baseSpeed=Number($('diffBaseSpeed').value)||1;state.difficulty.notes=$('diffNotes').value;state.encryption.enabled=$('encryptionEnabledInput').checked;state.encryption.argId=$('encryptionArgIdInput').value.trim()}function syncStateToUi(){$('metaTitle').value=state.meta.title||'';$('metaArtist').value=state.meta.artist||'';$('metaSource').value=state.meta.source||'';$('metaMapper').value=state.meta.mapper||'';$('previewStartInput').value=state.meta.previewStartMs||0;$('previewEndInput').value=state.meta.previewEndMs||0;$('metaExtra').value=state.meta.extra||'';$('diffName').value=state.difficulty.name||'';$('diffLevel').value=state.difficulty.level??1;$('diffScroll').value=state.difficulty.scroll??1;$('diffBaseSpeed').value=state.difficulty.baseSpeed??1;$('diffNotes').value=state.difficulty.notes||'';$('bpmInput').value=state.bpm;$('snapInput').value=state.snapDiv;$('offsetInput').value=state.offsetMs;$('loopStartInput').value=state.loopStartMs;$('loopEndInput').value=state.loopEndMs;$('coverPreview').src=state.coverDataUrl||'';$('encryptionEnabledInput').checked=!!state.encryption.enabled;$('encryptionArgIdInput').value=state.encryption.argId||''}
-function updatePanels(){syncUiToState();const s=selectedNotes(),first=firstSelected(),tempo=tempoSegmentAt(state.playheadMs);$('selectedEmpty').classList.toggle('hidden',s.length>0);$('selectedPanel').classList.toggle('hidden',s.length===0);if(first){$('selectedSummary').textContent=`selected: ${s.length}`;$('selTime').value=Math.round(first.timeMs);$('selLane').value=first.lane+1;$('selDuration').value=Math.round(first.durationMs||0);$('selCoef').value=String(first.speedupCoef)}$('chartStats').textContent=`notes: ${state.notes.length} / holds: ${state.notes.filter(x=>x.durationMs>0).length} / coef1: ${state.notes.filter(x=>Number(x.speedupCoef)===1).length} / coef0: ${state.notes.filter(x=>Number(x.speedupCoef)===0).length}`;$('snapInfo').textContent=`current BPM ${tempo.bpm.toFixed(2)} / beat ${beatMs().toFixed(2)}ms / snap ${snapMs().toFixed(2)}ms / bar ${barMs().toFixed(2)}ms`;$('snapStatus').textContent=`BPM ${tempo.bpm.toFixed(2)} / snap ${snapMs().toFixed(2)} ms`;$('modeStatus').textContent=`${state.toolMode==='place'?'Place':state.toolMode==='select'?'Select':'Playhead'} / Coef ${state.currentCoef} / ${state.currentMode==='tap'?'Tap':'Hold'}`;$('selectStatus').textContent=`selected ${state.selectedIds.size}`;if($('playbackRateLabel'))$('playbackRateLabel').textContent=state.playbackRate.toFixed(2)+'x';if($('rateStatus'))$('rateStatus').textContent='rate '+state.playbackRate.toFixed(2)+'x';$('audioStatus').textContent=`${state.audioFileName?'audio: '+state.audioFileName:'audio: none'} / ${waveformPeaks?'waveform: ready':'waveform: none'} / up-scroll`;$('encryptionStatus').textContent=state.encryption.enabled?`encryption: on / ${state.encryption.argId||'ARG ID required'} / key is session-only`:'encryption: off';$('buildEncryptedChartBtn').disabled=!state.encryption.enabled;$('coef1Btn').classList.toggle('active',state.currentCoef===1);$('coef0Btn').classList.toggle('active',state.currentCoef===0);$('tapModeBtn').classList.toggle('active',state.currentMode==='tap');$('holdModeBtn').classList.toggle('active',state.currentMode==='hold');$('toolPlaceBtn').classList.toggle('active',state.toolMode==='place');$('toolSelectBtn').classList.toggle('active',state.toolMode==='select');$('toolPlayBtn').classList.toggle('active',state.toolMode==='playhead');canvas.style.cursor=state.toolMode==='place'?'crosshair':state.toolMode==='select'?'default':'ns-resize';autoCoefUpdateStats();updateNoteList();updateTimelineEventList();updateUndoRedoButtons()}function updateLightStatus(){$('timeStatus').textContent=`time ${Math.round(state.playheadMs)} ms`;$('viewStatus').textContent=`bottom ${Math.round(state.viewStartMs)} ms`}
+function updatePanels(){syncUiToState();const s=selectedNotes(),first=firstSelected(),tempo=tempoSegmentAt(state.playheadMs);$('selectedEmpty').classList.toggle('hidden',s.length>0);$('selectedPanel').classList.toggle('hidden',s.length===0);if(first){$('selectedSummary').textContent=`selected: ${s.length}`;$('selTime').value=Math.round(first.timeMs);$('selLane').value=first.lane+1;$('selDuration').value=Math.round(first.durationMs||0);$('selCoef').value=String(first.speedupCoef)}$('chartStats').textContent=`notes: ${state.notes.length} / holds: ${state.notes.filter(x=>x.durationMs>0).length} / coef1: ${state.notes.filter(x=>Number(x.speedupCoef)===1).length} / coef0: ${state.notes.filter(x=>Number(x.speedupCoef)===0).length}`;$('snapInfo').textContent=`current BPM ${tempo.bpm.toFixed(2)} / beat ${beatMs().toFixed(2)}ms / snap ${snapMs().toFixed(2)}ms / bar ${barMs().toFixed(2)}ms`;$('snapStatus').textContent=`BPM ${tempo.bpm.toFixed(2)} / snap ${snapMs().toFixed(2)} ms`;$('modeStatus').textContent=`${state.toolMode==='place'?'Place:'+({note:'노트',special:'특수노트(델타 0)',effect:'효과',image:'사진'}[state.placeKind]||'노트'):state.toolMode==='select'?'Select':'Playhead'} / Coef ${state.currentCoef} / ${state.currentMode==='tap'?'Tap':'Hold'}`;$('selectStatus').textContent=`selected ${state.selectedIds.size+(selectedSpecialEntry()?1:0)}`;if($('playbackRateLabel'))$('playbackRateLabel').textContent=state.playbackRate.toFixed(2)+'x';if($('rateStatus'))$('rateStatus').textContent='rate '+state.playbackRate.toFixed(2)+'x';$('audioStatus').textContent=`${state.audioFileName?'audio: '+state.audioFileName:'audio: none'} / ${waveformPeaks?'waveform: ready':'waveform: none'} / up-scroll`;$('encryptionStatus').textContent=state.encryption.enabled?`encryption: on / ${state.encryption.argId||'ARG ID required'} / key is session-only`:'encryption: off';$('buildEncryptedChartBtn').disabled=!state.encryption.enabled;$('coef1Btn').classList.toggle('active',state.currentCoef===1);$('coef0Btn').classList.toggle('active',state.currentCoef===0);$('tapModeBtn').classList.toggle('active',state.currentMode==='tap');$('holdModeBtn').classList.toggle('active',state.currentMode==='hold');$('toolPlaceBtn').classList.toggle('active',state.toolMode==='place');$('toolSelectBtn').classList.toggle('active',state.toolMode==='select');$('toolPlayBtn').classList.toggle('active',state.toolMode==='playhead');canvas.style.cursor=state.toolMode==='place'?'crosshair':state.toolMode==='select'?'default':'ns-resize';autoCoefUpdateStats();updateNoteList();updateTimelineEventList();updateEffectPanels();refreshSpecialSelectionPanel();updateUndoRedoButtons()}function updateLightStatus(){$('timeStatus').textContent=`time ${Math.round(state.playheadMs)} ms`;$('viewStatus').textContent=`bottom ${Math.round(state.viewStartMs)} ms`}
 function updateNoteList(){const list=$('noteList');list.innerHTML='';const near=state.notes.slice().sort((a,b)=>Math.abs(a.timeMs-state.playheadMs)-Math.abs(b.timeMs-state.playheadMs)).slice(0,90).sort((a,b)=>a.timeMs-b.timeMs||a.lane-b.lane);for(const n of near){const item=document.createElement('div');item.className='note-item'+(state.selectedIds.has(n.id)?' selected':'');item.innerHTML=`<span>${Math.round(n.timeMs)}</span><span>L${n.lane+1}</span><span>coef${n.speedupCoef}</span><span>${n.durationMs>0?`hold ${Math.round(n.durationMs)}`:'tap'}</span>`;item.onclick=e=>{if(e.ctrlKey||e.metaKey||e.shiftKey){if(state.selectedIds.has(n.id))state.selectedIds.delete(n.id);else state.selectedIds.add(n.id)}else{state.selectedIds.clear();state.selectedIds.add(n.id)}state.playheadMs=n.timeMs;state.viewStartMs=Math.max(0,n.timeMs-1600);updatePanels()};list.appendChild(item)}}
+// Same grouping rule as the chart migration tool and legacy encrypted-chart loader.
+function legacySpecialNotes(chart) {
+  const result=[];
+  for(const [field,effect,value] of [['stageDeltaLines','delta','stageDelta'],['speedLimitLines','limit','maxSpeed']]) {
+    const lines=(chart[field]??[]).filter(Boolean).slice().sort((a,b)=>a.timeMs-b.timeMs);
+    for(let start=0;start<lines.length;) {
+      let end=start+1;
+      while(end<lines.length) {
+        const a=lines[end-1],b=lines[end],gap=b.timeMs-a.timeMs;
+        const direction=effect==='delta'?a[value]*b[value]>0:b[value]<=a[value];
+        if(gap<=0||gap>200||a.durationMs>0||b.durationMs>0||!direction)break;
+        end++;
+      }
+      const first=lines[start],last=lines[end-1];
+      if(end-start>=3&&last.timeMs-first.timeMs>=100) {
+        const group=lines.slice(start,end),note={timeMs:first.timeMs,durationMs:last.timeMs-first.timeMs,effect};
+        if(effect==='delta')note.stageDelta=Number(group.reduce((sum,n)=>sum+n.stageDelta,0).toFixed(10));
+        else {note.startMaxSpeed=first.maxSpeed;note.maxSpeed=last.maxSpeed;}
+        const labels=[...new Set(group.map(n=>n.label).filter(Boolean))];if(labels.length)note.label=labels.join(' / ');
+        result.push(note);
+      } else for(let i=start;i<end;i++)result.push({...lines[i],effect,durationMs:lines[i].durationMs??0});
+      start=end;
+    }
+  }
+  return result;
+}
+
 function sortTimelineEvents(){
  state.bpmChanges=normalizedBpmChanges();
  state.speedLimitLines=(state.speedLimitLines||[]).sort((a,b)=>(Number(a.timeMs)||0)-(Number(b.timeMs)||0));
  state.stageDeltaLines=(state.stageDeltaLines||[]).sort((a,b)=>(Number(a.timeMs)||0)-(Number(b.timeMs)||0));
 }
+/* ===== Chart effects: note groups, triggers, images (mirrors OverTempo ChartEffects.cs / ChartEffectsDirector.cs) ===== */
+const FX_TYPES={alpha:'Group Alpha',speed:'Group Speed',offset:'Group Offset',glitch:'Glitch (End Time)',shatter:'Shatter (End Time)',restore:'Restore'};
+const FX_COLORS={alpha:'#9fc8ff',speed:'#79e69b',offset:'#c4a5ff',glitch:'#ff7aa8',shatter:'#ffffff',restore:'#ffd267'};
+const FX_EASES=['linear','inQuad','outQuad','inOutQuad','inCubic','outCubic','inOutSine','step'];
+const FX_RESTORE_STYLES=['cut','fade','wipe','glitch','shatter','reassemble'];
+const FX_FIELDS={alpha:['group','value','ease'],speed:['group','value','ease'],glitch:['intensity','ease'],
+ shatter:['breakMs','shake','flash','freeze','reveal'],restore:['style','direction','ease']};
+let nextFxId=1,nextImageId=1;
+function fxNum(v,d){const n=Number(v);return Number.isFinite(n)?n:d}
+function normalizeEffect(e){
+ if(!e||!FX_TYPES[e.type])return null;
+ const o={type:e.type,timeMs:Math.max(0,Math.round(fxNum(e.timeMs,0))),durationMs:Math.max(0,Math.round(fxNum(e.durationMs,0)))};
+ if(fxValidCurve(e.curve))o.curve=fxCleanCurve(e.curve);
+ if(e.type==='alpha'||e.type==='speed'||e.type==='offset'){o.group=String(e.group??'');o.value=fxNum(e.value,e.type==='offset'?0:1);o.ease=e.ease||'linear';
+  const lo=e.type==='alpha'?0:e.type==='offset'?-96:-20,hi=e.type==='alpha'?1:e.type==='offset'?96:20;o.value=Math.max(lo,Math.min(hi,o.value));
+  if(e.fromValue!==undefined&&e.fromValue!==null&&e.fromValue!==''&&Number.isFinite(Number(e.fromValue)))o.fromValue=Math.max(lo,Math.min(hi,Number(e.fromValue)));}
+ if(e.type==='glitch'){o.intensity=Math.max(0,Math.min(1,fxNum(e.intensity,.5)));o.intensityEnd=fxNum(e.intensityEnd,-1);o.ease=e.ease||'linear';if(!o.durationMs)o.durationMs=500}
+ if(e.type==='shatter'){o.breakMs=Math.max(100,Math.round(fxNum(e.breakMs,1400)));o.shake=Math.max(0,Math.min(1,fxNum(e.shake,.5)));
+  o.flash=Math.max(0,Math.min(1,fxNum(e.flash,.35)));o.freeze=e.freeze!==false;o.reveal=String(e.reveal||'')}
+ if(e.type==='restore'){o.style=FX_RESTORE_STYLES.includes(e.style)?e.style:'fade';o.direction=['up','down','left','right'].includes(e.direction)?e.direction:'up';o.ease=e.ease||'linear'}
+ return o;
+}
+function normalizeImage(img){
+ if(!img||typeof img.dataUrl!=='string'||!img.dataUrl.startsWith('data:image/'))return null;
+ return {id:String(img.id||'image'),dataUrl:img.dataUrl,group:String(img.group||''),timeMs:Math.max(0,Math.round(fxNum(img.timeMs,0))),
+  endMs:Math.round(fxNum(img.endMs,-1)),x:fxNum(img.x,0),width:Math.max(.01,fxNum(img.width,1)),layer:img.layer==='front'?'front':'back'};
+}
+function importEffects(data){
+ state.effects=(Array.isArray(data?.effects)?data.effects:[]).map(normalizeEffect).filter(Boolean).map(e=>({...e,id:nextFxId++,scope:e.type==='alpha'||e.type==='speed'||e.type==='offset'?'group':'global'}));
+ for(const b of data?.editorSettings?.fxEmpty||[])state.effects.push({id:nextFxId++,type:'none',scope:b.scope==='group'?'group':'global',group:b.group,timeMs:Math.max(0,Math.round(Number(b.timeMs)||0)),durationMs:Math.max(0,Math.round(Number(b.durationMs)||0))});
+ state.fxGroupBlocks=(Array.isArray(data?.editorSettings?.fxGroupBlocks)?data.editorSettings.fxGroupBlocks:[]).map(b=>({uid:nextGroupUid++,id:String(b.id),startMs:Math.max(0,Math.round(Number(b.startMs)||0)),endMs:Math.max(0,Math.round(Number(b.endMs)||0)),lanes:Array.isArray(b.lanes)?b.lanes.map(Number):[0,1,2,3]}));
+ state.groupBlocksAuthoritative=state.fxGroupBlocks.length>0;state.fxEdit=null;
+ // older charts: notes carry a group but no ranges were saved — make one range per group around its notes
+ if(!state.fxGroupBlocks.length){const by=new Map();for(const n of data?.notes||[])if(n.group){const t=Math.round(n.timeMs||0),r=by.get(n.group)||[t,t];by.set(n.group,[Math.min(r[0],t),Math.max(r[1],t)])}
+  for(const[id,[a,b]]of by)state.fxGroupBlocks.push({uid:nextGroupUid++,id:String(id),startMs:a,endMs:b,lanes:[0,1,2,3]})}
+ state.images=(Array.isArray(data?.images)?data.images:[]).map(normalizeImage).filter(Boolean).map(i=>({...i,_id:nextImageId++}));
+ state.selectedFxId=null;state.selectedImageId=null;fxCache.clear();
+}
+function exportEffects(){return (state.effects||[]).filter(e=>!((e.scope==='group'||e.type==='alpha'||e.type==='speed'||e.type==='offset')&&!e.group)).map(normalizeEffect).filter(Boolean).sort((a,b)=>a.timeMs-b.timeMs)}
+function exportImages(){return (state.images||[]).map(normalizeImage).filter(Boolean).map(i=>{const o={...i};if(!o.group)delete o.group;return o})}
+/* --- evaluation (same math as ChartEffects.cs) --- */
+function fxCurveEval(keys,t){if(!keys||!keys.length)return Math.max(0,Math.min(1,t));if(keys.length===1||t<=keys[0].t)return keys[0].v;const last=keys[keys.length-1];if(t>=last.t)return last.v;
+ for(let i=0;i<keys.length-1;i++){const a=keys[i],b=keys[i+1];if(t>=b.t)continue;const dt=b.t-a.t;if(dt<=1e-6)return b.v;if(a.stepped)return a.v;const s=(t-a.t)/dt,s2=s*s,s3=s2*s;
+  return(2*s3-3*s2+1)*a.v+(s3-2*s2+s)*dt*(a.outTan||0)+(-2*s3+3*s2)*b.v+(s3-s2)*dt*(b.inTan||0)}return last.v}
+function fxValidCurve(keys){return Array.isArray(keys)&&keys.length>=2&&keys.length<=64&&keys.every((k,i)=>k&&[k.t,k.v,k.inTan??0,k.outTan??0].every(Number.isFinite)&&(i===0||k.t>=keys[i-1].t))}
+function fxProgress(e,t){return fxValidCurve(e.curve)?fxCurveEval(e.curve,Math.max(0,Math.min(1,t))):fxEase(e.ease,t)}
+function fxCleanCurve(keys){return keys.map(k=>{const o={t:+(+k.t).toFixed(5),v:+(+k.v).toFixed(5),inTan:+(+(k.inTan||0)).toFixed(5),outTan:+(+(k.outTan||0)).toFixed(5)};if(k.stepped)o.stepped=true;return o})}
+function fxEase(name,t){t=Math.max(0,Math.min(1,t));switch(name){case'step':return t<1?0:1;case'inQuad':return t*t;case'outQuad':return 1-(1-t)*(1-t);
+ case'inOutQuad':return t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;case'inCubic':return t*t*t;case'outCubic':return 1-Math.pow(1-t,3);
+ case'inOutSine':return-(Math.cos(Math.PI*t)-1)/2;default:return t}}
+function buildTrack(events,def,min,max){
+ events=events.slice().sort((a,b)=>a.timeMs-b.timeMs);const segs=[];
+ const val=(s,t)=>t>=s.end||s.end<=s.start?s.to:t<=s.start?s.from:s.from+(s.to-s.from)*(s.curve?fxCurveEval(s.curve,(t-s.start)/(s.end-s.start)):fxEase(s.ease,(t-s.start)/(s.end-s.start)));
+ events.forEach((e,i)=>{const start=e.timeMs/1000,fullEnd=start+Math.max(0,e.durationMs)/1000;
+  const seg={start,end:fullEnd,from:Number.isFinite(e.fromValue)?Math.max(min,Math.min(max,e.fromValue)):i===0?def:val(segs[i-1],start),to:Math.max(min,Math.min(max,e.value)),ease:e.ease,curve:fxValidCurve(e.curve)?e.curve:null};
+  const next=i+1<events.length?events[i+1].timeMs/1000:Infinity;
+  if(next<fullEnd){const cut=Math.max(start,next);seg.to=val(seg,cut);seg.end=cut;seg.ease='linear';seg.curve=null}segs.push(seg)});
+ const area=(s,t)=>{t=Math.min(t,s.end);if(t<=s.start)return 0;if(!s.curve&&s.ease==='step')return(t-s.start)*s.from;
+  if(!s.curve&&(!s.ease||s.ease==='linear'))return(t-s.start)*(s.from+val(s,t))*.5;
+  const n=s.curve?128:32,h=(t-s.start)/n;let sum=val(s,s.start)+val(s,t);for(let k=1;k<n;k++)sum+=val(s,s.start+k*h)*(k%2?4:2);return sum*h/3};
+ let run=segs.length?segs[0].start:0;
+ segs.forEach((s,i)=>{if(i>0)run+=(s.start-segs[i-1].end)*segs[i-1].to;s.cum=run;s.area=area(s,s.end);run+=s.area});
+ const find=t=>{let lo=0,hi=segs.length-1,f=-1;while(lo<=hi){const m=(lo+hi)>>1;if(segs[m].start<=t){f=m;lo=m+1}else hi=m-1}return f};
+ return{value:t=>{const i=find(t);return i<0?def:val(segs[i],t)},
+  integral:t=>{const i=find(t);if(i<0)return segs.length?segs[0].start-(segs[0].start-t)*def:t*def;const s=segs[i];return t<=s.end?s.cum+area(s,t):s.cum+s.area+(t-s.end)*s.to}};
+}
+const fxCache=new Map();
+function chartEffectsModel(effects=exportEffects()){
+ const key=JSON.stringify(effects);if(fxCache.has(key))return fxCache.get(key);
+ const by=(type)=>{const m=new Map();effects.filter(e=>e.type===type).forEach(e=>{const g=e.group||'';if(!m.has(g))m.set(g,[]);m.get(g).push(e)});return m};
+ const alpha=new Map(),speed=new Map(),offset=new Map();
+ by('alpha').forEach((v,k)=>alpha.set(k,buildTrack(v,1,0,1)));by('speed').forEach((v,k)=>speed.set(k,buildTrack(v,1,-20,20)));by('offset').forEach((v,k)=>offset.set(k,buildTrack(v,0,-96,96)));
+ const model={
+  alphaAt:(g,t)=>alpha.has(g||'')?alpha.get(g||'').value(t):1,
+  speedAt:(g,t)=>speed.has(g||'')?speed.get(g||'').value(t):1,
+  distanceFactor:(g,now,hit)=>{const tr=speed.get(g||'');return tr?tr.value(now):1}, // uniform: current group speed scales every distance
+  glitchAt:ms=>{let r=0;for(const e of effects){if(e.type!=='glitch'||e.timeMs>ms)continue;const l=(ms-e.timeMs)/e.durationMs;if(l>1)continue;
+   const end=e.intensityEnd<0?e.intensity:e.intensityEnd;r=Math.max(r,Math.max(0,Math.min(1,e.intensity+(end-e.intensity)*fxProgress(e,l))))}return r},
+  hasGroupEffects:g=>alpha.has(g)||speed.has(g)||offset.has(g),
+  offsetAt:(g,t)=>offset.has(g||'')?offset.get(g||'').value(t):0,
+  // offset is in 1/12 beats at the note's own BPM: -1 = drawn as if 1/12 beat earlier
+  visualHitTime:(g,now,hit)=>{const tr=offset.get(g||'');if(!tr)return hit;const bpm=typeof tempoSegmentAt==='function'?tempoSegmentAt(hit*1000).bpm:(state.bpm||120);return hit+tr.value(now)*(60/Math.max(1,bpm))/12},
+  shatters:effects.filter(e=>e.type==='shatter'),restores:effects.filter(e=>e.type==='restore')};
+ if(fxCache.size>8)fxCache.clear();fxCache.set(key,model);return model;
+}
+/* --- End Time glass geometry (EndTimeScreenGlass.Fracture / OnPopulateMesh) --- */
+const FX_FRAGMENTS=(()=>{const out=[],count=18,rings=[[],[],[]],o=[0,0];
+ for(let i=0;i<count;i++){let e;if(i<5)e=[-960+1920*i/5,540];else if(i<9)e=[960,540-1080*(i-5)/4];else if(i<14)e=[960-1920*(i-9)/5,-540];else e=[-960,-540+1080*(i-14)/4];
+  const L=(t)=>[o[0]+(e[0]-o[0])*t,o[1]+(e[1]-o[1])*t];rings[0][i]=L(.22+.05*Math.sin(i*7));rings[1][i]=L(.56+.08*Math.cos(i*3));rings[2][i]=e}
+ const add=(a,b,c)=>out.push({a,b,c,center:[(a[0]+b[0]+c[0])/3,(a[1]+b[1]+c[1])/3]});
+ for(let i=0;i<count;i++){const j=(i+1)%count;add(o,rings[0][i],rings[0][j]);for(let r=0;r<2;r++){add(rings[r][i],rings[r+1][i],rings[r+1][j]);add(rings[r][i],rings[r+1][j],rings[r][j])}}
+ return out})();
+function glassMove(f,i,breakup){
+ const rot=breakup*(i%2===0?1:-1)*(.12+i%7*.055),flight=1-(1-breakup)*(1-breakup),tilt=flight*(.5+i%6*.19);
+ const len=Math.hypot(f.center[0],f.center[1])||1,dist=(1500+i%7*110)*flight,tr=[f.center[0]/len*dist,f.center[1]/len*dist];
+ return p=>{let dx=(p[0]-f.center[0])*(1+breakup*.08),dy=(p[1]-f.center[1])*(1+breakup*.08);dx*=Math.cos(tilt);
+  return[f.center[0]+tr[0]+dx*Math.cos(rot)-dy*Math.sin(rot),f.center[1]+tr[1]+dx*Math.sin(rot)+dy*Math.cos(rot)]}}
+// Draw the glass at EndTimeScreenGlass timeline `tl` onto ctx (1920x1080 space) with `source` as the screen.
+function drawGlass(c,source,tl,{cracks=true,screen=true}={}){
+ const breakup=Math.max(0,Math.min(1,(tl-2.1)/1.4)),C=p=>[p[0]+960,540-p[1]];
+ FX_FRAGMENTS.forEach((f,i)=>{const mv=glassMove(f,i,breakup);
+  if(screen&&source){const alpha=1-smoothstep01(breakup);if(alpha>.003){
+   const s=[C(f.a),C(f.b),C(f.c)],d=[C(mv(f.a)),C(mv(f.b)),C(mv(f.c))];
+   c.save();c.globalAlpha=unityAlpha(alpha);c.beginPath();c.moveTo(...d[0]);c.lineTo(...d[1]);c.lineTo(...d[2]);c.closePath();c.clip();
+   const m=affineFrom(s,d);c.transform(m[0],m[1],m[2],m[3],m[4],m[5]);
+   // Slight overdraw hides hairline seams between fragments.
+   c.drawImage(source,0,0,1920,1080);c.restore()}}
+  if(cracks){const delay=Math.hypot(f.center[0],f.center[1])/1100,growth=Math.max(0,Math.min(1,(tl-.65-delay*.9)/.55)),a=growth*.52*Math.pow(1-breakup,3);
+   if(a>.003&&(i%5===0||i%5===1||i%5===3||i%10===2)){const[p,q]=i%10===2?[f.b,f.c]:[f.a,f.b];
+    c.save();c.strokeStyle=`rgba(199,224,240,${a})`;c.lineWidth=1.2;c.beginPath();let last=C(mv(p));c.moveTo(...last);
+    const dir=[q[0]-p[0],q[1]-p[1]],l=Math.hypot(...dir)||1,nrm=[-dir[1]/l,dir[0]/l];
+    for(let k=1;k<=8;k++){const t=k/8*growth,w=k===8?0:Math.sin(i*13+k*4.7)*2.6;const pt=[p[0]+dir[0]*t+nrm[0]*w,p[1]+dir[1]*t+nrm[1]*w];c.lineTo(...C(mv(pt)))}
+    c.stroke();c.restore()}
+   if(breakup>0){const op=Math.sin(Math.min(1,breakup*5)*Math.PI/2)*(1-breakup);if(op>.003){c.save();c.strokeStyle=`rgba(230,247,255,${op*.65})`;c.lineWidth=1;
+    c.beginPath();c.moveTo(...C(mv(f.a)));c.lineTo(...C(mv(f.b)));c.lineTo(...C(mv(f.c)));c.closePath();c.stroke();c.restore()}}}
+ });
+}
+// OverTempo renders in linear colour space: an alpha a over a dark background looks like
+// the sRGB-encoded a in a browser canvas. Applied wherever the game blends with alpha.
+function toLin(v){return v<=.04045?v/12.92:Math.pow((v+.055)/1.055,2.4)}function toSrgb(v){v=Math.max(0,Math.min(1,v));return v<=.0031308?v*12.92:1.055*Math.pow(v,1/2.4)-.055}
+function unityAlpha(a){a=Math.max(0,Math.min(1,a));return a<=.0031308?a*12.92:1.055*Math.pow(a,1/2.4)-.055}
+function smoothstep01(t){t=Math.max(0,Math.min(1,t));return t*t*(3-2*t)}
+function affineFrom(s,d){// maps source triangle s to destination triangle d
+ const[x0,y0]=s[0],[x1,y1]=s[1],[x2,y2]=s[2],[u0,v0]=d[0],[u1,v1]=d[1],[u2,v2]=d[2];
+ const den=(x1-x0)*(y2-y0)-(x2-x0)*(y1-y0)||1e-6;
+ const a=((u1-u0)*(y2-y0)-(u2-u0)*(y1-y0))/den,c=((u2-u0)*(x1-x0)-(u1-u0)*(x2-x0))/den;
+ const b=((v1-v0)*(y2-y0)-(v2-v0)*(y1-y0))/den,d2=((v2-v0)*(x1-x0)-(v1-v0)*(x2-x0))/den;
+ return[a,b,c,d2,u0-a*x0-c*y0,v0-b*x0-d2*y0]}
+/* --- game assets --- */
+const gamePreview={geometry:null,background:null,note:null,tinted:null,ready:false,error:''};
+function loadGamePreviewAssets(){
+ fetch('game-preview/geometry.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('geometry.json missing');return r.json()}).then(g=>{
+  gamePreview.geometry=g;
+  const skins=g.skins&&Object.keys(g.skins).length?g.skins:{thin:{label:'THIN',width:g.noteWidth,capHeight:g.noteHeight,tailUsesBodyColor:!!g.tailUsesBodyColor,head:g.noteSprite,body:g.bodySprite||g.noteSprite,tail:g.tailSprite||g.noteSprite}};
+  const jobs=[['background',null,g.background]];gamePreview.skins={};
+  for(const[k,v]of Object.entries(skins)){gamePreview.skins[k]={...v};for(const part of['head','body','tail'])jobs.push([part,k,v[part]])}
+  fetch('game-preview/effects.json',{cache:'no-store'}).then(r=>r.ok?r.json():{}).then(fx=>{gamePreview.effects={};
+   for(const[k,v]of Object.entries(fx)){const im=new Image();im.src='game-preview/'+v.sheet;gamePreview.effects[k]={...v,image:im}}}).catch(()=>{});
+  let n=0;for(const[part,k,f]of jobs){const im=new Image();im.onload=()=>{if(++n===jobs.length){gamePreview.ready=true;loadPreviewSettings()}};im.onerror=()=>{gamePreview.error='game-preview images missing: '+f};im.src='game-preview/'+f;
+   if(k)gamePreview.skins[k][part+'Image']=im;else gamePreview.background=im}}).catch(e=>{gamePreview.error=String(e.message||e)});
+}
+// Note visuals as NoteVisualController + NoteSurface.shader draw them: sprite * colour, then a
+// horizontal sheen (NoteSheen.cginc) lifting toward white. Rebuilt once per frame at sprite size.
+function noteSheen(u,t,period){const s=Math.abs(u-.5)*2,c=Math.max(0,Math.min(1,((t/period)%1)/.72)),front=c*1.15;
+ const fade=smoothstep01(c/.08)*Math.pow(1-c,1.4),lit=1-smoothstep01((s-(front-.12))/.16),edge=Math.pow(2,-(s-front)*(s-front)*60),core=Math.pow(2,-s*s*30)*(1-c);
+ return Math.max(0,Math.min(1,(lit*.42+edge*.7+core*.35)*fade))}
+function hexRgb(h){const n=parseInt(String(h).replace('#',''),16);return[(n>>16&255)/255,(n>>8&255)/255,(n&255)/255]}
+const previewSettings={scroll:5,skin:'thin',speedTextHeight:.47};
+function loadPreviewSettings(){const g=gamePreview.geometry;
+ fetch('/api/game-settings',{cache:'no-store'}).then(r=>r.ok?r.json():{}).catch(()=>({})).then(game=>applyPreviewSettings(g,game))}
+function readSavedPreviewSettings(){try{return JSON.parse(localStorage.getItem('otPreviewSettings')||'{}')||{}}catch{return{}}}
+function applyPreviewSettings(g,game){const mine=readSavedPreviewSettings();gamePreview.gameSettingsFound=!!game.found;gamePreview.usingSaved=Object.keys(mine).length>0;
+ const saved={scroll:mine.scroll??game.scrollSpeed,skin:mine.skin??game.noteSkin,speedTextHeight:mine.speedTextHeight??game.speedTextHeight};
+ if(typeof mine.autoMode==='boolean')$('fxAutoMode').checked=mine.autoMode;
+ previewSettings.scroll=Number(saved.scroll)||g.scrollSetting||5;previewSettings.skin=gamePreview.skins[saved.skin]?saved.skin:(gamePreview.skins.thin?'thin':Object.keys(gamePreview.skins)[0]);
+ previewSettings.speedTextHeight=Number.isFinite(Number(saved.speedTextHeight))?Number(saved.speedTextHeight):(g.speedTextHeight??.47);
+ $('fxSkin').innerHTML=Object.entries(gamePreview.skins).map(([k,v])=>`<option value="${k}">${v.label||k}</option>`).join('');
+ $('fxScrollSpeed').value=previewSettings.scroll;$('fxSkin').value=previewSettings.skin;$('fxSpeedTextHeight').value=previewSettings.speedTextHeight;savePreviewSettings()}
+function persistPreviewSettings(){try{localStorage.setItem('otPreviewSettings',JSON.stringify({scroll:previewSettings.scroll,skin:previewSettings.skin,speedTextHeight:previewSettings.speedTextHeight,autoMode:$('fxAutoMode').checked}))}catch{}gamePreview.usingSaved=true;savePreviewSettings()}
+function resetPreviewToGameSettings(){try{localStorage.removeItem('otPreviewSettings')}catch{}$('fxAutoMode').checked=true;loadPreviewSettings()}
+function savePreviewSettings(){previewSettings.scroll=Math.max(1,Math.min(30,Number($('fxScrollSpeed').value)||5));previewSettings.skin=$('fxSkin').value||previewSettings.skin;
+ previewSettings.speedTextHeight=Math.max(0,Math.min(1,Number($('fxSpeedTextHeight').value)));
+ $('fxSettingsInfo').textContent=gamePreview.usingSaved?'에디터에 저장된 값 사용':gamePreview.gameSettingsFound?'게임 저장 설정에서 불러옴':'게임 설정을 못 찾아 기본값 사용';noteSkinCache.time=-1}
+function currentSkin(){return gamePreview.skins[previewSettings.skin]||Object.values(gamePreview.skins)[0]}
+const noteSkinCache={time:-1,skins:null};
+function noteSkins(timeSec){
+ const g=gamePreview.geometry,frame=Math.floor(timeSec*60);if(noteSkinCache.time===frame)return noteSkinCache.skins;
+ const sk=currentSkin(),base=hexRgb(g.noteColor),body=base.map(v=>v*(g.bodyBrightness??.72)),tail=sk.tailUsesBodyColor?body:base;
+ const build=(img,col)=>{const w=img.naturalWidth,h=img.naturalHeight,cv=noteSkinCache[img.src]||(noteSkinCache[img.src]=document.createElement('canvas'));cv.width=w;cv.height=h;
+  const x=cv.getContext('2d');x.clearRect(0,0,w,h);x.drawImage(img,0,0);const d=x.getImageData(0,0,w,h),px=d.data,k=(g.sheenHighlight??.55)*(g.sheenStrength??.3),colLin=col.map(toLin);
+  const sheen=[];for(let i=0;i<w;i++)sheen[i]=noteSheen((i+.5)/w,timeSec,Math.max(.2,g.sheenPeriod??1.4))*k;
+  for(let y=0;y<h;y++)for(let i=0;i<w;i++){const o=(y*w+i)*4;for(let ch=0;ch<3;ch++){const c=toLin(px[o+ch]/255)*colLin[ch];px[o+ch]=Math.round(toSrgb(c+(1-c)*sheen[i])*255)}}
+  x.putImageData(d,0,0);return cv};
+ noteSkinCache.skins={head:build(sk.headImage,base),body:build(sk.bodyImage,body),tail:build(sk.tailImage,tail),width:sk.width,cap:sk.capHeight};noteSkinCache.time=frame;return noteSkinCache.skins}
+const imageElements=new Map();
+function imageElement(img){let el=imageElements.get(img.dataUrl);if(!el){el=new Image();el.src=img.dataUrl;imageElements.set(img.dataUrl,el)}return el.complete&&el.naturalWidth?el:null}
+/* --- Auto mode: GameManager autoplay with acceleration on (every head and hold end PERFECT). ---
+   Each perfect: stage += perfectThreshold * speedupCoef; speed = 1 + speedMultiplier * stage.
+   Special delta/limit notes act exactly like ChartManager.ApplyChartTimelineEvents. Chart time runs at
+   `speed` per wall second, and so does the music. */
+const autoSim={key:'',times:[],speeds:[],walls:[]};
+function autoModeOn(){const el=$('fxAutoMode');return !el||el.checked}
+function autoSimulation(){
+ const g=gamePreview.geometry||{},mult=g.speedMultiplier??.065,perfect=g.perfectThreshold??.1;
+ const key=JSON.stringify([state.notes.length,state.notes.reduce((a,n)=>a+n.timeMs*7+n.lane+(n.durationMs||0)*3+Number(n.speedupCoef),0),state.stageDeltaLines,state.speedLimitLines,(state.autoCoef.curve||[]).length,mult,perfect]);
+ if(autoSim.key===key)return autoSim;
+ const ev=[];const coefAt=t=>{try{return Number(autoCoefPointAt(t).multiplier)||1}catch{return 1}};
+ for(const n of state.notes){if(Number(n.speedupCoef)<=0)continue;const c=coefAt(n.timeMs);ev.push({t:n.timeMs,k:1,coef:c});if(n.durationMs>0)ev.push({t:n.timeMs+n.durationMs,k:1,coef:c})}
+ for(const l of state.stageDeltaLines||[])ev.push({t:Number(l.timeMs)||0,k:0,type:'delta',value:Number(l.speedDelta)||0,d:Number(l.durationMs)||0});
+ for(const l of state.speedLimitLines||[])ev.push({t:Number(l.timeMs)||0,k:0,type:'limit',value:Math.max(1,Number(l.maxSpeed)||1),d:Number(l.durationMs)||0});
+ ev.sort((a,b)=>a.t-b.t||a.k-b.k);
+ let stage=0;const speed=()=>1+mult*Math.max(0,stage);const times=[0],speeds=[1];
+ const push=t=>{const v=speed();if(times.length&&times[times.length-1]===t)speeds[speeds.length-1]=v;else if(speeds[speeds.length-1]!==v){times.push(t);speeds.push(v)}};
+ const quant=(total,p)=>p>=1?total:Math.sign(total)*Math.floor(Math.abs(total)*Math.max(0,Math.min(1,p))/.01+1e-5)*.01;
+ const applyDelta=d=>{if(d!==0&&mult>0)stage=Math.max(0,stage+d/mult)};
+ const applyLimit=max=>{max=Math.max(1,max);if(speed()<=max+1e-4||mult<=0)return;stage=Math.max(0,(max-1)/mult)};
+ const holds=[];let i=0;const end=(ev.length?ev[ev.length-1].t:0)+1;
+ const step=t=>{for(const h of holds){if(t<h.t)continue;const p=Math.min(1,(t-h.t)/h.d);
+   if(h.type==='delta'){const d=quant(h.value,p);applyDelta(d-h.applied);h.applied=d}else{const cap=h.start+quant(Math.min(0,h.value-h.start),p);if(cap!==h.last){applyLimit(cap);h.last=cap}}}
+  for(let j=holds.length-1;j>=0;j--)if(t>=holds[j].t+holds[j].d)holds.splice(j,1)};
+ let t=0;
+ while(i<ev.length||holds.length){const next=i<ev.length?ev[i].t:Infinity;
+  if(holds.length&&t+10<next){t+=10;step(t);push(t);continue}
+  t=next;if(!Number.isFinite(t))break;step(t);
+  while(i<ev.length&&ev[i].t===t){const e=ev[i++];
+   if(e.k===1)stage+=perfect*e.coef;
+   else if(e.d>0)holds.push({...e,start:e.type==='limit'?Math.max(e.value,speed()):speed(),applied:0,last:NaN});
+   else if(e.type==='delta')applyDelta(e.value);else applyLimit(e.value)}
+  push(t)}
+ const walls=[0];for(let k=1;k<times.length;k++)walls.push(walls[k-1]+(times[k]-times[k-1])/speeds[k-1]);
+ Object.assign(autoSim,{key,times,speeds,walls});return autoSim}
+function autoIndex(ms){const s=autoSimulation();let lo=0,hi=s.times.length-1,f=0;while(lo<=hi){const m=(lo+hi)>>1;if(s.times[m]<=ms){f=m;lo=m+1}else hi=m-1}return f}
+function autoSpeedAt(ms){if(!autoModeOn())return 1;const s=autoSimulation();return s.speeds[autoIndex(ms)]}
+function autoWallMsAt(ms){const s=autoSimulation(),i=autoIndex(ms);return s.walls[i]+(ms-s.times[i])/s.speeds[i]}
+// Keep editor playback (and the music) at the auto-play speed, rebasing clocks without restarting audio.
+function autoRateStep(now){
+ const manual=Number($('playbackRate')?.value)||1;const want=autoModeOn()?autoSpeedAt(state.playheadMs):manual;
+ if(Math.abs(want-state.playbackRate)<1e-5)return;
+ const ph=playbackStartChartMs+(now-playbackStartPerf)*state.playbackRate;
+ if(bgmActive&&bgmSource&&audioCtx){bgmAudioOffsetSec+=(audioCtx.currentTime-bgmStartedCtxTime)*state.playbackRate;bgmStartedCtxTime=audioCtx.currentTime;bgmSource.playbackRate.value=want}
+ playbackStartChartMs=ph;playbackStartPerf=now;state.playbackRate=want;
+ if($('playbackRateLabel'))$('playbackRateLabel').textContent=want.toFixed(2)+'x';
+}
+function drawHudTexts(c,ms){
+ const t=gamePreview.geometry.texts||{},speed=autoSpeedAt(ms).toFixed(2),wall=Math.max(0,Math.round(autoModeOn()?autoWallMsAt(ms):ms));
+ const clock=`${String(Math.floor(wall/60000)).padStart(2,'0')}:${String(Math.floor(wall/1000)%60).padStart(2,'0')}.${String(wall%1000).padStart(3,'0')}`;
+ const hit=autoModeOn()&&state.notes.some(n=>Number(n.speedupCoef)>=0&&n.timeMs<=ms);
+ const values={laneSpeedText:speed,currentSpeedText:speed,scoreText:clock,songTitleText:state.meta?.title||'',
+  artistText:autoModeOn()?'AUTO / ACCELERATING  [SPACE]':(state.meta?.artist||''),scrollSpeedText:previewSettings.scroll.toFixed(1)+'x',
+  skinText:currentSkin()?.label||'',timingText:hit?'0 ms':'-- ms'};
+ // LaneSpeedLayout.Apply: centre from top = lerp(760, 120, height) in 1920x1080 lane coordinates.
+ const lift=(Math.max(0,Math.min(1,previewSettings.speedTextHeight))-(gamePreview.geometry.speedTextHeight??previewSettings.speedTextHeight))*(760-120);
+ for(const[k,v]of Object.entries(values)){const d=t[k];if(!d||!v)continue;c.save();c.fillStyle=d.color.replace(/,([\d.]+)\)$/,(m,a)=>','+unityAlpha(Number(a))+')');c.font=`${d.bold?'700':'400'} ${d.size}px "Liberation Sans",Arial,sans-serif`;
+  c.textBaseline='alphabetic';c.textAlign=d.align;const x=d.align==='center'?(d.left+d.right)/2:d.align==='right'?d.right:d.left;c.fillText(v,x,d.baseline-(k==='laneSpeedText'||k==='timingText'?lift:0));c.restore()}
+}
+/* --- hit effects: frames rendered from the game's own particle prefabs --- */
+function drawEffectFrame(c,fx,index,x,y,ppu){if(!fx||!fx.image.complete||!fx.image.naturalWidth)return;const i=fx.loop?((index%fx.frames)+fx.frames)%fx.frames:index;if(i<0||i>=fx.frames)return;
+ const col=i%fx.columns,row=Math.floor(i/fx.columns),size=fx.worldSize*ppu;c.drawImage(fx.image,col*fx.frameSize,row*fx.frameSize,fx.frameSize,fx.frameSize,x-size/2,y-size/2,size,size)}
+function drawHitEffects(c,g,now){
+ const fx=gamePreview.effects||{},ppu=g.pixelsPerUnit||106.25;if(!fx.hit&&!fx.hold)return;
+ c.save();c.globalCompositeOperation='lighter';
+ for(const n of state.notes){const t=n.timeMs/1000,end=t+(n.durationMs||0)/1000,x=g.laneCenters[n.lane];
+  if(fx.hit&&now>=t&&now<t+fx.hit.frames/fx.hit.fps)drawEffectFrame(c,fx.hit,Math.floor((now-t)*fx.hit.fps),x,g.hitLineY,ppu);
+  if(n.durationMs>0&&fx.hold&&now>=t&&now<end)drawEffectFrame(c,fx.hold,Math.floor((now-t)*fx.hold.fps),x,g.hitLineY,ppu);
+}
+ c.restore()}
+/* --- special note visuals --- */
+const specialCache={frame:-1,band:null};
+function specialBand(timeSec){// SpecialNoteSurface: base (.30,.85,.95)*.78 lifted toward (.83,1,1) by a mirrored sheen (period 1.15 s)
+ const frame=Math.floor(timeSec*60);if(specialCache.frame===frame)return specialCache.band;
+ const w=256,cv=specialCache.band||(specialCache.band=document.createElement('canvas'));cv.width=w;cv.height=1;const x=cv.getContext('2d'),d=x.createImageData(w,1);
+ for(let i=0;i<w;i++){const k=Math.min(1,noteSheen((i+.5)/w,timeSec,1.15)*.5),base=[.30,.85,.95].map(v=>toLin(v)*.78),hi=[.83,1,1];
+  for(let ch=0;ch<3;ch++)d.data[i*4+ch]=Math.round(toSrgb(base[ch]+(hi[ch]-base[ch])*k)*255);d.data[i*4+3]=255}
+ x.putImageData(d,0,0);specialCache.frame=frame;return cv}
+function specialList(){return[...(state.stageDeltaLines||[]),...(state.speedLimitLines||[])].map(s=>({t:(Number(s.timeMs)||0)/1000,d:(Number(s.durationMs)||0)/1000})).sort((a,b)=>a.t-b.t)}
+function drawSpecialWarning(c,g,now,speed,yFor){// SpecialNoteWarning: 1.5 s (wall) before the next special note
+ const next=specialList().find(s=>s.t>now);if(!next)return;const remaining=(next.t-now)/Math.max(1e-4,speed);if(!(remaining>0&&remaining<=1.5))return;
+ const ppu=g.pixelsPerUnit||106.25,u=.01*ppu,cx=(g.fieldLeft+g.fieldRight)/2,cy=g.hitLineY-2.0*ppu,width=(g.fieldRight-g.fieldLeft),height=174*u;
+ const age=1.5-remaining,freq=2.2+(5-2.2)*(1-Math.max(0,Math.min(1,remaining/1.5)));
+ const alpha=.18*(.8+.2*Math.cos(age*freq*Math.PI*2));
+ c.save();c.globalAlpha=unityAlpha(alpha);c.beginPath();c.rect(cx-width/2,cy-height/2,width,height);c.clip();
+ const ink='rgb(77,219,217)';c.strokeStyle=ink;c.lineCap='butt';
+ const tile=160*u,count=Math.ceil(width/(160*u))+2,offset=((age*120)%160)*u;
+ for(let i=0;i<count;i++){const tx=cx+(i-(count-1)/2)*tile-offset;
+  const P=(x,y)=>[tx+x*u,cy-y*u];c.lineWidth=4*u;c.beginPath();c.moveTo(...P(0,34));c.lineTo(...P(-36,-29));c.lineTo(...P(36,-29));c.closePath();c.stroke();
+  c.lineWidth=5*u;c.beginPath();c.moveTo(...P(0,14));c.lineTo(...P(0,-8));c.moveTo(...P(0,-17));c.lineTo(...P(0,-22));c.stroke()}
+ c.globalAlpha=unityAlpha(alpha*.65);c.fillStyle=ink;for(const ry of[69,-69])c.fillRect(cx-width/2-64*u,cy-ry*u-.875*u,width+128*u,1.75*u);
+ c.restore()}
+function seeded(n){let x=Math.sin(n*127.1+311.7)*43758.5453;return x-Math.floor(x)}
+function drawSpecialHoldAndDust(c,g,now,ms){
+ const ppu=g.pixelsPerUnit||106.25,cx=(g.fieldLeft+g.fieldRight)/2,fieldW=g.fieldRight-g.fieldLeft,list=specialList(),T=performance.now()/1000;
+ for(const s of list){
+  // SpecialNoteHoldContact: luminous line at the receptors while a special hold is held.
+  if(s.d>0&&now>=s.t&&now<s.t+s.d){const h=.32*ppu,y0=g.hitLineY-h/2,img=c.createImageData?null:null;
+   for(let k=0;k<24;k++){const v=(k+.5)/24*2-1,core=Math.pow(2,-v*v*180),halo=Math.pow(2,-v*v*8)*.18,a=(core*.9+halo)*(.9+.1*Math.sin(-T*3));
+    const col=[.26+(.88-.26)*core*.8,.85+(1-.85)*core*.8,1].map(x=>Math.round(x*255));c.fillStyle=`rgba(${col},${unityAlpha(Math.min(1,a))})`;c.fillRect(g.fieldLeft+1,y0+k*h/24,fieldW-2,h/24+.5)}}
+  // SpecialNoteWind: luminous dust burst from the bar at each hit (680) and completion (1000), streaming while held.
+  const bursts=[[s.t,680]];if(s.d>0)bursts.push([s.t+s.d,1000]);
+  for(const[bt,count]of bursts){const age=now-bt;if(age<0||age>2.2)continue;const n=Math.round(count/6);
+   for(let i=0;i<n;i++){const seed=bt*1000+i,life=.8+seeded(seed)*1.6;if(age>life)continue;const k=age/life;
+    const x=cx+(seeded(seed+1)-.5)*fieldW+(seeded(seed+5)-.5)*80*age,vy=(-1.2+3.6*seeded(seed+2))*ppu*.6,y=g.hitLineY-(vy*age*(1-age/(2*life)));
+    const a=(1-k)*(.35+.5*seeded(seed+3)),size=(1.5+3*seeded(seed+4))*(1-k*.5);c.fillStyle=`rgba(${seeded(seed+6)>.5?'212,255,255':'120,220,245'},${unityAlpha(a)})`;
+    c.beginPath();c.arc(x,y,size,0,Math.PI*2);c.fill()}}
+  if(s.d>0&&now>=s.t&&now<s.t+s.d){for(let i=0;i<40;i++){const seed=s.t*1000+i*13+Math.floor(now*20),age=(now*20%1+i/40)%1;
+   const x=cx+(seeded(seed)-.5)*fieldW,y=g.hitLineY-age*1.4*ppu;c.fillStyle=`rgba(190,250,255,${unityAlpha((1-age)*.35)})`;c.fillRect(x,y,2,2)}}
+ }
+}
+/* --- preview rendering --- */
+const fxScratch={base:null,snap:new Map()};
+function renderGameBase(c,ms,model,{images=true}={}){
+ const g=gamePreview.geometry,now=ms/1000;c.drawImage(gamePreview.background,0,0,1920,1080);
+ const speedNow=autoSpeedAt(ms),pps=(g.pixelsPerUnit||g.pixelsPerSecond/(g.scrollSetting||5))*previewSettings.scroll;
+ const yFor=(t0,group)=>{const t=model.visualHitTime(group,now,t0);return g.hitLineY-pps*(t-now)/speedNow*model.distanceFactor(group,now,t)};
+ const drawImages=layer=>{if(!images)return;for(const im of state.images||[]){if((im.layer||'back')!==layer)continue;if(im.endMs>=0&&ms>im.endMs)continue;
+   const group=im.group||im.id,a=model.alphaAt(group,now);if(a<=.001)continue;const el=imageElement(im);if(!el)continue;
+   const w=im.width*(g.fieldRight-g.fieldLeft),h=w*el.naturalHeight/el.naturalWidth,cx=(g.fieldLeft+g.fieldRight)/2+im.x*(g.fieldRight-g.fieldLeft)/2,cy=yFor(im.timeMs/1000,group);
+   if(cy+h/2<0||cy-h/2>1080)continue;c.save();c.globalAlpha=unityAlpha(a);c.drawImage(el,cx-w/2,cy-h/2,w,h);c.restore()}};
+ drawImages('back');
+ drawHudTexts(c,ms);
+ c.save();c.beginPath();c.rect(g.fieldLeft,0,g.fieldRight-g.fieldLeft,960);c.clip();
+ const skin=noteSkins(performance.now()/1000),nw=skin.width,nh=skin.cap;
+ // Chord links (ChordLinkManager): same-ms heads/tails of adjacent lanes, edge to edge, under the notes.
+ // Notes whose group has alpha/speed triggers register no links in the game either.
+ const linked=state.notes.filter(n=>!model.hasGroupEffects(n.group||''));const events=new Map();
+ for(const n of linked){const add=(ms,live)=>{if(!live)return;if(!events.has(ms))events.set(ms,new Set());events.get(ms).add(n.lane)};
+  add(n.timeMs,n.timeMs/1000>now);if(n.durationMs>0)add(n.timeMs+n.durationMs,(n.timeMs+n.durationMs)/1000>now)}
+ drawSpecialWarning(c,g,now,speedNow,yFor);
+ c.fillStyle=`rgba(255,255,255,${unityAlpha(g.chordLineAlpha??.3)})`;
+ for(const[ms,set]of events){if(set.size<2)continue;const y=yFor(ms/1000,'');if(y<-10||y>1090)continue;const ls=[...set].sort((a,b)=>a-b);
+  for(let i=0;i<ls.length-1;i++){const x0=g.laneCenters[ls[i]]+g.noteWidth/2,x1=g.laneCenters[ls[i+1]]-g.noteWidth/2;if(x1>x0)c.fillRect(x0,y-(g.chordLineThickness??3.7)/2,x1-x0,g.chordLineThickness??3.7)}}
+
+ // ---- special notes (Note.ConfigureSpecialVisuals / NoteVisualController.ApplySpecial / SpecialNoteSurface.shader)
+ const ppu=g.pixelsPerUnit||106.25,fieldW=g.fieldRight-g.fieldLeft,specials=[...(state.stageDeltaLines||[]),...(state.speedLimitLines||[])];
+ const band=specialBand(performance.now()/1000);
+ for(const sn of specials){const t=(Number(sn.timeMs)||0)/1000,d=(Number(sn.durationMs)||0)/1000,end=t+d;if(end<=now)continue;
+  const held=d>0&&t<=now,y=held?g.hitLineY:yFor(t,''),cap=.18*ppu;if(!held&&y<-cap)continue;
+  if(d>0){const ty=yFor(end,'');if(y-ty>0){c.globalAlpha=unityAlpha(.56);c.drawImage(band,g.fieldLeft,ty,fieldW,y-ty);c.globalAlpha=1}}
+  else if(t>now)c.drawImage(band,g.fieldLeft,y-cap/2,fieldW,cap)}
+ c.globalAlpha=1;
+ for(const n of state.notes){const t=n.timeMs/1000,end=t+(n.durationMs||0)/1000;if(end<=now)continue;const group=n.group||'';
+  const a=model.alphaAt(group,now);if(a<=.001)continue;const x=g.laneCenters[n.lane]-nw/2,held=n.durationMs>0&&t<=now;
+  const y=held?g.hitLineY:yFor(t,group);if(!held&&y<-200)continue;c.globalAlpha=unityAlpha(a);
+  if(n.durationMs>0){const ty=yFor(end,group);if(y-ty>0)c.drawImage(skin.body,x,ty,nw,y-ty);c.drawImage(skin.tail,x,ty-nh/2,nw,nh)}
+  if(!held&&t>now)c.drawImage(skin.head,x,y-nh/2,nw,nh)}
+
+ drawSpecialHoldAndDust(c,g,now,ms);
+ c.restore();c.globalAlpha=1;
+ drawHitEffects(c,g,now);
+ drawImages('front');
+}
+function snapshotAt(ms,model){// deterministic stand-in for the runtime screen capture
+ const key=ms+'|'+state.notes.length+'|'+(state.effects||[]).length;let s=fxScratch.snap.get(key);
+ if(!s){s=document.createElement('canvas');s.width=1920;s.height=1080;renderGameBase(s.getContext('2d'),ms,model);if(fxScratch.snap.size>12)fxScratch.snap.clear();fxScratch.snap.set(key,s)}return s}
+function coverRect(el,region){const sa=1920/1080,ia=el.naturalWidth/el.naturalHeight;let uw=1,uh=1;if(ia>sa)uw=sa/ia;else uh=ia/sa;
+ const ux=(1-uw)/2,uy=(1-uh)/2;return[(ux+region[0]*uw)*el.naturalWidth,(1-(uy+(region[1]+region[3])*uh))*el.naturalHeight,region[2]*uw*el.naturalWidth,region[3]*uh*el.naturalHeight]}
+function drawCover(c,el,region,shift=0,alpha=1){// region: [x,y,w,h] normalised, y from bottom like Unity anchors
+ const[sx,sy,sw,sh]=coverRect(el,region);c.save();c.globalAlpha=unityAlpha(alpha);c.drawImage(el,sx,sy,sw,sh,region[0]*1920+shift,(1-region[1]-region[3])*1080,region[2]*1920,region[3]*1080);c.restore()}
+function fxHash(i){const x=Math.sin(i*12.9898+4.1414)*43758.5453;return x-Math.floor(x)}
+function renderEffectsPreview(c,ms){
+ const g=gamePreview.geometry,model=chartEffectsModel(),now=ms/1000;
+ const base=fxScratch.base||(fxScratch.base=document.createElement('canvas'));base.width=1920;base.height=1080;const b=base.getContext('2d');renderGameBase(b,ms,model);
+ let shakeX=0,shakeY=0,flash=0;
+ // shatter / reveal / restore
+ const layers=[];
+ for(const s of model.shatters){const start=s.timeMs/1000,crack=s.durationMs/1000,brk=s.breakMs/1000,el=now-start;if(el<0||el>crack+brk)continue;
+  const tl=el<crack?2.1*el/crack:2.1+(el-crack)/brk*1.4;const snap=s.freeze?snapshotAt(s.timeMs,model):(el>=crack?snapshotAt(s.timeMs+s.durationMs,model):null);
+  layers.push(c2=>drawGlass(c2,snap,tl,{screen:!!snap}));
+  if(el>=crack){const k=1-(el-crack)/.6;if(k>0&&s.shake>0){const px=g.pixelsPerSecond/g.scrollSetting;shakeX=(Math.random()*2-1)*s.shake*.35*k*px;shakeY=(Math.random()*2-1)*s.shake*.35*k*px}
+   const f=s.flash;if(f>0&&el-crack<f)flash=Math.max(flash,f*(1-(el-crack)/f))}}
+ let backdrop=null;{let sh=null,bt=0;for(const s of model.shatters){const t=(s.timeMs+s.durationMs)/1000;if(s.reveal&&t<=now){sh=s;bt=t}}
+  if(sh){const im=(state.images||[]).find(i=>i.id===sh.reveal),el=im&&imageElement(im);
+   if(el){const r=model.restores.find(e=>e.timeMs/1000>=bt);let p=0,style=null,done=false;
+    if(r&&now>=r.timeMs/1000){const d=r.durationMs/1000;if(r.style==='cut'||d<=0||now>=r.timeMs/1000+d)done=true;else{p=Math.max(0,Math.min(1,fxProgress(r,(now-r.timeMs/1000)/d)));style=r.style}}
+    if(!done)backdrop=c2=>{
+     if(!style){drawCover(c2,el,[0,0,1,1]);return}
+     if(style==='fade'){drawCover(c2,el,[0,0,1,1],0,1-p);return}
+     if(style==='wipe'){const reg=r.direction==='down'?[0,0,1,1-p]:r.direction==='left'?[0,0,1-p,1]:r.direction==='right'?[p,0,1-p,1]:[0,p,1,1-p];if(reg[2]>0&&reg[3]>0)drawCover(c2,el,reg);return}
+     if(style==='glitch'){for(let i=0;i<24;i++){if(p>=.15+.85*fxHash(i)||Math.random()<.35*p)continue;const shift=Math.random()<.4+.5*p?(Math.random()*2-1)*(20+140*p):0;drawCover(c2,el,[0,i/24,1,1/24],shift)}return}
+     if(style==='shatter'){const tmp=fxImageCanvas(el);drawGlass(c2,tmp,3.5*p);return}
+     if(style==='reassemble'){drawCover(c2,el,[0,0,1,1]);drawGlass(c2,snapshotAt(sh.freeze?sh.timeMs:sh.timeMs+sh.durationMs,model),3.5-1.4*p,{cracks:false});return}
+    }}}}
+ c.save();c.clearRect(0,0,1920,1080);c.translate(shakeX,shakeY);c.drawImage(base,0,0);
+ if(backdrop)backdrop(c);layers.forEach(f=>f(c));c.restore();
+ // glitch strips copy the composed frame (like the runtime's screen capture)
+ const k=model.glitchAt(ms);if(k>0&&(Math.floor(performance.now()/16.7)%3)){const copy=fxScratch.copy||(fxScratch.copy=document.createElement('canvas'));copy.width=1920;copy.height=1080;copy.getContext('2d').drawImage(c.canvas,0,0,c.canvas.width,c.canvas.height,0,0,1920,1080);
+  for(let i=0;i<10;i++){if(Math.random()>.15+.6*k)continue;let v=Math.random(),h=.008+Math.random()*(.032+.08*k);v=Math.min(v,1-h);const shift=(Math.random()*2-1)*(12+160*k);
+   const y=(1-v-h)*1080;c.drawImage(copy,0,y,1920,h*1080,shift,y,1920,h*1080)}}
+ if(flash>0){c.fillStyle=`rgba(255,255,255,${unityAlpha(flash)})`;c.fillRect(0,0,1920,1080)}
+}
+function fxImageCanvas(el){// full-screen cover render of an image, for the glass restore
+ const key='cover|'+el.src.length+'|'+el.src.slice(-32);let cv=fxScratch.snap.get(key);if(!cv){cv=document.createElement('canvas');cv.width=1920;cv.height=1080;drawCover(cv.getContext('2d'),el,[0,0,1,1]);fxScratch.snap.set(key,cv)}return cv}
+function drawFxPreview(){
+ const cv=$('fxPreviewCanvas');if(!cv)return;const c=cv.getContext('2d');
+ if(!gamePreview.ready){c.fillStyle='#0b0c11';c.fillRect(0,0,cv.width,cv.height);c.fillStyle='#9fa8bd';c.font='13px system-ui';
+  c.fillText(gamePreview.error?'preview: '+gamePreview.error:'loading game assets...',12,24);if(gamePreview.error)c.fillText('Unity: OverTempoThemePreview.ExportChartEditorPreview',12,44);return}
+ const w=Math.max(160,Math.round(cv.clientWidth*(window.devicePixelRatio||1))),h=Math.round(w*9/16);if(cv.width!==w||cv.height!==h){cv.width=w;cv.height=h}
+ c.save();c.setTransform(w/1920,0,0,h/1080,0,0);renderEffectsPreview(c,state.playheadMs);c.restore();
+}
+/* --- timeline drawing --- */
+function groupColor(g){if(!g)return null;let h=0;for(const ch of g)h=(h*31+ch.charCodeAt(0))%360;return`hsl(${h},70%,65%)`}
+/* --- panels --- */
+/* ===== FX timeline v2: one track, global + group sections, empty blocks edited by double-click ===== */
+const FX_GLOBAL_TYPES={none:'빈 효과',glitch:'글리치',shatter:'깨짐',restore:'복구',image:'사진'};
+const FX_GROUP_TYPES={none:'빈 효과',alpha:'투명도',speed:'속도',offset:'위치 오프셋'};
+const FX_RESTORE_LABELS={cut:'즉시',fade:'페이드',wipe:'와이프',glitch:'글리치',shatter:'깨짐',reassemble:'다시 붙기'};
+const FX_EMPTY_COLOR='#6b7280';
+function fxScopeOf(e){return e.scope||(e.type==='alpha'||e.type==='speed'||e.type==='offset'?'group':'global')}
+function fxGroups(){const out=[];(state.fxGroupBlocks||[]).forEach(b=>{if(b.id&&!out.includes(b.id))out.push(b.id)});return out}
+function selectedFx(){return(state.effects||[]).find(e=>e.id===state.selectedFxId)||null}
+function selectedImage(){return(state.images||[]).find(i=>i._id===state.selectedImageId)||null}
+function fxSpanMs(e){return e.type==='shatter'?(e.durationMs||0)+(e.breakMs||0):(e.durationMs||0)}
+function imageSpanMs(im){return im.endMs>=0?Math.max(0,im.endMs-im.timeMs):0}
+// Pack items into lanes like a video editor: an item goes to the first lane whose last item ended.
+function fxPack(items,minMs){const lanes=[];for(const it of items.slice().sort((a,b)=>a.start-b.start||a.order-b.order)){const end=it.start+Math.max(it.span,minMs);
+ let lane=lanes.findIndex(last=>last<=it.start);if(lane<0){lane=lanes.length;lanes.push(0)}lanes[lane]=end;it.lane=lane}return Math.max(1,lanes.length)}
+const FX_HEADER_H=20;
+// Width share of the group / global effects / group effects timelines inside the FX track (drag the dividers).
+let FX_SECTION_RATIOS=(()=>{try{const v=JSON.parse(localStorage.getItem('otFxSectionRatios')||'null');if(Array.isArray(v)&&v.length===3&&v.every(x=>x>0))return v}catch{}return[.25,.45,.30]})();
+function fxSectionBounds(a){const w=a.fxRight-a.fxLeft,sum=FX_SECTION_RATIOS.reduce((x,y)=>x+y,0);let x=a.fxLeft;return FX_SECTION_RATIOS.map(r=>{const b={x,w:w*r/sum};x+=b.w;return b})}
+function nearFxSectionDivider(x){const a=laneArea(),b=fxSectionBounds(a);for(let i=0;i<2;i++){if(Math.abs(x-(b[i].x+b[i].w))<=5)return i}return -1}
+// Group blocks: {uid,id,startMs,endMs,lanes:[0..3]}. Every note inside a block's range (and lanes) belongs to it.
+let nextGroupUid=1;
+function groupBlockOf(id){return(state.fxGroupBlocks||[]).find(b=>b.id===id)}
+function groupForNote(n){let g='';for(const b of state.fxGroupBlocks||[])if(n.timeMs>=b.startMs&&n.timeMs<=b.endMs&&(!b.lanes||b.lanes.includes(n.lane)))g=b.id;return g}
+function syncGroupMembership(){if(!(state.fxGroupBlocks||[]).length&&!state.groupBlocksAuthoritative)return;for(const n of state.notes){const g=groupForNote(n);if(g)n.group=g;else delete n.group}}
+function groupColorOf(id){return id?groupColor(id):FX_EMPTY_COLOR}
+function fxLayout(a){
+ const minMs=16/state.pxPerSecond*1000,cols=[],items=[];
+ const sections=[
+  ['group','그룹',(state.fxGroupBlocks||[]).map((b,i)=>({kind:'group',item:b,start:b.startMs,span:Math.max(0,b.endMs-b.startMs),order:i}))],
+  ['global','전역 효과',[...(state.effects||[]).filter(e=>fxScopeOf(e)==='global').map((e,i)=>({kind:'effect',item:e,start:e.timeMs,span:fxSpanMs(e),order:i})),
+    ...(state.images||[]).map((im,i)=>({kind:'image',item:im,start:im.timeMs,span:imageSpanMs(im),order:1000+i}))]],
+  ['groupfx','그룹 효과',(state.effects||[]).filter(e=>fxScopeOf(e)==='group').map((e,i)=>({kind:'effect',item:e,start:e.timeMs,span:fxSpanMs(e),order:i}))]];
+ const bounds=fxSectionBounds(a);
+ sections.forEach(([section,label,list],si)=>{const n=fxPack(list,minMs),base=cols.length,w=bounds[si].w/n;
+  for(let i=0;i<n;i++)cols.push({section,label,lane:i,first:i===0,count:n,x:bounds[si].x+i*w,w});list.forEach(it=>{it.col=base+it.lane;it.section=section;items.push(it)})});
+ const colW=cols.length?cols[0].w:10;
+ for(const it of items){const c=cols[it.col],y0=msToY(it.start),y1=msToY(it.start+it.span);it.x=c.x+2;it.w=c.w-4;it.top=Math.min(y0,y1)-(it.span>0?0:6);it.bottom=Math.max(y0,y1)+(it.span>0?0:6)}
+ return{cols,items,colW}}
+function fxHitTest(x,y){const a=laneArea();if(x<a.fxLeft||x>a.fxRight)return null;const L=fxLayout(a);
+ const col=L.cols.find(c=>x>=c.x&&x<c.x+c.w);if(y<FX_HEADER_H)return{kind:'header'};
+ for(let i=L.items.length-1;i>=0;i--){const it=L.items[i];if(x>=it.x&&x<=it.x+it.w&&y>=it.top&&y<=it.bottom){
+  const endY=msToY(it.start+it.span),edge=it.span>0&&Math.abs(y-endY)<=5;return{...it,edge}}}
+ return col?{kind:'empty',section:col.section}:{kind:'empty',section:'none'}}
+function fxBlockColor(it){if(it.kind==='image')return'#ffd267';if(it.kind==='group')return groupColorOf(it.item.id);
+ if(fxScopeOf(it.item)==='group')return it.item.group?groupColorOf(it.item.group):FX_EMPTY_COLOR;return it.item.type==='none'?FX_EMPTY_COLOR:FX_COLORS[it.item.type]||FX_EMPTY_COLOR}
+function fxBlockLabel(it){if(it.kind==='image')return'사진 '+it.item.id;if(it.kind==='group')return`${it.item.id} (노트 ${state.notes.filter(n=>n.group===it.item.id).length})`;const e=it.item;
+ if(fxScopeOf(e)==='group'){const from=Number.isFinite(e.fromValue)?e.fromValue:'…',kind=e.type==='alpha'?`투명도 ${from}→${e.value}`:e.type==='offset'?`오프셋 ${from}→${e.value}`:e.type==='speed'?`속도 ×${from}→×${e.value}`:'빈 그룹 효과';return e.group?`${kind} @${e.group}`:`${kind} (연결 안 됨)`}
+ return e.type==='none'?'빈 효과':e.type==='glitch'?`글리치 ${e.intensity}→${e.intensityEnd<0?e.intensity:e.intensityEnd}`:e.type==='shatter'?(e.reveal?`깨짐 → ${e.reveal}`:'깨짐'):
+  e.type==='restore'?`복구 ${FX_RESTORE_LABELS[e.style]||e.style}`:e.type}
+function drawEffectTrack(W,H,a){
+ const L=fxLayout(a);ctx.save();ctx.fillStyle='rgba(255,122,168,.05)';ctx.fillRect(a.fxLeft,0,a.fxRight-a.fxLeft,H);
+ ctx.fillStyle='rgba(255,255,255,.06)';ctx.fillRect(a.fxLeft,0,a.fxRight-a.fxLeft,FX_HEADER_H);
+ const sel=selectedFx(),linked=sel&&fxScopeOf(sel)==='group'?sel.group:state.fxEdit?.kind==='groupBlock'?(state.fxGroupBlocks||[]).find(b=>b.uid===state.fxEdit.id)?.id:null;
+ L.cols.forEach(c=>{if(c.first){const x1=c.x+c.w*c.count;ctx.fillStyle=c.section==='group'?'rgba(121,230,155,.08)':c.section==='groupfx'?'rgba(159,200,255,.06)':'rgba(0,0,0,0)';ctx.fillRect(c.x,FX_HEADER_H,x1-c.x,H);
+   ctx.save();ctx.beginPath();ctx.rect(c.x,0,x1-c.x,FX_HEADER_H);ctx.clip();ctx.fillStyle='rgba(255,255,255,.8)';ctx.font='11px system-ui';ctx.fillText(c.label,c.x+4,14);ctx.restore();
+   ctx.strokeStyle='rgba(255,122,168,.6)';ctx.beginPath();ctx.moveTo(c.x,0);ctx.lineTo(c.x,H);ctx.stroke()}
+  else{ctx.strokeStyle='rgba(255,255,255,.08)';ctx.beginPath();ctx.moveTo(c.x,FX_HEADER_H);ctx.lineTo(c.x,H);ctx.stroke()}});
+ ctx.strokeStyle='rgba(255,122,168,.45)';ctx.strokeRect(a.fxLeft,0,a.fxRight-a.fxLeft,H);
+ // divider grip (drag to resize the track)
+ ctx.fillStyle=state.drag?.kind==='resizeFxTrack'?'rgba(255,122,168,.9)':'rgba(255,122,168,.35)';ctx.fillRect(a.fxRight+2,0,4,H);
+ for(let k=-2;k<=2;k++){ctx.fillStyle='rgba(255,255,255,.7)';ctx.fillRect(a.fxRight+3,H/2+k*6,2,3)}
+ fxSectionBounds(a).slice(0,2).forEach((b,i)=>{const x=b.x+b.w,active=state.drag?.kind==='resizeFxSection'&&state.drag.index===i;ctx.fillStyle=active?'rgba(255,122,168,.9)':'rgba(255,122,168,.5)';ctx.fillRect(x-1.5,0,3,H);
+  for(let k=-1;k<=1;k++){ctx.fillStyle='rgba(255,255,255,.8)';ctx.fillRect(x-1,H/2+k*6,2,3)}});
+ ctx.beginPath();ctx.rect(a.fxLeft,FX_HEADER_H,a.fxRight-a.fxLeft,H-FX_HEADER_H);ctx.clip();
+ for(const it of L.items){if(it.bottom<FX_HEADER_H||it.top>H)continue;
+  const isSel=it.kind==='effect'?it.item.id===state.selectedFxId:it.kind==='image'?it.item._id===state.selectedImageId:state.fxEdit?.kind==='groupBlock'&&state.fxEdit.id===it.item.uid;
+  const isLinked=linked&&((it.kind==='group'&&it.item.id===linked)||(it.kind==='effect'&&fxScopeOf(it.item)==='group'&&it.item.group===linked));
+  ctx.globalAlpha=isSel||isLinked?.95:.62;ctx.fillStyle=fxBlockColor(it);const h=Math.max(4,it.bottom-it.top);ctx.fillRect(it.x,it.top,it.w,h);
+  if(it.kind==='image'){const el=imageElement(it.item);if(el){ctx.globalAlpha=.9;const ih=Math.min(h-2,(it.w-2)*el.naturalHeight/el.naturalWidth);ctx.drawImage(el,it.x+1,it.bottom-1-ih,it.w-2,ih)}}
+  if(it.kind==='effect'&&it.item.type==='shatter'){const yb=msToY(it.item.timeMs+it.item.durationMs);ctx.globalAlpha=1;ctx.fillStyle='#000';ctx.fillRect(it.x,yb-1,it.w,2)}
+  if(it.kind==='effect'&&(it.item.type==='none'||(fxScopeOf(it.item)==='group'&&!it.item.group))){ctx.globalAlpha=1;ctx.setLineDash([4,3]);ctx.strokeStyle='rgba(255,255,255,.7)';ctx.strokeRect(it.x+.5,it.top+.5,it.w-1,h-1);ctx.setLineDash([])}
+  ctx.globalAlpha=1;if(isSel||isLinked){ctx.strokeStyle=isSel?'#fff':'rgba(255,255,255,.6)';ctx.lineWidth=2;ctx.strokeRect(it.x-1,it.top-1,it.w+2,h+2);ctx.lineWidth=1}
+  if(it.span>0){ctx.fillStyle='rgba(255,255,255,.55)';ctx.fillRect(it.x+3,Math.min(it.top,it.bottom)+1,it.w-6,2)}
+  const label=fxBlockLabel(it);ctx.save();ctx.fillStyle='#0b0c11';ctx.font='10px system-ui';
+  if(h>=14&&it.w>=10){ctx.beginPath();ctx.rect(it.x,it.top,it.w,h);ctx.clip();ctx.translate(it.x+it.w/2+3,it.bottom-4);ctx.rotate(-Math.PI/2);ctx.fillText(label,0,0)}ctx.restore()}
+ // the linked group's range is also shaded across the note lanes
+ if(linked){const b=groupBlockOf(linked);if(b){ctx.restore();ctx.save();const y0=msToY(b.startMs),y1=msToY(b.endMs);ctx.fillStyle=groupColorOf(b.id);ctx.globalAlpha=.10;
+  for(let l=0;l<lanes;l++)if(!b.lanes||b.lanes.includes(l))ctx.fillRect(a.left+l*a.laneW,Math.min(y0,y1),a.laneW,Math.abs(y1-y0))}}
+ ctx.restore();
+}
+/* --- editing --- */
+let lastFxEditPush=0,fxPendingCreate=null;
+function fxEditHistory(){const now=Date.now();if(now-lastFxEditPush>800)pushHistory();lastFxEditPush=now}
+function fxDelete(){const cur=selectedFx();if(!cur)return;pushHistory();state.effects=state.effects.filter(e=>e!==cur);state.selectedFxId=null;if(state.fxEdit?.kind==='effect')state.fxEdit=null;fxCache.clear();renderFxEditor();updateEffectPanels()}
+function imageDelete(){const cur=selectedImage();if(!cur)return;pushHistory();state.images=state.images.filter(i=>i!==cur);state.selectedImageId=null;if(state.fxEdit?.kind==='image')state.fxEdit=null;renderFxEditor();updateEffectPanels()}
+function fxDuplicate(){const cur=selectedFx();if(!cur)return;pushHistory();const e={...cur,id:nextFxId++,timeMs:Math.round(snapTime(state.playheadMs))};state.effects.push(e);openFxEditor({kind:'effect',item:e})}
+function addGroupBlock(startMs,endMs){const used=new Set(fxGroups());let k=1;while(used.has('그룹'+k))k++;
+ pushHistory();const b={uid:nextGroupUid++,id:'그룹'+k,startMs,endMs:Math.max(startMs+1,endMs),lanes:[0,1,2,3]};state.fxGroupBlocks=[...(state.fxGroupBlocks||[]),b];state.groupBlocksAuthoritative=true;
+ syncGroupMembership();fxCache.clear();return b}
+function renameFxGroup(block,to){to=String(to||'').trim();const from=block.id;if(!to||to===from)return;if(fxGroups().includes(to)){alert('이미 있는 그룹 ID입니다.');return}
+ fxEditHistory();block.id=to;(state.effects||[]).forEach(e=>{if(e.group===from)e.group=to});(state.images||[]).forEach(i=>{if(i.group===from)i.group=to});syncGroupMembership();fxCache.clear()}
+function deleteFxGroup(block){pushHistory();state.fxGroupBlocks=(state.fxGroupBlocks||[]).filter(b=>b!==block);
+ (state.effects||[]).forEach(e=>{if(fxScopeOf(e)==='group'&&e.group===block.id)e.group=''});syncGroupMembership();state.fxEdit=null;fxCache.clear();renderFxEditor();updatePanels()}
+function setGroupOnSelected(){}
+function selectGroupNotes(g){state.selectedIds.clear();state.notes.forEach(n=>{if((n.group||'')===g)state.selectedIds.add(n.id)});updatePanels()}
+const FX_TYPE_DEFAULTS={none:{},glitch:{intensity:.3,intensityEnd:1,ease:'linear'},shatter:{breakMs:1400,shake:.5,flash:.35,freeze:true,reveal:''},
+ restore:{style:'fade',direction:'up',ease:'linear'},alpha:{fromValue:1,value:0,ease:'linear'},speed:{fromValue:1,value:2,ease:'linear'},offset:{fromValue:0,value:-1,ease:'linear'}};
+const FX_PARAM_KEYS=['intensity','intensityEnd','ease','breakMs','shake','flash','freeze','reveal','style','direction','value','fromValue'];
+function setFxType(e,type){if(type==='image'){state.fxImageTarget=e.id;$('imgFile').click();return}
+ fxEditHistory();FX_PARAM_KEYS.forEach(k=>delete e[k]);Object.assign(e,FX_TYPE_DEFAULTS[type]||{},{type});if(type==='shatter'&&!e.durationMs)e.durationMs=1200;fxCache.clear();renderFxEditor();updateEffectPanels()}
+function openFxEditor(target){
+ if(target.kind==='effect'){state.selectedFxId=target.item.id;state.selectedImageId=null;state.fxEdit={kind:'effect',id:target.item.id}}
+ else if(target.kind==='image'){state.selectedImageId=target.item._id;state.selectedFxId=null;state.fxEdit={kind:'image',id:target.item._id}}
+ else if(target.kind==='group'){state.selectedFxId=null;state.selectedImageId=null;state.fxEdit={kind:'groupBlock',id:target.item.uid}}
+ renderFxEditor();updatePanels();const card=$('fxEditCard');if(card)card.scrollIntoView({block:'nearest',behavior:'smooth'});
+}
+function fxEsc(v){return String(v??'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;')}
+function fxField(label,key,value,attrs=''){return`<label>${label}<input data-k="${key}" value="${fxEsc(value)}" ${attrs}></label>`}
+function fxSelect(label,key,value,options){return`<label>${label}<select data-k="${key}">${Object.entries(options).map(([k,v])=>`<option value="${fxEsc(k)}"${String(k)===String(value)?' selected':''}>${fxEsc(v)}</option>`).join('')}</select></label>`}
+/* --- curve editor (Unity AnimationCurve style): keys + tangent handles over time 0..1 --- */
+const CURVE_PRESETS={
+ linear:{label:'직선',keys:[{t:0,v:0,inTan:1,outTan:1},{t:1,v:1,inTan:1,outTan:1}]},
+ smooth:{label:'부드럽게',keys:[{t:0,v:0,inTan:0,outTan:0},{t:1,v:1,inTan:0,outTan:0}]},
+ easeIn:{label:'천천히 시작',keys:[{t:0,v:0,inTan:0,outTan:0},{t:1,v:1,inTan:2,outTan:2}]},
+ easeOut:{label:'천천히 끝',keys:[{t:0,v:0,inTan:2,outTan:2},{t:1,v:1,inTan:0,outTan:0}]},
+ overshoot:{label:'넘쳤다 돌아옴',keys:[{t:0,v:0,inTan:3,outTan:3},{t:.65,v:1.15,inTan:0,outTan:0},{t:1,v:1,inTan:0,outTan:0}]},
+ bounce:{label:'튕김',keys:[{t:0,v:0,inTan:0,outTan:0},{t:.45,v:1,inTan:2.6,outTan:-2.6},{t:.7,v:.75,inTan:0,outTan:0},{t:.88,v:1,inTan:2,outTan:-1.4},{t:1,v:1,inTan:0,outTan:0}]},
+ step:{label:'계단',keys:[{t:0,v:0,inTan:0,outTan:0,stepped:true},{t:1,v:1,inTan:0,outTan:0}]},
+ pulse:{label:'올랐다 내려옴',keys:[{t:0,v:0,inTan:0,outTan:0},{t:.5,v:1,inTan:0,outTan:0},{t:1,v:0,inTan:0,outTan:0}]}};
+const EASE_TO_PRESET={linear:'linear',inQuad:'easeIn',outQuad:'easeOut',inOutQuad:'smooth',inCubic:'easeIn',outCubic:'easeOut',inOutSine:'smooth',step:'step'};
+function curveKeysOf(e){if(fxValidCurve(e.curve))return e.curve;return JSON.parse(JSON.stringify(CURVE_PRESETS[EASE_TO_PRESET[e.ease]||'linear'].keys))}
+function mountCurveEditor(slot,e){
+ const W=300,H=180,pad=14;
+ slot.innerHTML=`<div class="small" style="display:flex;justify-content:space-between"><span>변화 곡선</span><span>키 ${'더블클릭 추가 · 우클릭 삭제 · 핸들로 기울기'}</span></div>
+ <canvas class="fx-curve" width="${W*2}" height="${H*2}" style="width:100%;aspect-ratio:${W}/${H};background:#0e1118;border:1px solid var(--line);border-radius:6px;cursor:crosshair;display:block"></canvas>
+ <div class="row" style="gap:4px;flex-wrap:wrap;margin-top:4px">${Object.entries(CURVE_PRESETS).map(([k,p])=>`<button data-preset="${k}" style="padding:2px 6px">${p.label}</button>`).join('')}</div>
+ <div class="row" style="gap:6px;margin-top:4px"><label><input type="checkbox" data-stepped>선택한 키 이후 계단</label><label><input type="checkbox" data-broken>기울기 따로</label><span class="mono" data-info></span></div>`;
+ const cv=slot.querySelector('canvas'),c=cv.getContext('2d');let keys=curveKeysOf(e).map(k=>({...k})),sel=0,drag=null,broken=false;
+ const range=()=>{let lo=0,hi=1;for(let i=0;i<=60;i++){const v=fxCurveEval(keys,i/60);lo=Math.min(lo,v);hi=Math.max(hi,v)}keys.forEach(k=>{lo=Math.min(lo,k.v);hi=Math.max(hi,k.v)});const m=(hi-lo)*.12+.05;return[lo-m,hi+m]};
+ let view=range();
+ const X=t=>pad+t*(W-2*pad),Y=v=>H-pad-(v-view[0])/(view[1]-view[0])*(H-2*pad),T=x=>(x-pad)/(W-2*pad),V=y=>view[0]+(H-pad-y)/(H-2*pad)*(view[1]-view[0]);
+ const HL=34; // handle length in px
+ const handlePos=(k,side)=>{const sx=(W-2*pad),sy=(H-2*pad)/(view[1]-view[0]),slope=side==='in'?k.inTan:k.outTan,dx=1,dy=slope*sy/sx,len=Math.hypot(dx,dy)||1,dir=side==='in'?-1:1;
+  return[X(k.t)+dir*HL*dx/len,Y(k.v)-dir*HL*dy/len]};
+ const commit=()=>{fxEditHistory();e.curve=fxCleanCurve(keys);fxCache.clear();updateEffectPanels()};
+ const draw=()=>{c.setTransform(2,0,0,2,0,0);c.clearRect(0,0,W,H);
+  c.strokeStyle='rgba(255,255,255,.08)';c.lineWidth=1;for(let i=0;i<=4;i++){c.beginPath();c.moveTo(X(i/4),pad);c.lineTo(X(i/4),H-pad);c.stroke()}
+  for(const v of[0,1]){c.strokeStyle=v?'rgba(121,230,155,.45)':'rgba(255,210,103,.45)';c.setLineDash([4,3]);c.beginPath();c.moveTo(pad,Y(v));c.lineTo(W-pad,Y(v));c.stroke();c.setLineDash([])}
+  c.fillStyle='rgba(255,255,255,.45)';c.font='9px system-ui';c.fillText('끝 값',2,Y(1)-3);c.fillText('시작 값',2,Y(0)+10);
+  c.strokeStyle='#86d7ff';c.lineWidth=2;c.beginPath();for(let i=0;i<=200;i++){const t=i/200,x=X(t),y=Y(fxCurveEval(keys,t));i?c.lineTo(x,y):c.moveTo(x,y)}c.stroke();
+  keys.forEach((k,i)=>{if(i===sel){for(const side of['in','out']){if((side==='in'&&i===0)||(side==='out'&&i===keys.length-1))continue;const[hx,hy]=handlePos(k,side);
+    c.strokeStyle='rgba(255,255,255,.6)';c.lineWidth=1;c.beginPath();c.moveTo(X(k.t),Y(k.v));c.lineTo(hx,hy);c.stroke();c.fillStyle='#ffd267';c.beginPath();c.arc(hx,hy,4,0,Math.PI*2);c.fill()}}
+   c.fillStyle=i===sel?'#ffffff':'#ff7aa8';c.fillRect(X(k.t)-4,Y(k.v)-4,8,8)});
+  const k=keys[sel];slot.querySelector('[data-info]').textContent=k?`t ${k.t.toFixed(2)} · 값 ${k.v.toFixed(2)}`:'';slot.querySelector('[data-stepped]').checked=!!k?.stepped};
+ const pos=ev=>{const r=cv.getBoundingClientRect();return[(ev.clientX-r.left)*W/r.width,(ev.clientY-r.top)*H/r.height]};
+ const pick=(x,y)=>{const k=keys[sel];if(k)for(const side of['in','out']){if((side==='in'&&sel===0)||(side==='out'&&sel===keys.length-1))continue;const[hx,hy]=handlePos(k,side);if(Math.hypot(x-hx,y-hy)<=7)return{kind:'handle',side}}
+  for(let i=keys.length-1;i>=0;i--)if(Math.abs(x-X(keys[i].t))<=7&&Math.abs(y-Y(keys[i].v))<=7)return{kind:'key',i};return null};
+ cv.addEventListener('contextmenu',ev=>ev.preventDefault());
+ cv.addEventListener('mousedown',ev=>{const[x,y]=pos(ev),hit=pick(x,y);
+  if(ev.button===2){if(hit?.kind==='key'&&hit.i>0&&hit.i<keys.length-1){keys.splice(hit.i,1);sel=Math.min(sel,keys.length-1);commit();draw()}return}
+  if(!hit)return;if(hit.kind==='key')sel=hit.i;drag=hit;draw();
+  const move=ev2=>{const[mx,my]=pos(ev2);const k=keys[sel];
+   if(drag.kind==='key'){let t=Math.max(0,Math.min(1,T(mx)));if(sel===0)t=0;else if(sel===keys.length-1)t=1;else t=Math.max(keys[sel-1].t+.005,Math.min(keys[sel+1].t-.005,t));k.t=t;k.v=+V(my).toFixed(4)}
+   else{const sx=(W-2*pad),sy=(H-2*pad)/(view[1]-view[0]);let dx=mx-X(k.t),dy=Y(k.v)-my;if(drag.side==='in'){dx=-dx;dy=-dy}if(dx<1)dx=1;const slope=(dy/dx)*(sx/sy);
+    if(drag.side==='in')k.inTan=slope;else k.outTan=slope;if(!broken){k.inTan=slope;k.outTan=slope}}
+   e.curve=fxCleanCurve(keys);fxCache.clear();draw()};
+  const up=()=>{window.removeEventListener('mousemove',move);window.removeEventListener('mouseup',up);drag=null;view=range();commit();draw()};
+  window.addEventListener('mousemove',move);window.addEventListener('mouseup',up)});
+ cv.addEventListener('dblclick',ev=>{const[x,y]=pos(ev);if(pick(x,y))return;const t=Math.max(.001,Math.min(.999,T(x))),v=+V(y).toFixed(4),
+  slope=(fxCurveEval(keys,Math.min(1,t+.01))-fxCurveEval(keys,Math.max(0,t-.01)))/.02;
+  keys.push({t,v,inTan:slope,outTan:slope});keys.sort((a,b)=>a.t-b.t);sel=keys.findIndex(k=>k.t===t);view=range();commit();draw()});
+ slot.querySelectorAll('[data-preset]').forEach(b=>b.onclick=()=>{keys=JSON.parse(JSON.stringify(CURVE_PRESETS[b.dataset.preset].keys));sel=0;view=range();commit();draw()});
+ slot.querySelector('[data-stepped]').onchange=ev=>{const k=keys[sel];if(!k||sel===keys.length-1){ev.target.checked=false;return}if(ev.target.checked)k.stepped=true;else delete k.stepped;commit();draw()};
+ slot.querySelector('[data-broken]').onchange=ev=>{broken=ev.target.checked};
+ draw();
+}
+function renderFxEditor(){
+ const body=$('fxEditBody');if(!body)return;const ed=state.fxEdit;
+ const easeOpts=Object.fromEntries(FX_EASES.map(e=>[e,e]));
+ if(!ed){body.innerHTML='<div class="small">FX 트랙의 블록을 <b>더블클릭</b>하면 선택되어 여기서 편집합니다.<br>Place 모드에서 클릭·드래그하면 (다른 블록 위라도) 새 블록이 생기고, 겹치면 옆줄로 나뉩니다. 선택된 블록은 끌어서 옮깁니다. <b>우클릭 드래그</b>로 시작·끝(가까운 쪽)을 끌어 길이를 바꿉니다.</div>';return}
+ if(ed.kind==='groupBlock'){const b=(state.fxGroupBlocks||[]).find(x=>x.uid===ed.id);if(!b){state.fxEdit=null;return renderFxEditor()}
+  const n=state.notes.filter(x=>x.group===b.id).length,fx=(state.effects||[]).filter(e=>fxScopeOf(e)==='group'&&e.group===b.id);
+  body.innerHTML=`<div class="mono">그룹 (구간 안의 노트를 묶음)</div><div class="grid2">${fxField('그룹 ID','gid',b.id,'type="text"')}<span class="small">노트 ${n}개</span>
+  ${fxField('시작 (ms)','startMs',b.startMs,'type="number" min="0" step="1"')}${fxField('끝 (ms)','endMs',b.endMs,'type="number" min="0" step="1"')}</div>
+  <div class="row">레인 ${[0,1,2,3].map(l=>`<label><input type="checkbox" data-lane="${l}" ${!b.lanes||b.lanes.includes(l)?'checked':''}>${l+1}</label>`).join('')}</div>
+  <div class="small">연결된 그룹 효과: ${fx.length?fx.map(e=>`<a href="#" data-open="${e.id}">${fxEsc(fxBlockLabel({kind:'effect',item:e}))}</a>`).join(', '):'없음 — 그룹 효과 타임라인에 블록을 만들고 더블클릭해서 이 그룹을 고르세요.'}</div>
+  <div class="row"><button data-act="select">이 그룹 노트 선택</button><button data-act="delgroup" class="danger">그룹 삭제</button></div>`;
+  body.querySelector('[data-k=gid]').onchange=ev=>{renameFxGroup(b,ev.target.value);renderFxEditor();updatePanels()};
+  ['startMs','endMs'].forEach(k=>body.querySelector(`[data-k=${k}]`).addEventListener('input',ev=>{fxEditHistory();b[k]=Math.max(0,Math.round(fxNum(ev.target.value,b[k])));if(b.endMs<b.startMs)[b.startMs,b.endMs]=[b.endMs,b.startMs];syncGroupMembership();fxCache.clear();updatePanels()}));
+  body.querySelectorAll('[data-lane]').forEach(el=>el.onchange=()=>{fxEditHistory();b.lanes=[...body.querySelectorAll('[data-lane]')].filter(x=>x.checked).map(x=>Number(x.dataset.lane));syncGroupMembership();fxCache.clear();renderFxEditor();updatePanels()});
+  body.querySelectorAll('[data-open]').forEach(el=>el.onclick=ev=>{ev.preventDefault();const e=(state.effects||[]).find(x=>x.id===Number(el.dataset.open));if(e)openFxEditor({kind:'effect',item:e})});
+  body.querySelector('[data-act=select]').onclick=()=>selectGroupNotes(b.id);body.querySelector('[data-act=delgroup]').onclick=()=>deleteFxGroup(b);return}
+ if(ed.kind==='image'){const im=(state.images||[]).find(i=>i._id===ed.id);if(!im){state.fxEdit=null;return renderFxEditor()}
+  const groups=Object.fromEntries([['','(사진 ID로 받음)'],...fxGroups().map(g=>[g,g])]);
+  body.innerHTML=`<div class="mono">전역 효과 · 사진</div><img src="${im.dataUrl}" style="max-width:100%;max-height:120px;display:block;margin:6px 0;border-radius:6px">
+  <div class="grid2">${fxField('사진 ID','id',im.id,'type="text"')}${fxField('시작 (ms)','timeMs',im.timeMs,'type="number" step="1"')}
+  ${fxField('끝 (ms, -1=계속)','endMs',im.endMs,'type="number" step="1"')}${fxSelect('레이어','layer',im.layer,{back:'노트 뒤',front:'노트 앞'})}
+  ${fxField('X (-1~1)','x',im.x,'type="number" step="0.05"')}${fxField('폭 (플레이필드 비율)','width',im.width,'type="number" step="0.05" min="0.01"')}
+  ${fxSelect('투명도·속도 그룹','group',im.group||'',groups)}</div>
+  <div class="row"><button data-act="file">사진 바꾸기</button><button data-act="del" class="danger">삭제</button></div>
+  <div class="small">사진 중앙이 시작 시각에 판정선에 닿도록 노트처럼 흘러옵니다.</div>`;
+  body.querySelectorAll('[data-k]').forEach(el=>el.addEventListener(el.tagName==='SELECT'?'change':'input',()=>{fxEditHistory();const k=el.dataset.k,v=el.value;
+   if(k==='id'){const id=v.trim();if(id&&!(state.images||[]).some(i=>i!==im&&i.id===id)){(state.effects||[]).forEach(e=>{if(e.reveal===im.id)e.reveal=id});im.id=id}}
+   else if(k==='layer'||k==='group')im[k]=v;else im[k]=k==='timeMs'?Math.max(0,Math.round(fxNum(v,im[k]))):k==='endMs'?Math.round(fxNum(v,-1)):fxNum(v,im[k]);fxCache.clear()}));
+  body.querySelector('[data-act=file]').onclick=()=>{state.fxImageReplace=im._id;$('imgFile').click()};body.querySelector('[data-act=del]').onclick=imageDelete;return}
+ const e=(state.effects||[]).find(x=>x.id===ed.id);if(!e){state.fxEdit=null;return renderFxEditor()}
+ const scope=fxScopeOf(e),types=scope==='group'?FX_GROUP_TYPES:FX_GLOBAL_TYPES;let f='';
+ if(scope==='group')f+=fxSelect('연결할 그룹','group',e.group||'',Object.fromEntries([['','(연결 안 됨)'],...fxGroups().map(g=>[g,g])]));
+ if(e.type==='glitch')f+=fxField('시작 세기 (0~1)','intensity',e.intensity,'type="number" min="0" max="1" step="0.05"')+fxField('끝 세기 (0~1)','intensityEnd',e.intensityEnd<0?e.intensity:e.intensityEnd,'type="number" min="0" max="1" step="0.05"')+'<div data-curve style="grid-column:1/-1"></div>';
+ if(e.type==='shatter'){f+=fxField('흩어지는 시간 (ms)','breakMs',e.breakMs,'type="number" min="100" step="10"')+fxField('흔들림 (0~1)','shake',e.shake,'type="number" min="0" max="1" step="0.05"')+fxField('섬광 (0~1)','flash',e.flash,'type="number" min="0" max="1" step="0.05"')
+  +fxSelect('금 가는 동안','freeze',e.freeze?'1':'0',{'1':'화면 정지','0':'게임 계속 보임'})+fxSelect('깨진 뒤 보일 것','reveal',e.reveal||'',Object.fromEntries([['','게임 화면'],...(state.images||[]).map(i=>[i.id,'사진 '+i.id])]))}
+ if(e.type==='restore')f+=fxSelect('복구 방식','style',e.style,FX_RESTORE_LABELS)+(e.style==='wipe'?fxSelect('와이프 방향','direction',e.direction,{up:'위로',down:'아래로',left:'왼쪽으로',right:'오른쪽으로'}):'')+'<div data-curve style="grid-column:1/-1"></div>';
+ if(e.type==='alpha')f+=fxField('시작 투명도 (0~1)','fromValue',e.fromValue??'','type="number" min="0" max="1" step="0.05" placeholder="이전 값에서"')+fxField('끝 투명도 (0~1)','value',e.value,'type="number" min="0" max="1" step="0.05"')+'<div data-curve style="grid-column:1/-1"></div>';
+ if(e.type==='offset')f+=fxField('시작 오프셋 (1/12박 단위)','fromValue',e.fromValue??'','type="number" step="1" placeholder="이전 값에서"')+fxField('끝 오프셋 (1/12박 단위, -1 = 1/12박 앞)','value',e.value,'type="number" step="1"')+'<div data-curve style="grid-column:1/-1"></div>';
+ if(e.type==='speed')f+=fxField('시작 속도 배수','fromValue',e.fromValue??'','type="number" step="0.05" placeholder="이전 값에서"')+fxField('끝 속도 배수 (노트 간격 배율, 1=기본)','value',e.value,'type="number" step="0.05"')+'<div data-curve style="grid-column:1/-1"></div>';
+ const durLabel=e.type==='shatter'?'금 가는 시간 (ms)':'길이 (ms, 0=즉시)';
+ body.innerHTML=`<div class="mono">${scope==='group'?'그룹 효과 — 연결한 그룹의 노트·사진에 적용':'전역 효과'}</div><div class="grid2">${fxSelect('종류','type',e.type,types)}<span></span>
+  ${fxField('시작 (ms)','timeMs',e.timeMs,'type="number" min="0" step="1"')}${fxField(durLabel,'durationMs',e.durationMs,'type="number" min="0" step="1"')}
+  <label>박자로 길이<span class="row" style="gap:4px"><input data-beats type="number" value="4" min="0" step="0.25" style="width:60px"><button data-act="beats">→</button></span></label><span></span>${f}</div>
+  ${e.type==='none'?'<div class="small">종류를 고르면 설정 칸이 나옵니다.'+(scope==='global'?' 사진을 고르면 파일을 선택합니다.':'')+'</div>':''}
+  <div class="row"><button data-act="dup">플레이헤드에 복제</button><button data-act="del" class="danger">삭제</button></div>`;
+ body.querySelectorAll('[data-k]').forEach(el=>el.addEventListener(el.tagName==='SELECT'?'change':'input',()=>{const k=el.dataset.k,v=el.value;
+  if(k==='type'){setFxType(e,v);return}fxEditHistory();
+  if(k==='group'){e.group=v;if(e.type==='none'&&v)Object.assign(e,FX_TYPE_DEFAULTS.alpha,{type:'alpha'});fxCache.clear();updateEffectPanels();renderFxEditor();return}
+  if(k==='ease'||k==='reveal'||k==='style'||k==='direction')e[k]=v;else if(k==='freeze')e.freeze=v==='1';
+  else if(k==='timeMs'||k==='durationMs'||k==='breakMs')e[k]=Math.max(0,Math.round(fxNum(v,e[k])));
+  else if(k==='fromValue'){if(v.trim()==='')delete e.fromValue;else e.fromValue=fxNum(v,e.fromValue)}else e[k]=fxNum(v,e[k]);
+  fxCache.clear();updateEffectPanels();if(k==='style')renderFxEditor()}));
+ {const slot=body.querySelector('[data-curve]');if(slot)mountCurveEditor(slot,e)}
+ body.querySelector('[data-act=beats]').onclick=()=>{fxEditHistory();const seg=tempoSegmentAt(e.timeMs);e.durationMs=Math.round(60000/seg.bpm*fxNum(body.querySelector('[data-beats]').value,1));fxCache.clear();renderFxEditor()};
+ body.querySelector('[data-act=dup]').onclick=fxDuplicate;body.querySelector('[data-act=del]').onclick=fxDelete;
+}
+function imageFileChosen(file){if(!file)return;if(file.size>6*1024*1024){alert('이미지는 6MB 이하만 넣을 수 있습니다.');return}
+ const reader=new FileReader();reader.onload=()=>{pushHistory();
+  if(state.fxImageReplace!=null){const im=(state.images||[]).find(i=>i._id===state.fxImageReplace);state.fxImageReplace=null;if(im){im.dataUrl=reader.result;openFxEditor({kind:'image',item:im})}return}
+  const ids=new Set((state.images||[]).map(i=>i.id));let k=1;while(ids.has('사진'+k))k++;
+  const target=(state.effects||[]).find(e=>e.id===state.fxImageTarget);state.fxImageTarget=null;
+  const start=target?target.timeMs:Math.round(snapTime(state.playheadMs)),end=target&&target.durationMs>0?start+target.durationMs:-1;
+  if(target)state.effects=state.effects.filter(e=>e!==target);
+  const img=normalizeImage({id:'사진'+k,dataUrl:reader.result,timeMs:start,endMs:end,x:0,width:1,layer:'back'});img._id=nextImageId++;state.images.push(img);openFxEditor({kind:'image',item:img})};
+ reader.readAsDataURL(file)}
+function updateEffectPanels(){
+ if(!$('fxList'))return;const groups=fxGroups();
+ syncGroupMembership();
+ $('fxGroupStats').textContent=groups.length?groups.map(g=>`${g}: 노트 ${state.notes.filter(n=>n.group===g).length}`).join(' / '):'그룹 없음';
+ const list=$('fxList');list.innerHTML='';
+ const rows=[...(state.fxGroupBlocks||[]).map(b=>({kind:'group',item:b,t:b.startMs})),...(state.effects||[]).map(e=>({kind:'effect',item:e,t:e.timeMs})),...(state.images||[]).map(i=>({kind:'image',item:i,t:i.timeMs}))].sort((a,b)=>a.t-b.t);
+ rows.forEach(r=>{const row=document.createElement('div'),sel=r.kind==='effect'?r.item.id===state.selectedFxId:r.kind==='image'?r.item._id===state.selectedImageId:state.fxEdit?.kind==='groupBlock'&&state.fxEdit.id===r.item.uid;
+  row.style.cssText='cursor:pointer;display:flex;gap:6px;align-items:center;padding:2px 4px;'+(sel?'background:#2c3350':'');
+  const scope=r.kind==='group'?'그룹':r.kind==='image'?'전역':fxScopeOf(r.item)==='group'?'그룹 효과':'전역';
+  row.innerHTML=`<span style="width:9px;height:9px;border-radius:2px;background:${fxBlockColor(r)}"></span><span class="mono">${r.t}ms</span><span>${fxEsc(fxBlockLabel(r))}</span><span class="small" style="margin-left:auto">${fxEsc(scope)}</span>`;
+  row.onclick=()=>{openFxEditor(r);state.playheadMs=r.t};list.appendChild(row)});
+ $('fxStats').textContent=`effects: ${(state.effects||[]).length} / images: ${(state.images||[]).length}`;
+}
+function initEffects(){
+ $('imgFile').onchange=e=>{imageFileChosen(e.target.files[0]);e.target.value=''};
+ canvas.addEventListener('dblclick',evt=>{const p=mousePos(evt),hit=fxHitTest(p.x,p.y);if(!hit)return;
+  if(hit.kind==='effect'||hit.kind==='image'||hit.kind==='group')openFxEditor(hit)});
+ const toggleBig=()=>$('fxPreviewCanvas').classList.toggle('fx-big');$('fxBigBtn').onclick=toggleBig;$('fxPreviewCanvas').onclick=toggleBig;
+ window.addEventListener('keydown',e=>{if(e.key==='Escape'&&$('fxPreviewCanvas').classList.contains('fx-big'))$('fxPreviewCanvas').classList.remove('fx-big')});
+ ['fxScrollSpeed','fxSkin','fxSpeedTextHeight'].forEach(id=>$(id).addEventListener('input',()=>{savePreviewSettings();persistPreviewSettings()}));
+ $('fxAutoMode').addEventListener('change',persistPreviewSettings);$('fxResetSettingsBtn').onclick=resetPreviewToGameSettings;
+ renderFxEditor();updateEffectPanels();loadGamePreviewAssets();
+ const loop=()=>{drawFxPreview();requestAnimationFrame(loop)};requestAnimationFrame(loop);
+ // ?fxChart=<url>&t=<ms>[&big=1]: open a chart at a time (used for preview screenshots)
+ const q=new URLSearchParams(location.search);
+ if(q.get('fxChart'))fetch(q.get('fxChart'),{cache:'no-store'}).then(r=>r.json()).then(d=>new Promise(res=>setTimeout(()=>res(d),3000))).then(d=>{projectImportChartData(d);state.playheadMs=Number(q.get('t')||0);if(q.get('big'))$('fxBigBtn').click()});
+}
 function updateTimelineEventList(){
+ specialEntries();
  const list=$('timelineEventList');
  if(!list)return;
  sortTimelineEvents();
@@ -348,16 +1157,16 @@ function updateTimelineEventList(){
    kind:'limit',
    index,
    timeMs:Number(line.timeMs)||0,
-   text:`${Math.round(Number(line.timeMs)||0)}ms / LIMIT <= ${Number(line.maxSpeed||1).toFixed(2)}x`
+   text:`${Math.round(Number(line.timeMs)||0)}ms / ${line.durationMs>0?`HOLD ${line.durationMs}ms`:'TAP'} / LIMIT <= ${Number(line.maxSpeed||1).toFixed(2)}x`
   });
  });
  (state.stageDeltaLines||[]).forEach((line,index)=>{
-  const d=Number(line.stageDelta)||0;
+  const d=Number(line.speedDelta)||0;
   rows.push({
    kind:'delta',
    index,
    timeMs:Number(line.timeMs)||0,
-   text:`${Math.round(Number(line.timeMs)||0)}ms / STAGE ${d>=0?'+':''}${d.toFixed(2)}`
+   text:`${Math.round(Number(line.timeMs)||0)}ms / ${line.durationMs>0?`HOLD ${line.durationMs}ms`:'TAP'} / STAGE ${d>=0?'+':''}${d.toFixed(2)}`
   });
  });
  (state.bpmChanges||[]).forEach((line,index)=>{
@@ -371,11 +1180,26 @@ function updateTimelineEventList(){
  rows.sort((a,b)=>a.timeMs-b.timeMs);
  for(const row of rows){
   const item=document.createElement('div');
-  item.className='note-item';
+  const specialLine=row.kind==='bpm'?null:(row.kind==='limit'?state.speedLimitLines:state.stageDeltaLines)[row.index];
+  item.className='note-item'+(specialLine&&specialLine._editorId===state.selectedSpecialId?' selected':'');
   item.style.gridTemplateColumns='1fr auto';
   item.innerHTML=`<span>${row.text}</span><button data-kind="${row.kind}" data-index="${row.index}">Delete</button>`;
+  if(row.kind!=='bpm'){
+   const line=(row.kind==='limit'?state.speedLimitLines:state.stageDeltaLines)[row.index];
+   const fields=document.createElement('div');fields.style.gridColumn='1 / -1';fields.className='grid2';
+   for(const [key,title,step] of [['timeMs','Time ms',1],['durationMs','Duration ms (0 = tap)',1],
+     [row.kind==='limit'?'maxSpeed':'speedDelta',row.kind==='limit'?'Target max speed':'Total speed delta',.01]]){
+    const label=document.createElement('label');label.textContent=title;
+    const input=document.createElement('input');input.type='number';input.step=step;input.value=line[key]||0;
+    input.onchange=()=>{const value=Number(input.value);if(!Number.isFinite(value))return;pushHistory();
+     line[key]=key==='timeMs'||key==='durationMs'?Math.max(0,Math.round(value)):key==='maxSpeed'?Math.max(1,value):key==='startMaxSpeed'?Math.max(0,value):value;updatePanels()};
+    label.appendChild(input);fields.appendChild(label);
+   }
+   item.appendChild(fields);
+  }
   item.onclick=e=>{
-   if(e.target&&e.target.tagName==='BUTTON')return;
+   if(e.target&&['BUTTON','INPUT','LABEL'].includes(e.target.tagName))return;
+   if(specialLine)selectSpecialEntry({id:specialLine._editorId});
    state.playheadMs=row.timeMs;
    state.viewStartMs=Math.max(0,row.timeMs-1600);
    updatePanels();
@@ -395,17 +1219,21 @@ function addSpeedLimitLineAtPlayhead(){
  pushHistory();
  state.speedLimitLines.push({
   timeMs:Math.max(0,Math.round(snapTime(state.playheadMs))),
-  maxSpeed
+  maxSpeed,
+  durationMs:Math.max(0,Math.round(Number($('specialDurationInput').value)||0))
  });
+
  updatePanels();
 }
 function addStageDeltaLineAtPlayhead(){
- const stageDelta=Number($('stageDeltaInput').value)||0;
+ const speedDelta=Number($('speedDeltaInput').value)||0;
  pushHistory();
  state.stageDeltaLines.push({
   timeMs:Math.max(0,Math.round(snapTime(state.playheadMs))),
-  stageDelta
+  speedDelta,
+  durationMs:Math.max(0,Math.round(Number($('specialDurationInput').value)||0))
  });
+
  updatePanels();
 }
 function addBpmChangeAtPlayhead(){
@@ -430,6 +1258,8 @@ function exportSpeedLimitLines(){
  sortTimelineEvents();
  return (state.speedLimitLines||[]).map(line=>({
   timeMs:Math.max(0,Math.round(Number(line.timeMs)||0)),
+  durationMs:Math.max(0,Math.round(Number(line.durationMs)||0)),
+  label:line.label||undefined,
   maxSpeed:Math.max(1,Number(line.maxSpeed)||1)
  }));
 }
@@ -437,10 +1267,14 @@ function exportStageDeltaLines(){
  sortTimelineEvents();
  return (state.stageDeltaLines||[]).map(line=>({
   timeMs:Math.max(0,Math.round(Number(line.timeMs)||0)),
-  stageDelta:Number(line.stageDelta)||0
+  durationMs:Math.max(0,Math.round(Number(line.durationMs)||0)),
+  label:line.label||undefined,
+  speedDelta:Number(line.speedDelta ?? (Number(line.stageDelta)||0)*.065)||0
  }));
 }
-function playHit(coef=1,lane=0,when=0){ensureAudioCtx();const vol=parseFloat($('hitVolume').value);if(vol<=0)return;const now=audioCtx.currentTime+when,base=680,osc=audioCtx.createOscillator(),gain=audioCtx.createGain(),filter=audioCtx.createBiquadFilter();osc.type='triangle';osc.frequency.setValueAtTime(base+lane*48,now);osc.frequency.exponentialRampToValueAtTime((base+lane*48)*.72,now+.045);filter.type='lowpass';filter.frequency.setValueAtTime(2400,now);gain.gain.setValueAtTime(.0001,now);gain.gain.exponentialRampToValueAtTime(vol*.17,now+.006);gain.gain.exponentialRampToValueAtTime(.0001,now+.075);osc.connect(filter);filter.connect(gain);gain.connect(audioCtx.destination);osc.start(now);osc.stop(now+.09)}async function loadAudioFile(file){ensureAudioCtx();stopBgm();state.audioFileName=file.name;const arr=await file.arrayBuffer();audioBuffer=await audioCtx.decodeAudioData(arr.slice(0));state.audioDurationMs=audioBuffer.duration*1000;waveformPeaks=computeWaveformPeaks(audioBuffer,9000);updatePanels()}
+let scheduledAuditions=[];
+function playHit(coef=1,lane=0,when=0){ensureAudioCtx();const vol=parseFloat($('hitVolume').value);if(vol<=0)return;const now=Math.max(audioCtx.currentTime,when),base=680,osc=audioCtx.createOscillator(),gain=audioCtx.createGain(),filter=audioCtx.createBiquadFilter();osc.type='triangle';osc.frequency.setValueAtTime(base+lane*48,now);osc.frequency.exponentialRampToValueAtTime((base+lane*48)*.72,now+.045);filter.type='lowpass';filter.frequency.setValueAtTime(2400,now);gain.gain.setValueAtTime(.0001,now);gain.gain.exponentialRampToValueAtTime(vol*.17,now+.006);gain.gain.exponentialRampToValueAtTime(.0001,now+.075);osc.connect(filter);filter.connect(gain);gain.connect(audioCtx.destination);osc.start(now);osc.stop(now+.09);return osc}
+async function loadAudioFile(file){ensureAudioCtx();stopBgm();state.audioFileName=file.name;const arr=await file.arrayBuffer();audioBuffer=await audioCtx.decodeAudioData(arr.slice(0));state.audioDurationMs=audioBuffer.duration*1000;waveformPeaks=computeWaveformPeaks(audioBuffer,9000);updatePanels()}
 async function loadAudioUrl(url,fileName,guard){
   ensureAudioCtx();
   const res=await fetch(url);
@@ -458,6 +1292,7 @@ async function loadAudioUrl(url,fileName,guard){
 }
 function computeWaveformPeaks(buffer,count){const ch0=buffer.getChannelData(0),ch1=buffer.numberOfChannels>1?buffer.getChannelData(1):null,peaks=new Float32Array(count),block=Math.max(1,Math.floor(buffer.length/count));for(let i=0;i<count;i++){let max=0,start=i*block,end=Math.min(buffer.length,start+block);for(let j=start;j<end;j++){const v=Math.abs(ch0[j])+(ch1?Math.abs(ch1[j]):0);if(v>max)max=v}peaks[i]=Math.min(1,max/(ch1?2:1))}return peaks}
 function stopBgm(){
+  cancelScheduledAuditions();
   if(bgmSource){
     try{bgmSource.onended=null;bgmSource.stop()}catch(e){}
     try{bgmSource.disconnect()}catch(e){}
@@ -502,8 +1337,32 @@ function syncAudioToChartTime(chartMs){
 function startPlayback(fromMs=state.playheadMs){ensureAudioCtx();state.playheadMs=Math.max(0,fromMs);state.isPlaying=true;playbackStartChartMs=state.playheadMs;playbackStartPerf=performance.now();audioStartedForThisPlayback=false;for(const n of state.notes)n._lastPlayedAt=undefined;syncAudioToChartTime(state.playheadMs);$('playBtn').textContent='Pause'}
 function pausePlayback(){state.isPlaying=false;stopBgm();$('playBtn').textContent='Play'}
 function stopPlayback(){pausePlayback();state.playheadMs=state.loop?state.loopStartMs:state.viewStartMs;updatePanels()}
-function tick(){const now=performance.now(),dt=now-lastFrame;lastFrame=now;if(state.isPlaying){state.playheadMs=playbackStartChartMs+(now-playbackStartPerf)*state.playbackRate;if(audioBuffer){const audioMs=chartToAudioMs(state.playheadMs);if(audioMs>=0&&audioMs<state.audioDurationMs){if(!bgmActive){syncAudioToChartTime(state.playheadMs)}else{const expected=audioMs/1000;const actual=bgmAudioOffsetSec+(audioCtx.currentTime-bgmStartedCtxTime)*state.playbackRate;if(Math.abs(actual-expected)>0.20)syncAudioToChartTime(state.playheadMs)}}else if(bgmActive){stopBgm()}}if(state.loop&&state.loopEndMs>state.loopStartMs&&state.playheadMs>=state.loopEndMs)startPlayback(state.loopStartMs);auditionCrossedNotes(dt);const visibleEnd=state.viewStartMs+((canvas._cssH||canvas.height)/state.pxPerSecond)*1000;if(state.playheadMs>visibleEnd-900)state.viewStartMs=Math.max(0,state.playheadMs-(((canvas._cssH||canvas.height)/state.pxPerSecond)*1000)+900)}draw();updateLightStatus();requestAnimationFrame(tick)}
-function auditionCrossedNotes(dt){const from=state.playheadMs-Math.max(42,dt+20),to=state.playheadMs+8;for(const n of state.notes.filter(n=>n.timeMs>=from&&n.timeMs<to)){if(n._lastPlayedAt===undefined||Math.abs(n._lastPlayedAt-n.timeMs)>1){playHit(n.speedupCoef,n.lane);n._lastPlayedAt=n.timeMs}}}
+function tick(){const now=performance.now(),dt=now-lastFrame;lastFrame=now;if(state.isPlaying){if(typeof autoRateStep==='function')autoRateStep(now);state.playheadMs=playbackStartChartMs+(now-playbackStartPerf)*state.playbackRate;if(audioBuffer){const audioMs=chartToAudioMs(state.playheadMs);if(audioMs>=0&&audioMs<state.audioDurationMs){if(!bgmActive){syncAudioToChartTime(state.playheadMs)}else{const expected=audioMs/1000;const actual=bgmAudioOffsetSec+(audioCtx.currentTime-bgmStartedCtxTime)*state.playbackRate;if(Math.abs(actual-expected)>0.20)syncAudioToChartTime(state.playheadMs)}}else if(bgmActive){stopBgm()}}if(state.loop&&state.loopEndMs>state.loopStartMs&&state.playheadMs>=state.loopEndMs)startPlayback(state.loopStartMs);auditionCrossedNotes(dt);const visibleEnd=state.viewStartMs+((canvas._cssH||canvas.height)/state.pxPerSecond)*1000;if(state.playheadMs>visibleEnd-900)state.viewStartMs=Math.max(0,state.playheadMs-(((canvas._cssH||canvas.height)/state.pxPerSecond)*1000)+900)}draw();updateLightStatus();requestAnimationFrame(tick)}
+function auditionCrossedNotes(dt){
+ const now=audioCtx.currentTime,rate=state.playbackRate;
+ const chartMs=bgmActive?bgmStartedChartMs+(now-bgmStartedCtxTime)*1000*rate:state.playheadMs;
+ const from=chartMs-Math.max(42,dt*rate+20);
+ const ahead=chartMs+100*rate;
+ const to=state.loop&&state.loopEndMs>state.loopStartMs?Math.min(ahead,state.loopEndMs):ahead;
+ scheduledAuditions=scheduledAuditions.filter(hit=>hit.when>now);
+ for(const n of state.notes.filter(n=>n.timeMs>=from&&n.timeMs<to)){
+  if(n._lastPlayedAt===undefined||Math.abs(n._lastPlayedAt-n.timeMs)>1){
+   const target=bgmActive?bgmStartedCtxTime+(n.timeMs-bgmStartedChartMs)/1000/rate:now+(n.timeMs-chartMs)/1000/rate;
+   const when=Math.max(now,target),osc=playHit(n.speedupCoef,n.lane,when);
+   scheduledAuditions.push({note:n,osc,when});
+   n._lastPlayedAt=n.timeMs;
+  }
+ }
+}
+function cancelScheduledAuditions(){
+ for(const hit of scheduledAuditions){
+  if(hit.when>=audioCtx.currentTime){
+   if(hit.osc)hit.osc.stop();
+   hit.note._lastPlayedAt=undefined;
+  }
+ }
+ scheduledAuditions=[];
+}
 function mousePos(evt){const r=canvas.getBoundingClientRect();return{x:evt.clientX-r.left,y:evt.clientY-r.top}}
 function hitHoldEndpointAt(x,y){
  const lane=xToLane(x);let best=null,bestDist=Infinity;
@@ -529,6 +1388,29 @@ canvas.addEventListener('mousedown',evt=>{ensureAudioCtx();const p=mousePos(evt)
   updatePanels();
   return;
  }
+
+ if(nearFxDivider(p.x)){state.drag={kind:'resizeFxTrack'};return}
+ {const si=nearFxSectionDivider(p.x);if(si>=0){state.drag={kind:'resizeFxSection',index:si};return}}
+ {const hit=state.toolMode!=='playhead'?fxHitTest(p.x,p.y):null;
+  if(hit){
+   const isBlock=hit.kind==='effect'||hit.kind==='image'||hit.kind==='group';
+   const isSelected=isBlock&&(hit.kind==='effect'?hit.item.id===state.selectedFxId:hit.kind==='image'?hit.item._id===state.selectedImageId:state.fxEdit?.kind==='groupBlock'&&state.fxEdit.id===hit.item.uid);
+   if(evt.button===2&&isBlock){const it=hit.item,start=hit.start,end=hit.start+hit.span,t=yToMs(p.y);
+    state.drag={kind:'resizeFxEdge',item:it,isImage:hit.kind==='image',isGroup:hit.kind==='group',handle:Math.abs(t-end)<=Math.abs(t-start)?'end':'start',end,before:snapshot(),moved:false};return}
+   // double-click selects (and cancels the click that would have created a block)
+   if(evt.detail>=2){if(fxPendingCreate){clearTimeout(fxPendingCreate);fxPendingCreate=null}if(isBlock)openFxEditor(hit);return}
+   const grab=()=>{state.drag={kind:hit.edge?'resizeFx':'moveFx',item:hit.item,isImage:hit.kind==='image',isGroup:hit.kind==='group',origStart:hit.item.startMs,origEndMs:hit.item.endMs,startMs:snapTime(yToMs(p.y)),origTime:hit.item.timeMs,origEnd:hit.item.endMs,origDur:hit.item.durationMs,before:snapshot(),moved:false};updatePanels()};
+   if(state.toolMode==='place'){
+    // a click creates, even on top of other blocks (overlaps split into lanes); the selected block can be dragged/resized
+    if(isSelected){grab();state.drag.clickCreates={section:hit.section,t:Math.max(0,snapTime(yToMs(p.y)))};return}
+    const section=hit.section;
+    if(section&&section!=='none'){const t=Math.max(0,snapTime(yToMs(p.y)));state.playheadMs=t;
+     state.drag={kind:section==='group'?'newGroup':'newEffect',scope:section==='groupfx'?'group':'global',startMs:t,currentMs:t};return}
+    return}
+   if(isBlock){openFxEditor(hit);grab();return}
+   state.selectedFxId=null;state.selectedImageId=null;state.fxEdit=null;renderFxEditor();updatePanels();return}}
+ if(state.toolMode==='select'&&!findNoteAt(p.x,p.y)&&beginSpecialDrag(evt,p))return;
+ state.selectedSpecialId=null;
 
  if(state.toolMode==='select'){
   if(evt.button===2){
@@ -572,14 +1454,35 @@ canvas.addEventListener('mousedown',evt=>{ensureAudioCtx();const p=mousePos(evt)
  }
 
  const lane=xToLane(p.x),t=Math.max(0,snapTime(yToMs(p.y)));state.playheadMs=t;
- if(state.currentMode==='tap'){pushHistory();const n=addNote({timeMs:t,lane,speedupCoef:state.currentCoef,durationMs:0});playHit(n.speedupCoef,n.lane)}
+ if(state.placeKind==='special'){
+  // Special notes placed on the timeline start with no speed change (delta 0). Hold mode: drag for length.
+  if(state.currentMode==='hold'){state.drag={kind:'newSpecial',startMs:t,currentMs:t+snapMs(t)};return}
+  pushHistory();state.stageDeltaLines.push({timeMs:t,speedDelta:0,durationMs:0});updatePanels();return}
+ if(state.placeKind==='effect')return; // effects and images live in the FX track
+ if(state.currentMode==='tap'){pushHistory();const n=addNote({timeMs:t,lane,speedupCoef:state.currentCoef,durationMs:0});if(n)playHit(n.speedupCoef,n.lane)}
  else state.drag={kind:'newHold',lane,startMs:t,currentMs:t+snapMs(t)};
 });window.addEventListener('mousemove',evt=>{if(!state.drag)return;const p=mousePos(evt);
+ if(state.drag.kind==='resizeFxSection'){const a=laneArea(),w=a.fxRight-a.fxLeft,sum=FX_SECTION_RATIOS.reduce((x,y)=>x+y,0),fr=FX_SECTION_RATIOS.map(r=>r/sum),i=state.drag.index;
+  const left=fr.slice(0,i).reduce((x,y)=>x+y,0),pair=fr[i]+fr[i+1],min=.08;let at=(p.x-a.fxLeft)/w-left;at=Math.max(min,Math.min(pair-min,at));fr[i]=at;fr[i+1]=pair-at;FX_SECTION_RATIOS=fr;return}
+ if(state.drag.kind==='resizeFxTrack'){FX_TRACK_W=Math.round(Math.max(120,Math.min(fxTrackMaxWidth(),p.x-116-4)));return}
+ if(state.drag.kind==='editSpecial'){moveSpecialDrag(p);return}
  if(state.drag.kind==='playhead'){
   state.playheadMs=Math.max(0,snapTime(yToMs(p.y)));
   updatePanels();
  }
- else if(state.drag.kind==='newHold')state.drag.currentMs=Math.max(0,snapTime(yToMs(p.y)));
+ else if(state.drag.kind==='newHold'||state.drag.kind==='newSpecial'||state.drag.kind==='newEffect'||state.drag.kind==='newGroup')state.drag.currentMs=Math.max(0,snapTime(yToMs(p.y)));
+ else if(state.drag.kind==='resizeFxEdge'){const d=state.drag,it=d.item,t=Math.max(0,snapTime(yToMs(p.y)));d.moved=true;
+  if(d.isGroup){if(d.handle==='end')it.endMs=Math.max(it.startMs+1,t);else it.startMs=Math.min(it.endMs-1,t);syncGroupMembership()}
+  else if(d.isImage){if(d.handle==='end')it.endMs=Math.max(it.timeMs,t);else{const e=it.endMs;it.timeMs=e>=0?Math.min(e,t):t}}
+  else{const extra=it.type==='shatter'?(it.breakMs||0):0;
+   if(d.handle==='end')it.durationMs=Math.max(0,t-it.timeMs-extra);else{const s0=Math.min(t,d.end-extra);it.durationMs=Math.max(0,d.end-extra-s0);it.timeMs=s0}}
+  fxCache.clear()}
+ else if(state.drag.kind==='resizeFx'&&state.drag.isGroup){const d=state.drag;d.moved=true;d.item.endMs=Math.max(d.item.startMs+1,snapTime(yToMs(p.y)));syncGroupMembership();fxCache.clear()}
+ else if(state.drag.kind==='moveFx'&&state.drag.isGroup){const d=state.drag,dt=snapTime(yToMs(p.y))-d.startMs;if(dt!==0)d.moved=true;const len=d.origEndMs-d.origStart;d.item.startMs=Math.max(0,d.origStart+dt);d.item.endMs=d.item.startMs+len;syncGroupMembership();fxCache.clear()}
+ else if(state.drag.kind==='resizeFx'){const d=state.drag,t=Math.max(d.item.timeMs,snapTime(yToMs(p.y)));d.moved=true;
+  if(d.isImage)d.item.endMs=t;else if(d.item.type==='shatter')d.item.durationMs=Math.max(0,t-d.item.timeMs-(d.item.breakMs||0));else d.item.durationMs=t-d.item.timeMs;fxCache.clear()}
+ else if(state.drag.kind==='moveFx'){const d=state.drag,dt=snapTime(yToMs(p.y))-d.startMs;if(dt!==0)d.moved=true;d.item.timeMs=Math.max(0,d.origTime+dt);
+  if(d.isImage&&d.origEnd>=0)d.item.endMs=Math.max(d.item.timeMs,d.origEnd+dt);fxCache.clear()}
  else if(state.drag.kind==='moveNotes'){const dtMs=snapTime(yToMs(p.y))-snapTime(yToMs(state.drag.startY)),laneDelta=xToLane(p.x)-xToLane(state.drag.startX),ids=new Set(state.drag.originals.map(o=>o.id));const proposed=[];let blocked=false;for(const o of state.drag.originals){const orig=state.notes.find(x=>x.id===o.id);if(!orig)continue;const cand={...orig,timeMs:Math.max(0,snapTime(o.timeMs+dtMs)),lane:Math.max(0,Math.min(3,o.lane+laneDelta))};if(noteConflictsWithList(cand,state.notes,ids)||noteConflictsWithList(cand,proposed)){blocked=true;break}proposed.push(cand)}if(!blocked){for(const c of proposed){const n=state.notes.find(x=>x.id===c.id);if(n){n.timeMs=c.timeMs;n.lane=c.lane}}sortNotes();updatePanels()}}
  else if(state.drag.kind==='resizeHold'){
   const n=state.notes.find(x=>x.id===state.drag.id);
@@ -601,9 +1504,30 @@ canvas.addEventListener('mousedown',evt=>{ensureAudioCtx();const p=mousePos(evt)
   }
  }
  else if(state.drag.kind==='marquee'){state.drag.currentX=p.x;state.drag.currentY=p.y}
-});window.addEventListener('mouseup',()=>{if(!state.drag)return;
- if(state.drag.kind==='newHold'){
-  pushHistory();const t1=Math.min(state.drag.startMs,state.drag.currentMs),t2=Math.max(state.drag.startMs,state.drag.currentMs),n=addNote({timeMs:t1,lane:state.drag.lane,speedupCoef:state.currentCoef,durationMs:Math.max(snapMs(t1),t2-t1)});playHit(n.speedupCoef,n.lane)
+});window.addEventListener('mouseup',()=>{if(finishSpecialDrag())return;if(!state.drag)return;
+ if(state.drag.kind==='resizeFxTrack'){try{localStorage.setItem('otFxTrackWidth',String(FX_TRACK_W))}catch{}state.drag=null;return}
+ if(state.drag.kind==='resizeFxSection'){try{localStorage.setItem('otFxSectionRatios',JSON.stringify(FX_SECTION_RATIOS))}catch{}state.drag=null;return}
+ if(state.drag.kind==='resizeFxEdge'){
+  if(state.drag.moved){history.undo.push(state.drag.before);if(history.undo.length>history.max)history.undo.shift();history.redo=[];updateUndoRedoButtons();fxCache.clear();renderFxEditor()}
+ }else if((state.drag.kind==='moveFx'||state.drag.kind==='resizeFx')&&!state.drag.moved&&state.drag.clickCreates){
+  const c=state.drag.clickCreates,kind=c.section==='group'?'newGroup':'newEffect',scope=c.section==='groupfx'?'group':'global';
+  if(fxPendingCreate)clearTimeout(fxPendingCreate);
+  fxPendingCreate=setTimeout(()=>{fxPendingCreate=null;if(kind==='newGroup')addGroupBlock(c.t,c.t+Math.round(240000/tempoSegmentAt(c.t).bpm));
+   else{pushHistory();const e={id:nextFxId++,type:'none',scope,timeMs:c.t,durationMs:Math.round(60000/tempoSegmentAt(c.t).bpm)};if(scope==='group')e.group='';state.effects.push(e)}updatePanels()},280);
+ }else if(state.drag.kind==='moveFx'||state.drag.kind==='resizeFx'){
+  if(state.drag.moved){renderFxEditor();history.undo.push(state.drag.before);if(history.undo.length>history.max)history.undo.shift();history.redo=[];updateUndoRedoButtons();fxCache.clear()}
+ }else if(state.drag.kind==='newSpecial'){
+  const t1=Math.min(state.drag.startMs,state.drag.currentMs),t2=Math.max(state.drag.startMs,state.drag.currentMs);
+  pushHistory();state.stageDeltaLines.push({timeMs:t1,speedDelta:0,durationMs:Math.max(snapMs(t1),t2-t1)});
+ }else if(state.drag.kind==='newGroup'||state.drag.kind==='newEffect'){
+  const d=state.drag,t1=Math.min(d.startMs,d.currentMs),t2=Math.max(d.startMs,d.currentMs),dragged=t2>t1;
+  const create=()=>{fxPendingCreate=null;
+   if(d.kind==='newGroup')addGroupBlock(t1,dragged?t2:t1+Math.round(240000/tempoSegmentAt(t1).bpm));
+   else{pushHistory();const e={id:nextFxId++,type:'none',scope:d.scope,timeMs:t1,durationMs:dragged?t2-t1:Math.round(60000/tempoSegmentAt(t1).bpm)};if(d.scope==='group')e.group='';state.effects.push(e)}
+   updatePanels()};
+  if(dragged)create();else{if(fxPendingCreate)clearTimeout(fxPendingCreate);fxPendingCreate=setTimeout(create,280)}
+ }else if(state.drag.kind==='newHold'){
+  pushHistory();const t1=Math.min(state.drag.startMs,state.drag.currentMs),t2=Math.max(state.drag.startMs,state.drag.currentMs),n=addNote({timeMs:t1,lane:state.drag.lane,speedupCoef:state.currentCoef,durationMs:Math.max(snapMs(t1),t2-t1)});if(n)playHit(n.speedupCoef,n.lane)
  }else if(state.drag.kind==='moveNotes'){
   history.undo.push(state.drag.before);if(history.undo.length>history.max)history.undo.shift();history.redo=[];updateUndoRedoButtons()
  }else if(state.drag.kind==='resizeHold'){
@@ -925,26 +1849,47 @@ async function projectRefreshSongs(showAlert,preferredSong,preferredChart,prefer
   }
 }
 
+async function projectLoadInitialSelection(){
+  const params=new URLSearchParams(window.location.search);
+  await projectRefreshSongs(false,params.get('song'),params.get('chart'));
+  const loaded=await projectLoadSelected({showMissingAlert:false});
+  if(loaded&&params.has('timeMs')){
+    const timeMs=Number(params.get('timeMs'));
+    if(Number.isFinite(timeMs)&&timeMs>=0){
+      state.playheadMs=Math.round(timeMs);
+      state.viewStartMs=Math.max(0,state.playheadMs-500);
+      updatePanels();
+    }
+  }
+  return loaded;
+}
 function baseCoefFromNote(n){
   if(n&&n.baseSpeedupCoef!==undefined)return Number(n.baseSpeedupCoef)>0?1:0;
   return Number(n?.speedupCoef??n?.coef??1)>0?1:0;
 }
 function projectImportChartData(data){
+  state.selectedSpecialId=null;
   nextId=1;
   state.notes=(data.notes||[]).map(n=>({
     id:nextId++,
     timeMs:Math.max(0,Math.round(n.timeMs||n.time||0)),
     lane:Math.max(0,Math.min(3,Number(n.lane||0))),
     speedupCoef:baseCoefFromNote(n),
-    durationMs:Math.max(0,Math.round(n.durationMs||n.duration||0))
+    durationMs:Math.max(0,Math.round(n.durationMs||n.duration||0)),
+    ...(n.group?{group:String(n.group)}:{})
   }));
-  state.speedLimitLines=(data.speedLimitLines||[]).map(line=>({
+  importEffects(data);
+  state.speedLimitLines=[...legacySpecialNotes(data),...(data.specialNotes||[])].filter(n=>n.effect==='limit').map(line=>({
    timeMs:Math.max(0,Math.round(Number(line.timeMs)||0)),
-   maxSpeed:Math.max(1,Number(line.maxSpeed)||1)
+   durationMs:Math.max(0,Math.round(Number(line.durationMs)||0)),
+  label:line.label||undefined,
+  maxSpeed:Math.max(1,Number(line.maxSpeed)||1)
   }));
-  state.stageDeltaLines=(data.stageDeltaLines||[]).map(line=>({
+  state.stageDeltaLines=[...legacySpecialNotes(data),...(data.specialNotes||[])].filter(n=>n.effect==='delta').map(line=>({
    timeMs:Math.max(0,Math.round(Number(line.timeMs)||0)),
-   stageDelta:Number(line.stageDelta)||0
+   durationMs:Math.max(0,Math.round(Number(line.durationMs)||0)),
+  label:line.label||undefined,
+  speedDelta:Number(line.speedDelta ?? (Number(line.stageDelta)||0)*.065)||0
   }));
   state.bpmChanges=(data.timing?.bpmChanges||data.bpmChanges||[]).map(line=>({
    timeMs:Math.max(1,Math.round(Number(line.timeMs)||0)),
@@ -996,24 +1941,28 @@ function projectImportChartData(data){
 }
 function projectBuildBasePayload(){
   syncUiToState();
+
   enforceNoOverlap();
   const selectedAudio=projectSelectedAudioName();
   const audioFileName=selectedAudio||state.audioFileName||state.meta.audioFileName||'';
   return {
-    version:2,
+    version:4,
     meta:{...state.meta,coverDataUrl:state.coverDataUrl,audioFileName},
     difficulty:{...state.difficulty,lanes:4},
     timing:{bpm:state.bpm,offsetMs:state.offsetMs,snapDiv:state.snapDiv,bpmChanges:exportBpmChanges()},
-    editorSettings:{encryptionEnabled:!!state.encryption.enabled,argId:state.encryption.argId||''},
+    editorSettings:{encryptionEnabled:!!state.encryption.enabled,argId:state.encryption.argId||'',fxGroupBlocks:(state.fxGroupBlocks||[]).map(b=>({id:b.id,startMs:b.startMs,endMs:b.endMs,lanes:b.lanes})),fxEmpty:(state.effects||[]).filter(e=>e.type==='none').map(e=>({timeMs:e.timeMs,durationMs:e.durationMs,scope:fxScopeOf(e),group:e.group}))},
     preview:{startMs:state.meta.previewStartMs,endMs:state.meta.previewEndMs},
-    speedLimitLines:exportSpeedLimitLines(),
-    stageDeltaLines:exportStageDeltaLines(),
+    specialNotes:[...exportStageDeltaLines().map(n=>({...n,effect:'delta'})),
+      ...exportSpeedLimitLines().map(n=>({...n,effect:'limit'}))].sort((a,b)=>a.timeMs-b.timeMs),
+    effects:exportEffects(),
+    images:exportImages(),
     notes:state.notes.slice().sort((a,b)=>a.timeMs-b.timeMs||a.lane-b.lane).map(n=>({
       timeMs:Math.round(n.timeMs),
       lane:n.lane,
       baseSpeedupCoef:Number(n.speedupCoef)>0?1:0,
       speedupCoef:Number(n.speedupCoef)>0?1:0,
-      durationMs:Math.round(n.durationMs||0)
+      durationMs:Math.round(n.durationMs||0),
+      ...(n.group?{group:n.group}:{})
     }))
   };
 }
@@ -1050,7 +1999,8 @@ function projectBuildPayload(){
       manualSpeedupCoefMultiplier:+Number(point.manualMultiplier||0).toFixed(6),
       autoSpeedupCoefMultiplier:+mult.toFixed(6),
       speedupCoef:+(base*mult).toFixed(6),
-      durationMs:Math.round(n.durationMs||0)
+      durationMs:Math.round(n.durationMs||0),
+      ...(n.group?{group:n.group}:{})
     };
   });
   return payload;
@@ -1150,6 +2100,39 @@ async function projectLoadAudioForSong(songName,audioName,guard){
   if(audioSel&&[...audioSel.options].some(o=>o.value===audioName))audioSel.value=audioName;
   return true;
 }
+let projectPendingAutosave=null;
+function projectSetLoadBusy(busy){
+  const app=document.querySelector('.app');
+  if(app)app.inert=busy;
+  let overlay=document.getElementById('projectLoadOverlay');
+  if(!overlay){
+    overlay=document.createElement('div');overlay.id='projectLoadOverlay';
+    overlay.setAttribute('role','status');overlay.setAttribute('aria-live','polite');
+    Object.assign(overlay.style,{position:'fixed',inset:'0',zIndex:'10000',display:'none',alignItems:'center',justifyContent:'center',background:'rgba(11,12,17,.78)',color:'#edf0f7'});
+    overlay.textContent='기존 채보 저장 후 불러오는 중…';document.body.appendChild(overlay);
+  }
+  overlay.style.display=busy?'flex':'none';
+}
+function projectRestoreLoadedSelection(){
+  $('projectSongSelect').value=state.project.songName;
+  projectPopulateCharts(state.project.chartName);
+  projectPopulateAudio(state.project.audioName);
+}
+function projectAutosaveBeforeLoad(){
+  if(projectPendingAutosave)return projectPendingAutosave;
+  const {songName,chartName,loadedSelectionKey}=state.project;
+  if(!songName||!chartName||loadedSelectionKey!==projectSelectionKey(songName,chartName))return Promise.resolve();
+  projectPendingAutosave=(async()=>{
+    projectSetStatus(`자동저장 중: ${songName}/${chartName}`);
+    const payload=projectBuildPayload();
+    // The dropdowns already point to the destination. Save the loaded chart's audio and path.
+    payload.meta.audioFileName=state.project.audioName||state.audioFileName||state.meta.audioFileName||'';
+    await projectFetchJson(`/api/chart?song=${encodeURIComponent(songName)}&chart=${encodeURIComponent(chartName)}`,{
+      method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload,null,2)
+    });
+  })().finally(()=>{projectPendingAutosave=null;});
+  return projectPendingAutosave;
+}
 async function projectLoadSelected(options={}){
   const songName=projectSelectedSongName();
   const chartName=projectSelectedChartName();
@@ -1160,9 +2143,15 @@ async function projectLoadSelected(options={}){
   const key=projectSelectionKey(songName,chartName);
   const token=++state.project.loadToken;
   state.project.isLoading=true;
-  state.project.loadedSelectionKey='';
   projectUpdateActionAvailability();
+  projectSetLoadBusy(true);
+  if(state.isPlaying)pausePlayback();
+  let loadingChart=false;
   try{
+    await projectAutosaveBeforeLoad();
+    if(!projectLoadIsCurrent(token,key))return false;
+    loadingChart=true;
+    state.project.loadedSelectionKey='';
     projectSetStatus('project: loading chart...');
     const song=projectSongByName(songName);
     const url=`/api/chart?song=${encodeURIComponent(songName)}&chart=${encodeURIComponent(chartName)}`;
@@ -1214,12 +2203,19 @@ async function projectLoadSelected(options={}){
   }catch(e){
     if(!projectLoadIsCurrent(token,key))return false;
     console.error(e);
-    projectSetStatus('project: load failed');
-    alert('Chart load failed: '+e.message);
+    if(!loadingChart){
+      projectRestoreLoadedSelection();
+      projectSetStatus('자동저장 실패 — 곡 전환을 중단했습니다. 기존 편집 내용은 유지됩니다.');
+      alert('자동저장에 실패하여 곡 전환을 중단했습니다.\n기존 편집 내용은 유지됩니다.\n'+e.message);
+    }else{
+      projectSetStatus('project: load failed');
+      alert('Chart load failed: '+e.message);
+    }
     return false;
   }finally{
     if(token===state.project.loadToken){
       state.project.isLoading=false;
+      projectSetLoadBusy(false);
       projectUpdateActionAvailability();
     }
   }
@@ -1390,9 +2386,9 @@ async function projectNewChartPrompt(){
     alert('New Chart failed: '+e.message);
   }
 }
-function setPlaybackRate(rate){state.playbackRate=Math.max(1,Math.min(2,Number(rate)||1));if($('playbackRate'))$('playbackRate').value=state.playbackRate;if($('playbackRateLabel'))$('playbackRateLabel').textContent=state.playbackRate.toFixed(2)+'x';if($('rateStatus'))$('rateStatus').textContent='rate '+state.playbackRate.toFixed(2)+'x';if(bgmSource)bgmSource.playbackRate.value=state.playbackRate;if(state.isPlaying){playbackStartChartMs=state.playheadMs;playbackStartPerf=performance.now();syncAudioToChartTime(state.playheadMs)}updatePanels();}window.addEventListener('keydown',evt=>{const tag=document.activeElement.tagName.toLowerCase();if(['input','select','textarea'].includes(tag))return;const key=evt.key.toLowerCase();if(evt.repeat)return;if((evt.ctrlKey||evt.metaKey)&&key==='s'){evt.preventDefault();projectSaveSelected();return}if((evt.ctrlKey||evt.metaKey)&&key==='z'&&!evt.shiftKey){evt.preventDefault();undo();return}if((evt.ctrlKey||evt.metaKey)&&(key==='y'||(evt.shiftKey&&key==='z'))){evt.preventDefault();redo();return}if((evt.ctrlKey||evt.metaKey)&&key==='c'){evt.preventDefault();copySelected();return}if((evt.ctrlKey||evt.metaKey)&&key==='v'){evt.preventDefault();pasteClipboard(false);return}if(key===' '){evt.preventDefault();state.isPlaying?pausePlayback():startPlayback();return}if(key==='delete'||key==='backspace'){deleteSelected();return}if(key==='w'||key==='n'){setTool('place');return}if(key==='q'||key==='1'){setTool('select');return}if(key==='e'||key==='p'){setTool('playhead');return}if(key==='s'){setCoef(1,true);return}if(key==='a'||key==='0'){setCoef(0,true);return}if(key==='t'||key==='2'){setTool('place');setMode('tap',true);return}if(key==='h'||key==='3'){setTool('place');setMode('hold',true);return}if(key==='d'&&!state.recordKeys){setMode(state.currentMode==='hold'?'tap':'hold',true);return}if(key==='m'){mirrorSelected();return}if(key==='arrowup'){state.viewStartMs=Math.max(0,state.viewStartMs+beatMs());return}if(key==='arrowdown'){state.viewStartMs=Math.max(0,state.viewStartMs-beatMs());return}const lane=chartKeys.indexOf(key);if(lane>=0){const coef=state.currentCoef;playHit(coef,lane);if(state.recordKeys){pushHistory();addNote({timeMs:snapTime(state.playheadMs),lane,speedupCoef:coef,durationMs:0},false)}}});
-function setTool(mode){state.toolMode=mode;updatePanels()}function setCoef(c,apply=false){state.currentCoef=Number(c)===0?0:1;if(apply&&selectedNotes().length){pushHistory();for(const n of selectedNotes())n.speedupCoef=state.currentCoef;}updatePanels()}function setMode(m,apply=false){state.currentMode=m;if(apply&&selectedNotes().length){const next=state.notes.map(n=>state.selectedIds.has(n.id)?{...n,durationMs:m==='tap'?0:(n.durationMs||Math.round(snapMs(n.timeMs)))}:n);if(next.some(n=>noteConflictsWithList(n,next,new Set([n.id])))){alert('Hold conversion would overlap another note. Move the following note or shorten the hold first.');updatePanels();return;}pushHistory();state.notes=next;}updatePanels()}function exportJson(){const payload=projectBuildPayload();const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`${(state.meta.title||'chart').replace(/[^a-z0-9_-]+/gi,'_')}.4k-speedcoef.json`;a.click();URL.revokeObjectURL(url)}function importJsonFile(file){const reader=new FileReader();reader.onload=()=>{try{pushHistory();const data=JSON.parse(reader.result);const dropped=projectImportChartData(data);if(dropped>0)alert(`겹치는 노트 ${dropped}개를 제거하고 import했습니다.`)}catch(e){alert('JSON import failed: '+e.message)}};reader.readAsText(file)}function addSamplePattern(){pushHistory();state.notes=[];nextId=1;const b=beatMs(0);for(let i=0;i<96;i++){const t=Math.round(i*b/2),lane=i%4,coef=(i%12<8)?1:0;addNote({timeMs:t,lane,speedupCoef:coef,durationMs:0},false);if(i%16===4)addNote({timeMs:t,lane:3-lane,speedupCoef:coef?0:1,durationMs:Math.round(b*1.5)},false)}state.selectedIds.clear();state.viewStartMs=0;state.playheadMs=0;updatePanels()}function jump(delta){state.playheadMs=Math.max(0,snapTime(state.playheadMs+delta));state.viewStartMs=Math.max(0,state.playheadMs-1600);if(state.isPlaying)startPlayback(state.playheadMs);updatePanels()}
-$('playBtn').onclick=()=>state.isPlaying?pausePlayback():startPlayback();$('stopBtn').onclick=stopPlayback;$('playFromViewBtn').onclick=()=>startPlayback(state.viewStartMs);$('previewBtn').onclick=()=>startPlayback(Number($('previewStartInput').value)||0);$('loopToggle').onchange=e=>state.loop=e.target.checked;$('audioFile').onchange=e=>{if(e.target.files[0])loadAudioFile(e.target.files[0])};$('coverFile').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{pushHistory();state.coverDataUrl=r.result;$('coverPreview').src=state.coverDataUrl;updatePanels()};r.readAsDataURL(f)};for(const id of ['metaTitle','metaArtist','metaSource','metaMapper','previewStartInput','previewEndInput','metaExtra','diffName','diffLevel','diffScroll','diffBaseSpeed','diffNotes']){$(id).addEventListener('change',()=>{pushHistory();syncUiToState();updatePanels()});$(id).addEventListener('input',()=>{syncUiToState();updatePanels()})}$('musicVolume').oninput=e=>{if(bgmGain)bgmGain.gain.value=parseFloat(e.target.value)||0};$('bpmInput').oninput=e=>{state.bpm=Number(e.target.value)||120;updatePanels()};$('bpmInput').onchange=()=>pushHistory();$('snapInput').onchange=e=>{pushHistory();state.snapDiv=Number(e.target.value)||4;updatePanels()};$('offsetInput').oninput=e=>{state.offsetMs=Number(e.target.value)||0;updatePanels()};$('offsetInput').onchange=()=>pushHistory();$('zoomInput').oninput=e=>{state.pxPerSecond=Number(e.target.value);updatePanels()};$('waveGain').oninput=()=>updatePanels();$('recordToggle').onchange=e=>state.recordKeys=e.target.checked;if($('playbackRate'))$('playbackRate').oninput=e=>setPlaybackRate(e.target.value);$('toolPlaceBtn').onclick=()=>setTool('place');$('toolSelectBtn').onclick=()=>setTool('select');$('toolPlayBtn').onclick=()=>setTool('playhead');$('coef1Btn').onclick=()=>setCoef(1,true);$('coef0Btn').onclick=()=>setCoef(0,true);$('tapModeBtn').onclick=()=>setMode('tap',true);$('holdModeBtn').onclick=()=>setMode('hold',true);$('undoBtn').onclick=undo;$('redoBtn').onclick=redo;$('copyBtn').onclick=copySelected;$('pasteBtn').onclick=()=>pasteClipboard(false);$('mirrorBtn').onclick=mirrorSelected;$('exportBtn').onclick=()=>projectSaveSelected();$('importBtn').onclick=()=>$('importFile').click();$('importFile').onchange=e=>{if(e.target.files[0])importJsonFile(e.target.files[0])};$('clearBtn').onclick=()=>{if(confirm('Delete all notes?')){pushHistory();state.notes=[];state.selectedIds.clear();updatePanels()}};$('sampleBtn').onclick=addSamplePattern;$('quantizeBtn').onclick=quantizeSelected;$('deleteSelectedBtn').onclick=deleteSelected;$('deleteSelectedBtn2').onclick=deleteSelected;$('setLoopStartBtn').onclick=()=>{state.loopStartMs=Math.round(state.playheadMs);$('loopStartInput').value=state.loopStartMs;updatePanels()};$('setLoopEndBtn').onclick=()=>{state.loopEndMs=Math.round(state.playheadMs);$('loopEndInput').value=state.loopEndMs;updatePanels()};$('setPreviewStartBtn').onclick=()=>{state.meta.previewStartMs=Math.round(state.playheadMs);$('previewStartInput').value=state.meta.previewStartMs;updatePanels()};$('loopStartInput').oninput=e=>{state.loopStartMs=Number(e.target.value)||0;updatePanels()};$('loopEndInput').oninput=e=>{state.loopEndMs=Number(e.target.value)||0;updatePanels()};$('jumpPrevMeasureBtn').onclick=()=>movePlayheadOnGrid('bar',-1);$('jumpNextMeasureBtn').onclick=()=>movePlayheadOnGrid('bar',1);$('jumpPrevBeatBtn').onclick=()=>movePlayheadOnGrid('beat',-1);$('jumpNextBeatBtn').onclick=()=>movePlayheadOnGrid('beat',1);$('jumpPrevSnapBtn').onclick=()=>movePlayheadOnGrid('snap',-1);$('jumpNextSnapBtn').onclick=()=>movePlayheadOnGrid('snap',1);$('snapPlayheadBtn').onclick=()=>{state.playheadMs=Math.max(0,snapTime(state.playheadMs));updatePanels()};$('applySelectedBtn').onclick=()=>{const n=firstSelected();if(!n)return;pushHistory();n.timeMs=Math.max(0,Math.round(Number($('selTime').value)||0));n.lane=Math.max(0,Math.min(3,Math.round(Number($('selLane').value)-1)));n.durationMs=Math.max(0,Math.round(Number($('selDuration').value)||0));n.speedupCoef=Number($('selCoef').value)===0?0:1;state.playheadMs=n.timeMs;sortNotes();updatePanels()};$('auditionSelectedBtn').onclick=()=>{const n=firstSelected();if(n)playHit(n.speedupCoef,n.lane)};
+function setPlaybackRate(rate){state.playbackRate=Math.max(1,Math.min(2,Number(rate)||1));if($('playbackRate'))$('playbackRate').value=state.playbackRate;if($('playbackRateLabel'))$('playbackRateLabel').textContent=state.playbackRate.toFixed(2)+'x';if($('rateStatus'))$('rateStatus').textContent='rate '+state.playbackRate.toFixed(2)+'x';if(bgmSource)bgmSource.playbackRate.value=state.playbackRate;if(state.isPlaying){playbackStartChartMs=state.playheadMs;playbackStartPerf=performance.now();syncAudioToChartTime(state.playheadMs)}updatePanels();}window.addEventListener('keydown',evt=>{if(evt.key==='Escape'&&state.drag?.kind==='editSpecial'){evt.preventDefault();const before=state.drag.before;state.drag=null;restore(before);return}if(state.project?.isLoading){evt.preventDefault();return}const tag=document.activeElement.tagName.toLowerCase();if(['input','select','textarea'].includes(tag))return;const key=evt.key.toLowerCase();if(evt.repeat)return;if((evt.ctrlKey||evt.metaKey)&&key==='s'){evt.preventDefault();projectSaveSelected();return}if((evt.ctrlKey||evt.metaKey)&&key==='z'&&!evt.shiftKey){evt.preventDefault();undo();return}if((evt.ctrlKey||evt.metaKey)&&(key==='y'||(evt.shiftKey&&key==='z'))){evt.preventDefault();redo();return}if((evt.ctrlKey||evt.metaKey)&&key==='c'){evt.preventDefault();copySelected();return}if((evt.ctrlKey||evt.metaKey)&&key==='v'){evt.preventDefault();pasteClipboard(false);return}if(key===' '){evt.preventDefault();state.isPlaying?pausePlayback():startPlayback();return}if(key==='delete'||key==='backspace'){deleteSelected();return}if(key==='w'||key==='n'){setTool('place');return}if(key==='q'||key==='1'){setTool('select');return}if(key==='e'||key==='p'){setTool('playhead');return}if(key==='s'){setCoef(1,true);return}if(key==='a'||key==='0'){setCoef(0,true);return}if(key==='t'||key==='2'){setTool('place');setMode('tap',true);return}if(key==='h'||key==='3'){setTool('place');setMode('hold',true);return}if(key==='d'&&!state.recordKeys){setMode(state.currentMode==='hold'?'tap':'hold',true);return}if(key==='m'){mirrorSelected();return}if(key==='arrowup'){state.viewStartMs=Math.max(0,state.viewStartMs+beatMs());return}if(key==='arrowdown'){state.viewStartMs=Math.max(0,state.viewStartMs-beatMs());return}const lane=chartKeys.indexOf(key);if(lane>=0){const coef=state.currentCoef;playHit(coef,lane);if(state.recordKeys){pushHistory();addNote({timeMs:snapTime(state.playheadMs),lane,speedupCoef:coef,durationMs:0},false)}}});
+function setTool(mode){state.toolMode=mode;updatePanels()}function setCoef(c,apply=false){state.currentCoef=Number(c)===0?0:1;if(apply&&selectedNotes().length){pushHistory();for(const n of selectedNotes())n.speedupCoef=state.currentCoef;}updatePanels()}function setMode(m,apply=false){state.currentMode=m;if(apply)setSelectedSpecialMode(m);if(apply&&selectedNotes().length){const next=state.notes.map(n=>state.selectedIds.has(n.id)?{...n,durationMs:m==='tap'?0:(n.durationMs||Math.round(snapMs(n.timeMs)))}:n);if(next.some(n=>noteConflictsWithList(n,next,new Set([n.id])))){alert('Hold conversion would overlap another note. Move the following note or shorten the hold first.');updatePanels();return;}pushHistory();state.notes=next;}updatePanels()}function exportJson(){const payload=projectBuildPayload();const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`${(state.meta.title||'chart').replace(/[^a-z0-9_-]+/gi,'_')}.4k-speedcoef.json`;a.click();URL.revokeObjectURL(url)}function importJsonFile(file){const reader=new FileReader();reader.onload=()=>{try{pushHistory();const data=JSON.parse(reader.result);const dropped=projectImportChartData(data);if(dropped>0)alert(`겹치는 노트 ${dropped}개를 제거하고 import했습니다.`)}catch(e){alert('JSON import failed: '+e.message)}};reader.readAsText(file)}function addSamplePattern(){pushHistory();state.notes=[];nextId=1;const b=beatMs(0);for(let i=0;i<96;i++){const t=Math.round(i*b/2),lane=i%4,coef=(i%12<8)?1:0;addNote({timeMs:t,lane,speedupCoef:coef,durationMs:0},false);if(i%16===4)addNote({timeMs:t,lane:3-lane,speedupCoef:coef?0:1,durationMs:Math.round(b*1.5)},false)}state.selectedIds.clear();state.viewStartMs=0;state.playheadMs=0;updatePanels()}function jump(delta){state.playheadMs=Math.max(0,snapTime(state.playheadMs+delta));state.viewStartMs=Math.max(0,state.playheadMs-1600);if(state.isPlaying)startPlayback(state.playheadMs);updatePanels()}
+$('playBtn').onclick=()=>state.isPlaying?pausePlayback():startPlayback();$('stopBtn').onclick=stopPlayback;$('playFromViewBtn').onclick=()=>startPlayback(state.viewStartMs);$('previewBtn').onclick=()=>startPlayback(Number($('previewStartInput').value)||0);$('loopToggle').onchange=e=>state.loop=e.target.checked;$('audioFile').onchange=e=>{if(e.target.files[0])loadAudioFile(e.target.files[0])};$('coverFile').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{pushHistory();state.coverDataUrl=r.result;$('coverPreview').src=state.coverDataUrl;updatePanels()};r.readAsDataURL(f)};for(const id of ['metaTitle','metaArtist','metaSource','metaMapper','previewStartInput','previewEndInput','metaExtra','diffName','diffLevel','diffScroll','diffBaseSpeed','diffNotes']){$(id).addEventListener('change',()=>{pushHistory();syncUiToState();updatePanels()});$(id).addEventListener('input',()=>{syncUiToState();updatePanels()})}$('musicVolume').oninput=e=>{if(bgmGain)bgmGain.gain.value=parseFloat(e.target.value)||0};$('bpmInput').oninput=e=>{state.bpm=Number(e.target.value)||120;updatePanels()};$('bpmInput').onchange=()=>pushHistory();$('snapInput').onchange=e=>{pushHistory();state.snapDiv=Number(e.target.value)||4;updatePanels()};$('offsetInput').oninput=e=>{state.offsetMs=Number(e.target.value)||0;updatePanels()};$('offsetInput').onchange=()=>pushHistory();$('zoomInput').oninput=e=>{state.pxPerSecond=Number(e.target.value);updatePanels()};$('waveGain').oninput=()=>updatePanels();$('recordToggle').onchange=e=>state.recordKeys=e.target.checked;if($('playbackRate'))$('playbackRate').oninput=e=>setPlaybackRate(e.target.value);$('toolPlaceBtn').onclick=()=>setTool('place');$('toolSelectBtn').onclick=()=>setTool('select');$('toolPlayBtn').onclick=()=>setTool('playhead');$('coef1Btn').onclick=()=>setCoef(1,true);$('coef0Btn').onclick=()=>setCoef(0,true);$('tapModeBtn').onclick=()=>setMode('tap',true);$('holdModeBtn').onclick=()=>setMode('hold',true);$('undoBtn').onclick=undo;$('redoBtn').onclick=redo;$('copyBtn').onclick=copySelected;$('pasteBtn').onclick=()=>pasteClipboard(false);$('mirrorBtn').onclick=mirrorSelected;$('exportBtn').onclick=()=>projectSaveSelected();$('importBtn').onclick=()=>$('importFile').click();$('importFile').onchange=e=>{if(e.target.files[0])importJsonFile(e.target.files[0])};$('clearBtn').onclick=()=>{if(confirm('Delete all notes?')){pushHistory();state.notes=[];state.selectedIds.clear();updatePanels()}};$('sampleBtn').onclick=addSamplePattern;$('quantizeBtn').onclick=quantizeSelected;$('deleteSelectedBtn').onclick=deleteSelected;$('deleteSelectedBtn2').onclick=deleteSelected;$('setLoopStartBtn').onclick=()=>{state.loopStartMs=Math.round(state.playheadMs);$('loopStartInput').value=state.loopStartMs;updatePanels()};$('setLoopEndBtn').onclick=()=>{state.loopEndMs=Math.round(state.playheadMs);$('loopEndInput').value=state.loopEndMs;updatePanels()};$('setPreviewStartBtn').onclick=()=>{state.meta.previewStartMs=Math.round(state.playheadMs);$('previewStartInput').value=state.meta.previewStartMs;updatePanels()};$('loopStartInput').oninput=e=>{state.loopStartMs=Number(e.target.value)||0;updatePanels()};$('loopEndInput').oninput=e=>{state.loopEndMs=Number(e.target.value)||0;updatePanels()};$('jumpPrevMeasureBtn').onclick=()=>movePlayheadOnGrid('bar',-1);$('jumpNextMeasureBtn').onclick=()=>movePlayheadOnGrid('bar',1);$('jumpPrevBeatBtn').onclick=()=>movePlayheadOnGrid('beat',-1);$('jumpNextBeatBtn').onclick=()=>movePlayheadOnGrid('beat',1);$('jumpPrevSnapBtn').onclick=()=>movePlayheadOnGrid('snap',-1);$('jumpNextSnapBtn').onclick=()=>movePlayheadOnGrid('snap',1);$('snapPlayheadBtn').onclick=()=>{state.playheadMs=Math.max(0,snapTime(state.playheadMs));updatePanels()};$('applySelectedBtn').onclick=()=>{const n=firstSelected();if(!n)return;pushHistory();n.timeMs=Math.max(0,Math.round(Number($('selTime').value)||0));n.lane=Math.max(0,Math.min(3,Math.round(Number($('selLane').value)-1)));n.durationMs=Math.max(0,Math.round(Number($('selDuration').value)||0));n.speedupCoef=Number($('selCoef').value)===0?0:1;state.playheadMs=n.timeMs;sortNotes();updatePanels()};$('auditionSelectedBtn').onclick=()=>{const n=firstSelected();if(n)if(n)playHit(n.speedupCoef,n.lane)};
 
 ['autoSigmaInput','autoStepInput','autoMinInput','autoMaxInput','autoPowerInput','autoRampStartInput','autoRampEndInput','autoRampPowerInput','autoCapInput','autoAxisMaxInput','autoAnchorsInput'].forEach(id=>{const el=$(id);if(el){el.addEventListener('change',()=>{autoCoefReadSettings();autoCoefGenerateCurve()});el.addEventListener('input',()=>{autoCoefReadSettings();autoCoefUpdateStats()})}});
 $('autoShowCurveToggle').onchange=e=>{state.autoCoef.settings.showCurve=e.target.checked;updatePanels()};
@@ -1408,18 +2404,74 @@ $('projectChartSelect').onchange=()=>projectLoadSelected({showMissingAlert:false
 $('projectAudioSelect').onchange=()=>{const songName=projectSelectedSongName(),audioName=projectSelectedAudioName(),token=state.project.loadToken,key=projectSelectionKey();if(songName&&audioName)projectLoadAudioForSong(songName,audioName,()=>token===state.project.loadToken&&key===projectSelectionKey()&&projectHasLoadedSelection()).then(applied=>{if(applied)projectSetStatus(`loaded audio: ${audioName}`)}).catch(e=>alert('Audio load failed: '+e.message))};
 $('projectLoadBtn').onclick=()=>projectLoadSelected();
 $('projectSaveBtn').onclick=()=>projectSaveSelected();
+$('applySpecialSelectedBtn').onclick=applySelectedSpecial;
+$('deleteSpecialSelectedBtn').onclick=deleteSelectedSpecial;
+canvas.addEventListener('mousemove',evt=>{if(state.drag){if(state.drag.kind==='resizeFxTrack'||state.drag.kind==='resizeFxSection')canvas.style.cursor='col-resize';else if(state.drag.kind==='resizeFxEdge')canvas.style.cursor='ns-resize';return}const p0=mousePos(evt);if(nearFxDivider(p0.x)||nearFxSectionDivider(p0.x)>=0){canvas.style.cursor='col-resize';return}const p=p0,hit=state.toolMode==='select'&&!findNoteAt(p.x,p.y)?hitSpecialAt(p.x,p.y):null;canvas.style.cursor=hit&&state.toolMode!=='playhead'?(hit.handle==='move'?'move':'ns-resize'):(state.toolMode==='select'?'default':state.toolMode==='playhead'?'ns-resize':'crosshair')});
 $('addSpeedLimitLineBtn').onclick=addSpeedLimitLineAtPlayhead;
+initEffects();
+/* --- Git · 배포 panel (server: git_deploy.py) --- */
+const gitUi={status:null,poll:null};
+function gitSongFolder(){const v=$('projectSongSelect')?.value||'';return v?`Songs/${v}/`:''}
+async function gitRefresh(){
+ $('gitStatus').textContent='상태 불러오는 중...';
+ try{const r=await fetch('/api/git/status',{cache:'no-store'}),d=await r.json();if(!d.ok)throw new Error(d.error||r.status);gitUi.status=d;
+  const ahead=d.ahead==null?'원격 추적 없음':d.ahead?`원격보다 ${d.ahead}개 앞섬 (푸시 안 됨)`:'원격과 같음';
+  $('gitStatus').innerHTML=`브랜치 ${d.branch} · HEAD ${d.head.slice(0,12)} · ${ahead}${d.behind?` · 원격이 ${d.behind}개 앞섬`:''}<br>런처 ${d.launcherFound?d.launcher:'<b style="color:var(--danger)">찾을 수 없음: '+d.launcher+'</b>'}<br>Netlify dev 채보 커밋 ${d.devSourceCommit?d.devSourceCommit.slice(0,12):'확인 불가'}${d.devSourceCommit===d.head?' (HEAD와 같음)':''}`;
+  gitRenderFiles(true);$('gitDeployBtn').disabled=!d.launcherFound;
+ }catch(e){$('gitStatus').textContent='상태를 읽지 못했습니다: '+e.message+' (에디터 서버를 다시 시작했는지 확인하세요)'}}
+function gitRenderFiles(resetChecks){
+ const d=gitUi.status;if(!d)return;const song=gitSongFolder(),all=$('gitShowAll').checked,box=$('gitFiles');
+ const prev=new Set([...box.querySelectorAll('input:checked')].map(x=>x.value));
+ const shown=all||!song?d.files:d.files.filter(f=>f.path.startsWith(song));
+ box.innerHTML=shown.length?shown.map(f=>`<label><input type="checkbox" value="${fxEsc(f.path)}" ${(resetChecks?(song&&f.path.startsWith(song)):prev.has(f.path))?'checked':''}><span style="width:22px">${fxEsc(f.code)}</span><span>${fxEsc(f.path)}</span></label>`).join(''):
+  `<div class="small">${song?`${song} 에 변경이 없습니다.`:'변경이 없습니다.'}${all?'':' (곡 폴더 밖 변경도 보려면 위 체크)'}</div>`;
+ if(resetChecks&&!$('gitMessage').value)$('gitMessage').value=`${($('projectSongSelect')?.value||'Charts')}: chart update`;}
+function gitLog(lines){const el=$('gitLog');el.textContent=Array.isArray(lines)?lines.join('\n'):String(lines);el.scrollTop=el.scrollHeight}
+async function gitCommit(){
+ const paths=[...$('gitFiles').querySelectorAll('input:checked')].map(x=>x.value);
+ if($('gitSaveFirst').checked&&typeof projectSaveSelected==='function'){try{await projectSaveSelected()}catch(e){gitLog('저장 실패: '+e.message);return}await gitRefresh();
+  const song=gitSongFolder();$('gitFiles').querySelectorAll('input').forEach(x=>{if(paths.includes(x.value)||(song&&x.value.startsWith(song)))x.checked=true})}
+ const chosen=[...$('gitFiles').querySelectorAll('input:checked')].map(x=>x.value);
+ if(!chosen.length){gitLog('커밋할 파일을 체크하세요.');return}
+ if(!confirm(`${chosen.length}개 파일을 커밋${$('gitPush').checked?'하고 원격에 푸시':''}합니다.\n\n${chosen.join('\n')}`))return;
+ $('gitCommitBtn').disabled=true;gitLog('커밋 중...');
+ try{const r=await fetch('/api/git/commit-push',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({paths:chosen,message:$('gitMessage').value,push:$('gitPush').checked})}),d=await r.json();
+  if(!d.ok)throw new Error(d.error);gitLog(`커밋 ${d.commit.slice(0,12)} 완료${d.pushed?' · 푸시 완료':''}`);$('gitMessage').value='';await gitRefresh();
+ }catch(e){gitLog('실패: '+e.message);await gitRefresh()}finally{$('gitCommitBtn').disabled=false}}
+async function gitDeploy(){
+ const d=gitUi.status;if(!d)return;const warn=[];if(d.ahead)warn.push(`HEAD가 원격에 푸시되지 않았습니다 (${d.ahead}개).`);
+ const song=gitSongFolder();if(song&&d.files.some(f=>f.path.startsWith(song)))warn.push(`${song} 에 커밋 안 된 변경이 있어 배포에 들어가지 않습니다.`);
+ if(!confirm(`채보 커밋 ${d.head.slice(0,12)} 를 런처 internal 브랜치(dev)에 배포합니다.\nNetlify 개발자 채널에 바로 반영됩니다.${warn.length?'\n\n주의:\n'+warn.join('\n'):''}`))return;
+ try{const r=await fetch('/api/deploy/dev-charts',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({ref:'HEAD'})}),j=await r.json();if(!j.ok)throw new Error(j.error);gitWatchDeploy()}
+ catch(e){gitLog('배포 시작 실패: '+e.message)}}
+function gitWatchDeploy(){clearInterval(gitUi.poll);$('gitDeployBtn').disabled=true;
+ const tick=async()=>{try{const j=(await (await fetch('/api/deploy/dev-charts',{cache:'no-store'})).json()).job;if(!j)return;gitLog(j.log);
+  $('gitDeployState').textContent=j.state==='running'?`진행 중 ${j.elapsed}s`:j.state==='done'?(j.result?.netlifyUpdated?'완료 · Netlify 반영됨':'완료 · Netlify 반영 미확인'):'실패';
+  if(j.state!=='running'){clearInterval(gitUi.poll);$('gitDeployBtn').disabled=false;gitRefresh()}}catch{}};
+ tick();gitUi.poll=setInterval(tick,1500)}
+$('gitPanelBtn').onclick=async()=>{$('gitPanel').classList.remove('hidden');await gitRefresh();
+ const j=(await (await fetch('/api/deploy/dev-charts',{cache:'no-store'})).json().catch(()=>({}))).job;if(j){gitLog(j.log);if(j.state==='running')gitWatchDeploy()}};
+$('gitCloseBtn').onclick=()=>$('gitPanel').classList.add('hidden');
+$('gitShowAll').onchange=()=>gitRenderFiles(false);$('gitSelectSong').onclick=()=>gitRenderFiles(true);
+$('gitSelectNone').onclick=()=>$('gitFiles').querySelectorAll('input').forEach(x=>x.checked=false);
+$('gitCommitBtn').onclick=gitCommit;$('gitDeployBtn').onclick=gitDeploy;
+
+function setPlaceKind(kind){state.placeKind=kind;if(state.toolMode!=='place')setTool('place');document.querySelectorAll('[data-place-kind]').forEach(b=>b.classList.toggle('active',b.dataset.placeKind===kind));updatePanels()}
+document.querySelectorAll('[data-place-kind]').forEach(b=>b.onclick=()=>setPlaceKind(b.dataset.placeKind));
+$('fxDockToggle').onclick=()=>{const d=$('fxDock'),c=d.classList.toggle('collapsed');document.querySelector('.main').classList.toggle('fx-hidden',c);$('fxDockToggle').textContent=c?'연출 패널 펼치기':'연출 패널 접기';requestAnimationFrame(()=>window.dispatchEvent(new Event('resize')))};
+window.addEventListener('keydown',evt=>{const tag=document.activeElement.tagName.toLowerCase();if(['input','select','textarea'].includes(tag)||evt.ctrlKey||evt.metaKey||evt.altKey||evt.repeat)return;
+ const kind={z:'note',x:'special',c:'effect'}[evt.key.toLowerCase()];if(kind){evt.preventDefault();setPlaceKind(kind)}});
 $('addStageDeltaLineBtn').onclick=addStageDeltaLineAtPlayhead;
 $('addBpmChangeBtn').onclick=addBpmChangeAtPlayhead;
 $('encryptionEnabledInput').onchange=()=>{pushHistory();syncUiToState();updatePanels()};
 $('encryptionArgIdInput').oninput=()=>{syncUiToState();updatePanels()};
 $('encryptionArgIdInput').onchange=()=>pushHistory();
 $('buildEncryptedChartBtn').onclick=()=>buildEncryptedRelease();
-function applyEditorCanvasCursor(reason){const c=document.getElementById('editorCanvas'),before=c.style.cursor;c.style.cursor='crosshair';const r=c.getBoundingClientRect();console.info('[OverTempo canvas cursor]',{reason,before,after:c.style.cursor,computed:getComputedStyle(c).cursor,rectWidth:r.width,rectHeight:r.height,cssWidth:c._cssW,cssHeight:c._cssH,backingWidth:c.width,backingHeight:c.height,dpr:window.devicePixelRatio})}
+function applyEditorCanvasCursor(reason){const c=document.getElementById('editorCanvas'),before=c.style.cursor;c.style.cursor=state.drag?.kind==='editSpecial'?(state.drag.handle==='move'?'move':'ns-resize'):'crosshair';const r=c.getBoundingClientRect();console.info('[OverTempo canvas cursor]',{reason,before,after:c.style.cursor,computed:getComputedStyle(c).cursor,rectWidth:r.width,rectHeight:r.height,cssWidth:c._cssW,cssHeight:c._cssH,backingWidth:c.width,backingHeight:c.height,dpr:window.devicePixelRatio})}
 const updatePanelsBeforeCursorLock=updatePanels;updatePanels=function(){updatePanelsBeforeCursorLock();projectUpdateActionAvailability();applyEditorCanvasCursor('updatePanels')};
 function settleEditorCanvas(reason){requestAnimationFrame(()=>requestAnimationFrame(()=>{resize();const r=canvas.getBoundingClientRect();console.info('[OverTempo canvas resize]',{reason,rectWidth:r.width,rectHeight:r.height,cssWidth:canvas._cssW,cssHeight:canvas._cssH,backingWidth:canvas.width,backingHeight:canvas.height,dpr:window.devicePixelRatio})}))}
 const canvasWrapResizeObserver=new ResizeObserver(()=>{const r=canvas.parentElement.getBoundingClientRect();if(Math.abs((canvas._cssW||0)-r.width)>.01||Math.abs((canvas._cssH||0)-r.height)>.01)settleEditorCanvas('canvas-wrap ResizeObserver')});canvasWrapResizeObserver.observe(canvas.parentElement);
-window.addEventListener('load',()=>settleEditorCanvas('window load'),{once:true});window.addEventListener('resize',resize);resize();syncStateToUi();updatePanels();projectRefreshSongs(false).then(()=>projectLoadSelected({showMissingAlert:false})).finally(()=>settleEditorCanvas('project refresh complete'));tick();
+window.addEventListener('load',()=>settleEditorCanvas('window load'),{once:true});window.addEventListener('resize',resize);resize();syncStateToUi();updatePanels();projectLoadInitialSelection().finally(()=>settleEditorCanvas('project refresh complete'));tick();
 })();
 
 for(const [id,label] of Object.entries({toolSelectBtn:'Select [Q / 1]',toolPlaceBtn:'Place [W]',toolPlayBtn:'Playhead [E]',coef0Btn:'Coef 0 [A]',coef1Btn:'Coef 1 [S]',tapModeBtn:'Tap [2]',holdModeBtn:'Hold [3 / D toggle]'})) {const el=document.getElementById(id);if(el){el.textContent=label;el.title=label;}}

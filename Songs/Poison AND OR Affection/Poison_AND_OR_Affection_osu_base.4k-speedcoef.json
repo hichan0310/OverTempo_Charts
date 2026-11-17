@@ -9,7 +9,29 @@
     "previewEndMs": 116000,
     "extra": "Imported from osu!mania poison.osu; difficulty Beginner; BeatmapID 1660989; BeatmapSetID 791804; first timing point 970ms",
     "coverDataUrl": "/api/media?song=Poison%20AND%20OR%20Affection&file=poisonandoraffection_cover.png",
-    "audioFileName": "65 Poison AND÷OR Affection.mp3"
+    "audioFileName": "65 Poison AND÷OR Affection.mp3",
+    "argReveal": {
+      "preset": "shatter",
+      "lines": [
+        {
+          "text": "NOW",
+          "size": 84,
+          "y": 55,
+          "assembleAt": 5.3,
+          "completeAt": 6.9
+        },
+        {
+          "text": "THE END OF THIS JOURNEY IS HERE",
+          "size": 40,
+          "y": -48,
+          "assembleAt": 7.9,
+          "completeAt": 9.5
+        }
+      ],
+      "whiteStart": 11.5,
+      "duration": 14.5,
+      "musicStartAt": 5.3
+    }
   },
   "difficulty": {
     "name": "Beginner",
@@ -7366,7 +7388,7 @@
   ],
   "autoCoef": {
     "schemaVersion": 1,
-    "generatedAt": "2026-10-31T10:39:09.368Z",
+    "generatedAt": "2026-11-16T12:53:07.495Z",
     "description": "Final speedupCoef = baseSpeedupCoef * autoSpeedupCoefMultiplier. Load restores editable coef 0/1 from baseSpeedupCoef.",
     "settings": {
       "sigmaMs": 1600,

@@ -29,6 +29,14 @@ the ignored `.audio-work/` directory.
 - Updated only the chart's audio filename and offset, from 449 to 19 ms.
   The editor uses `audioMs = chartMs - offsetMs`. All existing notes and other
   chart fields, including the user's pre-existing edits, are preserved.
+- On 2026-10-26, the multi-resolution audio/chart alignment audit added 1,056
+  silent PCM frames (23.9456 ms at 44,100 Hz) before the restored WAV. Every
+  original PCM frame remains byte-identical after this prefix. This aligns the
+  current chart at offset -31 ms while preserving the existing encrypted chart
+  and its unlock fingerprint. The restoration report describes the original
+  render before this later alignment prefix; reproducing the final audio also
+  requires this prefix. The estimate is based on spectral attacks, not a
+  listening-verified device calibration.
 
 ### Change the Game — REDALiCE & USAO
 

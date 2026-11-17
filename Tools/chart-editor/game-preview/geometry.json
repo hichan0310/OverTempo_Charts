@@ -1,0 +1,17 @@
+{
+  "width": 1920, "height": 1080,
+  "hitLineY": 850, "pixelsPerSecond": 531.25,
+  "laneCenters": [705,875,1045,1215], "laneWidth": 170,
+  "fieldLeft": 620, "fieldRight": 1300,
+  "noteWidth": 138.125, "noteHeight": 12.75,
+  "noteColor": "#BFD3F4", "scrollSetting": 5,
+  "noteSprite": "note_head.png", "bodySprite": "note_body.png", "tailSprite": "note_tail.png",
+  "bodyBrightness": 0.72, "tailUsesBodyColor": false,
+  "sheenStrength": 0.3, "sheenPeriod": 1.4, "sheenHighlight": 0.55,
+  "chordLineThickness": 3.719, "chordLineAlpha": 0.303,
+  "pixelsPerUnit": 106.25, "speedTextHeight": 0.47,
+  "skins": {"thin": {"label": "THIN", "width": 138.125, "capHeight": 12.75, "tailUsesBodyColor": false, "head": "note_thin_head.png", "body": "note_thin_body.png", "tail": "note_thin_tail.png"}, "thick": {"label": "THICK", "width": 138.125, "capHeight": 38.675, "tailUsesBodyColor": false, "head": "note_thick_head.png", "body": "note_thick_body.png", "tail": "note_thick_tail.png"}, "circle": {"label": "CIRCLE", "width": 138.125, "capHeight": 138.125, "tailUsesBodyColor": true, "head": "note_circle_head.png", "body": "note_circle_body.png", "tail": "note_circle_tail.png"}},
+  "speedMultiplier": 0.065, "perfectThreshold": 0.1,
+  "texts": {"laneSpeedText": {"left": 650, "right": 1270, "baseline": 498.22, "size": 112, "align": "center", "bold": true, "color": "rgba(255,255,255,0.18)", "spacing": 0}, "currentSpeedText": {"left": 1498, "right": 1790, "baseline": 316.63, "size": 22, "align": "left", "bold": true, "color": "rgba(157,169,180,1)", "spacing": 0}, "scoreText": {"left": 1498, "right": 1790, "baseline": 217.71, "size": 28, "align": "left", "bold": true, "color": "rgba(215,222,228,1)", "spacing": 0}, "songTitleText": {"left": 64, "right": 424, "baseline": 191.59, "size": 19, "align": "left", "bold": true, "color": "rgba(157,169,180,1)", "spacing": 0}, "artistText": {"left": 64, "right": 384, "baseline": 235.2, "size": 15, "align": "left", "bold": false, "color": "rgba(157,169,180,1)", "spacing": 0}, "scrollSpeedText": {"left": 66, "right": 184, "baseline": 964.85, "size": 14, "align": "left", "bold": false, "color": "rgba(157,169,180,1)", "spacing": 0}, "skinText": {"left": 202, "right": 320, "baseline": 964.85, "size": 14, "align": "left", "bold": false, "color": "rgba(157,169,180,1)", "spacing": 0}, "timingText": {"left": 650, "right": 1270, "baseline": 539.02, "size": 22, "align": "center", "bold": false, "color": "rgba(191,211,244,1)", "spacing": 0}},
+  "background": "gameplay_background.png"
+}

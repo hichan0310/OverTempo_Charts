@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 4,
   "meta": {
     "title": "End Time",
     "artist": "Cres.",
@@ -28,7 +28,6 @@
     "startMs": 0,
     "endMs": 15000
   },
-  "speedLimitLines": [],
-  "stageDeltaLines": [],
-  "notes": []
+  "notes": [],
+  "specialNotes": []
 }

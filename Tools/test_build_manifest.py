@@ -54,6 +54,27 @@ class EncryptedSongValidationTests(unittest.TestCase):
                               f"{self.arg_id}/song.patch.json"])
             self.assertNotIn(b"End Time", package.read(f"{self.arg_id}/song.patch.json"))
 
+    def test_packages_reveal_package_but_not_its_source_folder(self):
+        package_text = (self.song / f"{self.arg_id}.otchart").read_text(encoding="utf-8")
+        (self.song / f"{self.arg_id}.otpack").write_text(package_text, encoding="utf-8")
+        (self.song / "reveal").mkdir()
+        (self.song / "reveal" / "reveal.js").write_text("function reveal(api) {}", encoding="utf-8")
+        build_manifest.validate_song(self.song, self.meta)
+        output = Path(self.temp.name) / "output"
+        output.mkdir()
+        archive = build_manifest.build_song_zip(Path(self.temp.name), self.song, self.arg_id,
+                                                output, "release.zip", self.meta)
+        with zipfile.ZipFile(archive) as package:
+            self.assertEqual(sorted(package.namelist()),
+                             [f"{self.arg_id}/{self.arg_id}.otchart", f"{self.arg_id}/{self.arg_id}.otpack",
+                              f"{self.arg_id}/audio.wav", f"{self.arg_id}/song.patch.json"])
+
+    def test_rejects_reveal_package_without_chart(self):
+        package_text = (self.song / f"{self.arg_id}.otchart").read_text(encoding="utf-8")
+        (self.song / "fedcba9876543210fedcba9876543210.otpack").write_text(package_text, encoding="utf-8")
+        with self.assertRaises(SystemExit):
+            build_manifest.validate_song(self.song, self.meta)
+
     def test_rejects_unmapped_media(self):
         (self.song / "endtime_cover.png").write_bytes(b"cover")
         with self.assertRaises(SystemExit):

@@ -10,6 +10,7 @@ import mimetypes
 import os
 import re
 import shutil
+import sys
 import tempfile
 import threading
 import urllib.parse
@@ -20,6 +21,8 @@ from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
 from pathlib import Path
 
 EDITOR_DIR = Path(__file__).resolve().parent
+sys.path.insert(0, str(EDITOR_DIR))
+import git_deploy  # noqa: E402  (commit/push and developer-channel deploy)
 # Expected location: OverTempo_Charts/Tools/chart-editor/server.py
 REPO_ROOT = EDITOR_DIR.parents[1]
 SONGS_DIR = REPO_ROOT / "Songs"
@@ -187,7 +190,7 @@ def target_song_file(song_dir: Path, filename: str) -> Path:
 
 def make_blank_chart(*, title: str, artist: str, mapper: str, audio_file: str, difficulty_name: str, difficulty_level: float, bpm: float, offset_ms: float, snap_div: int) -> dict:
     return {
-        "version": 2,
+        "version": 4,
         "meta": {
             "title": title,
             "artist": artist,
@@ -216,8 +219,7 @@ def make_blank_chart(*, title: str, artist: str, mapper: str, audio_file: str, d
             "startMs": 0,
             "endMs": 15000,
         },
-        "speedLimitLines": [],
-        "stageDeltaLines": [],
+        "specialNotes": [],
         "notes": [],
     }
 
@@ -383,6 +385,55 @@ def parse_multipart(content_type: str, body: bytes) -> tuple[dict[str, str], dic
     return fields, files
 
 
+GAME_PREFS_LINUX = Path.home() / ".config" / "unity3d" / "DefaultCompany" / "OverTempo" / "prefs"
+
+
+def read_game_settings() -> dict:
+    """The player's saved OverTempo settings (Unity PlayerPrefs), for the editor preview."""
+    raw: dict = {}
+    try:
+        if GAME_PREFS_LINUX.exists():
+            import xml.etree.ElementTree as ET
+            for pref in ET.parse(GAME_PREFS_LINUX).getroot():
+                name, kind, text = pref.get("name"), pref.get("type"), (pref.text or "")
+                if kind == "float":
+                    raw[name] = float(text)
+                elif kind == "int":
+                    raw[name] = int(text)
+                else:
+                    raw[name] = text
+        elif os.name == "nt":
+            import struct
+            import winreg
+            with winreg.OpenKey(winreg.HKEY_CURRENT_USER, r"Software\DefaultCompany\OverTempo") as key:
+                i = 0
+                while True:
+                    try:
+                        name, value, kind = winreg.EnumValue(key, i)
+                    except OSError:
+                        break
+                    i += 1
+                    base = re.sub(r"_h\d+$", "", name)
+                    if kind == winreg.REG_BINARY and len(value) == 8:
+                        raw[base] = struct.unpack("<d", value)[0]
+                    elif kind == winreg.REG_DWORD:
+                        raw[base] = value
+    except Exception as exc:  # preview falls back to exported defaults
+        return {"found": False, "error": str(exc)}
+    if not raw:
+        return {"found": False}
+    out: dict = {"found": True}
+    if "settings_scroll_speed" in raw:
+        out["scrollSpeed"] = max(1.0, min(30.0, float(raw["settings_scroll_speed"])))
+    if "settings_note_skin" in raw:
+        out["noteSkin"] = ["thin", "thick", "circle"][max(0, min(2, int(raw["settings_note_skin"])))]
+    if "settings_speed_text_height" in raw:
+        out["speedTextHeight"] = max(0.0, min(1.0, float(raw["settings_speed_text_height"])))
+    if "settings_judgment_mode" in raw:
+        out["judgmentMode"] = int(raw["settings_judgment_mode"])
+    return out
+
+
 class Handler(SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=str(EDITOR_DIR), **kwargs)
@@ -405,6 +456,25 @@ class Handler(SimpleHTTPRequestHandler):
 
     def do_GET(self) -> None:
         parsed = urllib.parse.urlparse(self.path)
+
+        if parsed.path == "/api/git/status":
+            try:
+                status, body, ctype = json_bytes({"ok": True, **git_deploy.repo_status(REPO_ROOT)})
+            except Exception as exc:
+                status, body, ctype = error_bytes(str(exc), 500)
+            self.send_blob(status, body, ctype)
+            return
+
+        if parsed.path == "/api/deploy/dev-charts":
+            job = git_deploy.DeployJob.current
+            status, body, ctype = json_bytes({"ok": True, "job": job.snapshot() if job else None})
+            self.send_blob(status, body, ctype)
+            return
+
+        if parsed.path == "/api/game-settings":
+            status, body, ctype = json_bytes(read_game_settings())
+            self.send_blob(status, body, ctype)
+            return
 
         if parsed.path == "/api/songs":
             status, body, ctype = json_bytes(list_songs())
@@ -443,6 +513,22 @@ class Handler(SimpleHTTPRequestHandler):
 
     def do_POST(self) -> None:
         parsed = urllib.parse.urlparse(self.path)
+
+        if parsed.path in ("/api/git/commit-push", "/api/deploy/dev-charts"):
+            try:
+                length = int(self.headers.get("Content-Length", "0"))
+                payload = json.loads(self.rfile.read(length).decode("utf-8") or "{}") if length else {}
+                if parsed.path == "/api/git/commit-push":
+                    result = git_deploy.commit_and_push(REPO_ROOT, list(payload.get("paths") or []),
+                                                        str(payload.get("message") or ""), bool(payload.get("push", True)))
+                else:
+                    job = git_deploy.DeployJob.start(REPO_ROOT, str(payload.get("ref") or "HEAD"))
+                    result = {"ok": True, "job": job.snapshot()}
+                status, body, ctype = json_bytes(result)
+            except Exception as exc:
+                status, body, ctype = error_bytes(str(exc), 400)
+            self.send_blob(status, body, ctype)
+            return
 
         if parsed.path == "/api/song-upload":
             try:

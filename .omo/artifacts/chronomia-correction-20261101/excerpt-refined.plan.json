@@ -1,0 +1,949 @@
+{
+  "schemaVersion": 1,
+  "analysisId": "c84a84257355a2ae2f83",
+  "designNotes": "Revision 2 for 25-45 s only, rebuilt from the combined evidence c84a84257355a2ae2f83, not from the rejected 69-single skeleton. Two coordinated hand roles: a support hand on offbeat co-attacks of independently accepted upper/drum/bass events plus explicitly labelled drum/bass-role taps, and an upper hand on upper attacks. Chords mark measured co-attacks with strong upper change (CE0079/CE0129 are upper-only phrase-start accents; CE0154 is a drum/bass landing). Recurring rising-bin families reuse shapes where hand flow allows: 79-82 high stab [1,3], 72 stab [0,2], 69/70 resolution [1,2], 75-band block [0,3] with lane 3 held. Six holds follow upper-source bands that persist in before/after bins: 67 band in bar 28, 68 band in bars 29-30, two one-beat 75 blocks in bar 32, and the low 56 band in bars 33-34 split at its measured re-rise. The climax has no hold because no band there persists beyond about 3 ticks. Arc: offbeat groove -> drum fill and held texture with backbeat -> accent bars -> held low band under upper texture -> syncopated upper and two rising-sweep stairs -> offbeat stab-chain climax. Lane directions are hand-flow choices or contour hypotheses from rising bins and visible sweeps, never certified pitch. No audio listening was performed. User-reviewed refinement: remove23 sub1/sub3 starts only; preserve the fill CE0052-CE0055, bar36 sweep and CE0167 pickup. Drop uncertain H5 and unsupported H6 as whole holds, without moving heads or tails. No new attacks or lane changes.",
+  "notes": [
+    {
+      "eventId": "CE0001",
+      "lanes": [
+        0,
+        2
+      ],
+      "motif": "entry co-attack chord",
+      "focus": "upper+drums+bass co-attack at window start; upper rising 84/89"
+    },
+    {
+      "eventId": "CE0002",
+      "lanes": [
+        1
+      ],
+      "motif": "offbeat spine",
+      "focus": "upper+drums+bass on the 8th offbeat"
+    },
+    {
+      "eventId": "CE0003",
+      "lanes": [
+        3
+      ],
+      "motif": "upper line",
+      "focus": "upper attack on bar-24 downbeat; rising 84/85"
+    },
+    {
+      "eventId": "CE0004",
+      "lanes": [
+        0
+      ],
+      "motif": "offbeat spine",
+      "focus": "upper+bass offbeat; upper change .145 (rising 65/76)"
+    },
+    {
+      "eventId": "CE0009",
+      "lanes": [
+        3
+      ],
+      "motif": "upper line",
+      "focus": "upper beat attack with bass; rising 77/78"
+    },
+    {
+      "eventId": "CE0010",
+      "lanes": [
+        0
+      ],
+      "motif": "offbeat spine",
+      "focus": "upper+bass offbeat; upper change .14"
+    },
+    {
+      "eventId": "CE0015",
+      "lanes": [
+        3
+      ],
+      "motif": "upper line",
+      "focus": "upper on bar-25 downbeat; change .17 (rising 70/65)"
+    },
+    {
+      "eventId": "CE0016",
+      "lanes": [
+        0
+      ],
+      "motif": "offbeat spine",
+      "focus": "upper+drums+bass offbeat"
+    },
+    {
+      "eventId": "CE0017",
+      "lanes": [
+        1,
+        3
+      ],
+      "motif": "high stab chord",
+      "focus": "upper onset peak + drums + bass on offbeat; rising 79/80 family"
+    },
+    {
+      "eventId": "CE0020",
+      "lanes": [
+        0,
+        2
+      ],
+      "motif": "stab chord",
+      "focus": "upper+drums+bass offbeat; rising 72 family"
+    },
+    {
+      "eventId": "CE0021",
+      "lanes": [
+        3
+      ],
+      "motif": "upper ornament",
+      "focus": "upper change .24 (rising 77/78) with a weak bass event, between stabs"
+    },
+    {
+      "eventId": "CE0023",
+      "lanes": [
+        1,
+        2
+      ],
+      "motif": "resolution stab chord",
+      "focus": "upper+drums+bass offbeat; rising 69/70"
+    },
+    {
+      "eventId": "CE0026",
+      "lanes": [
+        0
+      ],
+      "motif": "offbeat spine",
+      "focus": "upper+bass offbeat; rising 65/64"
+    },
+    {
+      "eventId": "CE0028",
+      "lanes": [
+        1
+      ],
+      "motif": "offbeat spine",
+      "focus": "upper+drums+bass offbeat; change .18 (rising 72/73)"
+    },
+    {
+      "eventId": "CE0029",
+      "lanes": [
+        2
+      ],
+      "motif": "upper line",
+      "focus": "upper change .22 on beat (rising 81/65)"
+    },
+    {
+      "eventId": "CE0030",
+      "lanes": [
+        1,
+        3
+      ],
+      "motif": "high stab chord",
+      "focus": "largest upper change of the groove (.34; rising 67/79/80) with drums+bass"
+    },
+    {
+      "eventId": "CE0031",
+      "lanes": [
+        2
+      ],
+      "motif": "upper line",
+      "focus": "upper change .21 (rising 69/70)"
+    },
+    {
+      "eventId": "CE0033",
+      "lanes": [
+        0
+      ],
+      "motif": "offbeat spine",
+      "focus": "upper+drums+bass offbeat; rising 72/73"
+    },
+    {
+      "eventId": "CE0034",
+      "lanes": [
+        2
+      ],
+      "motif": "upper line",
+      "focus": "upper on bar-27 downbeat"
+    },
+    {
+      "eventId": "CE0035",
+      "lanes": [
+        1
+      ],
+      "motif": "offbeat spine",
+      "focus": "upper+bass offbeat"
+    },
+    {
+      "eventId": "CE0038",
+      "lanes": [
+        1,
+        3
+      ],
+      "motif": "high stab chord",
+      "focus": "upper onset peak + drums + bass; change .21 (rising 79/80)"
+    },
+    {
+      "eventId": "CE0040",
+      "lanes": [
+        0,
+        2
+      ],
+      "motif": "stab chord",
+      "focus": "upper+drums+bass; change .27 (rising 72/84)"
+    },
+    {
+      "eventId": "CE0042",
+      "lanes": [
+        3
+      ],
+      "holdEnds": {
+        "3": "CE0052"
+      },
+      "motif": "held upper band",
+      "focus": "upper change .20; 67/68 band persists to the 30.66 s change"
+    },
+    {
+      "eventId": "CE0043",
+      "lanes": [
+        1
+      ],
+      "motif": "offbeat spine",
+      "focus": "upper+drums+bass offbeat under the held band"
+    },
+    {
+      "eventId": "CE0045",
+      "lanes": [
+        0,
+        2
+      ],
+      "motif": "stab under hold",
+      "focus": "upper change .28 (rising 76/77) with drums+bass"
+    },
+    {
+      "eventId": "CE0049",
+      "lanes": [
+        2
+      ],
+      "motif": "upper line",
+      "focus": "upper beat attack (rising 79/91)"
+    },
+    {
+      "eventId": "CE0050",
+      "lanes": [
+        1
+      ],
+      "motif": "offbeat spine",
+      "focus": "drums+bass offbeat with weak upper"
+    },
+    {
+      "eventId": "CE0052",
+      "lanes": [
+        0
+      ],
+      "motif": "drum fill roll",
+      "focus": "drums+bass 16th fill, no upper part - drum role; upper attacks here are review-only"
+    },
+    {
+      "eventId": "CE0053",
+      "lanes": [
+        1
+      ],
+      "motif": "drum fill roll",
+      "focus": "drums+bass 16th fill - drum role"
+    },
+    {
+      "eventId": "CE0054",
+      "lanes": [
+        2
+      ],
+      "motif": "drum fill roll",
+      "focus": "drums+bass 16th fill - drum role"
+    },
+    {
+      "eventId": "CE0055",
+      "lanes": [
+        3
+      ],
+      "motif": "drum fill roll",
+      "focus": "drums+bass 16th fill into bar 29 - drum role"
+    },
+    {
+      "eventId": "CE0056",
+      "lanes": [
+        0,
+        1,
+        2
+      ],
+      "holdEnds": {
+        "0": "CE0070"
+      },
+      "motif": "section accent + held band",
+      "focus": "upper onset peak + drums + bass at the measured 30.66 s texture change; 68 band held"
+    },
+    {
+      "eventId": "CE0059",
+      "lanes": [
+        3
+      ],
+      "motif": "backbeat",
+      "focus": "drums+bass on beat 2 (drum event mid/high-dominant within drums) - drum role"
+    },
+    {
+      "eventId": "CE0061",
+      "lanes": [
+        2
+      ],
+      "motif": "offbeat support",
+      "focus": "upper+drums+bass offbeat (weak upper)"
+    },
+    {
+      "eventId": "CE0064",
+      "lanes": [
+        3
+      ],
+      "motif": "offbeat support",
+      "focus": "upper+drums+bass; upper rising 77/76"
+    },
+    {
+      "eventId": "CE0066",
+      "lanes": [
+        2
+      ],
+      "motif": "backbeat",
+      "focus": "drums+bass on beat 4 (drum event mid/high-dominant within drums) - drum role"
+    },
+    {
+      "eventId": "CE0068",
+      "lanes": [
+        1
+      ],
+      "motif": "offbeat support",
+      "focus": "drums+bass offbeat - support role"
+    },
+    {
+      "eventId": "CE0069",
+      "lanes": [
+        3
+      ],
+      "motif": "bar anchor",
+      "focus": "bass-only bar-30 downbeat - support role, not melody"
+    },
+    {
+      "eventId": "CE0070",
+      "lanes": [
+        2
+      ],
+      "motif": "upper line",
+      "focus": "held band ends; upper rising 65/66 with drums+bass"
+    },
+    {
+      "eventId": "CE0074",
+      "lanes": [
+        1
+      ],
+      "motif": "offbeat support",
+      "focus": "drums+bass offbeat - support role"
+    },
+    {
+      "eventId": "CE0077",
+      "lanes": [
+        1
+      ],
+      "motif": "pickup run",
+      "focus": "upper+drums+bass 16th (rising 70)"
+    },
+    {
+      "eventId": "CE0079",
+      "lanes": [
+        0,
+        2
+      ],
+      "motif": "phrase-start accent",
+      "focus": "upper-only change .40 on bar-31 downbeat (rising 79/65/67); run target"
+    },
+    {
+      "eventId": "CE0081",
+      "lanes": [
+        1
+      ],
+      "motif": "offbeat support",
+      "focus": "upper+drums+bass offbeat"
+    },
+    {
+      "eventId": "CE0082",
+      "lanes": [
+        0
+      ],
+      "motif": "backbeat",
+      "focus": "drum-only beat-2 hit - drum role"
+    },
+    {
+      "eventId": "CE0083",
+      "lanes": [
+        1,
+        3
+      ],
+      "motif": "high stab chord",
+      "focus": "upper+drums+bass; change .20 (rising 80/81 family)"
+    },
+    {
+      "eventId": "CE0086",
+      "lanes": [
+        0
+      ],
+      "motif": "offbeat support",
+      "focus": "upper+drums+bass offbeat"
+    },
+    {
+      "eventId": "CE0088",
+      "lanes": [
+        1
+      ],
+      "motif": "offbeat support",
+      "focus": "upper+drums offbeat"
+    },
+    {
+      "eventId": "CE0091",
+      "lanes": [
+        1
+      ],
+      "motif": "offbeat support",
+      "focus": "upper+drums+bass offbeat"
+    },
+    {
+      "eventId": "CE0093",
+      "lanes": [
+        0,
+        3
+      ],
+      "holdEnds": {
+        "3": "CE0096"
+      },
+      "motif": "75-band block hold",
+      "focus": "upper change .36 (75/74/76 band) + drum co-attack; band held one beat"
+    },
+    {
+      "eventId": "CE0095",
+      "lanes": [
+        1
+      ],
+      "motif": "offbeat support",
+      "focus": "drums+bass offbeat - support role"
+    },
+    {
+      "eventId": "CE0096",
+      "lanes": [
+        2
+      ],
+      "motif": "upper line",
+      "focus": "75 band replaced by rising 80 (change .22) with drums+bass"
+    },
+    {
+      "eventId": "CE0097",
+      "lanes": [
+        1
+      ],
+      "motif": "offbeat support",
+      "focus": "upper+drums+bass offbeat"
+    },
+    {
+      "eventId": "CE0099",
+      "lanes": [
+        0,
+        3
+      ],
+      "holdEnds": {
+        "3": "CE0103"
+      },
+      "motif": "75-band block hold",
+      "focus": "upper change .28 (75 band again) + drum co-attack; held to bar 33"
+    },
+    {
+      "eventId": "CE0101",
+      "lanes": [
+        1
+      ],
+      "motif": "offbeat support",
+      "focus": "drums+bass offbeat - support role"
+    },
+    {
+      "eventId": "CE0106",
+      "lanes": [
+        1
+      ],
+      "motif": "backbeat",
+      "focus": "upper+drum on beat 2 (rising 75/80)"
+    },
+    {
+      "eventId": "CE0108",
+      "lanes": [
+        3
+      ],
+      "motif": "upper accent",
+      "focus": "upper+drums+bass; change .22 (rising 84/85) above the held low band"
+    },
+    {
+      "eventId": "CE0110",
+      "lanes": [
+        1
+      ],
+      "motif": "backbeat",
+      "focus": "upper+drum on beat 3 (rising 72/71)"
+    },
+    {
+      "eventId": "CE0111",
+      "lanes": [
+        2
+      ],
+      "motif": "upper line",
+      "focus": "upper+bass offbeat"
+    },
+    {
+      "eventId": "CE0113",
+      "lanes": [
+        1,
+        3
+      ],
+      "motif": "high stab chord",
+      "focus": "upper onset peak + drums + bass; change .26 (rising 80/81 family)"
+    },
+    {
+      "eventId": "CE0115",
+      "lanes": [
+        2
+      ],
+      "motif": "offbeat support",
+      "focus": "upper+drums+bass offbeat"
+    },
+    {
+      "eventId": "CE0116",
+      "lanes": [
+        3
+      ],
+      "motif": "bar anchor",
+      "focus": "drums+bass bar-34 downbeat - drum role; low-band hold releases here"
+    },
+    {
+      "eventId": "CE0119",
+      "lanes": [
+        2
+      ],
+      "motif": "upper line",
+      "focus": "upper attack (rising 72/73)"
+    },
+    {
+      "eventId": "CE0121",
+      "lanes": [
+        3
+      ],
+      "motif": "upper line",
+      "focus": "upper+drums+bass (rising 84/85)"
+    },
+    {
+      "eventId": "CE0122",
+      "lanes": [
+        1
+      ],
+      "motif": "backbeat",
+      "focus": "upper onset peak + drum on beat 3"
+    },
+    {
+      "eventId": "CE0123",
+      "lanes": [
+        3
+      ],
+      "motif": "upper accent",
+      "focus": "upper+drums+bass; change .19 (rising 82)"
+    },
+    {
+      "eventId": "CE0125",
+      "lanes": [
+        1,
+        2
+      ],
+      "motif": "upper accent chord",
+      "focus": "upper+drums+bass; change .22 (rising 72/84)"
+    },
+    {
+      "eventId": "CE0129",
+      "lanes": [
+        1,
+        3
+      ],
+      "motif": "section accent chord",
+      "focus": "upper change .22 on bar-35 downbeat (rising 80/82); low band hold ends"
+    },
+    {
+      "eventId": "CE0130",
+      "lanes": [
+        2
+      ],
+      "motif": "offbeat support",
+      "focus": "upper+drums+bass; new low 58/51 band rises"
+    },
+    {
+      "eventId": "CE0137",
+      "lanes": [
+        3
+      ],
+      "motif": "syncopated upper",
+      "focus": "upper+drums+bass offbeat (rising 87/75)"
+    },
+    {
+      "eventId": "CE0139",
+      "lanes": [
+        0,
+        2
+      ],
+      "motif": "accent chord",
+      "focus": "upper onset peak + drums + bass on beat 4 (rising 82/70)"
+    },
+    {
+      "eventId": "CE0143",
+      "lanes": [
+        0
+      ],
+      "motif": "bar anchor",
+      "focus": "upper+bass on bar-36 downbeat (51/50 low band re-rises)"
+    },
+    {
+      "eventId": "CE0144",
+      "lanes": [
+        3
+      ],
+      "motif": "upper accent",
+      "focus": "upper onset .98 + drum; change .145 (rising 79/63) before the sweeps"
+    },
+    {
+      "eventId": "CE0145",
+      "lanes": [
+        0
+      ],
+      "motif": "rising sweep stair",
+      "focus": "sweep 1 start; rising-bin top 67"
+    },
+    {
+      "eventId": "CE0146",
+      "lanes": [
+        1
+      ],
+      "motif": "rising sweep stair",
+      "focus": "sweep 1; change .20, rising-bin top 70"
+    },
+    {
+      "eventId": "CE0147",
+      "lanes": [
+        2
+      ],
+      "motif": "rising sweep stair",
+      "focus": "sweep 1; change .25, rising-bin top 75"
+    },
+    {
+      "eventId": "CE0148",
+      "lanes": [
+        3
+      ],
+      "motif": "rising sweep stair",
+      "focus": "sweep 1 end; rising bins 58 plus a high 82/87 component, with drums+bass"
+    },
+    {
+      "eventId": "CE0149",
+      "lanes": [
+        0
+      ],
+      "motif": "rising sweep stair",
+      "focus": "sweep 2 start; rising-bin top 63"
+    },
+    {
+      "eventId": "CE0150",
+      "lanes": [
+        1
+      ],
+      "motif": "rising sweep stair",
+      "focus": "sweep 2; rising 65/77 with drums+bass"
+    },
+    {
+      "eventId": "CE0151",
+      "lanes": [
+        2
+      ],
+      "motif": "rising sweep stair",
+      "focus": "sweep 2; rising 68/87"
+    },
+    {
+      "eventId": "CE0152",
+      "lanes": [
+        1
+      ],
+      "motif": "rising sweep turn",
+      "focus": "sweep 2 levels off (rising-bin tops 63->65->68->67); upper+drums+bass"
+    },
+    {
+      "eventId": "CE0154",
+      "lanes": [
+        0,
+        2
+      ],
+      "motif": "sweep landing chord",
+      "focus": "drums+bass co-attack on bar-37 downbeat; the upper attack here is review-only"
+    },
+    {
+      "eventId": "CE0155",
+      "lanes": [
+        3
+      ],
+      "motif": "upper line",
+      "focus": "upper change .14 (rising 84/70)"
+    },
+    {
+      "eventId": "CE0157",
+      "lanes": [
+        1
+      ],
+      "motif": "backbeat",
+      "focus": "drums+bass beat-2 hit - drum role"
+    },
+    {
+      "eventId": "CE0161",
+      "lanes": [
+        0
+      ],
+      "motif": "offbeat support",
+      "focus": "upper+drums+bass on beat 3 (rising 76/77)"
+    },
+    {
+      "eventId": "CE0162",
+      "lanes": [
+        1,
+        3
+      ],
+      "motif": "stab chord",
+      "focus": "upper onset peak + drums + bass; change .25 (rising 75/76)"
+    },
+    {
+      "eventId": "CE0167",
+      "lanes": [
+        3
+      ],
+      "motif": "pickup",
+      "focus": "upper+drums+bass 16th; change .19 (rising 72/73)"
+    },
+    {
+      "eventId": "CE0168",
+      "lanes": [
+        1
+      ],
+      "motif": "bar anchor",
+      "focus": "drums+bass bar-38 downbeat - drum role"
+    },
+    {
+      "eventId": "CE0171",
+      "lanes": [
+        1,
+        3
+      ],
+      "motif": "high stab chord",
+      "focus": "upper+drums+bass on beat 2; change .16 (rising 61/79/89)"
+    },
+    {
+      "eventId": "CE0176",
+      "lanes": [
+        1
+      ],
+      "motif": "offbeat support",
+      "focus": "upper+drums+bass offbeat; change .23 (rising 65/70)"
+    },
+    {
+      "eventId": "CE0178",
+      "lanes": [
+        0,
+        2
+      ],
+      "motif": "stab chord",
+      "focus": "upper+drums+bass on beat 4 (rising 72/73)"
+    },
+    {
+      "eventId": "CE0180",
+      "lanes": [
+        1,
+        3
+      ],
+      "motif": "stab chord",
+      "focus": "largest change in bar 38 (.41; rising 76/77) with drums+bass"
+    },
+    {
+      "eventId": "CE0182",
+      "lanes": [
+        0
+      ],
+      "motif": "bar anchor",
+      "focus": "drums+bass bar-39 downbeat - drum role"
+    },
+    {
+      "eventId": "CE0185",
+      "lanes": [
+        1
+      ],
+      "motif": "rising sweep stair",
+      "focus": "upper change .30 with drum; second visible rising sweep"
+    },
+    {
+      "eventId": "CE0187",
+      "lanes": [
+        3
+      ],
+      "motif": "rising sweep stair",
+      "focus": "upper+drums+bass; sweep top (rising 67/82)"
+    },
+    {
+      "eventId": "CE0190",
+      "lanes": [
+        1,
+        2
+      ],
+      "motif": "stab chord",
+      "focus": "upper onset .88 + drums + bass offbeat (rising 67/68/70)"
+    },
+    {
+      "eventId": "CE0192",
+      "lanes": [
+        0
+      ],
+      "motif": "upper line",
+      "focus": "upper+drum on beat 4"
+    },
+    {
+      "eventId": "CE0194",
+      "lanes": [
+        1,
+        2,
+        3
+      ],
+      "motif": "peak stab chord",
+      "focus": "largest upper change in the window (.44) with drums+bass on the offbeat"
+    },
+    {
+      "eventId": "CE0195",
+      "lanes": [
+        0
+      ],
+      "motif": "upper line",
+      "focus": "upper change .31 on bar-40 downbeat (rising 65/66)"
+    },
+    {
+      "eventId": "CE0197",
+      "lanes": [
+        1,
+        3
+      ],
+      "motif": "high stab chord",
+      "focus": "upper+drums+bass offbeat; change .29 (rising 79)"
+    },
+    {
+      "eventId": "CE0199",
+      "lanes": [
+        0,
+        2
+      ],
+      "motif": "stab chord",
+      "focus": "upper+drums+bass offbeat; change .39 (rising 67/68)"
+    },
+    {
+      "eventId": "CE0201",
+      "lanes": [
+        3
+      ],
+      "motif": "upper line",
+      "focus": "upper+bass on beat 3; change .125"
+    },
+    {
+      "eventId": "CE0202",
+      "lanes": [
+        1,
+        2
+      ],
+      "motif": "stab chord",
+      "focus": "upper onset peak + drums + bass offbeat (rising 67/70)"
+    },
+    {
+      "eventId": "CE0204",
+      "lanes": [
+        0
+      ],
+      "motif": "upper line",
+      "focus": "upper+drum on beat 4; change .19"
+    },
+    {
+      "eventId": "CE0206",
+      "lanes": [
+        3
+      ],
+      "motif": "offbeat stab",
+      "focus": "upper+bass offbeat; change .235 (rising 72)"
+    },
+    {
+      "eventId": "CE0208",
+      "lanes": [
+        0,
+        2
+      ],
+      "motif": "downbeat stab chord",
+      "focus": "upper+drums+bass on bar-41 downbeat; change .38 (rising 77/65)"
+    },
+    {
+      "eventId": "CE0212",
+      "lanes": [
+        1
+      ],
+      "motif": "upper line",
+      "focus": "upper+bass on beat 2; change .25 (rising 65/72)"
+    },
+    {
+      "eventId": "CE0214",
+      "lanes": [
+        0,
+        3
+      ],
+      "motif": "stab chord",
+      "focus": "upper+drums+bass offbeat (rising 70/69)"
+    },
+    {
+      "eventId": "CE0216",
+      "lanes": [
+        1
+      ],
+      "motif": "backbeat",
+      "focus": "drum-only beat-3 hit - drum role"
+    },
+    {
+      "eventId": "CE0218",
+      "lanes": [
+        0,
+        2
+      ],
+      "motif": "stab chord",
+      "focus": "upper onset .95 + drums + bass offbeat; change .37 (rising 72/65)"
+    },
+    {
+      "eventId": "CE0226",
+      "lanes": [
+        0,
+        2
+      ],
+      "motif": "stab chord",
+      "focus": "upper+drums+bass offbeat; change .40 (rising-bin top 72, the 72-family stab shape)"
+    },
+    {
+      "eventId": "CE0229",
+      "lanes": [
+        1,
+        3
+      ],
+      "motif": "high stab chord",
+      "focus": "upper+drum offbeat; change .32 (rising-bin top 79, high-stab shape)"
+    },
+    {
+      "eventId": "CE0231",
+      "lanes": [
+        2
+      ],
+      "motif": "upper line",
+      "focus": "upper+drums+bass on beat 3 (last selectable event in window)"
+    }
+  ]
+}

@@ -9,7 +9,29 @@
     "previewEndMs": 81078,
     "extra": "Imported from osu!mania luminaria.osu; difficulty Secret; BeatmapID 4267091; BeatmapSetID 2044437; first timing point 875ms",
     "coverDataUrl": "/api/media?song=Luminaria&file=luminaria_cover.png",
-    "audioFileName": "3-12 Luminaria.mp3"
+    "audioFileName": "3-12 Luminaria.mp3",
+    "argReveal": {
+      "preset": "shatter",
+      "lines": [
+        {
+          "text": "NOW",
+          "size": 84,
+          "y": 55,
+          "assembleAt": 5.3,
+          "completeAt": 6.9
+        },
+        {
+          "text": "THE END OF THIS JOURNEY IS HERE",
+          "size": 40,
+          "y": -48,
+          "assembleAt": 7.9,
+          "completeAt": 9.5
+        }
+      ],
+      "whiteStart": 11.5,
+      "duration": 14.5,
+      "musicStartAt": 5.3
+    }
   },
   "difficulty": {
     "name": "Secret",
@@ -104,6 +126,24 @@
       "durationMs": 0,
       "maxSpeed": 1,
       "effect": "limit"
+    },
+    {
+      "timeMs": 78237,
+      "durationMs": 528,
+      "speedDelta": 0,
+      "effect": "delta"
+    },
+    {
+      "timeMs": 81408,
+      "durationMs": 529,
+      "speedDelta": 0,
+      "effect": "delta"
+    },
+    {
+      "timeMs": 86166,
+      "durationMs": 529,
+      "speedDelta": 0,
+      "effect": "delta"
     }
   ],
   "notes": [
@@ -12595,7 +12635,7 @@
   ],
   "autoCoef": {
     "schemaVersion": 1,
-    "generatedAt": "2026-11-16T06:10:22.946Z",
+    "generatedAt": "2026-11-16T12:52:20.184Z",
     "description": "Final speedupCoef = baseSpeedupCoef * autoSpeedupCoefMultiplier. Load restores editable coef 0/1 from baseSpeedupCoef.",
     "settings": {
       "sigmaMs": 1600,

@@ -470,7 +470,7 @@ def main() -> int:
     notes, curve = apply_auto_coefficients(notes, 149400)
 
     chart = {
-        "version": 1,
+        "version": 4,
         "meta": {
             "title": "Luminaria",
             "artist": "Lime",
@@ -493,8 +493,7 @@ def main() -> int:
         "timing": {"bpm": 227, "offsetMs": 182, "snapDiv": 4, "bpmChanges": BPM_CHANGES},
         "editorSettings": {"encryptionEnabled": True, "encryptionArgId": "arg_luminaria"},
         "preview": {"startMs": 66078, "endMs": 81078},
-        "speedLimitLines": [],
-        "stageDeltaLines": [],
+        "specialNotes": [],
         "notes": notes,
         "autoCoef": {
             "schemaVersion": 1,

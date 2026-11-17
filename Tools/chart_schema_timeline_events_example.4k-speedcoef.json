@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "meta": {
     "title": "Timeline Event Test",
     "artist": "",
@@ -33,24 +33,26 @@
     "startMs": 0,
     "endMs": 15000
   },
-  "speedLimitLines": [
-    {
-      "timeMs": 8000,
-      "maxSpeed": 1.25
-    }
-  ],
-  "stageDeltaLines": [
-    {
-      "timeMs": 4000,
-      "stageDelta": 20
-    }
-  ],
   "notes": [
     {
       "timeMs": 1000,
       "lane": 0,
       "baseSpeedupCoef": 1,
       "speedupCoef": 1,
+      "durationMs": 0
+    }
+  ],
+  "specialNotes": [
+    {
+      "timeMs": 4000,
+      "effect": "delta",
+      "durationMs": 0,
+      "speedDelta": 1.3
+    },
+    {
+      "timeMs": 8000,
+      "maxSpeed": 1.25,
+      "effect": "limit",
       "durationMs": 0
     }
   ]

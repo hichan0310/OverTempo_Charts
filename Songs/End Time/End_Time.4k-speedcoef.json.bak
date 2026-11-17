@@ -9,7 +9,29 @@
     "previewEndMs": 92000,
     "extra": "",
     "coverDataUrl": "/api/media?song=End%20Time&file=endtime_cover.png",
-    "audioFileName": "End_Time_BMS.wav"
+    "audioFileName": "End_Time_BMS.wav",
+    "argReveal": {
+      "preset": "shatter",
+      "lines": [
+        {
+          "text": "NOW",
+          "size": 84,
+          "y": 55,
+          "assembleAt": 5.3,
+          "completeAt": 6.9
+        },
+        {
+          "text": "THE END OF THIS JOURNEY IS HERE",
+          "size": 40,
+          "y": -48,
+          "assembleAt": 7.9,
+          "completeAt": 9.5
+        }
+      ],
+      "whiteStart": 11.5,
+      "duration": 14.5,
+      "musicStartAt": 5.3
+    }
   },
   "difficulty": {
     "name": "Normal",
@@ -12116,7 +12138,7 @@
   ],
   "autoCoef": {
     "schemaVersion": 1,
-    "generatedAt": "2026-10-27T06:22:13.483Z",
+    "generatedAt": "2026-10-31T10:24:10.268Z",
     "description": "Final speedupCoef = baseSpeedupCoef * autoSpeedupCoefMultiplier. Load restores editable coef 0/1 from baseSpeedupCoef.",
     "settings": {
       "sigmaMs": 1600,
