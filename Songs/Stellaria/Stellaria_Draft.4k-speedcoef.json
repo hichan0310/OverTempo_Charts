@@ -7,13 +7,13 @@
     "mapper": "hichan",
     "previewStartMs": 70500,
     "previewEndMs": 15000,
-    "extra": "Temporary empty chart; no notes have been mapped.",
+    "extra": "",
     "coverDataUrl": "/api/media?song=Stellaria&file=stellaria_cover.png",
     "audioFileName": "4-11 Stellaria.mp3"
   },
   "difficulty": {
     "name": "png to zip",
-    "level": 0,
+    "level": 7,
     "scroll": 1,
     "baseSpeed": 1,
     "notes": "",

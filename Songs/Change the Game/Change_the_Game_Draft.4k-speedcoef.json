@@ -7,13 +7,13 @@
     "mapper": "hichan",
     "previewStartMs": 0,
     "previewEndMs": 15000,
-    "extra": "Temporary empty chart; no notes have been mapped.",
+    "extra": "",
     "coverDataUrl": "/api/media?song=Change%20the%20Game&file=changethegame_cover.png",
     "audioFileName": "Change the Game (Short).wav"
   },
   "difficulty": {
     "name": "official",
-    "level": 0,
+    "level": 6,
     "scroll": 1,
     "baseSpeed": 1,
     "notes": "",
