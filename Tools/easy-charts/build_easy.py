@@ -12,7 +12,7 @@ def build(src,plan_path,dst,level,name,extra):
     at=collections.defaultdict(list)
     for n in notes: at[round((n['timeMs']-off)/q)].append(n)
     R,O,HM=load_plan(plan_path)
-    out=[]; prev=None; prev_t=-1e9; busy={}
+    out=[]; prev=None; prev_t=-1e9; busy={}; prevset=set()
     proto={k:v for k,v in notes[0].items() if k not in('timeMs','lane','durationMs')}
     accel=sorted((n['timeMs'],n.get('speedupCoef',0)) for n in notes if n.get('speedupCoef',0)>0)
     import bisect
@@ -32,6 +32,12 @@ def build(src,plan_path,dst,level,name,extra):
     for m in sorted(set(R)|set(O)):
         cells=O.get(m)
         plan=R.get(m,'')
+        if plan=='=' and cells is None:   # keep the original measure as it is
+            for s in range(16):
+                for n in at.get(m*16+s,[]): out.append(copy.deepcopy(n))
+            mn=[n for s in range(16) for n in at.get(m*16+s,[])]
+            if mn: last=max(mn,key=lambda n:n['timeMs']); prev=last['lane']; prev_t=last['timeMs']; prevset={n['lane'] for n in mn if n['timeMs']==last['timeMs']}
+            continue
         for s in range(16):
             k=m*16+s; orig=sorted(at.get(k,[]),key=lambda n:n['lane'])
             t=orig[0]['timeMs'] if orig else off+k*q
@@ -45,7 +51,7 @@ def build(src,plan_path,dst,level,name,extra):
                     oh=[n['durationMs'] for n in orig if n.get('durationMs',0)>0]
                     dur=min(oh[0] if oh else beat,HM*beat)
                 for i,l in enumerate(lanes): out.append(mk(t,l,dur,1 if i==0 else 0))
-                prev=lanes[0]; prev_t=t; continue
+                prev=lanes[0]; prevset=set(lanes); prev_t=t; continue
             if s>=len(plan) or plan[s]=='.': continue
             kind=plan[s]
             ol=[n['lane'] for n in orig]
@@ -59,20 +65,21 @@ def build(src,plan_path,dst,level,name,extra):
                 else: lanes=[0,3]
                 if lanes[0]==lanes[1]: lanes=[0,3]
                 for i,l in enumerate(lanes): out.append(mk(t,l,0,1 if i==0 else 0))
-                prev=lanes[-1]; prev_t=t; continue
+                prev=lanes[-1]; prevset=set(lanes); prev_t=t; continue
             if kind=='h':
                 oh=[n for n in orig if n.get('durationMs',0)>0]
                 lane=oh[0]['lane'] if oh else (ol[0] if ol else 1)
                 dur=min(oh[0]['durationMs'] if oh else beat, HM*beat)
-                out.append(mk(t,lane,dur)); prev=lane; prev_t=t; continue
+                out.append(mk(t,lane,dur)); prev=lane; prevset={lane}; prev_t=t; continue
             # single: the chord lane that keeps the line moving (no jack inside a beat)
             cand=ol or [((prev or 0)+2)%4]
             choice=None
-            for l in sorted(cand,key=lambda l:(l==prev, abs(l-(prev if prev is not None else l)))):
+            near=gap<=1.01
+            for l in sorted(cand,key=lambda l:(near and l in prevset, l==prev, abs(l-(prev if prev is not None else l)))):
                 choice=l; break
-            if choice==prev and gap<=1.01:
-                choice=min([l for l in range(4) if l!=prev],key=lambda l:abs(l-prev))
-            out.append(mk(t,choice)); prev=choice; prev_t=t
+            if near and choice in prevset:   # no jack inside a beat, also after a chord
+                choice=min([l for l in range(4) if l not in prevset],key=lambda l:abs(l-prev))
+            out.append(mk(t,choice)); prev=choice; prevset={choice}; prev_t=t
     # specials, effects etc. stay as in the original
     out.sort(key=lambda n:(n['timeMs'],n['lane']))
     final=[]; busy={}
