@@ -64,6 +64,11 @@ def build(src,plan_path,dst,level,name,extra):
                 elif ol: lanes=sorted({ol[0],3-ol[0]}) if ol[0] not in(1,2) else sorted({ol[0],3-ol[0]})
                 else: lanes=[0,3]
                 if lanes[0]==lanes[1]: lanes=[0,3]
+                if gap<=0.51 and set(lanes)&prevset:   # no chord jack on 8ths: move the chord off the last lanes
+                    avail=[l for l in range(4) if l not in prevset]
+                    keep=[l for l in lanes if l in avail] or [l for l in ol if l in avail][:1] or avail[:1]
+                    rest=[l for l in avail if l not in keep]
+                    lanes=sorted(keep[:1]+[max(rest,key=lambda l:abs(l-keep[0]))])
                 for i,l in enumerate(lanes): out.append(mk(t,l,0,1 if i==0 else 0))
                 prev=lanes[-1]; prevset=set(lanes); prev_t=t; continue
             if kind=='h':
