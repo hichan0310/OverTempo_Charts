@@ -7,7 +7,7 @@
     "mapper": "hichan",
     "previewStartMs": 0,
     "previewEndMs": 15000,
-    "extra": "Easy chart hand-planned measure by measure from the full chart: quarter-note pulse following the melody lanes, chords on phrase starts, holds kept, 16th streams turned into two-hand stairs.",
+    "extra": "Easy chart v2: quarter-note pulse on the original onsets (the accented off-beat when stronger), one 8th pair per bar (every 2 bars at Lv3) at a fixed place, a downbeat chord per bar, holds only on real sustains; lanes follow the original contour while keeping the hands alternating, no jacks inside a beat, no spirals.",
     "coverDataUrl": "/api/media?song=Change%20the%20Game&file=changethegame_cover.png",
     "audioFileName": "Change the Game (Short).wav"
   },
@@ -162,17 +162,6 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.517749,
       "timeMs": 3000,
-      "lane": 0,
-      "durationMs": 0
-    },
-    {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "timeMs": 3000,
       "lane": 3,
       "durationMs": 0
     },
@@ -184,8 +173,8 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.517749,
       "timeMs": 3300,
-      "lane": 1,
-      "durationMs": 300
+      "lane": 0,
+      "durationMs": 0
     },
     {
       "baseSpeedupCoef": 1,
@@ -195,8 +184,8 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.557189,
       "timeMs": 3600,
-      "lane": 2,
-      "durationMs": 300
+      "lane": 3,
+      "durationMs": 0
     },
     {
       "baseSpeedupCoef": 1,
@@ -217,8 +206,8 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.625772,
       "timeMs": 4200,
-      "lane": 3,
-      "durationMs": 300
+      "lane": 2,
+      "durationMs": 0
     },
     {
       "baseSpeedupCoef": 1,
@@ -228,8 +217,8 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.653643,
       "timeMs": 4500,
-      "lane": 2,
-      "durationMs": 0
+      "lane": 1,
+      "durationMs": 450
     },
     {
       "baseSpeedupCoef": 1,
@@ -250,8 +239,8 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.696475,
       "timeMs": 5100,
-      "lane": 1,
-      "durationMs": 300
+      "lane": 0,
+      "durationMs": 0
     },
     {
       "baseSpeedupCoef": 1,
@@ -272,7 +261,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.725469,
       "timeMs": 5700,
-      "lane": 1,
+      "lane": 0,
       "durationMs": 450
     },
     {
@@ -283,8 +272,8 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.741206,
       "timeMs": 6150,
-      "lane": 2,
-      "durationMs": 300
+      "lane": 3,
+      "durationMs": 0
     },
     {
       "baseSpeedupCoef": 1,
@@ -294,7 +283,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.749881,
       "timeMs": 6450,
-      "lane": 0,
+      "lane": 1,
       "durationMs": 600
     },
     {
@@ -314,9 +303,20 @@
       "rampSpeedupCoefMultiplier": 1,
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.764187,
+      "timeMs": 7050,
+      "lane": 2,
+      "durationMs": 600
+    },
+    {
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.76722,
       "timeMs": 7200,
-      "lane": 1,
+      "lane": 0,
       "durationMs": 0
     },
     {
@@ -327,7 +327,18 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.772595,
       "timeMs": 7500,
-      "lane": 0,
+      "lane": 1,
+      "durationMs": 0
+    },
+    {
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.774901,
+      "timeMs": 7650,
+      "lane": 3,
       "durationMs": 0
     },
     {
@@ -338,8 +349,8 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.776974,
       "timeMs": 7800,
-      "lane": 0,
-      "durationMs": 300
+      "lane": 1,
+      "durationMs": 0
     },
     {
       "baseSpeedupCoef": 1,
@@ -349,8 +360,8 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.78024,
       "timeMs": 8100,
-      "lane": 1,
-      "durationMs": 300
+      "lane": 3,
+      "durationMs": 0
     },
     {
       "baseSpeedupCoef": 1,
@@ -361,7 +372,7 @@
       "speedupCoef": 0.782236,
       "timeMs": 8400,
       "lane": 2,
-      "durationMs": 300
+      "durationMs": 0
     },
     {
       "baseSpeedupCoef": 1,
@@ -372,7 +383,7 @@
       "speedupCoef": 0.782896,
       "timeMs": 8700,
       "lane": 0,
-      "durationMs": 300
+      "durationMs": 0
     },
     {
       "baseSpeedupCoef": 1,
@@ -382,8 +393,8 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.782133,
       "timeMs": 9000,
-      "lane": 1,
-      "durationMs": 300
+      "lane": 3,
+      "durationMs": 0
     },
     {
       "baseSpeedupCoef": 1,
@@ -394,7 +405,7 @@
       "speedupCoef": 0.77995,
       "timeMs": 9300,
       "lane": 0,
-      "durationMs": 0
+      "durationMs": 450
     },
     {
       "baseSpeedupCoef": 1,
@@ -415,8 +426,8 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.771565,
       "timeMs": 9900,
-      "lane": 1,
-      "durationMs": 300
+      "lane": 3,
+      "durationMs": 0
     },
     {
       "baseSpeedupCoef": 1,
@@ -426,8 +437,8 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.765605,
       "timeMs": 10200,
-      "lane": 0,
-      "durationMs": 300
+      "lane": 2,
+      "durationMs": 0
     },
     {
       "baseSpeedupCoef": 1,
@@ -437,8 +448,8 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.758636,
       "timeMs": 10500,
-      "lane": 2,
-      "durationMs": 0
+      "lane": 0,
+      "durationMs": 450
     },
     {
       "baseSpeedupCoef": 1,
@@ -449,7 +460,7 @@
       "speedupCoef": 0.746514,
       "timeMs": 10950,
       "lane": 1,
-      "durationMs": 300
+      "durationMs": 0
     },
     {
       "baseSpeedupCoef": 1,
@@ -459,7 +470,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.737498,
       "timeMs": 11250,
-      "lane": 2,
+      "lane": 3,
       "durationMs": 0
     },
     {
@@ -481,7 +492,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.722793,
       "timeMs": 11700,
-      "lane": 2,
+      "lane": 3,
       "durationMs": 0
     },
     {
@@ -503,7 +514,7 @@
       "autoSpeedupCoefMultiplier": 0,
       "speedupCoef": 0,
       "timeMs": 12000,
-      "lane": 3,
+      "lane": 2,
       "durationMs": 0
     },
     {
@@ -514,7 +525,18 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.701559,
       "timeMs": 12300,
-      "lane": 2,
+      "lane": 1,
+      "durationMs": 0
+    },
+    {
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.696122,
+      "timeMs": 12450,
+      "lane": 0,
       "durationMs": 0
     },
     {
@@ -525,7 +547,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.690669,
       "timeMs": 12600,
-      "lane": 3,
+      "lane": 2,
       "durationMs": 450
     },
     {
@@ -536,7 +558,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.674658,
       "timeMs": 13050,
-      "lane": 2,
+      "lane": 1,
       "durationMs": 450
     },
     {
@@ -547,8 +569,8 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.659768,
       "timeMs": 13500,
-      "lane": 1,
-      "durationMs": 300
+      "lane": 0,
+      "durationMs": 0
     },
     {
       "baseSpeedupCoef": 1,
@@ -558,7 +580,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.650813,
       "timeMs": 13800,
-      "lane": 3,
+      "lane": 2,
       "durationMs": 450
     },
     {
@@ -569,7 +591,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.63906,
       "timeMs": 14250,
-      "lane": 2,
+      "lane": 1,
       "durationMs": 450
     },
     {
@@ -580,8 +602,8 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.623472,
       "timeMs": 14700,
-      "lane": 1,
-      "durationMs": 300
+      "lane": 2,
+      "durationMs": 0
     },
     {
       "baseSpeedupCoef": 1,
@@ -590,17 +612,6 @@
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.623472,
-      "timeMs": 15000,
-      "lane": 0,
-      "durationMs": 0
-    },
-    {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
       "timeMs": 15000,
       "lane": 3,
       "durationMs": 0
@@ -617,34 +628,12 @@
       "durationMs": 0
     },
     {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "timeMs": 15300,
-      "lane": 2,
-      "durationMs": 0
-    },
-    {
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
       "rampSpeedupCoefMultiplier": 1,
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.613935,
-      "timeMs": 15600,
-      "lane": 0,
-      "durationMs": 0
-    },
-    {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
       "timeMs": 15600,
       "lane": 3,
       "durationMs": 0
@@ -668,8 +657,8 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.607566,
       "timeMs": 16200,
-      "lane": 3,
-      "durationMs": 300
+      "lane": 0,
+      "durationMs": 0
     },
     {
       "baseSpeedupCoef": 1,
@@ -680,7 +669,7 @@
       "speedupCoef": 0.606236,
       "timeMs": 16650,
       "lane": 1,
-      "durationMs": 300
+      "durationMs": 0
     },
     {
       "baseSpeedupCoef": 1,
@@ -690,8 +679,8 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.614018,
       "timeMs": 17400,
-      "lane": 2,
-      "durationMs": 300
+      "lane": 3,
+      "durationMs": 0
     },
     {
       "baseSpeedupCoef": 1,
@@ -701,8 +690,8 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.614018,
       "timeMs": 17850,
-      "lane": 1,
-      "durationMs": 300
+      "lane": 2,
+      "durationMs": 0
     },
     {
       "baseSpeedupCoef": 1,
@@ -713,7 +702,7 @@
       "speedupCoef": 0.642252,
       "timeMs": 18300,
       "lane": 0,
-      "durationMs": 300
+      "durationMs": 0
     },
     {
       "baseSpeedupCoef": 1,
@@ -723,8 +712,8 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.642252,
       "timeMs": 18600,
-      "lane": 2,
-      "durationMs": 300
+      "lane": 3,
+      "durationMs": 0
     },
     {
       "baseSpeedupCoef": 1,
@@ -734,8 +723,8 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.675832,
       "timeMs": 19050,
-      "lane": 1,
-      "durationMs": 300
+      "lane": 2,
+      "durationMs": 0
     },
     {
       "baseSpeedupCoef": 1,
@@ -746,7 +735,7 @@
       "speedupCoef": 0.707762,
       "timeMs": 19500,
       "lane": 0,
-      "durationMs": 300
+      "durationMs": 0
     },
     {
       "baseSpeedupCoef": 1,
@@ -767,7 +756,18 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.717769,
       "timeMs": 20100,
-      "lane": 2,
+      "lane": 1,
+      "durationMs": 0
+    },
+    {
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.721913,
+      "timeMs": 20250,
+      "lane": 0,
       "durationMs": 0
     },
     {
@@ -777,17 +777,6 @@
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.725512,
-      "timeMs": 20400,
-      "lane": 1,
-      "durationMs": 0
-    },
-    {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
       "timeMs": 20400,
       "lane": 3,
       "durationMs": 0
@@ -800,7 +789,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.730751,
       "timeMs": 20700,
-      "lane": 0,
+      "lane": 2,
       "durationMs": 0
     },
     {
@@ -811,7 +800,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.733494,
       "timeMs": 21000,
-      "lane": 2,
+      "lane": 0,
       "durationMs": 0
     },
     {
@@ -822,7 +811,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.733911,
       "timeMs": 21300,
-      "lane": 0,
+      "lane": 2,
       "durationMs": 0
     },
     {
@@ -844,7 +833,18 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.729435,
       "timeMs": 21900,
-      "lane": 0,
+      "lane": 2,
+      "durationMs": 0
+    },
+    {
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.727581,
+      "timeMs": 22050,
+      "lane": 1,
       "durationMs": 0
     },
     {
@@ -855,7 +855,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.725593,
       "timeMs": 22200,
-      "lane": 0,
+      "lane": 3,
       "durationMs": 600
     },
     {
@@ -866,7 +866,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.721424,
       "timeMs": 22500,
-      "lane": 3,
+      "lane": 1,
       "durationMs": 0
     },
     {
@@ -886,21 +886,10 @@
       "rampSpeedupCoefMultiplier": 1,
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
-      "speedupCoef": 0.713955,
-      "timeMs": 23100,
-      "lane": 0,
-      "durationMs": 0
-    },
-    {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "timeMs": 23100,
-      "lane": 3,
-      "durationMs": 0
+      "speedupCoef": 0.71251,
+      "timeMs": 23250,
+      "lane": 1,
+      "durationMs": 600
     },
     {
       "baseSpeedupCoef": 1,
@@ -910,7 +899,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.711235,
       "timeMs": 23400,
-      "lane": 2,
+      "lane": 3,
       "durationMs": 0
     },
     {
@@ -921,7 +910,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.709299,
       "timeMs": 23700,
-      "lane": 1,
+      "lane": 2,
       "durationMs": 0
     },
     {
@@ -954,17 +943,6 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.706522,
       "timeMs": 24600,
-      "lane": 2,
-      "durationMs": 0
-    },
-    {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "timeMs": 24600,
       "lane": 3,
       "durationMs": 0
     },
@@ -985,9 +963,20 @@
       "rampSpeedupCoefMultiplier": 1,
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.705253,
+      "timeMs": 25050,
+      "lane": 3,
+      "durationMs": 0
+    },
+    {
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.704638,
       "timeMs": 25200,
-      "lane": 2,
+      "lane": 1,
       "durationMs": 0
     },
     {
@@ -1020,17 +1009,6 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.698467,
       "timeMs": 26100,
-      "lane": 1,
-      "durationMs": 0
-    },
-    {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "timeMs": 26100,
       "lane": 3,
       "durationMs": 0
     },
@@ -1042,7 +1020,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.69568,
       "timeMs": 26400,
-      "lane": 2,
+      "lane": 1,
       "durationMs": 0
     },
     {
@@ -1053,6 +1031,17 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.692758,
       "timeMs": 26700,
+      "lane": 2,
+      "durationMs": 0
+    },
+    {
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.691314,
+      "timeMs": 26850,
       "lane": 1,
       "durationMs": 0
     },
@@ -1064,7 +1053,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.689894,
       "timeMs": 27000,
-      "lane": 1,
+      "lane": 3,
       "durationMs": 600
     },
     {
@@ -1086,8 +1075,8 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.68472,
       "timeMs": 27600,
-      "lane": 2,
-      "durationMs": 300
+      "lane": 0,
+      "durationMs": 0
     },
     {
       "baseSpeedupCoef": 1,
@@ -1097,7 +1086,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.6815,
       "timeMs": 28050,
-      "lane": 0,
+      "lane": 1,
       "durationMs": 600
     },
     {
@@ -1108,7 +1097,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.680524,
       "timeMs": 28200,
-      "lane": 2,
+      "lane": 3,
       "durationMs": 0
     },
     {
@@ -1119,7 +1108,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.678719,
       "timeMs": 28500,
-      "lane": 1,
+      "lane": 0,
       "durationMs": 0
     },
     {
@@ -1141,8 +1130,8 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.675417,
       "timeMs": 29100,
-      "lane": 0,
-      "durationMs": 300
+      "lane": 3,
+      "durationMs": 0
     },
     {
       "baseSpeedupCoef": 1,
@@ -1163,17 +1152,6 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.671561,
       "timeMs": 29850,
-      "lane": 1,
-      "durationMs": 0
-    },
-    {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "timeMs": 29850,
       "lane": 3,
       "durationMs": 0
     },
@@ -1185,18 +1163,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.669288,
       "timeMs": 30300,
-      "lane": 0,
-      "durationMs": 0
-    },
-    {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "timeMs": 30300,
-      "lane": 3,
+      "lane": 2,
       "durationMs": 0
     },
     {
@@ -1207,7 +1174,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.667787,
       "timeMs": 30600,
-      "lane": 1,
+      "lane": 0,
       "durationMs": 0
     },
     {
@@ -1229,7 +1196,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.664796,
       "timeMs": 31200,
-      "lane": 2,
+      "lane": 1,
       "durationMs": 0
     },
     {
@@ -1240,7 +1207,18 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.663368,
       "timeMs": 31500,
-      "lane": 1,
+      "lane": 0,
+      "durationMs": 0
+    },
+    {
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.662702,
+      "timeMs": 31650,
+      "lane": 2,
       "durationMs": 0
     },
     {
@@ -1251,7 +1229,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.662054,
       "timeMs": 31800,
-      "lane": 1,
+      "lane": 3,
       "durationMs": 600
     },
     {
@@ -1262,7 +1240,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.660971,
       "timeMs": 32100,
-      "lane": 2,
+      "lane": 1,
       "durationMs": 0
     },
     {
@@ -1273,8 +1251,8 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.660236,
       "timeMs": 32400,
-      "lane": 3,
-      "durationMs": 300
+      "lane": 0,
+      "durationMs": 0
     },
     {
       "baseSpeedupCoef": 1,
@@ -1284,7 +1262,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.660193,
       "timeMs": 32850,
-      "lane": 2,
+      "lane": 1,
       "durationMs": 600
     },
     {
@@ -1295,7 +1273,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.660539,
       "timeMs": 33000,
-      "lane": 1,
+      "lane": 3,
       "durationMs": 0
     },
     {
@@ -1317,7 +1295,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.664568,
       "timeMs": 33600,
-      "lane": 1,
+      "lane": 2,
       "durationMs": 0
     },
     {
@@ -1327,17 +1305,6 @@
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.668411,
-      "timeMs": 33900,
-      "lane": 1,
-      "durationMs": 0
-    },
-    {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
       "timeMs": 33900,
       "lane": 3,
       "durationMs": 0
@@ -1350,8 +1317,8 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.673613,
       "timeMs": 34200,
-      "lane": 0,
-      "durationMs": 300
+      "lane": 1,
+      "durationMs": 0
     },
     {
       "baseSpeedupCoef": 1,
@@ -1370,9 +1337,20 @@
       "rampSpeedupCoefMultiplier": 1,
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.684102,
+      "timeMs": 34650,
+      "lane": 1,
+      "durationMs": 0
+    },
+    {
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.692797,
       "timeMs": 34950,
-      "lane": 1,
+      "lane": 2,
       "durationMs": 0
     },
     {
@@ -1383,8 +1361,8 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.702794,
       "timeMs": 35250,
-      "lane": 2,
-      "durationMs": 300
+      "lane": 0,
+      "durationMs": 0
     },
     {
       "baseSpeedupCoef": 1,
@@ -1405,8 +1383,8 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.713978,
       "timeMs": 35700,
-      "lane": 0,
-      "durationMs": 300
+      "lane": 3,
+      "durationMs": 0
     },
     {
       "baseSpeedupCoef": 1,
@@ -1469,18 +1447,18 @@
       "rampSpeedupCoefMultiplier": 1,
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
-      "speedupCoef": 0.793464,
-      "timeMs": 37200,
-      "lane": 0,
+      "speedupCoef": 0.785325,
+      "timeMs": 37050,
+      "lane": 3,
       "durationMs": 0
     },
     {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.793464,
       "timeMs": 37200,
       "lane": 2,
       "durationMs": 0
@@ -1493,7 +1471,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.809594,
       "timeMs": 37500,
-      "lane": 1,
+      "lane": 0,
       "durationMs": 0
     },
     {
@@ -1504,7 +1482,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.824595,
       "timeMs": 37800,
-      "lane": 3,
+      "lane": 1,
       "durationMs": 0
     },
     {
@@ -1515,7 +1493,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.837004,
       "timeMs": 38100,
-      "lane": 2,
+      "lane": 3,
       "durationMs": 0
     },
     {
@@ -1548,7 +1526,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.846753,
       "timeMs": 38700,
-      "lane": 1,
+      "lane": 3,
       "durationMs": 0
     },
     {
@@ -1559,7 +1537,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.84044,
       "timeMs": 39000,
-      "lane": 0,
+      "lane": 1,
       "durationMs": 0
     },
     {
@@ -1570,6 +1548,17 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.819263,
       "timeMs": 39300,
+      "lane": 2,
+      "durationMs": 0
+    },
+    {
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.806552,
+      "timeMs": 39450,
       "lane": 1,
       "durationMs": 0
     },
@@ -1581,18 +1570,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.799397,
       "timeMs": 39600,
-      "lane": 0,
-      "durationMs": 0
-    },
-    {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "timeMs": 39600,
-      "lane": 1,
+      "lane": 2,
       "durationMs": 0
     },
     {
@@ -1603,447 +1581,293 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.764741,
       "timeMs": 39900,
-      "lane": 2,
+      "lane": 1,
       "durationMs": 0
     },
     {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "timeMs": 39900,
-      "lane": 3,
-      "durationMs": 0
-    },
-    {
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.733528,
       "timeMs": 41400,
       "lane": 3,
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
       "durationMs": 450
     },
     {
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.733528,
       "timeMs": 41850,
       "lane": 2,
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
       "durationMs": 450
     },
     {
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.733528,
       "timeMs": 42300,
-      "lane": 1,
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "durationMs": 900
+      "lane": 0,
+      "durationMs": 600
     },
     {
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.733528,
       "timeMs": 43800,
       "lane": 3,
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
       "durationMs": 450
     },
     {
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.733528,
       "timeMs": 44250,
       "lane": 2,
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
       "durationMs": 450
     },
     {
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.733528,
       "timeMs": 44700,
-      "lane": 1,
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "durationMs": 900
+      "lane": 0,
+      "durationMs": 600
     },
     {
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.733528,
       "timeMs": 46200,
       "lane": 3,
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
       "durationMs": 450
     },
     {
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.733528,
       "timeMs": 46650,
       "lane": 0,
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
       "durationMs": 450
     },
     {
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.733528,
       "timeMs": 47100,
       "lane": 1,
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "durationMs": 900
+      "durationMs": 600
     },
     {
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.717234,
       "timeMs": 48000,
       "lane": 3,
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "durationMs": 300
+      "durationMs": 0
     },
     {
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.717234,
       "timeMs": 48300,
       "lane": 2,
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
       "durationMs": 0
     },
     {
-      "timeMs": 51000,
-      "lane": 1,
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "durationMs": 0
-    },
-    {
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.717234,
       "timeMs": 51000,
       "lane": 3,
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
       "durationMs": 0
     },
     {
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.717234,
       "timeMs": 51300,
       "lane": 1,
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
       "durationMs": 0
     },
     {
-      "timeMs": 51300,
-      "lane": 3,
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "durationMs": 0
-    },
-    {
-      "timeMs": 51600,
-      "lane": 1,
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "durationMs": 0
-    },
-    {
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.717234,
       "timeMs": 51600,
       "lane": 3,
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
       "durationMs": 0
     },
     {
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.717234,
       "timeMs": 51900,
       "lane": 1,
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
       "durationMs": 0
     },
     {
-      "timeMs": 51900,
-      "lane": 3,
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "durationMs": 0
-    },
-    {
-      "timeMs": 52200,
-      "lane": 0,
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "durationMs": 0
-    },
-    {
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.717234,
       "timeMs": 52200,
       "lane": 2,
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
       "durationMs": 0
     },
     {
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.717234,
       "timeMs": 52500,
-      "lane": 0,
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
+      "lane": 1,
       "durationMs": 0
     },
     {
-      "timeMs": 52500,
-      "lane": 2,
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "durationMs": 0
-    },
-    {
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.717234,
       "timeMs": 52800,
       "lane": 0,
+      "durationMs": 0
+    },
+    {
       "baseSpeedupCoef": 0,
       "densitySpeedupCoefMultiplier": 0,
       "rampSpeedupCoefMultiplier": 0,
       "manualSpeedupCoefMultiplier": 0,
       "autoSpeedupCoefMultiplier": 0,
       "speedupCoef": 0,
-      "durationMs": 0
-    },
-    {
       "timeMs": 52800,
       "lane": 2,
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
       "durationMs": 0
     },
     {
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.717234,
       "timeMs": 53100,
-      "lane": 0,
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "durationMs": 0
-    },
-    {
-      "timeMs": 53100,
-      "lane": 2,
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "durationMs": 0
-    },
-    {
-      "timeMs": 53400,
       "lane": 1,
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
       "durationMs": 0
     },
     {
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.717234,
       "timeMs": 53400,
       "lane": 3,
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
       "durationMs": 0
     },
     {
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.717234,
       "timeMs": 53700,
-      "lane": 1,
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
+      "lane": 2,
       "durationMs": 0
     },
     {
-      "timeMs": 53700,
-      "lane": 3,
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "durationMs": 0
-    },
-    {
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.717234,
       "timeMs": 54000,
-      "lane": 1,
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
+      "lane": 0,
       "durationMs": 0
     },
     {
-      "timeMs": 54000,
-      "lane": 3,
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "durationMs": 0
-    },
-    {
-      "timeMs": 54300,
-      "lane": 1,
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "durationMs": 0
-    },
-    {
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.717234,
       "timeMs": 54300,
       "lane": 3,
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
       "durationMs": 0
     },
     {
-      "timeMs": 54600,
-      "lane": 0,
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "durationMs": 0
-    },
-    {
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.717234,
       "timeMs": 54600,
       "lane": 2,
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
       "durationMs": 0
     },
     {
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.717234,
       "timeMs": 54900,
       "lane": 0,
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "durationMs": 0
-    },
-    {
-      "timeMs": 54900,
-      "lane": 2,
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
       "durationMs": 0
     },
     {
@@ -2054,7 +1878,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.717234,
       "timeMs": 55200,
-      "lane": 0,
+      "lane": 1,
       "durationMs": 0
     },
     {
@@ -2076,18 +1900,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.717234,
       "timeMs": 55500,
-      "lane": 0,
-      "durationMs": 0
-    },
-    {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "timeMs": 55500,
-      "lane": 2,
+      "lane": 3,
       "durationMs": 0
     },
     {
@@ -2098,18 +1911,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.717234,
       "timeMs": 55800,
-      "lane": 0,
-      "durationMs": 0
-    },
-    {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "timeMs": 55800,
-      "lane": 3,
+      "lane": 1,
       "durationMs": 0
     },
     {
@@ -2120,7 +1922,18 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.7271,
       "timeMs": 56100,
-      "lane": 1,
+      "lane": 0,
+      "durationMs": 0
+    },
+    {
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.748022,
+      "timeMs": 56250,
+      "lane": 2,
       "durationMs": 0
     },
     {
@@ -2130,17 +1943,6 @@
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.758943,
-      "timeMs": 56400,
-      "lane": 0,
-      "durationMs": 0
-    },
-    {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
       "timeMs": 56400,
       "lane": 3,
       "durationMs": 0
@@ -2153,7 +1955,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.770049,
       "timeMs": 56700,
-      "lane": 2,
+      "lane": 1,
       "durationMs": 0
     },
     {
@@ -2219,7 +2021,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.847472,
       "timeMs": 58200,
-      "lane": 0,
+      "lane": 2,
       "durationMs": 0
     },
     {
@@ -2239,18 +2041,18 @@
       "rampSpeedupCoefMultiplier": 1,
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
-      "speedupCoef": 0.824176,
-      "timeMs": 58800,
-      "lane": 0,
+      "speedupCoef": 0.828877,
+      "timeMs": 58650,
+      "lane": 2,
       "durationMs": 0
     },
     {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.824176,
       "timeMs": 58800,
       "lane": 1,
       "durationMs": 0
@@ -2264,17 +2066,6 @@
       "speedupCoef": 0.800393,
       "timeMs": 59100,
       "lane": 2,
-      "durationMs": 0
-    },
-    {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "timeMs": 59100,
-      "lane": 3,
       "durationMs": 0
     },
     {
@@ -2307,17 +2098,6 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.618634,
       "timeMs": 61200,
-      "lane": 0,
-      "durationMs": 0
-    },
-    {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "timeMs": 61200,
       "lane": 3,
       "durationMs": 0
     },
@@ -2340,17 +2120,6 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.620623,
       "timeMs": 61800,
-      "lane": 0,
-      "durationMs": 0
-    },
-    {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "timeMs": 61800,
       "lane": 3,
       "durationMs": 0
     },
@@ -2362,7 +2131,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.632211,
       "timeMs": 62100,
-      "lane": 2,
+      "lane": 1,
       "durationMs": 0
     },
     {
@@ -2372,17 +2141,6 @@
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.69482,
-      "timeMs": 63000,
-      "lane": 0,
-      "durationMs": 0
-    },
-    {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
       "timeMs": 63000,
       "lane": 3,
       "durationMs": 0
@@ -2395,7 +2153,18 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.72035,
       "timeMs": 63300,
-      "lane": 2,
+      "lane": 1,
+      "durationMs": 0
+    },
+    {
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.733242,
+      "timeMs": 63450,
+      "lane": 0,
       "durationMs": 0
     },
     {
@@ -2405,17 +2174,6 @@
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.746049,
-      "timeMs": 63600,
-      "lane": 0,
-      "durationMs": 0
-    },
-    {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
       "timeMs": 63600,
       "lane": 3,
       "durationMs": 0
@@ -2472,7 +2230,7 @@
       "autoSpeedupCoefMultiplier": 0,
       "speedupCoef": 0,
       "timeMs": 64800,
-      "lane": 2,
+      "lane": 3,
       "durationMs": 0
     },
     {
@@ -2483,7 +2241,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.848819,
       "timeMs": 65100,
-      "lane": 1,
+      "lane": 2,
       "durationMs": 0
     },
     {
@@ -2494,7 +2252,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.861817,
       "timeMs": 65400,
-      "lane": 2,
+      "lane": 1,
       "durationMs": 0
     },
     {
@@ -2505,7 +2263,18 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.872514,
       "timeMs": 65700,
-      "lane": 1,
+      "lane": 2,
+      "durationMs": 0
+    },
+    {
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.877077,
+      "timeMs": 65850,
+      "lane": 3,
       "durationMs": 0
     },
     {
@@ -2520,17 +2289,6 @@
       "durationMs": 0
     },
     {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "timeMs": 66000,
-      "lane": 2,
-      "durationMs": 0
-    },
-    {
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
       "rampSpeedupCoefMultiplier": 1,
@@ -2538,7 +2296,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.888353,
       "timeMs": 66300,
-      "lane": 3,
+      "lane": 2,
       "durationMs": 0
     },
     {
@@ -2550,7 +2308,7 @@
       "speedupCoef": 0.891414,
       "timeMs": 66600,
       "lane": 1,
-      "durationMs": 300
+      "durationMs": 0
     },
     {
       "baseSpeedupCoef": 1,
@@ -2560,8 +2318,8 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.903882,
       "timeMs": 67050,
-      "lane": 0,
-      "durationMs": 300
+      "lane": 3,
+      "durationMs": 0
     },
     {
       "baseSpeedupCoef": 1,
@@ -2593,8 +2351,8 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.903882,
       "timeMs": 67500,
-      "lane": 1,
-      "durationMs": 300
+      "lane": 3,
+      "durationMs": 0
     },
     {
       "baseSpeedupCoef": 1,
@@ -2604,18 +2362,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.912931,
       "timeMs": 67800,
-      "lane": 0,
-      "durationMs": 0
-    },
-    {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "timeMs": 67800,
-      "lane": 3,
+      "lane": 1,
       "durationMs": 0
     },
     {
@@ -2626,18 +2373,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.91786,
       "timeMs": 68100,
-      "lane": 0,
-      "durationMs": 0
-    },
-    {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "timeMs": 68100,
-      "lane": 3,
+      "lane": 2,
       "durationMs": 0
     },
     {
@@ -2648,18 +2384,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.923213,
       "timeMs": 68400,
-      "lane": 0,
-      "durationMs": 0
-    },
-    {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "timeMs": 68400,
-      "lane": 3,
+      "lane": 1,
       "durationMs": 0
     },
     {
@@ -2681,17 +2406,6 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.934771,
       "timeMs": 69000,
-      "lane": 0,
-      "durationMs": 0
-    },
-    {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "timeMs": 69000,
       "lane": 3,
       "durationMs": 0
     },
@@ -2703,7 +2417,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.940371,
       "timeMs": 69300,
-      "lane": 2,
+      "lane": 1,
       "durationMs": 0
     },
     {
@@ -2746,9 +2460,20 @@
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.949799,
+      "timeMs": 70050,
+      "lane": 1,
+      "durationMs": 0
+    },
+    {
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.949799,
       "timeMs": 70200,
-      "lane": 2,
-      "durationMs": 300
+      "lane": 3,
+      "durationMs": 0
     },
     {
       "baseSpeedupCoef": 1,
@@ -2759,7 +2484,7 @@
       "speedupCoef": 0.948793,
       "timeMs": 70500,
       "lane": 0,
-      "durationMs": 300
+      "durationMs": 0
     },
     {
       "baseSpeedupCoef": 1,
@@ -2769,8 +2494,8 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.94487,
       "timeMs": 70800,
-      "lane": 2,
-      "durationMs": 300
+      "lane": 3,
+      "durationMs": 0
     },
     {
       "baseSpeedupCoef": 1,
@@ -2780,8 +2505,8 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.938951,
       "timeMs": 71100,
-      "lane": 0,
-      "durationMs": 300
+      "lane": 1,
+      "durationMs": 0
     },
     {
       "baseSpeedupCoef": 1,
@@ -2803,7 +2528,7 @@
       "speedupCoef": 0.919429,
       "timeMs": 71700,
       "lane": 0,
-      "durationMs": 300
+      "durationMs": 0
     },
     {
       "baseSpeedupCoef": 1,
@@ -2813,8 +2538,19 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.919429,
       "timeMs": 72000,
+      "lane": 1,
+      "durationMs": 0
+    },
+    {
+      "baseSpeedupCoef": 0,
+      "densitySpeedupCoefMultiplier": 0,
+      "rampSpeedupCoefMultiplier": 0,
+      "manualSpeedupCoefMultiplier": 0,
+      "autoSpeedupCoefMultiplier": 0,
+      "speedupCoef": 0,
+      "timeMs": 72000,
       "lane": 2,
-      "durationMs": 300
+      "durationMs": 0
     },
     {
       "baseSpeedupCoef": 1,
@@ -2825,7 +2561,7 @@
       "speedupCoef": 0.905317,
       "timeMs": 72300,
       "lane": 0,
-      "durationMs": 300
+      "durationMs": 0
     },
     {
       "baseSpeedupCoef": 1,
@@ -2846,17 +2582,6 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.900657,
       "timeMs": 72900,
-      "lane": 0,
-      "durationMs": 0
-    },
-    {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "timeMs": 72900,
       "lane": 2,
       "durationMs": 0
     },
@@ -2866,18 +2591,18 @@
       "rampSpeedupCoefMultiplier": 1,
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
-      "speedupCoef": 0.898125,
-      "timeMs": 73200,
-      "lane": 1,
+      "speedupCoef": 0.899159,
+      "timeMs": 73050,
+      "lane": 0,
       "durationMs": 0
     },
     {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.898125,
       "timeMs": 73200,
       "lane": 3,
       "durationMs": 0
@@ -2901,7 +2626,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.899902,
       "timeMs": 73800,
-      "lane": 1,
+      "lane": 3,
       "durationMs": 0
     },
     {
@@ -2945,7 +2670,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.915698,
       "timeMs": 74700,
-      "lane": 2,
+      "lane": 0,
       "durationMs": 0
     },
     {
@@ -2956,7 +2681,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.92227,
       "timeMs": 75000,
-      "lane": 1,
+      "lane": 3,
       "durationMs": 0
     },
     {
@@ -2967,6 +2692,17 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.928306,
       "timeMs": 75300,
+      "lane": 2,
+      "durationMs": 0
+    },
+    {
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.930884,
+      "timeMs": 75450,
       "lane": 0,
       "durationMs": 0
     },
@@ -2977,17 +2713,6 @@
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.933122,
-      "timeMs": 75600,
-      "lane": 1,
-      "durationMs": 0
-    },
-    {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
       "timeMs": 75600,
       "lane": 3,
       "durationMs": 0
@@ -3011,7 +2736,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.936937,
       "timeMs": 76200,
-      "lane": 1,
+      "lane": 3,
       "durationMs": 0
     },
     {
@@ -3022,7 +2747,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.935534,
       "timeMs": 76500,
-      "lane": 0,
+      "lane": 1,
       "durationMs": 0
     },
     {
@@ -3033,7 +2758,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.932265,
       "timeMs": 76800,
-      "lane": 1,
+      "lane": 0,
       "durationMs": 0
     },
     {
@@ -3044,7 +2769,7 @@
       "autoSpeedupCoefMultiplier": 0,
       "speedupCoef": 0,
       "timeMs": 76800,
-      "lane": 3,
+      "lane": 2,
       "durationMs": 0
     },
     {
@@ -3055,7 +2780,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.927858,
       "timeMs": 77100,
-      "lane": 2,
+      "lane": 1,
       "durationMs": 0
     },
     {
@@ -3066,7 +2791,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.923292,
       "timeMs": 77400,
-      "lane": 1,
+      "lane": 3,
       "durationMs": 0
     },
     {
@@ -3077,7 +2802,18 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.918581,
       "timeMs": 77700,
-      "lane": 0,
+      "lane": 1,
+      "durationMs": 0
+    },
+    {
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.918581,
+      "timeMs": 77850,
+      "lane": 2,
       "durationMs": 0
     },
     {
@@ -3087,17 +2823,6 @@
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.918021,
-      "timeMs": 78000,
-      "lane": 0,
-      "durationMs": 0
-    },
-    {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
       "timeMs": 78000,
       "lane": 3,
       "durationMs": 0
@@ -3110,7 +2835,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.918217,
       "timeMs": 78300,
-      "lane": 2,
+      "lane": 1,
       "durationMs": 0
     },
     {
@@ -3176,7 +2901,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.954201,
       "timeMs": 79800,
-      "lane": 0,
+      "lane": 2,
       "durationMs": 0
     },
     {
@@ -3196,18 +2921,18 @@
       "rampSpeedupCoefMultiplier": 1,
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
-      "speedupCoef": 0.96293,
-      "timeMs": 80400,
-      "lane": 0,
+      "speedupCoef": 0.960994,
+      "timeMs": 80250,
+      "lane": 2,
       "durationMs": 0
     },
     {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.96293,
       "timeMs": 80400,
       "lane": 1,
       "durationMs": 0
@@ -3221,17 +2946,6 @@
       "speedupCoef": 0.962757,
       "timeMs": 80700,
       "lane": 2,
-      "durationMs": 0
-    },
-    {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "timeMs": 80700,
-      "lane": 3,
       "durationMs": 0
     },
     {
@@ -3253,18 +2967,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.942832,
       "timeMs": 82200,
-      "lane": 0,
-      "durationMs": 0
-    },
-    {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "timeMs": 82200,
-      "lane": 3,
+      "lane": 2,
       "durationMs": 0
     },
     {
@@ -3275,7 +2978,18 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.942586,
       "timeMs": 82500,
-      "lane": 2,
+      "lane": 0,
+      "durationMs": 0
+    },
+    {
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.943499,
+      "timeMs": 82650,
+      "lane": 1,
       "durationMs": 0
     },
     {
@@ -3285,17 +2999,6 @@
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.944975,
-      "timeMs": 82800,
-      "lane": 1,
-      "durationMs": 0
-    },
-    {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
       "timeMs": 82800,
       "lane": 3,
       "durationMs": 0
@@ -3308,7 +3011,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.949754,
       "timeMs": 83100,
-      "lane": 2,
+      "lane": 0,
       "durationMs": 0
     },
     {
@@ -3319,7 +3022,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.956309,
       "timeMs": 83400,
-      "lane": 0,
+      "lane": 2,
       "durationMs": 0
     },
     {
@@ -3341,18 +3044,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.971627,
       "timeMs": 84000,
-      "lane": 2,
-      "durationMs": 150
-    },
-    {
-      "baseSpeedupCoef": 1,
-      "densitySpeedupCoefMultiplier": 1,
-      "rampSpeedupCoefMultiplier": 1,
-      "manualSpeedupCoefMultiplier": 1,
-      "autoSpeedupCoefMultiplier": 1,
-      "speedupCoef": 0.978896,
-      "timeMs": 84300,
-      "lane": 1,
+      "lane": 0,
       "durationMs": 0
     },
     {
@@ -3362,6 +3054,17 @@
       "manualSpeedupCoefMultiplier": 0,
       "autoSpeedupCoefMultiplier": 0,
       "speedupCoef": 0,
+      "timeMs": 84000,
+      "lane": 2,
+      "durationMs": 0
+    },
+    {
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.978896,
       "timeMs": 84300,
       "lane": 3,
       "durationMs": 0
@@ -3374,7 +3077,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.98517,
       "timeMs": 84600,
-      "lane": 0,
+      "lane": 2,
       "durationMs": 0
     },
     {
@@ -3385,7 +3088,18 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.990158,
       "timeMs": 84900,
-      "lane": 1,
+      "lane": 0,
+      "durationMs": 0
+    },
+    {
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.992106,
+      "timeMs": 85050,
+      "lane": 2,
       "durationMs": 0
     },
     {
@@ -3395,17 +3109,6 @@
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.993718,
-      "timeMs": 85200,
-      "lane": 0,
-      "durationMs": 0
-    },
-    {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
       "timeMs": 85200,
       "lane": 3,
       "durationMs": 0
@@ -3418,8 +3121,19 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.996296,
       "timeMs": 85650,
-      "lane": 3,
-      "durationMs": 300
+      "lane": 0,
+      "durationMs": 0
+    },
+    {
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.996234,
+      "timeMs": 85950,
+      "lane": 1,
+      "durationMs": 0
     },
     {
       "baseSpeedupCoef": 1,
@@ -3429,17 +3143,6 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.995689,
       "timeMs": 86100,
-      "lane": 0,
-      "durationMs": 0
-    },
-    {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "timeMs": 86100,
       "lane": 3,
       "durationMs": 0
     },
@@ -3449,9 +3152,9 @@
       "rampSpeedupCoefMultiplier": 1,
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
-      "speedupCoef": 0.993561,
-      "timeMs": 86400,
-      "lane": 1,
+      "speedupCoef": 0.991998,
+      "timeMs": 86550,
+      "lane": 2,
       "durationMs": 0
     },
     {
@@ -3466,34 +3169,12 @@
       "durationMs": 0
     },
     {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "timeMs": 86700,
-      "lane": 3,
-      "durationMs": 0
-    },
-    {
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
       "rampSpeedupCoefMultiplier": 1,
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.985688,
-      "timeMs": 87000,
-      "lane": 0,
-      "durationMs": 0
-    },
-    {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
       "timeMs": 87000,
       "lane": 2,
       "durationMs": 0
@@ -3515,18 +3196,18 @@
       "rampSpeedupCoefMultiplier": 1,
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
-      "speedupCoef": 0.974703,
-      "timeMs": 87600,
+      "speedupCoef": 0.977563,
+      "timeMs": 87450,
       "lane": 1,
       "durationMs": 0
     },
     {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.974703,
       "timeMs": 87600,
       "lane": 3,
       "durationMs": 0
@@ -3539,7 +3220,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.969081,
       "timeMs": 87900,
-      "lane": 0,
+      "lane": 1,
       "durationMs": 0
     },
     {
@@ -3583,7 +3264,7 @@
       "autoSpeedupCoefMultiplier": 0,
       "speedupCoef": 0,
       "timeMs": 88800,
-      "lane": 3,
+      "lane": 2,
       "durationMs": 0
     },
     {
@@ -3594,7 +3275,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.957905,
       "timeMs": 89100,
-      "lane": 0,
+      "lane": 3,
       "durationMs": 0
     },
     {
@@ -3616,7 +3297,18 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.964183,
       "timeMs": 89700,
-      "lane": 0,
+      "lane": 3,
+      "durationMs": 0
+    },
+    {
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.967091,
+      "timeMs": 89850,
+      "lane": 1,
       "durationMs": 0
     },
     {
@@ -3626,17 +3318,6 @@
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.9704,
-      "timeMs": 90000,
-      "lane": 0,
-      "durationMs": 0
-    },
-    {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
       "timeMs": 90000,
       "lane": 3,
       "durationMs": 0
@@ -3671,7 +3352,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.996593,
       "timeMs": 90900,
-      "lane": 0,
+      "lane": 2,
       "durationMs": 0
     },
     {
@@ -3715,8 +3396,8 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 1.02181,
       "timeMs": 91800,
-      "lane": 0,
-      "durationMs": 300
+      "lane": 3,
+      "durationMs": 0
     },
     {
       "baseSpeedupCoef": 1,
@@ -3730,13 +3411,13 @@
       "durationMs": 0
     },
     {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "timeMs": 92100,
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 1.029867,
+      "timeMs": 92250,
       "lane": 2,
       "durationMs": 0
     },
@@ -3748,7 +3429,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 1.031714,
       "timeMs": 92400,
-      "lane": 3,
+      "lane": 0,
       "durationMs": 600
     },
     {
@@ -3781,7 +3462,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 1.034147,
       "timeMs": 93300,
-      "lane": 0,
+      "lane": 2,
       "durationMs": 0
     },
     {
@@ -3803,7 +3484,7 @@
       "autoSpeedupCoefMultiplier": 0,
       "speedupCoef": 0,
       "timeMs": 93600,
-      "lane": 2,
+      "lane": 3,
       "durationMs": 0
     },
     {
@@ -3825,8 +3506,8 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 1.02517,
       "timeMs": 94200,
-      "lane": 0,
-      "durationMs": 300
+      "lane": 3,
+      "durationMs": 0
     },
     {
       "baseSpeedupCoef": 1,
@@ -3836,18 +3517,18 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 1.020086,
       "timeMs": 94500,
-      "lane": 1,
+      "lane": 2,
       "durationMs": 0
     },
     {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "timeMs": 94500,
-      "lane": 2,
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 1.017144,
+      "timeMs": 94650,
+      "lane": 0,
       "durationMs": 0
     },
     {
@@ -3858,7 +3539,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 1.013964,
       "timeMs": 94800,
-      "lane": 0,
+      "lane": 3,
       "durationMs": 600
     },
     {
@@ -3869,7 +3550,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 1.006833,
       "timeMs": 95100,
-      "lane": 1,
+      "lane": 2,
       "durationMs": 0
     },
     {
@@ -3880,18 +3561,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.99882,
       "timeMs": 95400,
-      "lane": 1,
-      "durationMs": 0
-    },
-    {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "timeMs": 95400,
-      "lane": 2,
+      "lane": 0,
       "durationMs": 0
     },
     {
@@ -3946,18 +3616,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.966036,
       "timeMs": 96600,
-      "lane": 0,
-      "durationMs": 0
-    },
-    {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "timeMs": 96600,
-      "lane": 3,
+      "lane": 1,
       "durationMs": 0
     },
     {
@@ -3968,7 +3627,18 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.960778,
       "timeMs": 96900,
-      "lane": 1,
+      "lane": 0,
+      "durationMs": 0
+    },
+    {
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.959009,
+      "timeMs": 97050,
+      "lane": 3,
       "durationMs": 0
     },
     {
@@ -3979,7 +3649,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.957753,
       "timeMs": 97200,
-      "lane": 0,
+      "lane": 1,
       "durationMs": 0
     },
     {
@@ -3990,7 +3660,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.957031,
       "timeMs": 97500,
-      "lane": 1,
+      "lane": 3,
       "durationMs": 0
     },
     {
@@ -3999,9 +3669,9 @@
       "rampSpeedupCoefMultiplier": 1,
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
-      "speedupCoef": 0.958163,
-      "timeMs": 97800,
-      "lane": 0,
+      "speedupCoef": 0.959175,
+      "timeMs": 97950,
+      "lane": 2,
       "durationMs": 0
     },
     {
@@ -4012,7 +3682,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.960255,
       "timeMs": 98100,
-      "lane": 1,
+      "lane": 0,
       "durationMs": 0
     },
     {
@@ -4045,7 +3715,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.961935,
       "timeMs": 98700,
-      "lane": 0,
+      "lane": 2,
       "durationMs": 0
     },
     {
@@ -4067,7 +3737,18 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.948988,
       "timeMs": 99300,
-      "lane": 0,
+      "lane": 2,
+      "durationMs": 0
+    },
+    {
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.943204,
+      "timeMs": 99450,
+      "lane": 1,
       "durationMs": 0
     },
     {
@@ -4078,18 +3759,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.939955,
       "timeMs": 99600,
-      "lane": 0,
-      "durationMs": 0
-    },
-    {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "timeMs": 99600,
-      "lane": 1,
+      "lane": 2,
       "durationMs": 0
     },
     {
@@ -4100,18 +3770,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.924621,
       "timeMs": 99900,
-      "lane": 2,
-      "durationMs": 0
-    },
-    {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "timeMs": 99900,
-      "lane": 3,
+      "lane": 1,
       "durationMs": 0
     },
     {
@@ -4122,7 +3781,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.842045,
       "timeMs": 101400,
-      "lane": 0,
+      "lane": 3,
       "durationMs": 600
     },
     {
@@ -4133,7 +3792,18 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.833919,
       "timeMs": 101700,
-      "lane": 3,
+      "lane": 2,
+      "durationMs": 0
+    },
+    {
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.831358,
+      "timeMs": 101850,
+      "lane": 0,
       "durationMs": 0
     },
     {
@@ -4148,26 +3818,15 @@
       "durationMs": 0
     },
     {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "timeMs": 102000,
-      "lane": 3,
-      "durationMs": 0
-    },
-    {
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
       "rampSpeedupCoefMultiplier": 1,
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
-      "speedupCoef": 0.828241,
-      "timeMs": 102300,
-      "lane": 0,
-      "durationMs": 0
+      "speedupCoef": 0.828434,
+      "timeMs": 102450,
+      "lane": 1,
+      "durationMs": 600
     },
     {
       "baseSpeedupCoef": 1,
@@ -4210,7 +3869,7 @@
       "autoSpeedupCoefMultiplier": 0,
       "speedupCoef": 0,
       "timeMs": 103200,
-      "lane": 2,
+      "lane": 3,
       "durationMs": 0
     },
     {
@@ -4221,7 +3880,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.83264,
       "timeMs": 103500,
-      "lane": 3,
+      "lane": 2,
       "durationMs": 0
     },
     {
@@ -4232,7 +3891,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.833032,
       "timeMs": 103800,
-      "lane": 2,
+      "lane": 3,
       "durationMs": 0
     },
     {
@@ -4252,20 +3911,20 @@
       "rampSpeedupCoefMultiplier": 1,
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
-      "speedupCoef": 0.831115,
-      "timeMs": 104400,
-      "lane": 0,
+      "speedupCoef": 0.831736,
+      "timeMs": 104250,
+      "lane": 3,
       "durationMs": 0
     },
     {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.831115,
       "timeMs": 104400,
-      "lane": 2,
+      "lane": 1,
       "durationMs": 0
     },
     {
@@ -4320,7 +3979,7 @@
       "autoSpeedupCoefMultiplier": 0,
       "speedupCoef": 0,
       "timeMs": 105600,
-      "lane": 3,
+      "lane": 2,
       "durationMs": 0
     },
     {
@@ -4331,7 +3990,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.830584,
       "timeMs": 105900,
-      "lane": 2,
+      "lane": 0,
       "durationMs": 0
     },
     {
@@ -4342,7 +4001,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.83145,
       "timeMs": 106200,
-      "lane": 1,
+      "lane": 3,
       "durationMs": 600
     },
     {
@@ -4362,10 +4021,10 @@
       "rampSpeedupCoefMultiplier": 1,
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
-      "speedupCoef": 0.830756,
-      "timeMs": 106800,
-      "lane": 2,
-      "durationMs": 300
+      "speedupCoef": 0.831379,
+      "timeMs": 106650,
+      "lane": 0,
+      "durationMs": 0
     },
     {
       "baseSpeedupCoef": 1,
@@ -4373,10 +4032,21 @@
       "rampSpeedupCoefMultiplier": 1,
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
-      "speedupCoef": 0.828177,
-      "timeMs": 107100,
-      "lane": 3,
+      "speedupCoef": 0.830756,
+      "timeMs": 106800,
+      "lane": 1,
       "durationMs": 0
+    },
+    {
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.826176,
+      "timeMs": 107250,
+      "lane": 3,
+      "durationMs": 600
     },
     {
       "baseSpeedupCoef": 1,
@@ -4390,17 +4060,6 @@
       "durationMs": 0
     },
     {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "timeMs": 107400,
-      "lane": 3,
-      "durationMs": 0
-    },
-    {
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
       "rampSpeedupCoefMultiplier": 1,
@@ -4408,7 +4067,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.817498,
       "timeMs": 107700,
-      "lane": 1,
+      "lane": 0,
       "durationMs": 0
     },
     {
@@ -4430,8 +4089,8 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.801336,
       "timeMs": 108300,
-      "lane": 0,
-      "durationMs": 300
+      "lane": 1,
+      "durationMs": 0
     },
     {
       "baseSpeedupCoef": 1,
@@ -4441,7 +4100,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.79286,
       "timeMs": 108600,
-      "lane": 1,
+      "lane": 3,
       "durationMs": 0
     },
     {
@@ -4452,18 +4111,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.782135,
       "timeMs": 109050,
-      "lane": 1,
-      "durationMs": 0
-    },
-    {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "timeMs": 109050,
-      "lane": 3,
+      "lane": 2,
       "durationMs": 0
     },
     {
@@ -4473,17 +4121,6 @@
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.775885,
-      "timeMs": 109500,
-      "lane": 0,
-      "durationMs": 0
-    },
-    {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
       "timeMs": 109500,
       "lane": 3,
       "durationMs": 0
@@ -4518,7 +4155,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.782152,
       "timeMs": 110400,
-      "lane": 2,
+      "lane": 1,
       "durationMs": 0
     },
     {
@@ -4529,7 +4166,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.789476,
       "timeMs": 110700,
-      "lane": 1,
+      "lane": 0,
       "durationMs": 0
     },
     {
@@ -4540,7 +4177,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.798721,
       "timeMs": 111000,
-      "lane": 1,
+      "lane": 3,
       "durationMs": 600
     },
     {
@@ -4551,7 +4188,18 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.80934,
       "timeMs": 111300,
-      "lane": 3,
+      "lane": 1,
+      "durationMs": 0
+    },
+    {
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.815001,
+      "timeMs": 111450,
+      "lane": 2,
       "durationMs": 0
     },
     {
@@ -4562,8 +4210,8 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.820774,
       "timeMs": 111600,
-      "lane": 3,
-      "durationMs": 300
+      "lane": 0,
+      "durationMs": 0
     },
     {
       "baseSpeedupCoef": 1,
@@ -4573,7 +4221,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.838483,
       "timeMs": 112050,
-      "lane": 2,
+      "lane": 1,
       "durationMs": 600
     },
     {
@@ -4584,7 +4232,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.844356,
       "timeMs": 112200,
-      "lane": 1,
+      "lane": 3,
       "durationMs": 0
     },
     {
@@ -4595,7 +4243,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.855883,
       "timeMs": 112500,
-      "lane": 0,
+      "lane": 2,
       "durationMs": 0
     },
     {
@@ -4606,7 +4254,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.866946,
       "timeMs": 112800,
-      "lane": 1,
+      "lane": 0,
       "durationMs": 0
     },
     {
@@ -4616,17 +4264,6 @@
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.877368,
-      "timeMs": 113100,
-      "lane": 1,
-      "durationMs": 0
-    },
-    {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
       "timeMs": 113100,
       "lane": 2,
       "durationMs": 0
@@ -4639,8 +4276,8 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.886969,
       "timeMs": 113400,
-      "lane": 0,
-      "durationMs": 300
+      "lane": 1,
+      "durationMs": 0
     },
     {
       "baseSpeedupCoef": 1,
@@ -4659,8 +4296,8 @@
       "rampSpeedupCoefMultiplier": 1,
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
-      "speedupCoef": 0.90293,
-      "timeMs": 114000,
+      "speedupCoef": 0.899399,
+      "timeMs": 113850,
       "lane": 1,
       "durationMs": 0
     },
@@ -4670,20 +4307,20 @@
       "rampSpeedupCoefMultiplier": 1,
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
-      "speedupCoef": 0.908861,
-      "timeMs": 114300,
-      "lane": 1,
+      "speedupCoef": 0.90293,
+      "timeMs": 114000,
+      "lane": 2,
       "durationMs": 0
     },
     {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "timeMs": 114300,
-      "lane": 3,
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.911266,
+      "timeMs": 114450,
+      "lane": 0,
       "durationMs": 0
     },
     {
@@ -4694,7 +4331,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.913314,
       "timeMs": 114600,
-      "lane": 2,
+      "lane": 1,
       "durationMs": 0
     },
     {
@@ -4705,8 +4342,8 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.914985,
       "timeMs": 114900,
-      "lane": 0,
-      "durationMs": 300
+      "lane": 3,
+      "durationMs": 0
     },
     {
       "baseSpeedupCoef": 1,
@@ -4749,18 +4386,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.921864,
       "timeMs": 115800,
-      "lane": 0,
-      "durationMs": 0
-    },
-    {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "timeMs": 115800,
-      "lane": 3,
+      "lane": 2,
       "durationMs": 0
     },
     {
@@ -4771,7 +4397,18 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.925024,
       "timeMs": 116100,
-      "lane": 1,
+      "lane": 0,
+      "durationMs": 0
+    },
+    {
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.927364,
+      "timeMs": 116250,
+      "lane": 2,
       "durationMs": 0
     },
     {
@@ -4781,17 +4418,6 @@
       "manualSpeedupCoefMultiplier": 1,
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.930222,
-      "timeMs": 116400,
-      "lane": 0,
-      "durationMs": 0
-    },
-    {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
       "timeMs": 116400,
       "lane": 3,
       "durationMs": 0
@@ -4804,7 +4430,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.938014,
       "timeMs": 116700,
-      "lane": 2,
+      "lane": 1,
       "durationMs": 0
     },
     {
@@ -4826,7 +4452,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.961032,
       "timeMs": 117300,
-      "lane": 2,
+      "lane": 1,
       "durationMs": 0
     },
     {
@@ -4870,18 +4496,7 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.997311,
       "timeMs": 118200,
-      "lane": 0,
-      "durationMs": 0
-    },
-    {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "timeMs": 118200,
-      "lane": 1,
+      "lane": 2,
       "durationMs": 0
     },
     {
@@ -4892,18 +4507,18 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 1.002004,
       "timeMs": 118500,
-      "lane": 2,
+      "lane": 3,
       "durationMs": 0
     },
     {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "timeMs": 118500,
-      "lane": 3,
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 1.001563,
+      "timeMs": 118650,
+      "lane": 1,
       "durationMs": 0
     },
     {
@@ -4918,17 +4533,6 @@
       "durationMs": 0
     },
     {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "timeMs": 118800,
-      "lane": 1,
-      "durationMs": 0
-    },
-    {
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 1,
       "rampSpeedupCoefMultiplier": 1,
@@ -4936,17 +4540,6 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.987147,
       "timeMs": 119100,
-      "lane": 2,
-      "durationMs": 0
-    },
-    {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "timeMs": 119100,
       "lane": 3,
       "durationMs": 0
     },
@@ -4959,18 +4552,7 @@
       "speedupCoef": 0.977068,
       "timeMs": 119400,
       "lane": 0,
-      "durationMs": 150
-    },
-    {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "timeMs": 119400,
-      "lane": 3,
-      "durationMs": 150
+      "durationMs": 0
     },
     {
       "baseSpeedupCoef": 1,
@@ -4980,151 +4562,63 @@
       "autoSpeedupCoefMultiplier": 1,
       "speedupCoef": 0.977068,
       "timeMs": 119850,
-      "lane": 1,
-      "durationMs": 150
-    },
-    {
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "timeMs": 119850,
       "lane": 2,
-      "durationMs": 150
+      "durationMs": 0
     },
     {
-      "timeMs": 120075,
-      "lane": 0,
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "durationMs": 150
-    },
-    {
-      "timeMs": 120075,
-      "lane": 3,
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "durationMs": 150
-    },
-    {
-      "timeMs": 120300,
-      "lane": 0,
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "durationMs": 150
-    },
-    {
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.977068,
       "timeMs": 120300,
       "lane": 3,
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "durationMs": 150
+      "durationMs": 0
     },
     {
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.977068,
       "timeMs": 120450,
       "lane": 1,
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "durationMs": 150
+      "durationMs": 0
     },
     {
-      "timeMs": 120450,
-      "lane": 2,
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "durationMs": 150
-    },
-    {
-      "timeMs": 120600,
-      "lane": 0,
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "durationMs": 225
-    },
-    {
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.977068,
       "timeMs": 120600,
       "lane": 3,
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "durationMs": 225
+      "durationMs": 0
     },
     {
-      "timeMs": 121050,
-      "lane": 1,
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "durationMs": 225
-    },
-    {
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.977068,
       "timeMs": 121050,
       "lane": 2,
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "durationMs": 225
+      "durationMs": 0
     },
     {
-      "timeMs": 121500,
-      "lane": 0,
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "durationMs": 225
-    },
-    {
+      "baseSpeedupCoef": 1,
+      "densitySpeedupCoefMultiplier": 1,
+      "rampSpeedupCoefMultiplier": 1,
+      "manualSpeedupCoefMultiplier": 1,
+      "autoSpeedupCoefMultiplier": 1,
+      "speedupCoef": 0.977068,
       "timeMs": 121500,
       "lane": 3,
-      "baseSpeedupCoef": 0,
-      "densitySpeedupCoefMultiplier": 0,
-      "rampSpeedupCoefMultiplier": 0,
-      "manualSpeedupCoefMultiplier": 0,
-      "autoSpeedupCoefMultiplier": 0,
-      "speedupCoef": 0,
-      "durationMs": 225
+      "durationMs": 0
     }
   ],
   "autoCoef": {
