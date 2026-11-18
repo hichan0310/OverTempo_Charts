@@ -7,7 +7,7 @@
     "mapper": "hichan",
     "previewStartMs": 0,
     "previewEndMs": 15000,
-    "extra": "Easier chart derived from Change_the_Game_Draft.4k-speedcoef.json by removing notes only (min gap 0.75 beat, off-beat 16ths dropped, chords reduced); lanes and timings of kept notes unchanged.",
+    "extra": "Easier chart derived from Change_the_Game_Draft.4k-speedcoef.json: notes thinned by beat strength (min gap 0.75 beat), then 5 taps moved to other lanes to remove short jacks and one-hand runs; holds unchanged.",
     "coverDataUrl": "/api/media?song=Change%20the%20Game&file=changethegame_cover.png",
     "audioFileName": "Change the Game (Short).wav"
   },
@@ -1223,7 +1223,7 @@
     },
     {
       "timeMs": 23700,
-      "lane": 2,
+      "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 0.704542,
       "rampSpeedupCoefMultiplier": 1.006751,
@@ -1278,7 +1278,7 @@
     },
     {
       "timeMs": 25200,
-      "lane": 2,
+      "lane": 1,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 0.699554,
       "rampSpeedupCoefMultiplier": 1.007267,
@@ -1619,7 +1619,7 @@
     },
     {
       "timeMs": 33600,
-      "lane": 1,
+      "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 0.657817,
       "rampSpeedupCoefMultiplier": 1.010263,
@@ -4105,7 +4105,7 @@
     },
     {
       "timeMs": 97800,
-      "lane": 1,
+      "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 0.923986,
       "rampSpeedupCoefMultiplier": 1.036989,
@@ -4721,7 +4721,7 @@
     },
     {
       "timeMs": 112800,
-      "lane": 1,
+      "lane": 2,
       "baseSpeedupCoef": 1,
       "densitySpeedupCoefMultiplier": 0.83049,
       "rampSpeedupCoefMultiplier": 1.043897,
