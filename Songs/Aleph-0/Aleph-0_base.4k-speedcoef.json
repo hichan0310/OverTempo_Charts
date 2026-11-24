@@ -954,7 +954,7 @@
     {
       "type": "speed",
       "timeMs": 7680,
-      "durationMs": 1560,
+      "durationMs": 1200,
       "curve": [
         {
           "t": 0,
@@ -965,8 +965,8 @@
         {
           "t": 1,
           "v": 1,
-          "inTan": 2,
-          "outTan": 2
+          "inTan": -0.16837,
+          "outTan": -0.16837
         }
       ],
       "group": "그룹1",
@@ -977,7 +977,21 @@
     {
       "type": "offset",
       "timeMs": 8160,
-      "durationMs": 960,
+      "durationMs": 720,
+      "curve": [
+        {
+          "t": 0,
+          "v": 0,
+          "inTan": 1,
+          "outTan": 1
+        },
+        {
+          "t": 1,
+          "v": 1,
+          "inTan": 0.11208,
+          "outTan": 0.11208
+        }
+      ],
       "group": "그룹1",
       "value": 0,
       "ease": "linear",
@@ -11665,7 +11679,7 @@
   ],
   "autoCoef": {
     "schemaVersion": 1,
-    "generatedAt": "2026-11-23T17:12:23.050Z",
+    "generatedAt": "2026-11-24T06:49:23.727Z",
     "description": "Final speedupCoef = baseSpeedupCoef * autoSpeedupCoefMultiplier. Load restores editable coef 0/1 from baseSpeedupCoef.",
     "settings": {
       "sigmaMs": 1600,

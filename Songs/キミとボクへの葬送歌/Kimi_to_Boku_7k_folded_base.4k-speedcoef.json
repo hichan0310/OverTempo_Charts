@@ -9,7 +9,29 @@
     "previewEndMs": 15000,
     "extra": "Imported from BMS _01_exc_b.bms; channels 11,12,13,14,15,18,19; folded 7K->4K (510->505 notes; 0 duplicate taps, 4 overlapping holds, 1 taps inside holds collapsed)",
     "coverDataUrl": "/api/media?song=%E3%82%AD%E3%83%9F%E3%81%A8%E3%83%9C%E3%82%AF%E3%81%B8%E3%81%AE%E8%91%AC%E9%80%81%E6%AD%8C&file=jangsongga_cover.png",
-    "audioFileName": "Kimi_to_Boku_official_BMS.wav"
+    "audioFileName": "Kimi_to_Boku_official_BMS.wav",
+    "argReveal": {
+      "preset": "shatter",
+      "lines": [
+        {
+          "text": "NOW",
+          "size": 84,
+          "y": 55,
+          "assembleAt": 5.3,
+          "completeAt": 6.9
+        },
+        {
+          "text": "THE END OF THIS JOURNEY IS HERE",
+          "size": 40,
+          "y": -48,
+          "assembleAt": 7.9,
+          "completeAt": 9.5
+        }
+      ],
+      "whiteStart": 11.5,
+      "duration": 14.5,
+      "musicStartAt": 5.3
+    }
   },
   "difficulty": {
     "name": "official",
@@ -27,7 +49,9 @@
   },
   "editorSettings": {
     "encryptionEnabled": false,
-    "argId": ""
+    "argId": "",
+    "fxGroupBlocks": [],
+    "fxEmpty": []
   },
   "preview": {
     "startMs": 0,
@@ -77,6 +101,8 @@
       "effect": "delta"
     }
   ],
+  "effects": [],
+  "images": [],
   "notes": [
     {
       "timeMs": 2182,
@@ -10289,7 +10315,7 @@
   ],
   "autoCoef": {
     "schemaVersion": 1,
-    "generatedAt": "2026-10-31T10:31:45.910Z",
+    "generatedAt": "2026-11-24T06:49:41.315Z",
     "description": "Final speedupCoef = baseSpeedupCoef * autoSpeedupCoefMultiplier. Load restores editable coef 0/1 from baseSpeedupCoef.",
     "settings": {
       "sigmaMs": 1600,
