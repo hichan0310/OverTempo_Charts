@@ -4,7 +4,7 @@ Folder layout (the current one):
     <projects>/OverTempo_Charts            charts repository (this editor lives in Tools/chart-editor)
     <projects>/OverTempo_Launcher          launcher repository; its `internal` branch is what Netlify serves
 Deploying copies `Tools/build_manifest.py` output for one charts commit into `dev/songs` and
-`dev/manifest.json` on `internal` (same layout as OverTempo/ci/release.py charts-dev), pushes it,
+`dev/manifest.json` on `internal` (same layout as OverTempo_Launcher/deploy charts-dev), pushes it,
 then waits for Netlify to serve the new manifest.
 
 The build always runs from a clean temporary worktree of the chosen commit, so uncommitted work in

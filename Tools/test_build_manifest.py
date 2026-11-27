@@ -149,6 +149,61 @@ class SpeedcoefValidationTests(unittest.TestCase):
         self.assertEqual(json.loads(chart.read_text())["meta"]["coverDataUrl"], "data:image/png;base64,abc")
 
 
+class ArgSwitchTests(unittest.TestCase):
+    def build(self, arg_encryption):
+        temporary = tempfile.TemporaryDirectory()
+        self.addCleanup(temporary.cleanup)
+        root = Path(temporary.name)
+        song = root / "Songs" / "End Time"
+        (song / "reveal").mkdir(parents=True)
+        arg_id = "a" * 32
+        (song / "song.patch.json").write_text(json.dumps({
+            "id": arg_id, "title": "End Time", "artist": "Cres.", "enabled": True, "encrypted": True,
+            "publicTitle": "?", "publicArtist": "?",
+            "encryptedAssets": {"release.ogg": "audio.ogg", "cover.png": "cover.png"}}))
+        (song / f"{arg_id}.otchart").write_text(json.dumps({
+            "schemaVersion": 1, "argId": arg_id, "cipher": "AES-256-CBC+HMAC-SHA256",
+            "kdf": "PBKDF2-HMAC-SHA256", "iterations": 600000, "salt": "AA==", "iv": "AA==",
+            "ciphertext": "AA==", "tag": "AA=="}))
+        (song / "End_Time.4k-speedcoef.json").write_text(json.dumps(
+            {"meta": {"title": "End Time", "audioFileName": "release.ogg", "coverDataUrl": "/api/x"},
+             "notes": [{"timeMs": 0, "lane": 0}]}))
+        (song / "End_Time.4k-speedcoef.json.bak").write_text("backup")
+        (song / "release.ogg").write_bytes(b"ogg")
+        (song / "cover.png").write_bytes(b"png")
+        (song / "reveal" / "reveal.js").write_text("script")
+        (root / "release.json").write_text(json.dumps({"argEncryption": arg_encryption}))
+        with patch.object(build_manifest, "git", return_value="b" * 40), \
+             patch("sys.argv", ["build_manifest.py", "--repo", str(root)]):
+            self.assertEqual(build_manifest.main(), 0)
+        manifest = json.loads((root / "output" / "manifest.json").read_text())
+        song_entry = manifest["songs"][0]
+        with zipfile.ZipFile(root / "output" / "songs" / song_entry["file"]) as package:
+            return manifest, song_entry, sorted(package.namelist()), package.read(f"{arg_id}/song.patch.json")
+
+    def test_public_arg_ships_plain_chart_and_release_media_only(self):
+        manifest, entry, names, patch_json = self.build(False)
+        arg_id = "a" * 32
+        self.assertFalse(manifest["argEncryption"])
+        self.assertEqual((entry["title"], entry["artist"], entry["encrypted"]), ("End Time", "Cres.", False))
+        self.assertNotEqual(entry["contentHash"], "b" * 40)
+        self.assertEqual(names, [f"{arg_id}/End_Time.4k-speedcoef.json", f"{arg_id}/cover.png",
+                                 f"{arg_id}/release.ogg", f"{arg_id}/song.patch.json"])
+        self.assertNotIn(b"encrypted", patch_json)
+
+    def test_encrypted_arg_keeps_only_envelope(self):
+        manifest, entry, names, _ = self.build(True)
+        arg_id = "a" * 32
+        self.assertTrue(manifest["argEncryption"])
+        self.assertEqual((entry["title"], entry["encrypted"], entry["contentHash"]), ("?", True, "b" * 40))
+        self.assertEqual(names, [f"{arg_id}/{arg_id}.otchart", f"{arg_id}/audio.ogg",
+                                 f"{arg_id}/cover.png", f"{arg_id}/song.patch.json"])
+
+    def test_missing_switch_encrypts(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            self.assertTrue(build_manifest.arg_encryption(Path(temporary)))
+
+
 class CreatorReleaseTests(unittest.TestCase):
     def test_creator_release_excludes_arg_assets_and_retires_previous_copy(self):
         with tempfile.TemporaryDirectory() as temporary:

@@ -1,0 +1,333 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>곡 고르기</title></head><body>
+<style>
+:root{--bg:#f6f5f2;--panel:#ffffff;--ink:#1d1d1f;--sub:#5f6168;--line:#e2e0da;--accent:#3b5bdb;--like:#1f9d55;--maybe:#c27c0e;--no:#b23b3b;--chip:#efeee9;--warn:#fff4e0;--warnink:#7a4b00;--info:#e8f0ff;--infoink:#23408e;--okbg:#e5f6ec;--okink:#16673a;--condbg:#fdf3dc;--condink:#7a5200;--askbg:#eef0f5;--askink:#3a4256;--nobg:#fbe7e7;--noink:#8f2525;--quote:#f3f2ee}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141518;--panel:#1d1f24;--ink:#ecedf0;--sub:#a3a6ae;--line:#30333a;--accent:#8aa4ff;--like:#46c47e;--maybe:#e6a43a;--no:#e06b6b;--chip:#2a2d34;--warn:#3a2d14;--warnink:#f2cf8c;--info:#1f2a44;--infoink:#b8c9ff;--okbg:#16301f;--okink:#8fe0ae;--condbg:#33290f;--condink:#f0cf7a;--askbg:#262a33;--askink:#c3c9d6;--nobg:#3a1b1b;--noink:#f2a3a3;--quote:#24262c}}
+:root[data-theme="dark"]{--bg:#141518;--panel:#1d1f24;--ink:#ecedf0;--sub:#a3a6ae;--line:#30333a;--accent:#8aa4ff;--like:#46c47e;--maybe:#e6a43a;--no:#e06b6b;--chip:#2a2d34;--warn:#3a2d14;--warnink:#f2cf8c;--info:#1f2a44;--infoink:#b8c9ff;--okbg:#16301f;--okink:#8fe0ae;--condbg:#33290f;--condink:#f0cf7a;--askbg:#262a33;--askink:#c3c9d6;--nobg:#3a1b1b;--noink:#f2a3a3;--quote:#24262c}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 system-ui,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif}
+a{color:var(--accent)}
+.wrap{max-width:940px;margin:0 auto;padding:20px 16px 60px}
+h1{font-size:22px;margin:0 0 4px}
+.lead{color:var(--sub);margin:0 0 16px;font-size:14px}
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px;margin-bottom:12px}
+select,input[type=search],button{font:inherit;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:6px 10px;min-height:36px}
+input[type=search]{flex:1 1 160px;min-width:0}
+button{cursor:pointer}
+button:hover{border-color:var(--accent)}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.tabs button{white-space:nowrap}
+.tabs button[aria-pressed=true]{background:var(--accent);color:#fff;border-color:var(--accent)}
+.stats{display:flex;flex-wrap:wrap;gap:14px;font-size:13px;color:var(--sub);margin:0 0 12px}
+.stats b{color:var(--ink)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px}
+.pos{font-size:13px;color:var(--sub);display:flex;justify-content:space-between;gap:8px;align-items:center}
+.artist{font-size:14px;color:var(--accent);font-weight:600;margin-top:10px}
+.title{font-size:26px;font-weight:700;margin:2px 0 6px;overflow-wrap:anywhere}
+.meta{font-size:13px;color:var(--sub)}
+.yt{display:inline-flex;align-items:center;gap:8px;margin:14px 0 4px;padding:12px 18px;border-radius:10px;background:#d93025;color:#fff;text-decoration:none;font-weight:600}
+.yt.search{background:var(--chip);color:var(--ink);border:1px solid var(--line)}
+.v{display:inline-block;font-size:13px;font-weight:700;border-radius:999px;padding:3px 10px}
+.v-ok{background:var(--okbg);color:var(--okink)}.v-cond{background:var(--condbg);color:var(--condink)}.v-ask{background:var(--askbg);color:var(--askink)}.v-no{background:var(--nobg);color:var(--noink)}
+.verdict{margin-top:16px;border-radius:10px;padding:12px 14px}
+.verdict p{margin:6px 0 0}
+.sec{margin-top:16px}
+.sec h3{font-size:12px;letter-spacing:.04em;color:var(--sub);margin:0 0 6px;font-weight:600;display:flex;justify-content:space-between;gap:8px;align-items:center}
+.ev{border:1px solid var(--line);border-radius:8px;padding:10px 12px;margin-bottom:8px}
+.ev .lbl{font-size:13px;font-weight:600}
+.ev .url{font-size:12px;overflow-wrap:anywhere}
+.ev blockquote{margin:6px 0 0;padding:8px 10px;background:var(--quote);border-left:3px solid var(--line);font-size:13px;overflow-wrap:anywhere;white-space:pre-wrap}
+ul.plain{margin:0;padding-left:18px;font-size:14px}
+ul.plain li{margin:3px 0;overflow-wrap:anywhere}
+.warnbox{background:var(--warn);color:var(--warnink);border-radius:8px;padding:8px 12px;font-size:14px}
+.credit{font-family:ui-monospace,Menlo,monospace;font-size:12px;background:var(--quote);border-radius:6px;padding:8px 10px;overflow-wrap:anywhere}
+.small{font-size:12px;padding:3px 8px;min-height:28px}
+.marks{display:grid;grid-template-columns:auto 1fr 1fr 1fr auto;gap:8px;margin-top:20px}
+.marks button{min-height:48px;font-weight:600}
+.m-like[aria-pressed=true]{background:var(--like);color:#fff;border-color:var(--like)}
+.m-maybe[aria-pressed=true]{background:var(--maybe);color:#fff;border-color:var(--maybe)}
+.m-no[aria-pressed=true]{background:var(--no);color:#fff;border-color:var(--no)}
+.keys{font-size:12px;color:var(--sub);margin-top:8px}
+.list{background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.row{display:grid;grid-template-columns:1fr auto;gap:8px;padding:10px 12px;border-top:1px solid var(--line);align-items:center}
+.row:first-child{border-top:0}
+.grp{background:var(--chip);padding:10px 12px;border-top:1px solid var(--line);font-size:15px;display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline}
+.grp:first-child{border-top:0}
+.grp{scroll-margin-top:8px}
+.anav{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.anav a{background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:3px 10px;font-size:13px;text-decoration:none;color:var(--ink)}
+.anav a span{color:var(--sub);font-size:11px}
+.grp span{font-size:12px;color:var(--sub)}
+.rk{display:inline-block;min-width:22px;margin-right:6px;font-size:12px;color:var(--sub);font-weight:600}
+.row .t{font-weight:600;overflow-wrap:anywhere}
+.row .s{font-size:12px;color:var(--sub)}
+.row .btns{display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end}
+.row .btns button{min-height:32px;padding:4px 8px;font-size:13px}
+.more{display:block;width:100%;margin-top:8px}
+.notes{margin-top:36px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px 20px;font-size:14px}
+.notes h2{font-size:17px;margin:0 0 8px}
+.notes h3{font-size:14px;margin:16px 0 4px}
+.notes ul{margin:4px 0;padding-left:20px}
+.notes li{margin:3px 0}
+.save{font-size:12px;color:var(--sub)}
+.empty{padding:30px;text-align:center;color:var(--sub)}
+@media (max-width:560px){.title{font-size:21px}.marks{grid-template-columns:1fr 1fr 1fr}.card{padding:16px}.row{grid-template-columns:1fr}.row .btns{justify-content:flex-start}}
+</style>
+<div class="wrap">
+<h1>OverTempo 수록 후보 곡 — 곡별 저작권 판정</h1>
+<p class="lead">곡마다 사용 가능 여부를 판정하고, 판정 근거(작곡가 본인이 공개한 라이선스 원문과 링크), 제가 확인하지 못한 부분, 그 곡이 어디서 유명해졌는지를 붙였습니다. 근거 블록의 "근거 복사" 버튼을 누르면 링크와 원문이 그대로 복사됩니다. 체크(좋아요·보류·패스)는 이 컴퓨터의 picks.json에 자동 저장됩니다. 전체 __TOTAL__곡 중 3분이 넘는 곡이 __CUT__곡입니다. 기본은 "3분 이하만"으로 보이고, 길이 필터에서 "3분 넘는 곡만"이나 "길이 전체"로 바꿔 볼 수 있습니다. 위의 개수(판정·체크)는 지금 길이 필터에 맞는 곡 기준입니다.</p>
+
+<div class="bar">
+ <select id="fVerdict" aria-label="판정">
+  <option value="">판정 전체</option>
+  <option value="ok">✅ 근거 있음 — 조건 지키면 사용 가능</option>
+  <option value="cond">🟡 근거 있음 — 추가 조건/확인 필요</option>
+  <option value="usable">✅+🟡 공개 근거가 있는 곡만</option>
+  <option value="ask">⚪ 공개 허락 없음 — 직접 허락 필요</option>
+  <option value="no">⛔ 사용 불가/거절 기록</option>
+ </select>
+ <select id="fArtist" aria-label="아티스트"></select>
+ <select id="fMark" aria-label="체크 상태">
+  <option value="todo">아직 안 본 곡</option>
+  <option value="">체크 상태 전체</option>
+  <option value="like">좋아요</option>
+  <option value="maybe">보류</option>
+  <option value="no">패스</option>
+ </select>
+ <select id="fLen" aria-label="길이">
+  <option value="short">3분 이하만</option>
+  <option value="long">3분 넘는 곡만</option>
+  <option value="">길이 전체</option>
+ </select>
+ <select id="fSort" aria-label="정렬">
+  <option value="group">작곡가별 → 유명한 순</option>
+  <option value="verdict">판정 좋은 순 → 유명한 순</option>
+  <option value="fame">유명한 순</option>
+  <option value="artist">아티스트 순</option>
+ </select>
+ <input type="search" id="fText" placeholder="제목 검색">
+</div>
+
+<div class="tabs"><button id="tCard" aria-pressed="true">한 곡씩 넘기기</button><button id="tList" aria-pressed="false">목록으로 보기</button><button id="copyLikes">좋아요 곡 근거·크레딧 전체 복사</button></div>
+<div class="stats" id="stats"></div>
+<div id="view"></div>
+
+<section class="notes">
+<h2>판정 기준과 조사 방법, 못 찾은 것</h2>
+<h3>유명도 순서</h3>
+<ul>
+ <li>곡마다 YouTube 조회수, 그 곡을 쓴 Geometry Dash 레벨의 좋아요 수(×20으로 환산), Geometry Dash 공식 레벨 곡 여부(5천만 회급으로 취급) 중 가장 큰 값으로 순서를 매겼습니다.</li>
+ <li>"작곡가별 → 유명한 순"에서는 가장 유명한 곡이 더 유명한 작곡가부터 보여 줍니다.</li>
+ <li>재생목록에서 가져와 조회수가 없는 곡은 GD 레벨 기록이 없으면 그 작곡가 안에서 뒤쪽에 놓입니다.</li>
+</ul>
+<h3>판정 기준</h3>
+<ul>
+ <li><b>✅ 근거 있음 — 조건 지키면 사용 가능</b>: 작곡가 본인이 공개한 라이선스나 공식 사용 안내가 리듬게임 수록을 막지 않는 경우입니다. 근거 블록의 링크와 원문을 그대로 제출하면 됩니다.
+  <ul>
+   <li>CC BY, CC BY-NC (Newgrounds·incompetech)</li>
+   <li>Waterflame 공식 사이트의 "대부분 곡 비영리 무료(공식 OST 제외)" 안내</li>
+   <li>Camellia 본인의 "Tera I/O 곡은 공식 개발자도 무료" 글</li>
+  </ul></li>
+ <li><b>🟡 근거 있음 — 추가 조건/확인 필요</b>: 공개 허락은 있지만 지켜야 할 조건이 더 있거나, 일부를 제가 확인하지 못한 경우입니다.
+  <ul>
+   <li>CC BY-SA / BY-NC-SA: 아래 "싱크" 설명대로 그 곡의 채보를 같은 CC 라이선스로 공개해야 합니다.</li>
+   <li>Cres. 약관: Bandcamp 음원, 128kbps 이하, 원곡 그대로 사용, 완전 비영리여야 합니다.</li>
+   <li>Frums 시트 ◯: 게임 안에 음원 파일을 넣는 것이 "단순 재업로드 금지"에 걸리는지 명시가 없습니다.</li>
+  </ul></li>
+ <li><b>⚪ 공개 허락 없음 — 직접 허락 필요</b>: 다른 개발자의 게임 수록을 허락하는 공개 문서를 찾지 못한 경우입니다. 다음도 여기에 넣었습니다.
+  <ul>
+   <li>변경금지(ND) 라이선스인 곡</li>
+   <li>"연락 달라"는 문구만 있는 곡</li>
+   <li>t+pazolite 가이드라인상 개발자는 연락 폼으로 허락을 받아야 하는 곡</li>
+   <li>다른 리듬게임 수록이나 리믹스라서 다른 권리자가 끼어 있는 곡</li>
+  </ul>
+  이 곡들을 쓰려면 작곡가의 답장(메일)을 근거로 제출해야 합니다.</li>
+ <li><b>⛔ 사용 불가/거절 기록</b>: 작곡가나 레이블이 거절한 기록이 있는 곡입니다. Monstercat 발매곡, Frums 시트에서 비허용인 곡, 여러 곡을 모은 영상이 들어갑니다.</li>
+</ul>
+<h3>CC 라이선스와 리듬게임 ("싱크" 문제)</h3>
+<ul>
+ <li>Newgrounds 곡들은 대부분 CC 3.0 라이선스입니다. CC 3.0 법률 원문 1조 a항은 음악을 움직이는 영상과 시간에 맞춰 붙이는 것("synching")을 2차적 저작물(Adaptation)로 봅니다. 노트가 음악에 맞춰 내려오는 리듬게임 채보도 여기에 해당한다고 보수적으로 판단했습니다.</li>
+ <li>그래서 <b>ND(변경금지)</b> 곡은 허락 없이 쓸 수 없습니다. <b>SA(동일조건)</b> 곡은 그 곡의 채보·연출 데이터를 같은 CC 라이선스로 공개해야 합니다.</li>
+ <li><b>NC(비영리)</b> 곡은 게임을 무료로 배포하고 광고, 유료 아이템, 후원 보상이 없어야 합니다. 나중에 유료화하거나 광고를 붙이면 그 곡들은 따로 허락받아야 합니다.</li>
+ <li>CC 라이선스는 작곡가가 Newgrounds에 올린 <u>그 파일</u>에 붙어 있습니다. 음원은 반드시 근거 링크의 Newgrounds 페이지에서 받으세요. YouTube 영상과 버전이 다를 수 있는 곡은 "확인 못한 부분"에 적어 두었습니다.</li>
+</ul>
+<h3>조사한 자료</h3>
+<ul>
+ <li><b>Newgrounds Audio Portal</b>: 작곡가 17명의 업로드 목록 전체를 수집했고, 우리 곡 목록과 이름이 맞는 곡마다 곡 페이지의 "Licensing Terms" 원문과 CC 링크를 저장했습니다.</li>
+ <li><b>incompetech</b>: Kevin MacLeod 공식 곡 목록(ISRC 포함)과 라이선스 안내.</li>
+ <li><b>작곡가 공식 문서</b>
+  <ul>
+   <li>Waterflame 공식 사이트 "Royalty-Free / Terms for Music Use": 대부분 곡은 비영리면 크레딧과 채널 링크만으로 무료이고, 공식 OST 곡은 예외입니다.</li>
+   <li>Camellia 공식 사용 가이드라인(cametek.jp/songuse_en.html)과 본인 X 글: Tera I/O 곡은 공식 개발자도 무료입니다.</li>
+   <li>Kobaryo 공식 가이드라인(hitnex.net/guideline/en)</li>
+   <li>Teminite 공식 Licensing 페이지</li>
+   <li>Dex Arson Bandcamp 안내 문구</li>
+   <li>Cres. 공식 이용 약관(Notion)</li>
+   <li>Frums 곡별 시트</li>
+   <li>t+pazolite 공식 가이드라인</li>
+  </ul></li>
+ <li><b>YouTube 영상 설명란</b>: 작곡가 공식 채널 영상의 설명란에서 사용 허락이나 금지 문구를 찾아 원문 그대로 근거에 넣었습니다.</li>
+ <li><b>유명해진 곳</b>
+  <ul>
+   <li>GDBrowser API로 그 Newgrounds 곡을 쓴 Geometry Dash 레벨 중 좋아요가 가장 많은 레벨을 찾았습니다(좋아요 2만 이상만 표시).</li>
+   <li>Geometry Dash 공식 레벨 곡 목록, osu! Featured Artist 곡 목록, RemyWiki의 BEMANI 수록 기록, Newgrounds 청취수·평점, YouTube 조회수도 함께 표시했습니다.</li>
+  </ul></li>
+ <li><b>Afterbeat 인증 아티스트 목록</b>: 다른 리듬게임 커스텀 레벨에 우호적이라는 정황 자료로만 표시했습니다. Afterbeat 인증은 "Afterbeat 커스텀 레벨용" 허락이라 OverTempo 수록 근거로 제출하면 안 됩니다.</li>
+</ul>
+<h3>아무리 찾아도 안 나온 것</h3>
+<ul>
+ <li><b>Camellia, Kobaryo</b>: 공식 가이드라인을 찾아 읽었습니다.
+  <ul>
+   <li>두 사람 모두 "유저가 만드는 비공식 커스텀 채보"는 허락 없이 허용합니다.</li>
+   <li>"게임 개발자가 공식 수록·게임에 음원 동봉"하는 경우는 메일로 연락하라고 명시되어 있습니다. 그래서 Camellia는 Tera I/O 10곡만 ✅이고 나머지는 ⚪입니다.</li>
+   <li>⚪ 곡은 메일 답장을 받으면 그것이 근거가 됩니다.</li>
+  </ul></li>
+ <li><b>Kurokotei, Kirara Magic, MDK, Nitro Fun, DM DOKURO, Creo, F-777, Xtrullor</b>: 다른 개발자의 게임 수록을 허락하는 공식 사이트 문서를 찾지 못했습니다(사이트가 없거나 접속 오류). 그래서 곡별로 Newgrounds CC 라이선스와 영상 설명란 문구만 근거로 썼습니다.</li>
+ <li><b>Boom Kitty 저작권 안내 페이지</b>(boomkitty.fm/copyright): 접속이 거부(403)돼 읽지 못했습니다.</li>
+ <li><b>Arcaea, Muse Dash, Phigros 등 모바일 리듬게임 수록 목록</b>: 팬 위키가 Cloudflare 봇 차단에 걸려 읽지 못했습니다. 그래서 수록 여부는 영상 제목·설명에 게임 이름이 있는 경우에만 경고로 표시했습니다.</li>
+ <li><b>Cres. 곡별 Bandcamp 발매일</b>: 곡별로 확인하지 못했습니다. Gargoyle, Rarmil Battle은 공식 영상도 없습니다.</li>
+ <li><b>YouTube 영상 설명란</b>: YouTube가 자동 접속을 자주 막아 천천히 수집했습니다. "직접 허락 필요" 곡은 거의 다 읽었고, 나머지 곡은 일부만 읽었습니다. 설명란 문구 판정 기준은 다음과 같습니다.
+  <ul>
+   <li>"YouTube·Twitch 영상용 무료"라는 문구는 게임 수록 허락으로 치지 않았습니다.</li>
+   <li>"free to use"처럼 매체를 한정하지 않은 문구나 "비영리 사용 허용" 문구는 🟡로 올렸습니다.</li>
+   <li>"℗ … under exclusive license"(레이블 독점) 표기가 있으면 ⚪로 내렸습니다.</li>
+  </ul></li>
+ <li><b>판례</b>: 리듬게임 채보가 CC의 "Adaptation"에 해당하는지 확정한 판례는 찾지 못했습니다. 위 판정은 CC 원문 문장에 따른 보수적 해석입니다.</li>
+ <li><b>제외한 작곡가</b>: Sakuzyo, Laur, Feryquitous, nora2r는 공개 사용 정책을 찾지 못해 목록에서 뺐습니다.</li>
+</ul>
+<h3>주의</h3>
+<ul>
+ <li><b>길이 기준</b>: YouTube 영상 길이로 3분(3:00) 초과 여부를 나눴습니다(3:00은 3분 이하). Newgrounds 원본이나 앨범 버전은 길이가 다를 수 있습니다. Cres.의 Afternoon Tea, Gargoyle, Rarmil Battle은 영상이 없고 Bandcamp도 봇 차단에 걸려 길이를 확인하지 못해 "3분 이하" 쪽에 넣어 두었습니다("길이 확인 못함").</li>
+ <li>저는 변호사가 아닙니다. 공개 문서 원문을 근거로 판단했고, 원문과 링크를 그대로 붙였으니 심사 제출 전에 원문을 한 번 열어 확인하세요.</li>
+ <li>공동 작업·피처링 곡은 업로드한 사람이 공동 작곡자 전원을 대표하는지 확인할 수 없어 따로 표시했습니다.</li>
+ <li>조회수와 좋아요 수는 2026년 11월 17일 기준입니다.</li>
+</ul>
+</section>
+</div>
+
+<script type="application/json" id="songs">__SONGS__</script>
+<script>
+const SONGS=JSON.parse(document.getElementById('songs').textContent);
+const VERD={ok:['✅ 근거 있음 — 조건 지키면 사용 가능','v-ok'],cond:['🟡 근거 있음 — 추가 조건/확인 필요','v-cond'],ask:['⚪ 공개 허락 없음 — 직접 허락 필요','v-ask'],no:['⛔ 사용 불가/거절 기록','v-no']};
+const VORDER={ok:0,cond:1,ask:2,no:3};
+const MARK={like:'좋아요',maybe:'보류',no:'패스'};
+function hash(s){let h=2166136261;for(const c of s){h^=c.codePointAt(0);h=Math.imul(h,16777619)}return (h>>>0).toString(36)}
+function famescore(s){let f=s.views||0;for(const x of s.fame){const m=x.text.match(/좋아요 ([\d,]+)/);if(m)f=Math.max(f,+m[1].replace(/,/g,'')*20);if(/공식 레벨/.test(x.text))f=Math.max(f,5e7)}return f}
+SONGS.forEach(s=>{s.id=hash(s.artist+'|'+s.title);s.fs=famescore(s)});
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let picks={},mode='card',cur=null,listLimit=80,saveState='',dbDoc=null;
+
+// ---- persistence: local server (picks.json next to server.py)
+picks={};
+let writing=false,dirty=false,timer=null;
+function scheduleSave(){dirty=true;clearTimeout(timer);timer=setTimeout(flush,400);setSave('저장 중…')}
+async function flush(){if(writing||!dirty)return;writing=true;dirty=false;
+ try{const r=await fetch('/api/picks',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({picks})});if(!r.ok)throw 0;setSave('저장됨 (picks.json)')}catch(e){setSave('저장 실패 — 서버가 꺼졌는지 확인하세요');dirty=true}
+ writing=false;if(dirty)setTimeout(flush,2000)}
+function setSave(t){saveState=t;const el=$('saveState');if(el)el.textContent=t}
+window.addEventListener('pagehide',()=>{if(dirty||timer){try{fetch('/api/picks',{method:'PUT',keepalive:true,headers:{'Content-Type':'application/json'},body:JSON.stringify({picks})})}catch{}}});
+// ---- filters
+const artists=[...new Set(SONGS.map(s=>s.artist))];
+$('fArtist').innerHTML='<option value="">아티스트 전체 ('+artists.length+'명)</option>'+artists.map(a=>{const n=SONGS.filter(s=>s.artist===a),u=n.filter(s=>s.verdict==='ok'||s.verdict==='cond').length;return `<option value="${esc(a)}">${esc(a)} (${n.length}곡, 근거 있음 ${u})</option>`}).join('');
+const FIELDS=['fVerdict','fArtist','fMark','fLen','fSort','fText'];
+function lenOk(s){const l=$('fLen').value;return !l||(l==='long'?s.long:!s.long)}
+const PREF='overtempo-song-picker-ui3';
+try{const u=JSON.parse(localStorage.getItem(PREF)||'{}');for(const k of FIELDS)if(u[k]!=null)$(k).value=u[k];if(u.mode)mode=u.mode}catch{}
+function savePrefs(){try{const u={mode};for(const k of FIELDS)u[k]=$(k).value;localStorage.setItem(PREF,JSON.stringify(u))}catch{}}
+function filtered(){
+ const v=$('fVerdict').value,a=$('fArtist').value,m=$('fMark').value,q=$('fText').value.trim().toLowerCase();
+ let r=SONGS.filter(s=>lenOk(s)&&(!v||(v==='usable'?(s.verdict==='ok'||s.verdict==='cond'):s.verdict===v))&&(!a||s.artist===a)&&(!q||(s.title+' '+s.artist).toLowerCase().includes(q))
+  &&(m===''?true:m==='todo'?!picks[s.id]:picks[s.id]===m));
+ const so=$('fSort').value;
+ if(so==='group'){const top={};for(const s of r)top[s.artist]=Math.max(top[s.artist]||0,s.fs);r.sort((x,y)=>(top[y.artist]-top[x.artist])||x.artist.localeCompare(y.artist)||y.fs-x.fs);const rank={},cnt={};for(const s of r){rank[s.id]=(cnt[s.artist]=(cnt[s.artist]||0)+1)}for(const s of r){s.rank=rank[s.id];s.rankOf=cnt[s.artist]}}
+ else if(so==='verdict')r.sort((x,y)=>VORDER[x.verdict]-VORDER[y.verdict]||y.fs-x.fs);
+ else if(so==='fame')r.sort((x,y)=>y.fs-x.fs);
+ else r.sort((x,y)=>x.artist.localeCompare(y.artist)||y.fs-x.fs);
+ return r}
+for(const id of FIELDS)$(id).addEventListener('input',()=>{listLimit=80;savePrefs();render()});
+
+// ---- marking
+function mark(id,v){if(picks[id]===v)delete picks[id];else picks[id]=v;scheduleSave()}
+function markCurrent(v){if(!cur)return;const list=filtered(),i=list.findIndex(s=>s.id===cur);const willHide=$('fMark').value==='todo';
+ mark(cur,v);
+ if(picks[cur]){const after=filtered();const next=willHide?after[Math.min(i,after.length-1)]:list[i+1];cur=next?next.id:cur}
+ render()}
+function step(d){const list=filtered();if(!list.length)return;let i=list.findIndex(s=>s.id===cur);i=i<0?0:Math.max(0,Math.min(list.length-1,i+d));cur=list[i].id;render()}
+function ytHref(s){return s.video?'https://www.youtube.com/watch?v='+s.video:'https://www.youtube.com/results?search_query='+encodeURIComponent(s.artist+' '+s.title)}
+function evText(s){
+ const L=[`곡: ${s.artist} - ${s.title}`,`판정: ${VERD[s.verdict][0]}`,`판단: ${s.summary}`];
+ s.evidence.forEach((e,i)=>L.push(`근거 ${i+1}: ${e.label}`,`  링크: ${e.url}`,`  원문: ${e.quote}`));
+ if(s.credit)L.push(`크레딧 표기: ${s.credit}`);
+ if(s.unverified.length)L.push('확인 못한 부분: '+s.unverified.join(' / '));
+ if(s.warnings.length)L.push('주의: '+s.warnings.join(' / '));
+ return L.join('\n')}
+async function copyText(t,btn,label){try{await navigator.clipboard.writeText(t);btn.textContent='복사됨'}catch{btn.textContent='복사 실패'}setTimeout(()=>btn.textContent=label,1500)}
+function fmtViews(v){if(!v)return '';if(v>=1e8)return (v/1e8).toFixed(1)+'억회';if(v>=1e4)return Math.round(v/1e4).toLocaleString()+'만회';return v.toLocaleString()+'회'}
+
+function renderStats(list){
+ const vis=SONGS.filter(lenOk);const c={like:0,maybe:0,no:0};vis.forEach(s=>{const v=picks[s.id];if(c[v]!=null)c[v]++});
+ const vc={ok:0,cond:0,ask:0,no:0};vis.forEach(s=>vc[s.verdict]++);
+ $('stats').innerHTML=`<span>현재 조건 <b>${list.length}</b>곡</span><span>✅ ${vc.ok} · 🟡 ${vc.cond} · ⚪ ${vc.ask} · ⛔ ${vc.no}</span><span>좋아요 <b>${c.like}</b> · 보류 <b>${c.maybe}</b> · 패스 <b>${c.no}</b></span><span class="save" id="saveState">${esc(saveState)}</span>`}
+
+function detail(s){
+ const ev=s.evidence.map(e=>`<div class="ev"><div class="lbl">${esc(e.label)}</div><div class="url"><a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.url)}</a></div><blockquote>${esc(e.quote)}</blockquote></div>`).join('')||'<div class="ev">공개된 허락 근거 없음</div>';
+ const fame=s.fame.length?`<ul class="plain">${s.fame.map(f=>`<li>${esc(f.text)}${f.url?` — <a href="${esc(f.url)}" target="_blank" rel="noopener">링크</a>`:''}</li>`).join('')}</ul>`:'<div class="small" style="color:var(--sub)">조사한 자료 안에서 찾은 기록 없음</div>';
+ return `
+  <div class="verdict ${VERD[s.verdict][1]}"><span class="v ${VERD[s.verdict][1]}">${VERD[s.verdict][0]}</span><p>${esc(s.summary)}</p></div>
+  ${s.warnings.length?`<div class="sec"><h3>주의할 점</h3><div class="warnbox"><ul class="plain">${s.warnings.map(w=>`<li>${esc(w)}</li>`).join('')}</ul></div></div>`:''}
+  <div class="sec"><h3><span>판정 근거 (원문 그대로)</span><button class="small" data-copy>근거 복사</button></h3>${ev}</div>
+  <div class="sec"><h3>제가 확인하지 못한 부분</h3>${s.unverified.length?`<ul class="plain">${s.unverified.map(u=>`<li>${esc(u)}</li>`).join('')}</ul>`:'<div class="small" style="color:var(--sub)">없음 — 근거 문서에 필요한 내용이 다 있음</div>'}</div>
+  ${s.credit?`<div class="sec"><h3>게임에 넣을 크레딧 예시</h3><div class="credit">${esc(s.credit)}</div></div>`:''}
+  <div class="sec"><h3>어디서 유명해졌나</h3>${fame}</div>`}
+
+function render(){
+ $('tCard').setAttribute('aria-pressed',mode==='card');$('tList').setAttribute('aria-pressed',mode==='list');
+ const list=filtered();renderStats(list);
+ if(!list.length){$('view').innerHTML='<div class="card empty">조건에 맞는 곡이 없습니다. 필터를 바꿔 보세요.</div>';return}
+ if(mode==='card'){
+  let i=list.findIndex(s=>s.id===cur);if(i<0){i=0;cur=list[0].id}
+  const s=list[i],p=picks[s.id];
+  $('view').innerHTML=`<div class="card">
+   <div class="pos"><span>${i+1} / ${list.length}</span><span class="v ${VERD[s.verdict][1]}">${VERD[s.verdict][0]}</span></div>
+   <div class="artist">${esc(s.artist)}${$('fSort').value==='group'&&s.rank?` <span style="color:var(--sub);font-weight:400">· 이 작곡가 곡 중 유명도 ${s.rank}위 / ${s.rankOf}곡</span>`:''}</div>
+   <div class="title">${esc(s.title)}</div>
+   <div class="meta">${s.video?'채널: '+esc(s.channel):'공식 영상을 찾지 못함'}${s.length?' · 길이 '+s.length:' · 길이 확인 못함'}${s.long?' <b>(3분 초과)</b>':''}${s.views?' · 조회수 '+fmtViews(s.views):''}${p?' · 현재 체크: <b>'+MARK[p]+'</b>':''}</div>
+   <a class="yt${s.video?'':' search'}" href="${ytHref(s)}" target="_blank" rel="noopener">${s.video?'▶ YouTube에서 듣기':'YouTube에서 검색하기'}</a>
+   ${s.ng?` <a href="https://www.newgrounds.com/audio/listen/${s.ng}" target="_blank" rel="noopener">Newgrounds 원본 (라이선스가 붙은 파일)</a>`:''}
+   ${detail(s)}
+   <div class="marks">
+    <button class="nav" data-step="-1" aria-label="이전 곡">←</button>
+    <button class="m-like" data-mark="like" aria-pressed="${p==='like'}">좋아요</button>
+    <button class="m-maybe" data-mark="maybe" aria-pressed="${p==='maybe'}">보류</button>
+    <button class="m-no" data-mark="no" aria-pressed="${p==='no'}">패스</button>
+    <button class="nav" data-step="1" aria-label="다음 곡">→</button>
+   </div>
+   <div class="keys">단축키: 1 좋아요 · 2 보류 · 3 패스 · ←/→ 이동 · Enter YouTube 열기. 체크하면 다음 곡으로 넘어갑니다. 같은 버튼을 다시 누르면 체크가 풀립니다.</div>
+  </div>`;
+  $('view').querySelectorAll('[data-mark]').forEach(b=>b.onclick=()=>markCurrent(b.dataset.mark));
+  $('view').querySelectorAll('[data-step]').forEach(b=>b.onclick=()=>step(+b.dataset.step));
+  const cb=$('view').querySelector('[data-copy]');if(cb)cb.onclick=()=>copyText(evText(s),cb,'근거 복사');
+ }else{
+  const grouped=$('fSort').value==='group';let prevA=null;
+  const shown=grouped?list:list.slice(0,listLimit);
+  const nav=grouped?`<div class="anav">${[...new Map(list.map(s=>[s.artist,s.rankOf])).entries()].map(([a,n])=>`<a href="#a-${hash(a)}">${esc(a)} <span>${n}</span></a>`).join('')}</div>`:'';
+  $('view').innerHTML=nav+`<div class="list">${shown.map(s=>{const p=picks[s.id];const head=grouped&&s.artist!==prevA?`<div class="grp" id="a-${hash(s.artist)}"><b>${esc(s.artist)}</b> <span>${s.rankOf}곡 · 가장 유명한 곡: ${esc(s.title)}</span></div>`:'';prevA=s.artist;return head+`<div class="row" data-id="${s.id}">
+   <div><div class="t">${grouped?`<span class="rk">${s.rank}</span>`:''}<a href="${ytHref(s)}" target="_blank" rel="noopener">${esc(s.title)}</a></div>
+   <div class="s">${esc(s.artist)} · ${s.length||'길이 ?'}${s.long?' (3분 초과)':''}${s.views?' · '+fmtViews(s.views):''} · <span class="v ${VERD[s.verdict][1]}" style="font-size:11px;padding:1px 7px">${VERD[s.verdict][0]}</span></div>
+   <div class="s">${esc(s.summary)}</div>
+   ${s.fame.filter(f=>!/^YouTube 조회수/.test(f.text))[0]?`<div class="s">유명: ${esc(s.fame.filter(f=>!/^YouTube 조회수/.test(f.text))[0].text)}</div>`:''}</div>
+   <div class="btns"><button data-open>자세히</button><button class="m-like" data-m="like" aria-pressed="${p==='like'}">좋아요</button><button class="m-maybe" data-m="maybe" aria-pressed="${p==='maybe'}">보류</button><button class="m-no" data-m="no" aria-pressed="${p==='no'}">패스</button></div></div>`}).join('')}</div>
+   ${!grouped&&list.length>listLimit?`<button class="more" id="more">더 보기 (${list.length-listLimit}곡 남음)</button>`:''}`;
+  $('view').querySelectorAll('.row').forEach(r=>{r.querySelectorAll('[data-m]').forEach(b=>b.onclick=()=>{mark(r.dataset.id,b.dataset.m);render()});r.querySelector('[data-open]').onclick=()=>{cur=r.dataset.id;mode='card';savePrefs();render();window.scrollTo(0,0)}});
+  const more=$('more');if(more)more.onclick=()=>{listLimit+=120;render()};
+ }}
+$('tCard').onclick=()=>{mode='card';savePrefs();render()};
+$('tList').onclick=()=>{mode='list';savePrefs();render()};
+$('copyLikes').onclick=()=>{const t=SONGS.filter(s=>picks[s.id]==='like').map(s=>evText(s)+'\n  YouTube: '+ytHref(s)).join('\n\n----\n\n');copyText(t||'(좋아요한 곡 없음)',$('copyLikes'),'좋아요 곡 근거·크레딧 전체 복사')};
+document.addEventListener('keydown',e=>{if(mode!=='card'||e.target.matches?.('input,select,textarea')||e.ctrlKey||e.metaKey||e.altKey)return;
+ if(e.key==='1')markCurrent('like');else if(e.key==='2')markCurrent('maybe');else if(e.key==='3')markCurrent('no');
+ else if(e.key==='ArrowRight')step(1);else if(e.key==='ArrowLeft')step(-1);
+ else if(e.key==='Enter'){const s=SONGS.find(x=>x.id===cur);if(s)window.open(ytHref(s),'_blank','noopener')}else return;e.preventDefault()});
+fetch('/api/picks').then(r=>r.json()).then(d=>{picks=d.picks||{};setSave('저장됨 (picks.json)');render()}).catch(()=>{setSave('서버에서 체크를 못 읽음');render()});
+</script>
+</body></html>

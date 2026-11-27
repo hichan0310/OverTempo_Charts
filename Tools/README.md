@@ -1,71 +1,17 @@
-# OverTempo_Charts chart-editor minimal timeline-event patch
+# 채보 도구
 
-이 ZIP은 `Tools/chart-editor/index.html` 전체를 새로 만든 파일로 덮어쓰지 않습니다.
-현재 GitHub의 chart editor 원본을 기준으로, 아래 기능만 최소 삽입하는 패처입니다.
+| 도구 | 용도 |
+| --- | --- |
+| `chart-editor/` | 브라우저 채보 에디터(4키). `start_editor.sh`로 `http://127.0.0.1:5173`에서 연다. 커밋·push와 dev 배포 버튼 포함 |
+| `build_manifest.py` | 배포용 곡 ZIP과 `manifest.json` 생성. `OverTempo_Launcher/deploy charts-dev`와 에디터 배포 버튼이 사용 |
+| `ENCRYPTED_RELEASE.md` | ARG 곡 공개/암호화 스위치(`release.json`)와 암호화 절차 |
+| `encrypt_release_chart.mjs`, `arg_reveal_keygen.mjs` | ARG 채보 암호화, 해금 연출 패키지 서명 |
+| `ARG_REVEAL_SCRIPTING.md`, `arg-reveal-example/`, `arg-reveal-minigame/`, `render_reveal_movie.py` | 해금 연출 스크립트와 미리보기 영상 |
+| `ai-chart/` | AI 보조 채보 초안 생성 |
+| `easy-charts/` | 쉬운 난이도 채보 생성 스크립트 |
+| `song-picker/` | 수록 후보 곡 고르기 로컬 서버(`python3 server.py`, `http://127.0.0.1:5310/`) |
+| `audio-restoration/` | BMS 음원 복원 결과 |
+| `audit_audio_alignment.py` | 음원·채보 타이밍 정렬 검사 |
+| `migrate_special_notes.py`, `snap_chart_notes.py`, `limit_chart_coef_per_measure.py`, `generate_luminaria_normal.py` | 채보 일괄 변환 스크립트 |
 
-- `speedLimitLines` UI
-- `stageDeltaLines` UI
-- 두 라인의 캔버스 표시
-- JSON import/export 및 프로젝트 저장 payload 포함
-- 새 차트 생성 시 빈 배열 추가(`server.py`)
-
-건드리지 않는 부분:
-
-- `drawNote()`
-- 롱노트 렌더링/리사이즈/선택 로직
-- `addNote()`
-- 노트 충돌 판정
-- `autoCoefGenerateCurve()`
-- 노트 밀도 Gaussian smoothing 계산
-- `projectBuildPayload()`의 auto-coef 계수 계산 부분
-
-## 적용 방법
-
-먼저 망가진 에디터 파일을 GitHub 현재 원본으로 되돌리세요.
-
-```bash
-git checkout HEAD -- Tools/chart-editor/index.html Tools/chart-editor/server.py
-```
-
-그 다음 ZIP 안의 `chart-editor/apply_minimal_timeline_events.py`를 아래 위치로 복사합니다.
-
-```text
-OverTempo_Charts/Tools/chart-editor/apply_minimal_timeline_events.py
-```
-
-그리고 실행합니다.
-
-```bash
-cd OverTempo_Charts/Tools/chart-editor
-python3 apply_minimal_timeline_events.py
-```
-
-성공하면 아래 백업이 생깁니다.
-
-```text
-index.html.bak-before-timeline-events
-server.py.bak-before-timeline-events
-```
-
-## 저장 JSON 예시
-
-```json
-{
-  "speedLimitLines": [
-    { "timeMs": 30000, "maxSpeed": 1.25 }
-  ],
-  "stageDeltaLines": [
-    { "timeMs": 45000, "stageDelta": -5.0 }
-  ]
-}
-```
-
-## 실패 시
-
-패처가 현재 GitHub 원본의 롱노트 렌더링 마커를 확인합니다. 이전에 잘못 생성된 에디터 파일이면 적용을 중단합니다.
-그 경우 다시 아래 명령으로 원복 후 재실행하세요.
-
-```bash
-git checkout HEAD -- Tools/chart-editor/index.html Tools/chart-editor/server.py
-python3 Tools/chart-editor/apply_minimal_timeline_events.py
-```
+검사: `python3 -m unittest discover -s Tools -p 'test_*.py'`

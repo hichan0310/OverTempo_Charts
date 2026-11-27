@@ -59,6 +59,27 @@ def should_zip(path: Path) -> bool:
         return False
     return path.is_file()
 
+def arg_encryption(repo: Path) -> bool:
+    """The one ARG switch: repo-root release.json {"argEncryption": true|false}.
+
+    false ships every ARG song as an ordinary plaintext chart (title, artist and media visible,
+    no unlock code); true restores the authenticated .otchart releases. A missing file encrypts.
+    """
+    path = repo / "release.json"
+    if not path.is_file():
+        return True
+    value = load_json(path).get("argEncryption")
+    if not isinstance(value, bool):
+        die(f"release.json argEncryption must be true or false: {path}")
+    return value
+
+def public_arg_meta(meta: dict) -> dict:
+    """Release metadata for an ARG song while argEncryption is off."""
+    public = {key: value for key, value in meta.items()
+              if key not in {"encrypted", "publicTitle", "publicArtist", "encryptedAssets"}}
+    public["argPublic"] = sorted(meta.get("encryptedAssets", {}))
+    return public
+
 def validate_song(song_dir: Path, meta: dict) -> None:
     charts = list(song_dir.glob("*.osu")) + list(song_dir.glob("*.4k-speedcoef.json"))
     encrypted_charts = list(song_dir.glob("*.otchart"))
@@ -113,7 +134,11 @@ def validate_song(song_dir: Path, meta: dict) -> None:
     elif not charts:
         die(f"no chart file found in {song_dir}")
 
-    if not encrypted and (encrypted_charts or list(song_dir.glob("*.otpack"))):
+    if "argPublic" in meta:
+        missing = [source for source in meta["argPublic"] if not (song_dir / source).is_file()]
+        if missing:
+            die(f"ARG song media missing: {song_dir}: {', '.join(missing)}")
+    elif not encrypted and (encrypted_charts or list(song_dir.glob("*.otpack"))):
         die(f"song has .otchart files but song.patch.json is not marked encrypted: {song_dir}")
 
     for osu in ([] if encrypted else song_dir.glob("*.osu")):
@@ -154,6 +179,15 @@ def build_song_zip(repo: Path, song_dir: Path, song_id: str, output_songs: Path,
             for source, destination in sorted(meta["encryptedAssets"].items()):
                 zf.write(song_dir / source, f"{song_id}/{destination}")
             return zip_path
+        if "argPublic" in meta:
+            # Same media set as the encrypted release, under the names the plaintext chart uses;
+            # envelopes, reveal scripts and the original unlock metadata stay in the source tree.
+            media = {song_dir / source for source in meta["argPublic"]}
+            charts = set(song_dir.glob("*.osu")) | set(song_dir.glob("*.4k-speedcoef.json"))
+            files = [path for path in files if path in media | charts]
+            release_meta = {key: value for key, value in meta.items() if key != "argPublic"}
+            zf.writestr(f"{song_id}/song.patch.json",
+                        json.dumps(release_meta, ensure_ascii=False, indent=2) + "\n")
         for path in files:
             rel = path.relative_to(song_dir).as_posix()
             archive_name = f"{song_id}/{rel}"
@@ -188,6 +222,7 @@ def main() -> int:
     output_songs.mkdir(parents=True, exist_ok=True)
 
     source_commit = git(["rev-parse", "HEAD"], repo)
+    encrypt_arg = arg_encryption(repo)
     entries = []
     removed = set()
 
@@ -199,6 +234,8 @@ def main() -> int:
         meta = load_json(meta_path)
         if meta.get("enabled") is False:
             continue
+        if not encrypt_arg and meta.get("encrypted") is True:
+            meta = public_arg_meta(meta)
 
         song_id = str(meta.get("id", "")).strip()
         if not song_id:
@@ -226,6 +263,9 @@ def main() -> int:
 
         rel_dir = song_dir.relative_to(repo).as_posix()
         content_hash = git(["rev-parse", f"HEAD:{rel_dir}"], repo)
+        if "argPublic" in meta:
+            # Same sources, different package: a new hash makes launchers replace the encrypted copy.
+            content_hash = hashlib.sha1(f"{content_hash}:arg-public".encode()).hexdigest()
         short_hash = content_hash[:12]
         zip_name = f"{song_id}_{short_hash}.zip"
         zip_path = build_song_zip(repo, song_dir, song_id, output_songs, zip_name, meta)
@@ -248,6 +288,7 @@ def main() -> int:
         "schemaVersion": 1,
         "sourceCommit": source_commit,
         "audience": args.audience,
+        "argEncryption": encrypt_arg,
         "generatedAt": datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z"),
         "baseUrl": args.base_url,
         "songs": entries,

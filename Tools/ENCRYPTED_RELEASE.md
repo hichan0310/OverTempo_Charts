@@ -1,5 +1,22 @@
 # 암호화 채보 배포
 
+## 공개/암호화 스위치
+
+ARG 곡을 암호화할지는 저장소 루트의 `release.json` 한 곳에서 정한다.
+
+```json
+{ "argEncryption": false }
+```
+
+- `false`(현재): `encrypted: true`인 곡도 일반 채보로 배포한다. ZIP에는 편집용 평문 채보와
+  `encryptedAssets`에 적힌 원본 미디어(원래 파일명)만 들어가고, `.otchart`·`.otpack`·`reveal/`·백업은
+  빠진다. 매니페스트에는 실제 제목과 작곡가가 나오고 해금 코드 없이 바로 플레이할 수 있다.
+  곡 ID와 `song.patch.json`의 암호화 설정은 그대로 두므로 소스는 건드리지 않는다.
+- `true`: 아래 절차대로 만든 암호화 파일만 배포한다. 파일이 없으면 이 값으로 간주한다.
+
+스위치를 바꾸면 해당 곡의 `contentHash`가 달라져 런처가 설치된 곡을 새 패키지로 교체한다.
+다시 암호화할 때는 채보를 수정했으면 아래 명령으로 `.otchart`를 다시 만든 뒤 `true`로 바꾸고 커밋·배포한다.
+
 `Songs/End Time`에는 편집용 JSON과 백업을 남겨 둔다. `song.patch.json`의
 `encrypted: true`와 `encryptedAssets`가 배포용 ZIP에 들어갈 파일을 정한다.
 `Tools/build_manifest.py`는 편집용 JSON, 백업, 원본 파일명과 원본 곡 메타데이터를

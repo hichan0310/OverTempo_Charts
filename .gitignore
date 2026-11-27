@@ -3,3 +3,5 @@
 *~
 /.audio-work/
 __pycache__/
+/ReferenceAssets/Covers/
+/Tools/song-picker/server.log
