@@ -58,7 +58,8 @@ class DeployDevCharts(unittest.TestCase):
             os.environ["OVERTEMPO_MANIFEST_SIGNING_KEY"] = str(key)
             self.addCleanup(os.environ.pop, "OVERTEMPO_MANIFEST_SIGNING_KEY", None)
             logs = []
-            result = git_deploy.deploy_dev_charts(CHARTS, logs.append, ref="HEAD", wait_seconds=0, launcher=launcher)
+            # commit_saved=False: this test builds the real charts repo and must never commit in it.
+            result = git_deploy.deploy_dev_charts(CHARTS, logs.append, ref="HEAD", wait_seconds=0, launcher=launcher, commit_saved=False)
             head = sh(CHARTS, "rev-parse", "HEAD")
             self.assertEqual(result["sourceCommit"], head)
             manifest = json.loads(sh(origin, "show", "internal:dev/manifest.json"))
@@ -75,8 +76,27 @@ class DeployDevCharts(unittest.TestCase):
             self.assertNotIn("overtempo-chart-deploy", sh(CHARTS, "worktree", "list"))  # temp worktrees removed
             # a second deploy of the same commit changes nothing and pushes nothing
             before = sh(origin, "rev-parse", "internal")
-            again = git_deploy.deploy_dev_charts(CHARTS, logs.append, ref="HEAD", wait_seconds=0, launcher=launcher)
+            again = git_deploy.deploy_dev_charts(CHARTS, logs.append, ref="HEAD", wait_seconds=0, launcher=launcher, commit_saved=False)
             self.assertIsNone(again["deployCommit"]); self.assertEqual(sh(origin, "rev-parse", "internal"), before)
+
+
+class CommitSavedCharts(unittest.TestCase):
+    def test_saved_song_changes_are_committed_and_pushed_but_nothing_else(self):
+        with tempfile.TemporaryDirectory() as t:
+            origin, work = make_clone(Path(t), "charts")
+            (work / "Songs" / "A").mkdir(parents=True); (work / "Tools").mkdir()
+            (work / "Songs/A/a.json").write_text("1"); (work / "Tools/x.py").write_text("1")
+            sh(work, "add", "."); sh(work, "commit", "-qm", "init"); sh(work, "push", "-q", "origin", "main")
+            (work / "Songs/A/a.json").write_text("2"); (work / "Songs/A/new.json").write_text("new")
+            (work / "Tools/x.py").write_text("2")
+            logs = []
+            sha = git_deploy.commit_saved_charts(work, logs.append)
+            self.assertEqual(sh(origin, "rev-parse", "main"), sha)
+            self.assertEqual(sh(origin, "show", "main:Songs/A/a.json"), "2")
+            self.assertEqual(sh(origin, "show", "main:Songs/A/new.json"), "new")
+            self.assertEqual(sh(origin, "show", "main:Tools/x.py"), "1")   # outside Songs/: left alone
+            self.assertIn("A", sh(work, "log", "-1", "--format=%s"))
+            self.assertIsNone(git_deploy.commit_saved_charts(work, logs.append))  # nothing left to commit
 
 
 if __name__ == "__main__":

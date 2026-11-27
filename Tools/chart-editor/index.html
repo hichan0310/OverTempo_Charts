@@ -2439,9 +2439,10 @@ async function gitCommit(){
   if(!d.ok)throw new Error(d.error);gitLog(`커밋 ${d.commit.slice(0,12)} 완료${d.pushed?' · 푸시 완료':''}`);$('gitMessage').value='';await gitRefresh();
  }catch(e){gitLog('실패: '+e.message);await gitRefresh()}finally{$('gitCommitBtn').disabled=false}}
 async function gitDeploy(){
- const d=gitUi.status;if(!d)return;const warn=[];if(d.ahead)warn.push(`HEAD가 원격에 푸시되지 않았습니다 (${d.ahead}개).`);
- const song=gitSongFolder();if(song&&d.files.some(f=>f.path.startsWith(song)))warn.push(`${song} 에 커밋 안 된 변경이 있어 배포에 들어가지 않습니다.`);
- if(!confirm(`채보 커밋 ${d.head.slice(0,12)} 를 런처 internal 브랜치(dev)에 배포합니다.\nNetlify 개발자 채널에 바로 반영됩니다.${warn.length?'\n\n주의:\n'+warn.join('\n'):''}`))return;
+ const d=gitUi.status;if(!d)return;
+ // Deploy publishes what is saved: uncommitted chart changes are committed first (server side).
+ const pending=d.files.filter(f=>f.path.startsWith('Songs/')).map(f=>f.path);
+ if(!confirm(`저장된 채보를 dev 채널에 배포합니다.${pending.length?`\n\n커밋되지 않은 채보 ${pending.length}개 파일을 먼저 커밋합니다:\n`+pending.slice(0,12).join('\n')+(pending.length>12?'\n…':''):''}`))return;
  try{const r=await fetch('/api/deploy/dev-charts',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({ref:'HEAD'})}),j=await r.json();if(!j.ok)throw new Error(j.error);gitWatchDeploy()}
  catch(e){gitLog('배포 시작 실패: '+e.message)}}
 function gitWatchDeploy(){clearInterval(gitUi.poll);$('gitDeployBtn').disabled=true;

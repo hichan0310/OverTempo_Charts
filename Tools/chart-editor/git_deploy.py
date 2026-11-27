@@ -7,8 +7,11 @@ Deploying copies `Tools/build_manifest.py` output for one charts commit into `de
 `dev/manifest.json` on `internal` (same layout as OverTempo_Launcher/deploy charts-dev), pushes it,
 then waits for Netlify to serve the new manifest.
 
-The build always runs from a clean temporary worktree of the chosen commit, so uncommitted work in
-the charts folder is never deployed and never needs to be stashed.
+Deploying publishes what the editor has saved: chart changes under Songs/ that are not committed yet
+are committed (and pushed) first, then that commit is built. Earlier the button built only the last
+commit, so saved-but-uncommitted charts silently never reached the dev channel.
+The build itself runs from a clean temporary worktree of that commit; files outside Songs/ (tools,
+editor state) are never committed or deployed by this button.
 """
 
 from __future__ import annotations
@@ -161,12 +164,37 @@ def fetch_json(url: str, timeout: float = 15) -> dict:
         return json.loads(response.read().decode("utf-8"))
 
 
+SONGS_DIR = "Songs/"
+
+
+def commit_saved_charts(charts: Path, log, push: bool = True) -> str | None:
+    """Commits every saved change under Songs/ so the deploy contains exactly what the editor shows."""
+    pending = [f["path"] for f in repo_status(charts)["files"] if f["path"].startswith(SONGS_DIR)]
+    if not pending:
+        return None
+    songs = sorted({path[len(SONGS_DIR):].split("/", 1)[0] for path in pending})
+    message = "Chart editor: " + ", ".join(songs[:6]) + (f" and {len(songs) - 6} more" if len(songs) > 6 else "")
+    log(f"저장된 채보 변경 {len(pending)}개 파일 커밋 중 ({', '.join(songs)})")
+    try:
+        result = commit_and_push(charts, pending, message, push=push)
+    except GitError as error:
+        # The commit exists even when the push failed; the deploy can still use it.
+        if "푸시" not in str(error) and "push" not in str(error):
+            raise
+        log(f"푸시 실패, 커밋은 로컬에 남았습니다: {error}")
+        return git(charts, "rev-parse", "HEAD")
+    log(f"커밋 {result['commit'][:12]}" + (" · 원격 저장소 푸시 완료" if result["pushed"] else ""))
+    return result["commit"]
+
+
 def deploy_dev_charts(charts: Path, log, ref: str = "HEAD", wait_seconds: float = 300,
-                      launcher: Path | None = None) -> dict:
-    """Build the manifest for `ref` and push it to dev/ on the launcher's internal branch."""
+                      launcher: Path | None = None, commit_saved: bool = True) -> dict:
+    """Commit saved chart changes, then build the manifest for `ref` and push it to dev/ on the launcher's internal branch."""
     launcher = launcher or launcher_path(charts)
     if not (launcher / ".git").exists():
         raise GitError(f"런처 저장소를 찾을 수 없습니다: {launcher}")
+    if commit_saved and ref == "HEAD":
+        commit_saved_charts(charts, log)
     sha = git(charts, "rev-parse", f"{ref}^{{commit}}")
     log(f"채보 커밋 {sha[:12]} 배포 준비")
     with tempfile.TemporaryDirectory(prefix="overtempo-chart-deploy-") as temp:
