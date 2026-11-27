@@ -1,0 +1,2068 @@
+{
+  "sourceHash": "c323becd97f68d97b529633248e31e587be3ff7e2a7308e6730bccc0e051514f",
+  "planHash": "ca3d3c5eebfbb3bd293d6b27c2bfbac82acb5f4122685819f540615c6b60a8dc",
+  "sourceSettings": {
+    "timing": true,
+    "specialNotes": true,
+    "autoCoef": true
+  },
+  "oneX": {
+    "hits": [
+      {
+        "when": 0.11,
+        "now": 0.021333333333333333,
+        "chartMs": 25110,
+        "state": "suspended"
+      },
+      {
+        "when": 0.11,
+        "now": 0.021333333333333333,
+        "chartMs": 25110,
+        "state": "suspended"
+      },
+      {
+        "when": 0.242,
+        "now": 0.14933333333333335,
+        "chartMs": 25242,
+        "state": "running"
+      },
+      {
+        "when": 0.374,
+        "now": 0.288,
+        "chartMs": 25374,
+        "state": "running"
+      },
+      {
+        "when": 0.507,
+        "now": 0.416,
+        "chartMs": 25507,
+        "state": "running"
+      },
+      {
+        "when": 0.573,
+        "now": 0.48,
+        "chartMs": 25573,
+        "state": "running"
+      },
+      {
+        "when": 0.903,
+        "now": 0.8213333333333334,
+        "chartMs": 25903,
+        "state": "running"
+      },
+      {
+        "when": 1.035,
+        "now": 0.9493333333333334,
+        "chartMs": 26035,
+        "state": "running"
+      },
+      {
+        "when": 1.233,
+        "now": 1.152,
+        "chartMs": 26233,
+        "state": "running"
+      },
+      {
+        "when": 1.432,
+        "now": 1.3333333333333333,
+        "chartMs": 26432,
+        "state": "running"
+      },
+      {
+        "when": 1.564,
+        "now": 1.4826666666666666,
+        "chartMs": 26564,
+        "state": "running"
+      },
+      {
+        "when": 1.828,
+        "now": 1.7493333333333334,
+        "chartMs": 26828,
+        "state": "running"
+      },
+      {
+        "when": 1.828,
+        "now": 1.7493333333333334,
+        "chartMs": 26828,
+        "state": "running"
+      },
+      {
+        "when": 2.093,
+        "now": 1.9946666666666666,
+        "chartMs": 27093,
+        "state": "running"
+      },
+      {
+        "when": 2.093,
+        "now": 1.9946666666666666,
+        "chartMs": 27093,
+        "state": "running"
+      },
+      {
+        "when": 2.225,
+        "now": 2.1333333333333333,
+        "chartMs": 27225,
+        "state": "running"
+      },
+      {
+        "when": 2.357,
+        "now": 2.2613333333333334,
+        "chartMs": 27357,
+        "state": "running"
+      },
+      {
+        "when": 2.357,
+        "now": 2.2613333333333334,
+        "chartMs": 27357,
+        "state": "running"
+      },
+      {
+        "when": 2.621,
+        "now": 2.528,
+        "chartMs": 27621,
+        "state": "running"
+      },
+      {
+        "when": 2.885,
+        "now": 2.7946666666666666,
+        "chartMs": 27884.999999999996,
+        "state": "running"
+      },
+      {
+        "when": 3.018,
+        "now": 2.933333333333333,
+        "chartMs": 28018,
+        "state": "running"
+      },
+      {
+        "when": 3.15,
+        "now": 3.050666666666667,
+        "chartMs": 28150,
+        "state": "running"
+      },
+      {
+        "when": 3.15,
+        "now": 3.050666666666667,
+        "chartMs": 28150,
+        "state": "running"
+      },
+      {
+        "when": 3.282,
+        "now": 3.2,
+        "chartMs": 28282,
+        "state": "running"
+      },
+      {
+        "when": 3.348,
+        "now": 3.2533333333333334,
+        "chartMs": 28348,
+        "state": "running"
+      },
+      {
+        "when": 3.414,
+        "now": 3.3173333333333335,
+        "chartMs": 28414,
+        "state": "running"
+      },
+      {
+        "when": 3.546,
+        "now": 3.466666666666667,
+        "chartMs": 28546,
+        "state": "running"
+      },
+      {
+        "when": 3.678,
+        "now": 3.584,
+        "chartMs": 28678,
+        "state": "running"
+      },
+      {
+        "when": 3.943,
+        "now": 3.8506666666666667,
+        "chartMs": 28943,
+        "state": "running"
+      },
+      {
+        "when": 3.943,
+        "now": 3.8506666666666667,
+        "chartMs": 28943,
+        "state": "running"
+      },
+      {
+        "when": 4.207,
+        "now": 4.117333333333334,
+        "chartMs": 29207,
+        "state": "running"
+      },
+      {
+        "when": 4.207,
+        "now": 4.117333333333334,
+        "chartMs": 29207,
+        "state": "running"
+      },
+      {
+        "when": 4.339,
+        "now": 4.245333333333333,
+        "chartMs": 29339,
+        "state": "running"
+      },
+      {
+        "when": 4.471,
+        "now": 4.384,
+        "chartMs": 29471,
+        "state": "running"
+      },
+      {
+        "when": 4.736,
+        "now": 4.650666666666667,
+        "chartMs": 29736,
+        "state": "running"
+      },
+      {
+        "when": 4.736,
+        "now": 4.650666666666667,
+        "chartMs": 29736,
+        "state": "running"
+      },
+      {
+        "when": 5.132,
+        "now": 5.034666666666666,
+        "chartMs": 30131.999999999996,
+        "state": "running"
+      },
+      {
+        "when": 5.264,
+        "now": 5.184,
+        "chartMs": 30264,
+        "state": "running"
+      },
+      {
+        "when": 5.396,
+        "now": 5.301333333333333,
+        "chartMs": 30396,
+        "state": "running"
+      },
+      {
+        "when": 5.463,
+        "now": 5.365333333333333,
+        "chartMs": 30463,
+        "state": "running"
+      },
+      {
+        "when": 5.529,
+        "now": 5.429333333333333,
+        "chartMs": 30529,
+        "state": "running"
+      },
+      {
+        "when": 5.595,
+        "now": 5.504,
+        "chartMs": 30595,
+        "state": "running"
+      },
+      {
+        "when": 5.661,
+        "now": 5.568,
+        "chartMs": 30661,
+        "state": "running"
+      },
+      {
+        "when": 5.661,
+        "now": 5.568,
+        "chartMs": 30661,
+        "state": "running"
+      },
+      {
+        "when": 5.661,
+        "now": 5.568,
+        "chartMs": 30661,
+        "state": "running"
+      },
+      {
+        "when": 5.925,
+        "now": 5.834666666666666,
+        "chartMs": 30925,
+        "state": "running"
+      },
+      {
+        "when": 6.057,
+        "now": 5.962666666666666,
+        "chartMs": 31057.000000000004,
+        "state": "running"
+      },
+      {
+        "when": 6.322,
+        "now": 6.229333333333333,
+        "chartMs": 31322,
+        "state": "running"
+      },
+      {
+        "when": 6.454,
+        "now": 6.368,
+        "chartMs": 31454,
+        "state": "running"
+      },
+      {
+        "when": 6.586,
+        "now": 6.496,
+        "chartMs": 31586,
+        "state": "running"
+      },
+      {
+        "when": 6.718,
+        "now": 6.634666666666667,
+        "chartMs": 31718,
+        "state": "running"
+      },
+      {
+        "when": 6.85,
+        "now": 6.752,
+        "chartMs": 31850,
+        "state": "running"
+      },
+      {
+        "when": 7.181,
+        "now": 7.082666666666666,
+        "chartMs": 32180.999999999996,
+        "state": "running"
+      },
+      {
+        "when": 7.379,
+        "now": 7.285333333333333,
+        "chartMs": 32378.999999999996,
+        "state": "running"
+      },
+      {
+        "when": 7.577,
+        "now": 7.477333333333333,
+        "chartMs": 32577,
+        "state": "running"
+      },
+      {
+        "when": 7.643,
+        "now": 7.552,
+        "chartMs": 32643,
+        "state": "running"
+      },
+      {
+        "when": 7.709,
+        "now": 7.616,
+        "chartMs": 32709.000000000004,
+        "state": "running"
+      },
+      {
+        "when": 7.775,
+        "now": 7.68,
+        "chartMs": 32775,
+        "state": "running"
+      },
+      {
+        "when": 7.775,
+        "now": 7.68,
+        "chartMs": 32775,
+        "state": "running"
+      },
+      {
+        "when": 7.907,
+        "now": 7.818666666666667,
+        "chartMs": 32907,
+        "state": "running"
+      },
+      {
+        "when": 8.04,
+        "now": 7.946666666666666,
+        "chartMs": 33040,
+        "state": "running"
+      },
+      {
+        "when": 8.172,
+        "now": 8.085333333333333,
+        "chartMs": 33172,
+        "state": "running"
+      },
+      {
+        "when": 8.172,
+        "now": 8.085333333333333,
+        "chartMs": 33172,
+        "state": "running"
+      },
+      {
+        "when": 8.436,
+        "now": 8.352,
+        "chartMs": 33436,
+        "state": "running"
+      },
+      {
+        "when": 8.634,
+        "now": 8.544,
+        "chartMs": 33634,
+        "state": "running"
+      },
+      {
+        "when": 8.7,
+        "now": 8.618666666666666,
+        "chartMs": 33700,
+        "state": "running"
+      },
+      {
+        "when": 8.965,
+        "now": 8.885333333333334,
+        "chartMs": 33965,
+        "state": "running"
+      },
+      {
+        "when": 9.031,
+        "now": 8.949333333333334,
+        "chartMs": 34031,
+        "state": "running"
+      },
+      {
+        "when": 9.097,
+        "now": 9.002666666666666,
+        "chartMs": 34097,
+        "state": "running"
+      },
+      {
+        "when": 9.097,
+        "now": 9.002666666666666,
+        "chartMs": 34097,
+        "state": "running"
+      },
+      {
+        "when": 9.229,
+        "now": 9.130666666666666,
+        "chartMs": 34229,
+        "state": "running"
+      },
+      {
+        "when": 9.361,
+        "now": 9.269333333333334,
+        "chartMs": 34361.00000000001,
+        "state": "running"
+      },
+      {
+        "when": 9.493,
+        "now": 9.397333333333334,
+        "chartMs": 34493,
+        "state": "running"
+      },
+      {
+        "when": 9.559,
+        "now": 9.461333333333334,
+        "chartMs": 34559,
+        "state": "running"
+      },
+      {
+        "when": 9.626,
+        "now": 9.536,
+        "chartMs": 34626,
+        "state": "running"
+      },
+      {
+        "when": 9.626,
+        "now": 9.536,
+        "chartMs": 34626,
+        "state": "running"
+      },
+      {
+        "when": 9.758,
+        "now": 9.664,
+        "chartMs": 34757.99999999999,
+        "state": "running"
+      },
+      {
+        "when": 9.956,
+        "now": 9.866666666666667,
+        "chartMs": 34956,
+        "state": "running"
+      },
+      {
+        "when": 10.154,
+        "now": 10.069333333333333,
+        "chartMs": 35154,
+        "state": "running"
+      },
+      {
+        "when": 10.286,
+        "now": 10.186666666666667,
+        "chartMs": 35286,
+        "state": "running"
+      },
+      {
+        "when": 10.419,
+        "now": 10.336,
+        "chartMs": 35419,
+        "state": "running"
+      },
+      {
+        "when": 10.551,
+        "now": 10.453333333333333,
+        "chartMs": 35551,
+        "state": "running"
+      },
+      {
+        "when": 10.683,
+        "now": 10.602666666666666,
+        "chartMs": 35683,
+        "state": "running"
+      },
+      {
+        "when": 10.683,
+        "now": 10.602666666666666,
+        "chartMs": 35683,
+        "state": "running"
+      },
+      {
+        "when": 10.815,
+        "now": 10.72,
+        "chartMs": 35815,
+        "state": "running"
+      },
+      {
+        "when": 10.947,
+        "now": 10.848,
+        "chartMs": 35947,
+        "state": "running"
+      },
+      {
+        "when": 11.145,
+        "now": 11.050666666666666,
+        "chartMs": 36144.99999999999,
+        "state": "running"
+      },
+      {
+        "when": 11.211,
+        "now": 11.114666666666666,
+        "chartMs": 36211,
+        "state": "running"
+      },
+      {
+        "when": 11.344,
+        "now": 11.253333333333334,
+        "chartMs": 36344,
+        "state": "running"
+      },
+      {
+        "when": 11.476,
+        "now": 11.381333333333334,
+        "chartMs": 36476,
+        "state": "running"
+      },
+      {
+        "when": 11.608,
+        "now": 11.52,
+        "chartMs": 36608.00000000001,
+        "state": "running"
+      },
+      {
+        "when": 11.74,
+        "now": 11.648,
+        "chartMs": 36740,
+        "state": "running"
+      },
+      {
+        "when": 11.74,
+        "now": 11.648,
+        "chartMs": 36740,
+        "state": "running"
+      },
+      {
+        "when": 11.938,
+        "now": 11.850666666666667,
+        "chartMs": 36938,
+        "state": "running"
+      },
+      {
+        "when": 12.004,
+        "now": 11.914666666666667,
+        "chartMs": 37004,
+        "state": "running"
+      },
+      {
+        "when": 12.004,
+        "now": 11.914666666666667,
+        "chartMs": 37004,
+        "state": "running"
+      },
+      {
+        "when": 12.137,
+        "now": 12.053333333333333,
+        "chartMs": 37137,
+        "state": "running"
+      },
+      {
+        "when": 12.335,
+        "now": 12.245333333333333,
+        "chartMs": 37335,
+        "state": "running"
+      },
+      {
+        "when": 12.467,
+        "now": 12.384,
+        "chartMs": 37467,
+        "state": "running"
+      },
+      {
+        "when": 12.599,
+        "now": 12.501333333333333,
+        "chartMs": 37599.00000000001,
+        "state": "running"
+      },
+      {
+        "when": 12.665,
+        "now": 12.565333333333333,
+        "chartMs": 37665,
+        "state": "running"
+      },
+      {
+        "when": 12.797,
+        "now": 12.704,
+        "chartMs": 37797,
+        "state": "running"
+      },
+      {
+        "when": 12.797,
+        "now": 12.704,
+        "chartMs": 37797,
+        "state": "running"
+      },
+      {
+        "when": 12.996,
+        "now": 12.917333333333334,
+        "chartMs": 37996,
+        "state": "running"
+      },
+      {
+        "when": 13.062,
+        "now": 12.970666666666666,
+        "chartMs": 38062,
+        "state": "running"
+      },
+      {
+        "when": 13.194,
+        "now": 13.098666666666666,
+        "chartMs": 38194,
+        "state": "running"
+      },
+      {
+        "when": 13.326,
+        "now": 13.237333333333334,
+        "chartMs": 38326,
+        "state": "running"
+      },
+      {
+        "when": 13.458,
+        "now": 13.365333333333334,
+        "chartMs": 38458,
+        "state": "running"
+      },
+      {
+        "when": 13.524,
+        "now": 13.429333333333334,
+        "chartMs": 38524,
+        "state": "running"
+      },
+      {
+        "when": 13.59,
+        "now": 13.504,
+        "chartMs": 38590,
+        "state": "running"
+      },
+      {
+        "when": 13.656,
+        "now": 13.568,
+        "chartMs": 38656,
+        "state": "running"
+      },
+      {
+        "when": 13.722,
+        "now": 13.632,
+        "chartMs": 38722,
+        "state": "running"
+      },
+      {
+        "when": 13.855,
+        "now": 13.770666666666667,
+        "chartMs": 38855.00000000001,
+        "state": "running"
+      },
+      {
+        "when": 13.921,
+        "now": 13.834666666666667,
+        "chartMs": 38921,
+        "state": "running"
+      },
+      {
+        "when": 14.119,
+        "now": 14.037333333333333,
+        "chartMs": 39119,
+        "state": "running"
+      },
+      {
+        "when": 14.119,
+        "now": 14.037333333333333,
+        "chartMs": 39119,
+        "state": "running"
+      },
+      {
+        "when": 14.251,
+        "now": 14.165333333333333,
+        "chartMs": 39251,
+        "state": "running"
+      },
+      {
+        "when": 14.383,
+        "now": 14.304,
+        "chartMs": 39382.99999999999,
+        "state": "running"
+      },
+      {
+        "when": 14.449,
+        "now": 14.368,
+        "chartMs": 39449,
+        "state": "running"
+      },
+      {
+        "when": 14.648,
+        "now": 14.549333333333333,
+        "chartMs": 39647.99999999999,
+        "state": "running"
+      },
+      {
+        "when": 14.78,
+        "now": 14.698666666666666,
+        "chartMs": 39780,
+        "state": "running"
+      },
+      {
+        "when": 14.78,
+        "now": 14.698666666666666,
+        "chartMs": 39780,
+        "state": "running"
+      },
+      {
+        "when": 14.846,
+        "now": 14.752,
+        "chartMs": 39846,
+        "state": "running"
+      },
+      {
+        "when": 15.11,
+        "now": 15.018666666666666,
+        "chartMs": 40110,
+        "state": "running"
+      },
+      {
+        "when": 15.176,
+        "now": 15.082666666666666,
+        "chartMs": 40176,
+        "state": "running"
+      },
+      {
+        "when": 15.441,
+        "now": 15.349333333333334,
+        "chartMs": 40441,
+        "state": "running"
+      },
+      {
+        "when": 15.441,
+        "now": 15.349333333333334,
+        "chartMs": 40441,
+        "state": "running"
+      },
+      {
+        "when": 15.507,
+        "now": 15.413333333333334,
+        "chartMs": 40507,
+        "state": "running"
+      },
+      {
+        "when": 15.639,
+        "now": 15.552,
+        "chartMs": 40638.99999999999,
+        "state": "running"
+      },
+      {
+        "when": 15.837,
+        "now": 15.744,
+        "chartMs": 40837,
+        "state": "running"
+      },
+      {
+        "when": 15.969,
+        "now": 15.882666666666667,
+        "chartMs": 40969,
+        "state": "running"
+      },
+      {
+        "when": 15.969,
+        "now": 15.882666666666667,
+        "chartMs": 40969,
+        "state": "running"
+      },
+      {
+        "when": 16.101,
+        "now": 16.010666666666665,
+        "chartMs": 41101,
+        "state": "running"
+      },
+      {
+        "when": 16.101,
+        "now": 16.010666666666665,
+        "chartMs": 41101,
+        "state": "running"
+      },
+      {
+        "when": 16.233,
+        "now": 16.149333333333335,
+        "chartMs": 41233.00000000001,
+        "state": "running"
+      },
+      {
+        "when": 16.498,
+        "now": 16.416,
+        "chartMs": 41498.00000000001,
+        "state": "running"
+      },
+      {
+        "when": 16.564,
+        "now": 16.469333333333335,
+        "chartMs": 41564,
+        "state": "running"
+      },
+      {
+        "when": 16.63,
+        "now": 16.533333333333335,
+        "chartMs": 41629.99999999999,
+        "state": "running"
+      },
+      {
+        "when": 16.894,
+        "now": 16.8,
+        "chartMs": 41894,
+        "state": "running"
+      },
+      {
+        "when": 16.894,
+        "now": 16.8,
+        "chartMs": 41894,
+        "state": "running"
+      },
+      {
+        "when": 17.026,
+        "now": 16.928,
+        "chartMs": 42025.99999999999,
+        "state": "running"
+      },
+      {
+        "when": 17.159,
+        "now": 17.066666666666666,
+        "chartMs": 42159,
+        "state": "running"
+      },
+      {
+        "when": 17.159,
+        "now": 17.066666666666666,
+        "chartMs": 42159,
+        "state": "running"
+      },
+      {
+        "when": 17.159,
+        "now": 17.066666666666666,
+        "chartMs": 42159,
+        "state": "running"
+      },
+      {
+        "when": 17.291,
+        "now": 17.194666666666667,
+        "chartMs": 42291,
+        "state": "running"
+      },
+      {
+        "when": 17.423,
+        "now": 17.333333333333332,
+        "chartMs": 42423,
+        "state": "running"
+      },
+      {
+        "when": 17.423,
+        "now": 17.333333333333332,
+        "chartMs": 42423,
+        "state": "running"
+      },
+      {
+        "when": 17.687,
+        "now": 17.6,
+        "chartMs": 42687,
+        "state": "running"
+      },
+      {
+        "when": 17.687,
+        "now": 17.6,
+        "chartMs": 42687,
+        "state": "running"
+      },
+      {
+        "when": 17.819,
+        "now": 17.728,
+        "chartMs": 42819,
+        "state": "running"
+      },
+      {
+        "when": 17.952,
+        "now": 17.866666666666667,
+        "chartMs": 42952,
+        "state": "running"
+      },
+      {
+        "when": 17.952,
+        "now": 17.866666666666667,
+        "chartMs": 42952,
+        "state": "running"
+      },
+      {
+        "when": 18.084,
+        "now": 17.994666666666667,
+        "chartMs": 43084,
+        "state": "running"
+      },
+      {
+        "when": 18.216,
+        "now": 18.133333333333333,
+        "chartMs": 43216,
+        "state": "running"
+      },
+      {
+        "when": 18.348,
+        "now": 18.250666666666667,
+        "chartMs": 43348,
+        "state": "running"
+      },
+      {
+        "when": 18.348,
+        "now": 18.250666666666667,
+        "chartMs": 43348,
+        "state": "running"
+      },
+      {
+        "when": 18.612,
+        "now": 18.517333333333333,
+        "chartMs": 43611.99999999999,
+        "state": "running"
+      },
+      {
+        "when": 18.744,
+        "now": 18.645333333333333,
+        "chartMs": 43744,
+        "state": "running"
+      },
+      {
+        "when": 18.744,
+        "now": 18.645333333333333,
+        "chartMs": 43744,
+        "state": "running"
+      },
+      {
+        "when": 18.877,
+        "now": 18.784,
+        "chartMs": 43876.99999999999,
+        "state": "running"
+      },
+      {
+        "when": 19.009,
+        "now": 18.912,
+        "chartMs": 44009,
+        "state": "running"
+      },
+      {
+        "when": 19.009,
+        "now": 18.912,
+        "chartMs": 44009,
+        "state": "running"
+      },
+      {
+        "when": 19.075,
+        "now": 18.986666666666668,
+        "chartMs": 44075,
+        "state": "running"
+      },
+      {
+        "when": 19.339,
+        "now": 19.253333333333334,
+        "chartMs": 44339,
+        "state": "running"
+      },
+      {
+        "when": 19.537,
+        "now": 19.445333333333334,
+        "chartMs": 44537,
+        "state": "running"
+      },
+      {
+        "when": 19.537,
+        "now": 19.445333333333334,
+        "chartMs": 44537,
+        "state": "running"
+      },
+      {
+        "when": 19.802,
+        "now": 19.712,
+        "chartMs": 44802,
+        "state": "running"
+      },
+      {
+        "when": 19.802,
+        "now": 19.712,
+        "chartMs": 44802,
+        "state": "running"
+      },
+      {
+        "when": 19.934,
+        "now": 19.850666666666665,
+        "chartMs": 44934,
+        "state": "running"
+      }
+    ],
+    "anchors": [
+      {
+        "when": 0,
+        "offset": 25,
+        "rate": 1,
+        "state": "suspended"
+      }
+    ],
+    "playhead": 45012
+  },
+  "twoX": {
+    "hits": [
+      {
+        "when": 0.055,
+        "now": 0.021333333333333333,
+        "chartMs": 25110,
+        "state": "suspended"
+      },
+      {
+        "when": 0.055,
+        "now": 0.021333333333333333,
+        "chartMs": 25110,
+        "state": "suspended"
+      },
+      {
+        "when": 0.121,
+        "now": 0.021333333333333333,
+        "chartMs": 25242,
+        "state": "suspended"
+      },
+      {
+        "when": 0.187,
+        "now": 0.096,
+        "chartMs": 25374,
+        "state": "running"
+      },
+      {
+        "when": 0.2535,
+        "now": 0.17066666666666666,
+        "chartMs": 25507,
+        "state": "running"
+      },
+      {
+        "when": 0.2865,
+        "now": 0.20266666666666666,
+        "chartMs": 25573,
+        "state": "running"
+      },
+      {
+        "when": 0.4515,
+        "now": 0.352,
+        "chartMs": 25903,
+        "state": "running"
+      },
+      {
+        "when": 0.5175,
+        "now": 0.43733333333333335,
+        "chartMs": 26035,
+        "state": "running"
+      },
+      {
+        "when": 0.6165,
+        "now": 0.5333333333333333,
+        "chartMs": 26233,
+        "state": "running"
+      },
+      {
+        "when": 0.716,
+        "now": 0.6186666666666667,
+        "chartMs": 26432,
+        "state": "running"
+      },
+      {
+        "when": 0.782,
+        "now": 0.6826666666666666,
+        "chartMs": 26564,
+        "state": "running"
+      },
+      {
+        "when": 0.914,
+        "now": 0.8213333333333334,
+        "chartMs": 26828,
+        "state": "running"
+      },
+      {
+        "when": 0.914,
+        "now": 0.8213333333333334,
+        "chartMs": 26828,
+        "state": "running"
+      },
+      {
+        "when": 1.0465,
+        "now": 0.9493333333333334,
+        "chartMs": 27093,
+        "state": "running"
+      },
+      {
+        "when": 1.0465,
+        "now": 0.9493333333333334,
+        "chartMs": 27093,
+        "state": "running"
+      },
+      {
+        "when": 1.1125,
+        "now": 1.0133333333333334,
+        "chartMs": 27225,
+        "state": "running"
+      },
+      {
+        "when": 1.1785,
+        "now": 1.088,
+        "chartMs": 27357,
+        "state": "running"
+      },
+      {
+        "when": 1.1785,
+        "now": 1.088,
+        "chartMs": 27357,
+        "state": "running"
+      },
+      {
+        "when": 1.3105,
+        "now": 1.216,
+        "chartMs": 27621,
+        "state": "running"
+      },
+      {
+        "when": 1.4425,
+        "now": 1.3546666666666667,
+        "chartMs": 27884.999999999996,
+        "state": "running"
+      },
+      {
+        "when": 1.509,
+        "now": 1.4186666666666667,
+        "chartMs": 28018,
+        "state": "running"
+      },
+      {
+        "when": 1.575,
+        "now": 1.4826666666666666,
+        "chartMs": 28150,
+        "state": "running"
+      },
+      {
+        "when": 1.575,
+        "now": 1.4826666666666666,
+        "chartMs": 28150,
+        "state": "running"
+      },
+      {
+        "when": 1.641,
+        "now": 1.5466666666666666,
+        "chartMs": 28282,
+        "state": "running"
+      },
+      {
+        "when": 1.674,
+        "now": 1.5786666666666667,
+        "chartMs": 28348,
+        "state": "running"
+      },
+      {
+        "when": 1.707,
+        "now": 1.6133333333333333,
+        "chartMs": 28414,
+        "state": "running"
+      },
+      {
+        "when": 1.773,
+        "now": 1.6853333333333333,
+        "chartMs": 28546,
+        "state": "running"
+      },
+      {
+        "when": 1.839,
+        "now": 1.7493333333333334,
+        "chartMs": 28678,
+        "state": "running"
+      },
+      {
+        "when": 1.9715,
+        "now": 1.888,
+        "chartMs": 28943,
+        "state": "running"
+      },
+      {
+        "when": 1.9715,
+        "now": 1.888,
+        "chartMs": 28943,
+        "state": "running"
+      },
+      {
+        "when": 2.1035,
+        "now": 2.016,
+        "chartMs": 29207,
+        "state": "running"
+      },
+      {
+        "when": 2.1035,
+        "now": 2.016,
+        "chartMs": 29207,
+        "state": "running"
+      },
+      {
+        "when": 2.1695,
+        "now": 2.08,
+        "chartMs": 29339,
+        "state": "running"
+      },
+      {
+        "when": 2.2355,
+        "now": 2.152,
+        "chartMs": 29471,
+        "state": "running"
+      },
+      {
+        "when": 2.368,
+        "now": 2.2826666666666666,
+        "chartMs": 29736,
+        "state": "running"
+      },
+      {
+        "when": 2.368,
+        "now": 2.2826666666666666,
+        "chartMs": 29736,
+        "state": "running"
+      },
+      {
+        "when": 2.566,
+        "now": 2.485333333333333,
+        "chartMs": 30131.999999999996,
+        "state": "running"
+      },
+      {
+        "when": 2.632,
+        "now": 2.5493333333333332,
+        "chartMs": 30264,
+        "state": "running"
+      },
+      {
+        "when": 2.698,
+        "now": 2.6026666666666665,
+        "chartMs": 30396,
+        "state": "running"
+      },
+      {
+        "when": 2.7315,
+        "now": 2.6346666666666665,
+        "chartMs": 30463,
+        "state": "running"
+      },
+      {
+        "when": 2.7645,
+        "now": 2.6666666666666665,
+        "chartMs": 30529,
+        "state": "running"
+      },
+      {
+        "when": 2.7975,
+        "now": 2.6986666666666665,
+        "chartMs": 30595,
+        "state": "running"
+      },
+      {
+        "when": 2.8305,
+        "now": 2.7306666666666666,
+        "chartMs": 30661,
+        "state": "running"
+      },
+      {
+        "when": 2.8305,
+        "now": 2.7306666666666666,
+        "chartMs": 30661,
+        "state": "running"
+      },
+      {
+        "when": 2.8305,
+        "now": 2.7306666666666666,
+        "chartMs": 30661,
+        "state": "running"
+      },
+      {
+        "when": 2.9625,
+        "now": 2.8693333333333335,
+        "chartMs": 30925,
+        "state": "running"
+      },
+      {
+        "when": 3.0285,
+        "now": 2.933333333333333,
+        "chartMs": 31057.000000000004,
+        "state": "running"
+      },
+      {
+        "when": 3.161,
+        "now": 3.0613333333333332,
+        "chartMs": 31322,
+        "state": "running"
+      },
+      {
+        "when": 3.227,
+        "now": 3.136,
+        "chartMs": 31454,
+        "state": "running"
+      },
+      {
+        "when": 3.293,
+        "now": 3.2,
+        "chartMs": 31586,
+        "state": "running"
+      },
+      {
+        "when": 3.359,
+        "now": 3.264,
+        "chartMs": 31718,
+        "state": "running"
+      },
+      {
+        "when": 3.425,
+        "now": 3.328,
+        "chartMs": 31850,
+        "state": "running"
+      },
+      {
+        "when": 3.5905,
+        "now": 3.498666666666667,
+        "chartMs": 32180.999999999996,
+        "state": "running"
+      },
+      {
+        "when": 3.6895,
+        "now": 3.5946666666666665,
+        "chartMs": 32378.999999999996,
+        "state": "running"
+      },
+      {
+        "when": 3.7885,
+        "now": 3.7013333333333334,
+        "chartMs": 32577,
+        "state": "running"
+      },
+      {
+        "when": 3.8215,
+        "now": 3.7333333333333334,
+        "chartMs": 32643,
+        "state": "running"
+      },
+      {
+        "when": 3.8545,
+        "now": 3.7653333333333334,
+        "chartMs": 32709.000000000004,
+        "state": "running"
+      },
+      {
+        "when": 3.8875,
+        "now": 3.7973333333333334,
+        "chartMs": 32775,
+        "state": "running"
+      },
+      {
+        "when": 3.8875,
+        "now": 3.7973333333333334,
+        "chartMs": 32775,
+        "state": "running"
+      },
+      {
+        "when": 3.9535,
+        "now": 3.8613333333333335,
+        "chartMs": 32907,
+        "state": "running"
+      },
+      {
+        "when": 4.02,
+        "now": 3.936,
+        "chartMs": 33040,
+        "state": "running"
+      },
+      {
+        "when": 4.086,
+        "now": 4,
+        "chartMs": 33172,
+        "state": "running"
+      },
+      {
+        "when": 4.086,
+        "now": 4,
+        "chartMs": 33172,
+        "state": "running"
+      },
+      {
+        "when": 4.218,
+        "now": 4.128,
+        "chartMs": 33436,
+        "state": "running"
+      },
+      {
+        "when": 4.317,
+        "now": 4.234666666666667,
+        "chartMs": 33634,
+        "state": "running"
+      },
+      {
+        "when": 4.35,
+        "now": 4.266666666666667,
+        "chartMs": 33700,
+        "state": "running"
+      },
+      {
+        "when": 4.4825,
+        "now": 4.384,
+        "chartMs": 33965,
+        "state": "running"
+      },
+      {
+        "when": 4.5155,
+        "now": 4.416,
+        "chartMs": 34031,
+        "state": "running"
+      },
+      {
+        "when": 4.5485,
+        "now": 4.469333333333333,
+        "chartMs": 34097,
+        "state": "running"
+      },
+      {
+        "when": 4.5485,
+        "now": 4.469333333333333,
+        "chartMs": 34097,
+        "state": "running"
+      },
+      {
+        "when": 4.6145,
+        "now": 4.533333333333333,
+        "chartMs": 34229,
+        "state": "running"
+      },
+      {
+        "when": 4.6805,
+        "now": 4.586666666666667,
+        "chartMs": 34361.00000000001,
+        "state": "running"
+      },
+      {
+        "when": 4.7465,
+        "now": 4.650666666666667,
+        "chartMs": 34493,
+        "state": "running"
+      },
+      {
+        "when": 4.7795,
+        "now": 4.682666666666667,
+        "chartMs": 34559,
+        "state": "running"
+      },
+      {
+        "when": 4.813,
+        "now": 4.714666666666667,
+        "chartMs": 34626,
+        "state": "running"
+      },
+      {
+        "when": 4.813,
+        "now": 4.714666666666667,
+        "chartMs": 34626,
+        "state": "running"
+      },
+      {
+        "when": 4.879,
+        "now": 4.8,
+        "chartMs": 34757.99999999999,
+        "state": "running"
+      },
+      {
+        "when": 4.978,
+        "now": 4.8853333333333335,
+        "chartMs": 34956,
+        "state": "running"
+      },
+      {
+        "when": 5.077,
+        "now": 4.981333333333334,
+        "chartMs": 35154,
+        "state": "running"
+      },
+      {
+        "when": 5.143,
+        "now": 5.045333333333334,
+        "chartMs": 35286,
+        "state": "running"
+      },
+      {
+        "when": 5.2095,
+        "now": 5.12,
+        "chartMs": 35419,
+        "state": "running"
+      },
+      {
+        "when": 5.2755,
+        "now": 5.184,
+        "chartMs": 35551,
+        "state": "running"
+      },
+      {
+        "when": 5.3415,
+        "now": 5.248,
+        "chartMs": 35683,
+        "state": "running"
+      },
+      {
+        "when": 5.3415,
+        "now": 5.248,
+        "chartMs": 35683,
+        "state": "running"
+      },
+      {
+        "when": 5.4075,
+        "now": 5.312,
+        "chartMs": 35815,
+        "state": "running"
+      },
+      {
+        "when": 5.4735,
+        "now": 5.386666666666667,
+        "chartMs": 35947,
+        "state": "running"
+      },
+      {
+        "when": 5.5725,
+        "now": 5.482666666666667,
+        "chartMs": 36144.99999999999,
+        "state": "running"
+      },
+      {
+        "when": 5.6055,
+        "now": 5.514666666666667,
+        "chartMs": 36211,
+        "state": "running"
+      },
+      {
+        "when": 5.672,
+        "now": 5.578666666666667,
+        "chartMs": 36344,
+        "state": "running"
+      },
+      {
+        "when": 5.738,
+        "now": 5.653333333333333,
+        "chartMs": 36476,
+        "state": "running"
+      },
+      {
+        "when": 5.804,
+        "now": 5.717333333333333,
+        "chartMs": 36608.00000000001,
+        "state": "running"
+      },
+      {
+        "when": 5.87,
+        "now": 5.770666666666667,
+        "chartMs": 36740,
+        "state": "running"
+      },
+      {
+        "when": 5.87,
+        "now": 5.770666666666667,
+        "chartMs": 36740,
+        "state": "running"
+      },
+      {
+        "when": 5.969,
+        "now": 5.888,
+        "chartMs": 36938,
+        "state": "running"
+      },
+      {
+        "when": 6.002,
+        "now": 5.92,
+        "chartMs": 37004,
+        "state": "running"
+      },
+      {
+        "when": 6.002,
+        "now": 5.92,
+        "chartMs": 37004,
+        "state": "running"
+      },
+      {
+        "when": 6.0685,
+        "now": 5.984,
+        "chartMs": 37137,
+        "state": "running"
+      },
+      {
+        "when": 6.1675,
+        "now": 6.069333333333334,
+        "chartMs": 37335,
+        "state": "running"
+      },
+      {
+        "when": 6.2335,
+        "now": 6.152,
+        "chartMs": 37467,
+        "state": "running"
+      },
+      {
+        "when": 6.2995,
+        "now": 6.218666666666667,
+        "chartMs": 37599.00000000001,
+        "state": "running"
+      },
+      {
+        "when": 6.3325,
+        "now": 6.250666666666667,
+        "chartMs": 37665,
+        "state": "running"
+      },
+      {
+        "when": 6.3985,
+        "now": 6.304,
+        "chartMs": 37797,
+        "state": "running"
+      },
+      {
+        "when": 6.3985,
+        "now": 6.304,
+        "chartMs": 37797,
+        "state": "running"
+      },
+      {
+        "when": 6.498,
+        "now": 6.4,
+        "chartMs": 37996,
+        "state": "running"
+      },
+      {
+        "when": 6.531,
+        "now": 6.432,
+        "chartMs": 38062,
+        "state": "running"
+      },
+      {
+        "when": 6.597,
+        "now": 6.517333333333333,
+        "chartMs": 38194,
+        "state": "running"
+      },
+      {
+        "when": 6.663,
+        "now": 6.570666666666667,
+        "chartMs": 38326,
+        "state": "running"
+      },
+      {
+        "when": 6.729,
+        "now": 6.634666666666667,
+        "chartMs": 38458,
+        "state": "running"
+      },
+      {
+        "when": 6.762,
+        "now": 6.666666666666667,
+        "chartMs": 38524,
+        "state": "running"
+      },
+      {
+        "when": 6.795,
+        "now": 6.698666666666667,
+        "chartMs": 38590,
+        "state": "running"
+      },
+      {
+        "when": 6.828,
+        "now": 6.730666666666667,
+        "chartMs": 38656,
+        "state": "running"
+      },
+      {
+        "when": 6.861,
+        "now": 6.762666666666667,
+        "chartMs": 38722,
+        "state": "running"
+      },
+      {
+        "when": 6.9275,
+        "now": 6.8373333333333335,
+        "chartMs": 38855.00000000001,
+        "state": "running"
+      },
+      {
+        "when": 6.9605,
+        "now": 6.8693333333333335,
+        "chartMs": 38921,
+        "state": "running"
+      },
+      {
+        "when": 7.0595,
+        "now": 6.965333333333334,
+        "chartMs": 39119,
+        "state": "running"
+      },
+      {
+        "when": 7.0595,
+        "now": 6.965333333333334,
+        "chartMs": 39119,
+        "state": "running"
+      },
+      {
+        "when": 7.1255,
+        "now": 7.029333333333334,
+        "chartMs": 39251,
+        "state": "running"
+      },
+      {
+        "when": 7.1915,
+        "now": 7.104,
+        "chartMs": 39382.99999999999,
+        "state": "running"
+      },
+      {
+        "when": 7.2245,
+        "now": 7.136,
+        "chartMs": 39449,
+        "state": "running"
+      },
+      {
+        "when": 7.324,
+        "now": 7.232,
+        "chartMs": 39647.99999999999,
+        "state": "running"
+      },
+      {
+        "when": 7.39,
+        "now": 7.296,
+        "chartMs": 39780,
+        "state": "running"
+      },
+      {
+        "when": 7.39,
+        "now": 7.296,
+        "chartMs": 39780,
+        "state": "running"
+      },
+      {
+        "when": 7.423,
+        "now": 7.328,
+        "chartMs": 39846,
+        "state": "running"
+      },
+      {
+        "when": 7.555,
+        "now": 7.466666666666667,
+        "chartMs": 40110,
+        "state": "running"
+      },
+      {
+        "when": 7.588,
+        "now": 7.498666666666667,
+        "chartMs": 40176,
+        "state": "running"
+      },
+      {
+        "when": 7.7205,
+        "now": 7.637333333333333,
+        "chartMs": 40441,
+        "state": "running"
+      },
+      {
+        "when": 7.7205,
+        "now": 7.637333333333333,
+        "chartMs": 40441,
+        "state": "running"
+      },
+      {
+        "when": 7.7535,
+        "now": 7.669333333333333,
+        "chartMs": 40507,
+        "state": "running"
+      },
+      {
+        "when": 7.8195,
+        "now": 7.733333333333333,
+        "chartMs": 40638.99999999999,
+        "state": "running"
+      },
+      {
+        "when": 7.9185,
+        "now": 7.818666666666667,
+        "chartMs": 40837,
+        "state": "running"
+      },
+      {
+        "when": 7.9845,
+        "now": 7.904,
+        "chartMs": 40969,
+        "state": "running"
+      },
+      {
+        "when": 7.9845,
+        "now": 7.904,
+        "chartMs": 40969,
+        "state": "running"
+      },
+      {
+        "when": 8.0505,
+        "now": 7.968,
+        "chartMs": 41101,
+        "state": "running"
+      },
+      {
+        "when": 8.0505,
+        "now": 7.968,
+        "chartMs": 41101,
+        "state": "running"
+      },
+      {
+        "when": 8.1165,
+        "now": 8.032,
+        "chartMs": 41233.00000000001,
+        "state": "running"
+      },
+      {
+        "when": 8.249,
+        "now": 8.149333333333333,
+        "chartMs": 41498.00000000001,
+        "state": "running"
+      },
+      {
+        "when": 8.282,
+        "now": 8.202666666666667,
+        "chartMs": 41564,
+        "state": "running"
+      },
+      {
+        "when": 8.315,
+        "now": 8.234666666666667,
+        "chartMs": 41629.99999999999,
+        "state": "running"
+      },
+      {
+        "when": 8.447,
+        "now": 8.352,
+        "chartMs": 41894,
+        "state": "running"
+      },
+      {
+        "when": 8.447,
+        "now": 8.352,
+        "chartMs": 41894,
+        "state": "running"
+      },
+      {
+        "when": 8.513,
+        "now": 8.416,
+        "chartMs": 42025.99999999999,
+        "state": "running"
+      },
+      {
+        "when": 8.5795,
+        "now": 8.48,
+        "chartMs": 42159,
+        "state": "running"
+      },
+      {
+        "when": 8.5795,
+        "now": 8.48,
+        "chartMs": 42159,
+        "state": "running"
+      },
+      {
+        "when": 8.5795,
+        "now": 8.48,
+        "chartMs": 42159,
+        "state": "running"
+      },
+      {
+        "when": 8.6455,
+        "now": 8.554666666666666,
+        "chartMs": 42291,
+        "state": "running"
+      },
+      {
+        "when": 8.7115,
+        "now": 8.618666666666666,
+        "chartMs": 42423,
+        "state": "running"
+      },
+      {
+        "when": 8.7115,
+        "now": 8.618666666666666,
+        "chartMs": 42423,
+        "state": "running"
+      },
+      {
+        "when": 8.8435,
+        "now": 8.746666666666666,
+        "chartMs": 42687,
+        "state": "running"
+      },
+      {
+        "when": 8.8435,
+        "now": 8.746666666666666,
+        "chartMs": 42687,
+        "state": "running"
+      },
+      {
+        "when": 8.9095,
+        "now": 8.810666666666666,
+        "chartMs": 42819,
+        "state": "running"
+      },
+      {
+        "when": 8.976,
+        "now": 8.885333333333334,
+        "chartMs": 42952,
+        "state": "running"
+      },
+      {
+        "when": 8.976,
+        "now": 8.885333333333334,
+        "chartMs": 42952,
+        "state": "running"
+      },
+      {
+        "when": 9.042,
+        "now": 8.949333333333334,
+        "chartMs": 43084,
+        "state": "running"
+      },
+      {
+        "when": 9.108,
+        "now": 9.013333333333334,
+        "chartMs": 43216,
+        "state": "running"
+      },
+      {
+        "when": 9.174,
+        "now": 9.088,
+        "chartMs": 43348,
+        "state": "running"
+      },
+      {
+        "when": 9.174,
+        "now": 9.088,
+        "chartMs": 43348,
+        "state": "running"
+      },
+      {
+        "when": 9.306,
+        "now": 9.216,
+        "chartMs": 43611.99999999999,
+        "state": "running"
+      },
+      {
+        "when": 9.372,
+        "now": 9.28,
+        "chartMs": 43744,
+        "state": "running"
+      },
+      {
+        "when": 9.372,
+        "now": 9.28,
+        "chartMs": 43744,
+        "state": "running"
+      },
+      {
+        "when": 9.4385,
+        "now": 9.344,
+        "chartMs": 43876.99999999999,
+        "state": "running"
+      },
+      {
+        "when": 9.5045,
+        "now": 9.418666666666667,
+        "chartMs": 44009,
+        "state": "running"
+      },
+      {
+        "when": 9.5045,
+        "now": 9.418666666666667,
+        "chartMs": 44009,
+        "state": "running"
+      },
+      {
+        "when": 9.5375,
+        "now": 9.450666666666667,
+        "chartMs": 44075,
+        "state": "running"
+      },
+      {
+        "when": 9.6695,
+        "now": 9.578666666666667,
+        "chartMs": 44339,
+        "state": "running"
+      },
+      {
+        "when": 9.7685,
+        "now": 9.685333333333332,
+        "chartMs": 44537,
+        "state": "running"
+      },
+      {
+        "when": 9.7685,
+        "now": 9.685333333333332,
+        "chartMs": 44537,
+        "state": "running"
+      },
+      {
+        "when": 9.901,
+        "now": 9.802666666666667,
+        "chartMs": 44802,
+        "state": "running"
+      },
+      {
+        "when": 9.901,
+        "now": 9.802666666666667,
+        "chartMs": 44802,
+        "state": "running"
+      },
+      {
+        "when": 9.967,
+        "now": 9.888,
+        "chartMs": 44934,
+        "state": "running"
+      }
+    ],
+    "anchors": [
+      {
+        "when": 0,
+        "offset": 25,
+        "rate": 2,
+        "state": "suspended"
+      }
+    ],
+    "playhead": 45024
+  },
+  "limitations": [
+    "No audio listening performed.",
+    "Native scheduling arguments only; hardware output latency and musical perception are not certified.",
+    "Untrusted programmatic click run had suspended context and was excluded."
+  ]
+}

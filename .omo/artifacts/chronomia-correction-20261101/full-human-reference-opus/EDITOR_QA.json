@@ -1,0 +1,205 @@
+{
+  "chart": "Songs/Chronomia/Chronomia_AI_Full_HumanRhythm_Draft.4k-speedcoef.json",
+  "visualInspectionsMs": [
+    3000,
+    45000,
+    65000,
+    98000,
+    115000,
+    142000
+  ],
+  "visualResult": "Real rendered editor scores displayed and inspected;1118notes29holds, originalMP3 waveform ready; entry, human boundary, break, bridge, climax and ending visible.",
+  "continuousPlayback": {
+    "method": "single continuous actual2x playback; primed running context; subscribed milestones before trusted UI click",
+    "trustedClicks": [
+      true
+    ],
+    "anchors": [
+      {
+        "when": 0.05333333333333334,
+        "offset": 0,
+        "rate": 2,
+        "state": "running"
+      }
+    ],
+    "endedAtMs": 144018,
+    "expectedNotes": 1118,
+    "observedHits": 1118,
+    "allHitContextsRunning": true,
+    "minScheduleLeadMs": 78.66666666666333,
+    "maxStartErrorMs": 1.4551915228366852e-11,
+    "mismatchedOnsetCounts": [],
+    "milestones": [
+      {
+        "targetMs": 20000,
+        "observedTimeMs": 20023,
+        "hitsSoFar": 117
+      },
+      {
+        "targetMs": 40000,
+        "observedTimeMs": 40022,
+        "hitsSoFar": 288
+      },
+      {
+        "targetMs": 60000,
+        "observedTimeMs": 60022,
+        "hitsSoFar": 476
+      },
+      {
+        "targetMs": 80000,
+        "observedTimeMs": 80021,
+        "hitsSoFar": 616
+      },
+      {
+        "targetMs": 100000,
+        "observedTimeMs": 100020,
+        "hitsSoFar": 784
+      },
+      {
+        "targetMs": 120000,
+        "observedTimeMs": 120019,
+        "hitsSoFar": 920
+      },
+      {
+        "targetMs": 140000,
+        "observedTimeMs": 140018,
+        "hitsSoFar": 1111
+      },
+      {
+        "targetMs": 144000,
+        "observedTimeMs": 144018,
+        "hitsSoFar": 1118
+      }
+    ]
+  },
+  "startupEdgeFinding": {
+    "startMs": 60000,
+    "endMs": 80000,
+    "expectedNotes": 140,
+    "observedHits": 140,
+    "trustedClicks": [
+      true
+    ],
+    "anchors": [
+      {
+        "when": 0.064,
+        "offset": 60,
+        "rate": 2,
+        "state": "running"
+      }
+    ],
+    "allHitContextsRunning": true,
+    "minScheduleLeadMs": 0,
+    "maxStartErrorMs": 21.333333333328483,
+    "mismatchedOnsetCounts": [
+      60000,
+      60021
+    ]
+  },
+  "partialSegmentMeasurements": [
+    {
+      "startMs": 0,
+      "endMs": 20000,
+      "expectedNotes": 114,
+      "observedHits": 114,
+      "trustedClicks": [
+        true
+      ],
+      "anchors": [
+        {
+          "when": 0.064,
+          "offset": 0,
+          "rate": 2,
+          "state": "running"
+        }
+      ],
+      "allHitContextsRunning": true,
+      "minScheduleLeadMs": 78.66666666666688,
+      "maxStartErrorMs": 1.8189894035458565e-12,
+      "mismatchedOnsetCounts": []
+    },
+    {
+      "startMs": 20000,
+      "endMs": 40000,
+      "expectedNotes": 170,
+      "observedHits": 170,
+      "trustedClicks": [
+        true
+      ],
+      "anchors": [
+        {
+          "when": 0.07466666666666667,
+          "offset": 20,
+          "rate": 2,
+          "state": "running"
+        }
+      ],
+      "allHitContextsRunning": true,
+      "minScheduleLeadMs": 0.33333333333333826,
+      "maxStartErrorMs": 7.275957614183426e-12,
+      "mismatchedOnsetCounts": []
+    },
+    {
+      "startMs": 40000,
+      "endMs": 60000,
+      "expectedNotes": 190,
+      "observedHits": 190,
+      "trustedClicks": [
+        true
+      ],
+      "anchors": [
+        {
+          "when": 0.064,
+          "offset": 40,
+          "rate": 2,
+          "state": "running"
+        }
+      ],
+      "allHitContextsRunning": true,
+      "minScheduleLeadMs": 11.33333333333332,
+      "maxStartErrorMs": 7.275957614183426e-12,
+      "mismatchedOnsetCounts": []
+    },
+    {
+      "startMs": 60000,
+      "endMs": 80000,
+      "expectedNotes": 140,
+      "observedHits": 140,
+      "trustedClicks": [
+        true
+      ],
+      "anchors": [
+        {
+          "when": 0.064,
+          "offset": 60,
+          "rate": 2,
+          "state": "running"
+        }
+      ],
+      "allHitContextsRunning": true,
+      "minScheduleLeadMs": 0,
+      "maxStartErrorMs": 21.333333333328483,
+      "mismatchedOnsetCounts": [
+        60000,
+        60021
+      ]
+    }
+  ],
+  "excludedAttempts": [
+    {
+      "kind": "readiness failure",
+      "reason": "Initial0ms DOM matched before chart/audio loaded; context-prime timeout. Replaced with chart count and audio readiness subscription."
+    },
+    {
+      "kind": "CDP transport timeout",
+      "reason": "One72s Runtime.callFunctionOn exceeded transport timeout. Replaced with pre-subscribed milestones in one continuous run."
+    }
+  ],
+  "interpretation": "Scheduling arguments and onset counts verified, not hardware presentation latency or listening. Primed native running context used for the decisive run. The direct segment-start note at60000ms had21.33chart-ms startup delay; not observed in continuous playback. No source fix implemented for that startup boundary.",
+  "limits": [
+    "No audio listening or skilled-player test.",
+    "Source separation and texture bins do not certify melody or note identity.",
+    "Three weak holds, dotted waits and final tail tap remain human musical review choices.",
+    "Biome LSP unavailable; actual JSON validator passed exit0."
+  ]
+}

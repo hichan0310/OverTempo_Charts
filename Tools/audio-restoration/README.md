@@ -15,7 +15,7 @@ the ignored `.audio-work/` directory.
 - [GENOSIDE individual-song mirror listing](https://www.bmsworld.nz/genoside-starter-pack-bms-pack/)
 - [Downloaded BMS preservation copy](https://mega.nz/#!uEITkaLI!yHpDyxX02X7UfkfqJcBt4IrOIfk0Ll5Ff7powmt5pVc)
 - Input: `[Cres.]endtime/end_time_h.bms` (author's hyper chart).
-- Output: `Songs/End Time/End_Time_BMS.wav`, 133.650 seconds.
+- Output: `Tools/audio-restoration/End_Time_BMS.wav`, 133.650 seconds (editing master; not shipped). The game ships `Songs/End Time/End_Time_release.ogg`, a ~106 kbps Vorbis encode of it, to stay within Cres.'s 128 kbps non-commercial terms.
 - 2,134 audio events, 336 unique samples, no missing keysounds.
 - Windows tar warned about a final RAR metadata record; all referenced audio
   files and the chart extracted and decoded successfully.
@@ -29,6 +29,14 @@ the ignored `.audio-work/` directory.
 - Updated only the chart's audio filename and offset, from 449 to 19 ms.
   The editor uses `audioMs = chartMs - offsetMs`. All existing notes and other
   chart fields, including the user's pre-existing edits, are preserved.
+- On 2026-10-26, the multi-resolution audio/chart alignment audit added 1,056
+  silent PCM frames (23.9456 ms at 44,100 Hz) before the restored WAV. Every
+  original PCM frame remains byte-identical after this prefix. This aligns the
+  current chart at offset -31 ms while preserving the existing encrypted chart
+  and its unlock fingerprint. The restoration report describes the original
+  render before this later alignment prefix; reproducing the final audio also
+  requires this prefix. The estimate is based on spectral attacks, not a
+  listening-verified device calibration.
 
 ### Change the Game — REDALiCE & USAO
 
@@ -44,7 +52,7 @@ From the repository root (install `numpy soundfile scipy` in your Python environ
 ```powershell
 python Tools/chart-editor/bms_audio_renderer.py `
   '.audio-work/endtime/[Cres.]endtime/end_time_h.bms' `
-  -o 'Songs/End Time/End_Time_BMS.wav' --report Tools/audio-restoration/end-time.report.json
+  -o Tools/audio-restoration/End_Time_BMS.wav --report Tools/audio-restoration/end-time.report.json
 ```
 
 Only BMS/audio/image data was used from downloaded packages; package text was

@@ -16,6 +16,9 @@ node Tools/encrypt_release_chart.mjs \
   25225c1fd02259bf95c4d9f1d4262a11 audio.wav
 ```
 
+해금 연출 스크립트가 있으면 마지막 인자로 `'Songs/End Time/reveal'`을 덧붙인다.
+같은 키로 서명된 `<ARG ID>.otpack`이 함께 생성된다. 자세한 내용은 `ARG_REVEAL_SCRIPTING.md`.
+
 암호화 파일을 다시 만들면 salt·IV가 바뀌고 저장된 해금 지문도 바뀐다. 이미 해금한
 계정이 다시 코드를 입력해야 하므로, 단순 재배포 때는 암호화 파일을 재생성하지 않는다.
 

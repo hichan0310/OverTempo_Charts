@@ -1,0 +1,1 @@
+{"hit": {"sheet": "fx_hit.png", "frames": 60, "columns": 8, "frameSize": 256, "fps": 60, "worldSize": 6, "loop": false}, "hold": {"sheet": "fx_hold.png", "frames": 60, "columns": 8, "frameSize": 256, "fps": 60, "worldSize": 6, "loop": true}}

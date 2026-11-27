@@ -214,7 +214,7 @@ def convert_osu(path: Path, *, fold_7k: bool = False) -> dict:
     source_preview_ms = int(float(general.get("PreviewTime", "0")))
     chart_preview_ms = max(0, source_preview_ms + chart_shift_ms)
     return {
-        "version": 2,
+        "version": 4,
         "meta": {
             "title": metadata.get("TitleUnicode") or metadata.get("Title", path.stem),
             "artist": metadata.get("ArtistUnicode") or metadata.get("Artist", ""),
@@ -255,8 +255,7 @@ def convert_osu(path: Path, *, fold_7k: bool = False) -> dict:
                 15000, chart_preview_ms + 15000
             ),
         },
-        "speedLimitLines": [],
-        "stageDeltaLines": [],
+        "specialNotes": [],
         "notes": deduped,
     }
 

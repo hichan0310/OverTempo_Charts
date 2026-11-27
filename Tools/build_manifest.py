@@ -86,7 +86,12 @@ def validate_song(song_dir: Path, meta: dict) -> None:
         if actual_media != set(assets):
             die(f"encrypted song media mapping is incomplete: {song_dir}")
 
-        for encrypted_chart in encrypted_charts:
+        chart_ids = {chart.stem for chart in encrypted_charts}
+        for package in song_dir.glob("*.otpack"):
+            # Signed reveal scripts share their chart's opaque ID and key.
+            if package.stem not in chart_ids:
+                die(f"reveal package has no matching .otchart: {package}")
+        for encrypted_chart in encrypted_charts + list(song_dir.glob("*.otpack")):
             if not OPAQUE_ID_RE.fullmatch(encrypted_chart.stem):
                 die(f"encrypted chart filename must be opaque: {encrypted_chart}")
             envelope = load_json(encrypted_chart)
@@ -108,7 +113,7 @@ def validate_song(song_dir: Path, meta: dict) -> None:
     elif not charts:
         die(f"no chart file found in {song_dir}")
 
-    if not encrypted and encrypted_charts:
+    if not encrypted and (encrypted_charts or list(song_dir.glob("*.otpack"))):
         die(f"song has .otchart files but song.patch.json is not marked encrypted: {song_dir}")
 
     for osu in ([] if encrypted else song_dir.glob("*.osu")):
@@ -119,7 +124,7 @@ def validate_song(song_dir: Path, meta: dict) -> None:
     for sc in ([] if encrypted else song_dir.glob("*.4k-speedcoef.json")):
         data = load_json(sc)
         notes = data.get("notes")
-        if not isinstance(notes, list) or (not notes and meta.get("allowEmptyChart") is not True):
+        if not isinstance(notes, list) or (not notes and not data.get("specialNotes") and meta.get("allowEmptyChart") is not True):
             die(f"speedcoef chart has no notes: {sc}")
         audio = ((data.get("meta") or {}).get("audioFileName") or "").strip()
         if audio and not (song_dir / audio).is_file():
@@ -144,7 +149,7 @@ def build_song_zip(repo: Path, song_dir: Path, song_id: str, output_songs: Path,
                             "publicArtist": str(meta.get("publicArtist", ""))}
             zf.writestr(f"{song_id}/song.patch.json",
                         json.dumps(release_meta, ensure_ascii=False, indent=2) + "\n")
-            for chart in sorted(song_dir.glob("*.otchart")):
+            for chart in sorted(list(song_dir.glob("*.otchart")) + list(song_dir.glob("*.otpack"))):
                 zf.write(chart, f"{song_id}/{chart.name}")
             for source, destination in sorted(meta["encryptedAssets"].items()):
                 zf.write(song_dir / source, f"{song_id}/{destination}")

@@ -140,4 +140,152 @@ assert.equal(editorProjectSelection.projectLoadIsCurrent(4, loadedKey), false, "
 assert.match(html, /projectSongSelect'\)\.onchange=.*projectLoadSelected/);
 assert.match(html, /projectChartSelect'\)\.onchange=.*projectLoadSelected/);
 
-console.log("editor crypto, variable-BPM timing, and project load gating tests passed");
+const initialSelectionSource = sourceBetween(
+  "async function projectLoadInitialSelection",
+  "function baseCoefFromNote",
+);
+globalThis.eval(`${initialSelectionSource}
+globalThis.editorInitialSelection = projectLoadInitialSelection;`);
+const initialCalls = [];
+globalThis.location = {
+  search: "?song=Chronomia&chart=Chronomia_AI_Advanced_Study.4k-speedcoef.json&timeMs=25000",
+};
+globalThis.projectRefreshSongs = async (...args) => initialCalls.push(args);
+let finishInitialLoad;
+let signalInitialLoad;
+const initialLoadStarted = new Promise(resolve => { signalInitialLoad = resolve; });
+globalThis.projectLoadSelected = () => {
+  signalInitialLoad();
+  return new Promise(resolve => { finishInitialLoad = resolve; });
+};
+globalThis.updatePanels = () => initialCalls.push("panels");
+state.playheadMs = 0;
+state.viewStartMs = 0;
+const openingInitialSelection = editorInitialSelection();
+await initialLoadStarted;
+assert.deepEqual(initialCalls, [
+  [false, "Chronomia", "Chronomia_AI_Advanced_Study.4k-speedcoef.json"],
+]);
+assert.equal(state.playheadMs, 0, "seek must wait for the selected chart and audio");
+finishInitialLoad(true);
+assert.equal(await openingInitialSelection, true);
+assert.equal(state.playheadMs, 25000);
+assert.equal(state.viewStartMs, 24500);
+assert.equal(initialCalls.at(-1), "panels");
+for (const search of ["", "?timeMs=-1", "?timeMs=invalid"]) {
+  location.search = search;
+  state.playheadMs = 123;
+  state.viewStartMs = 50;
+  globalThis.projectLoadSelected = async () => true;
+  await editorInitialSelection();
+  assert.equal(state.playheadMs, 123, "absent or invalid seek must preserve position");
+  assert.equal(state.viewStartMs, 50);
+}
+location.search = "?timeMs=25000";
+globalThis.projectLoadSelected = async () => false;
+await editorInitialSelection();
+assert.equal(state.playheadMs, 123, "failed chart load must not apply a seek");
+
+// Given the actual audition functions and a deterministic Web Audio clock.
+const auditionNodes = [];
+const parameter = () => ({
+  setValueAtTime() {},
+  exponentialRampToValueAtTime() {},
+});
+globalThis.audioCtx = {
+  currentTime: 10.05,
+  destination: {},
+  createOscillator() {
+    const node = {
+      frequency: parameter(),
+      starts: [],
+      stops: [],
+      connect() {},
+      start(when) { this.starts.push(when); },
+      stop(when = audioCtx.currentTime) { this.stops.push(when); },
+    };
+    auditionNodes.push(node);
+    return node;
+  },
+  createGain: () => ({ gain: parameter(), connect() {} }),
+  createBiquadFilter: () => ({ frequency: parameter(), connect() {} }),
+};
+elements.hitVolume = { value: "0.65" };
+globalThis.ensureAudioCtx = () => {};
+globalThis.scheduledAuditions = [];
+globalThis.bgmActive = true;
+globalThis.bgmStartedChartMs = 25000;
+globalThis.bgmStartedCtxTime = 10;
+globalThis.bgmSource = null;
+globalThis.bgmGain = null;
+globalThis.audioStartedForThisPlayback = true;
+state.playheadMs = 25045;
+state.playbackRate = 1;
+state.loop = false;
+state.notes = [
+  { timeMs: 25110, lane: 0, speedupCoef: 1 },
+  { timeMs: 25242, lane: 2, speedupCoef: 0 },
+];
+globalThis.eval(
+  sourceBetween("function playHit", "async function loadAudioFile") +
+  sourceBetween("function stopBgm", "function startBgmAtChartTime") +
+  sourceBetween("function auditionCrossedNotes", "function mousePos") +
+  "globalThis.editorAudition = { auditionCrossedNotes, stopBgm };",
+);
+// When the next note is ahead of the current animation frame.
+editorAudition.auditionCrossedNotes(16);
+// Then it is already scheduled at its BGM context time, not frame arrival.
+assert.equal(auditionNodes.length, 1, "future hits must be scheduled before their render frame");
+assert.ok(Math.abs(auditionNodes[0].starts[0] - 10.11) < 1e-9);
+
+// Given that the future hit has already been scheduled.
+// When another frame visits the same look-ahead window.
+editorAudition.auditionCrossedNotes(16);
+// Then it is not scheduled a second time.
+assert.equal(auditionNodes.length, 1);
+
+// Given a queued future hit.
+// When playback stops or resynchronizes.
+editorAudition.stopBgm();
+// Then the future oscillator is cancelled and its note may be scheduled again.
+assert.equal(auditionNodes[0].stops.at(-1), audioCtx.currentTime);
+assert.equal(state.notes[0]._lastPlayedAt, undefined);
+
+// Given a replacement BGM source at 2x and a slightly lagging render frame.
+bgmActive = true;
+bgmStartedChartMs = 25050;
+bgmStartedCtxTime = 10.05;
+state.playheadMs = 25040;
+state.playbackRate = 2;
+// When scheduling from the new audio clock.
+editorAudition.auditionCrossedNotes(16);
+// Then both hits use the new rate/anchor, independent of render-frame jitter.
+assert.equal(auditionNodes.length, 3);
+assert.ok(Math.abs(auditionNodes[1].starts[0] - 10.08) < 1e-9);
+assert.ok(Math.abs(auditionNodes[2].starts[0] - 10.146) < 1e-9);
+
+// Given a loop ending exactly at the next event.
+editorAudition.stopBgm();
+bgmActive = true;
+state.loop = true;
+state.loopStartMs = 25000;
+state.loopEndMs = 25110;
+// When looking ahead across that boundary.
+editorAudition.auditionCrossedNotes(16);
+// Then no hit from outside the loop is queued.
+assert.equal(auditionNodes.length, 3);
+
+// Given a chart without active BGM and a muted hit channel.
+editorAudition.stopBgm();
+state.loop = false;
+state.playbackRate = 1;
+state.playheadMs = 25050;
+elements.hitVolume.value = "0";
+// When muted future hits are scheduled and playback stops.
+editorAudition.auditionCrossedNotes(16);
+editorAudition.stopBgm();
+// Then cancellation needs no oscillator and does not leave the note consumed.
+assert.equal(auditionNodes.length, 3);
+assert.equal(state.notes[0]._lastPlayedAt, undefined);
+
+console.log("editor crypto, timing, project loading, direct links, and audio-clock audition tests passed");

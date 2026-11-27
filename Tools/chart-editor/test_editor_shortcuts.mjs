@@ -14,3 +14,9 @@ assert.deepEqual(key('1'),[['tool','select']]);assert.deepEqual(key('2'),[['tool
 assert.deepEqual(key('s',{ctrlKey:true}),[['save']]);assert.deepEqual(key('z',{ctrlKey:true}),[['undo']]);assert.deepEqual(key('z',{ctrlKey:true,shiftKey:true}),[['redo']]);
 assert.deepEqual(key('d',{repeat:true}),[]);context.document.activeElement.tagName='INPUT';assert.deepEqual(key('a'),[]);
 console.log('Editor shortcuts passed: left-hand tools, coef, hold, osu aliases, save, redo, repeat and typing guards.');
+
+// Toolbar labels execute outside the editor closure, so use the global DOM API.
+const labels = new Map();
+vm.runInNewContext(html.slice(html.lastIndexOf('for(const [id,label]'),html.indexOf('</script>',html.lastIndexOf('for(const [id,label]'))), {document:{getElementById(id){const el={};labels.set(id,el);return el;}}});
+assert.equal(labels.get('coef0Btn').textContent,'Coef 0 [A]');
+assert.equal(labels.get('coef1Btn').textContent,'Coef 1 [S]');
