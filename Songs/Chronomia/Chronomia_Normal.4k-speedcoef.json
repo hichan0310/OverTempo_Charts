@@ -9,7 +9,29 @@
     "previewEndMs": 15000,
     "extra": "",
     "coverDataUrl": "/api/media?song=Chronomia&file=chronomia_cover.png",
-    "audioFileName": "4-03 Chronomia.mp3"
+    "audioFileName": "4-03 Chronomia.mp3",
+    "argReveal": {
+      "preset": "shatter",
+      "lines": [
+        {
+          "text": "NOW",
+          "size": 84,
+          "y": 55,
+          "assembleAt": 5.3,
+          "completeAt": 6.9
+        },
+        {
+          "text": "THE END OF THIS JOURNEY IS HERE",
+          "size": 40,
+          "y": -48,
+          "assembleAt": 7.9,
+          "completeAt": 9.5
+        }
+      ],
+      "whiteStart": 11.5,
+      "duration": 14.5,
+      "musicStartAt": 5.3
+    }
   },
   "difficulty": {
     "name": "png to zip",
@@ -27,7 +49,9 @@
   },
   "editorSettings": {
     "encryptionEnabled": false,
-    "argId": ""
+    "argId": "",
+    "fxGroupBlocks": [],
+    "fxEmpty": []
   },
   "preview": {
     "startMs": 0,
@@ -65,6 +89,8 @@
       "effect": "delta"
     }
   ],
+  "effects": [],
+  "images": [],
   "notes": [
     {
       "timeMs": 3172,
@@ -9144,7 +9170,7 @@
   ],
   "autoCoef": {
     "schemaVersion": 1,
-    "generatedAt": "2026-10-26T11:02:09.507Z",
+    "generatedAt": "2026-11-24T12:42:15.457Z",
     "description": "Final speedupCoef = baseSpeedupCoef * autoSpeedupCoefMultiplier. Load restores editable coef 0/1 from baseSpeedupCoef.",
     "settings": {
       "sigmaMs": 1600,

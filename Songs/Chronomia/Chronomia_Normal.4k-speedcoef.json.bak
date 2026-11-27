@@ -4,7 +4,7 @@
     "title": "Chronomia",
     "artist": "Lime / Kankitsu",
     "source": "",
-    "mapper": "hichan0310",
+    "mapper": "hichan",
     "previewStartMs": 0,
     "previewEndMs": 15000,
     "extra": "",
@@ -12,7 +12,7 @@
     "audioFileName": "4-03 Chronomia.mp3"
   },
   "difficulty": {
-    "name": "Normal",
+    "name": "png to zip",
     "level": 4,
     "scroll": 1,
     "baseSpeed": 1,
@@ -9144,7 +9144,7 @@
   ],
   "autoCoef": {
     "schemaVersion": 1,
-    "generatedAt": "2026-10-26T10:53:28.561Z",
+    "generatedAt": "2026-10-26T11:02:09.507Z",
     "description": "Final speedupCoef = baseSpeedupCoef * autoSpeedupCoefMultiplier. Load restores editable coef 0/1 from baseSpeedupCoef.",
     "settings": {
       "sigmaMs": 1600,
