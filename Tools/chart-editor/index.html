@@ -514,7 +514,7 @@ const FX_COLORS={alpha:'#9fc8ff',speed:'#79e69b',offset:'#c4a5ff',glitch:'#ff7aa
 const FX_EASES=['linear','inQuad','outQuad','inOutQuad','inCubic','outCubic','inOutSine','step'];
 const FX_RESTORE_STYLES=['cut','fade','wipe','glitch','shatter','reassemble'];
 const FX_FIELDS={alpha:['group','value','ease'],speed:['group','value','ease'],glitch:['intensity','ease'],
- shatter:['breakMs','shake','flash','freeze','reveal'],restore:['style','direction','ease']};
+ shatter:['breakMs','shake','flash','freeze','reveal','density','pieceSize','impactX','impactY','motion','force','forceAngle'],restore:['style','direction','ease']};
 let nextFxId=1,nextImageId=1;
 function fxNum(v,d){const n=Number(v);return Number.isFinite(n)?n:d}
 function normalizeEffect(e){
@@ -526,7 +526,10 @@ function normalizeEffect(e){
   if(e.fromValue!==undefined&&e.fromValue!==null&&e.fromValue!==''&&Number.isFinite(Number(e.fromValue)))o.fromValue=Math.max(lo,Math.min(hi,Number(e.fromValue)));}
  if(e.type==='glitch'){o.intensity=Math.max(0,Math.min(1,fxNum(e.intensity,.5)));o.intensityEnd=fxNum(e.intensityEnd,-1);o.ease=e.ease||'linear';if(!o.durationMs)o.durationMs=500}
  if(e.type==='shatter'){o.breakMs=Math.max(100,Math.round(fxNum(e.breakMs,1400)));o.shake=Math.max(0,Math.min(1,fxNum(e.shake,.5)));
-  o.flash=Math.max(0,Math.min(1,fxNum(e.flash,.35)));o.freeze=e.freeze!==false;o.reveal=String(e.reveal||'')}
+  o.flash=Math.max(0,Math.min(1,fxNum(e.flash,.35)));o.freeze=e.freeze!==false;o.reveal=String(e.reveal||'');
+  o.density=Math.max(.25,Math.min(4,fxNum(e.density,1)));o.pieceSize=Math.max(.3,Math.min(4,fxNum(e.pieceSize,1)));
+  o.impactX=Math.max(-1,Math.min(1,fxNum(e.impactX,-.34375)));o.impactY=Math.max(-1,Math.min(1,fxNum(e.impactY,.2777778)));
+  o.motion=['drop','blast','drag','shockwave'].includes(e.motion)?e.motion:'drop';o.force=Math.max(0,Math.min(5,fxNum(e.force,1)));o.forceAngle=fxNum(e.forceAngle,-1)}
  if(e.type==='restore'){o.style=FX_RESTORE_STYLES.includes(e.style)?e.style:'fade';o.direction=['up','down','left','right'].includes(e.direction)?e.direction:'up';o.ease=e.ease||'linear'}
  return o;
 }
@@ -593,49 +596,251 @@ function chartEffectsModel(effects=exportEffects()){
   shatters:effects.filter(e=>e.type==='shatter'),restores:effects.filter(e=>e.type==='restore')};
  if(fxCache.size>8)fxCache.clear();fxCache.set(key,model);return model;
 }
-/* --- End Time glass geometry (EndTimeScreenGlass.Fracture / OnPopulateMesh) --- */
-const FX_FRAGMENTS=(()=>{const out=[],count=18,rings=[[],[],[]],o=[0,0];
- for(let i=0;i<count;i++){let e;if(i<5)e=[-960+1920*i/5,540];else if(i<9)e=[960,540-1080*(i-5)/4];else if(i<14)e=[960-1920*(i-9)/5,-540];else e=[-960,-540+1080*(i-14)/4];
-  const L=(t)=>[o[0]+(e[0]-o[0])*t,o[1]+(e[1]-o[1])*t];rings[0][i]=L(.22+.05*Math.sin(i*7));rings[1][i]=L(.56+.08*Math.cos(i*3));rings[2][i]=e}
- const add=(a,b,c)=>out.push({a,b,c,center:[(a[0]+b[0]+c[0])/3,(a[1]+b[1]+c[1])/3]});
- for(let i=0;i<count;i++){const j=(i+1)%count;add(o,rings[0][i],rings[0][j]);for(let r=0;r<2;r++){add(rings[r][i],rings[r+1][i],rings[r+1][j]);add(rings[r][i],rings[r+1][j],rings[r][j])}}
- return out})();
-function glassMove(f,i,breakup){
- const rot=breakup*(i%2===0?1:-1)*(.12+i%7*.055),flight=1-(1-breakup)*(1-breakup),tilt=flight*(.5+i%6*.19);
- const len=Math.hypot(f.center[0],f.center[1])||1,dist=(1500+i%7*110)*flight,tr=[f.center[0]/len*dist,f.center[1]/len*dist];
- return p=>{let dx=(p[0]-f.center[0])*(1+breakup*.08),dy=(p[1]-f.center[1])*(1+breakup*.08);dx*=Math.cos(tilt);
-  return[f.center[0]+tr[0]+dx*Math.cos(rot)-dy*Math.sin(rot),f.center[1]+tr[1]+dx*Math.sin(rot)+dy*Math.cos(rot)]}}
+/* --- End Time glass (EndTimeScreenGlass.cs: Fracture / OnPopulateMesh) --- */
+// 1920x1080 space centred on the screen, y up. Same generator and constants as the runtime.
+const GLASS_STYLES={
+ web:{seed:11,impact:[-330,150],rays:14,ring0:24,ringGrow:1.4,ringStart:.95,ringFade:.85,arcKeep:.62,branchWidth:230,spurs:34,motion:0},
+ blades:{seed:5,impact:[380,-90],rays:9,ring0:70,ringGrow:1.9,ringStart:.8,ringFade:.6,arcKeep:.6,branchWidth:330,spurs:22,motion:0},
+ burst:{seed:11,impact:[-330,150],rays:14,ring0:24,ringGrow:1.4,ringStart:.95,ringFade:.85,arcKeep:.62,branchWidth:230,spurs:34,motion:0,burst:true}};
+const GLASS_MOTIONS=['drop','blast','drag','shockwave'];
+// EndTimeScreenGlass.ForEffect: the web shaped by a shatter effect's settings.
+function glassStyleFor(e){const d=Math.max(.25,Math.min(4,fxNum(e.density,1))),p=Math.max(.3,Math.min(4,fxNum(e.pieceSize,1))),fa=fxNum(e.forceAngle,-1);
+ return{...GLASS_STYLES.web,rays:Math.max(3,Math.round(14*d)),spurs:Math.round(34*d),branchWidth:230/d,ring0:24*p,ringGrow:1+.4*p,
+  impact:[Math.round(Math.max(-1,Math.min(1,fxNum(e.impactX,-.34375)))*960),Math.round(Math.max(-1,Math.min(1,fxNum(e.impactY,.2777778)))*540)],
+  motion:Math.max(0,GLASS_MOTIONS.indexOf(e.motion||'drop')),force:Math.max(0,Math.min(5,fxNum(e.force,1))),directed:fa>=0,forceAngle:fa}}
+const glassPatterns=new Map();
+function glassPatternFor(e){const st=glassStyleFor(e),k=JSON.stringify(st);if(!glassPatterns.has(k))glassPatterns.set(k,glassFracture(st));return glassPatterns.get(k)}
+function glassRng(seed){let a=seed>>>0;return()=>{a=(a+0x6D2B79F5)>>>0;let t=a;t=Math.imul(t^(t>>>15),t|1);t^=t+Math.imul(t^(t>>>7),t|61);return((t^(t>>>14))>>>0)/4294967296}}
+function glassClip(poly){// Sutherland-Hodgman against the screen rectangle
+ for(let side=0;side<4;side++){const out=[];if(!poly.length)break;
+  const inside=p=>side===0?p[0]>=-960:side===1?p[0]<=960:side===2?p[1]>=-540:p[1]<=540;
+  const cut=(p,q)=>{const t=side<2?((side===0?-960:960)-p[0])/(q[0]-p[0]):((side===2?-540:540)-p[1])/(q[1]-p[1]);return[p[0]+(q[0]-p[0])*t,p[1]+(q[1]-p[1])*t]};
+  for(let i=0;i<poly.length;i++){const p=poly[i],q=poly[(i+1)%poly.length],pi=inside(p),qi=inside(q);
+   if(pi){out.push(p);if(!qi)out.push(cut(p,q))}else if(qi)out.push(cut(p,q))}
+  poly=out}
+ return poly}
+function glassClipSegment(p,q){// fractions of p->q inside the screen, or null
+ let t0=0,t1=1;const d=[q[0]-p[0],q[1]-p[1]];
+ const edges=[[-d[0],p[0]+960],[d[0],960-p[0]],[-d[1],p[1]+540],[d[1],540-p[1]]];
+ for(const[den,num]of edges){if(den===0){if(num<0)return null;continue}const t=num/den;if(den<0){if(t>t1)return null;if(t>t0)t0=t}else{if(t<t0)return null;if(t<t1)t1=t}}
+ return[t0,t1]}
+function glassFracture(st){
+ const R=glassRng(st.seed),rnd=(a,b)=>a+(b-a)*R(),TAU=Math.PI*2;
+ const ix=st.impact[0],iy=st.impact[1],maxR=Math.hypot(960+Math.abs(ix),540+Math.abs(iy))+40;
+ // Radii at which every crack running out from the impact has a vertex.
+ const grid=[0];for(let s=14;grid[grid.length-1]<maxR;s*=1.17)grid.push(grid[grid.length-1]+s);
+ const G=grid.length;
+ const radiusAt=u=>{const j=Math.min(G-2,Math.floor(u));return grid[j]+(grid[j+1]-grid[j])*(u-j)};
+ const paramOf=r=>{let j=0;while(j<G-2&&grid[j+1]<r)j++;return j+(r-grid[j])/(grid[j+1]-grid[j])};
+ const STAGE=[.65,1,1.32,1.6,1.84,2],REACH=[110,230,420,720,1150],SPEED=7000;
+ function makeRay(theta,parent,start,room){
+  const ray={theta,parent,start,ang:[theta],pts:[[ix,iy]],front:[],at:[],weight:parent?.8:1};
+  let drift=0;
+  for(let j=1;j<G;j++){
+   drift=drift*.8+rnd(-1,1)*(grid[j]-grid[j-1])*.2;
+   const limit=.12*grid[j]*room;drift=Math.max(-limit,Math.min(limit,drift));
+   let a=theta+drift/grid[j];
+   if(parent){if(j<=start)a=parent.ang[j];else{let e=Math.min(1,(grid[j]-grid[start])/(grid[start]*.9+90));e=e*e*(3-2*e);a=parent.ang[j]+(a-parent.ang[j])*e}}
+   ray.ang.push(a);ray.pts.push([ix+Math.cos(a)*grid[j],iy+Math.sin(a)*grid[j]])}
+  // The crack advances in bursts: after burst s it has reached grid node front[s].
+  let last=start;
+  for(let s=0;s<6;s++){
+   let f=s===5?G-1:Math.round(paramOf(REACH[s]*rnd(.72,1.3)));f=Math.min(G-1,Math.max(f,last+(s?1:0)));
+   ray.front.push(f);ray.at.push(STAGE[s]+(s?rnd(-.07,.09):rnd(0,.02)));last=f}
+  for(let s=1;s<6;s++)ray.at[s]=Math.max(ray.at[s],ray.at[s-1]+.05);
+  return ray}
+ function rayTime(ray,u){
+  let s=0;while(ray.front[s]<u)s++;
+  const from=Math.max(s?ray.front[s-1]:0,ray.start);
+  let t=ray.at[s]+Math.max(0,radiusAt(u)-grid[from])/SPEED;
+  if(ray.parent)t=Math.max(t,rayTime(ray.parent,ray.start)+Math.max(0,radiusAt(u)-grid[ray.start])/SPEED);
+  return Math.min(t,2.06)}
+ const rayPoint=(ray,u)=>{const j=Math.min(G-2,Math.floor(u)),f=u-j,p=ray.pts[j],q=ray.pts[j+1];return[p[0]+(q[0]-p[0])*f,p[1]+(q[1]-p[1])*f]};
+
+ // Cracks running out from the impact, then forks where the gap between two of them gets wide.
+ let rays=[];const base=rnd(0,TAU);
+ for(let i=0;i<st.rays;i++)rays.push(makeRay(base+(i+rnd(-.3,.3))*TAU/st.rays,null,0,TAU/st.rays*.4));
+ for(let pass=0;pass<2;pass++){
+  rays.sort((a,b)=>a.theta-b.theta);const add=[];
+  for(let i=0;i<rays.length;i++){
+   const a=rays[i],b=rays[(i+1)%rays.length];let gap=b.theta-a.theta;if(gap<=0)gap+=TAU;
+   const at=st.branchWidth*rnd(.7,1.25)/gap,fromA=R()<.5,frac=rnd(.36,.6);
+   if(at>maxR*.8)continue;
+   const j=Math.max(Math.ceil(paramOf(at)),Math.max(a.start,b.start)+2);if(j>=G-2)continue;
+   add.push(makeRay(fromA?a.theta+gap*frac:b.theta-gap*frac,fromA?a:b,j,gap*Math.min(frac,1-frac)))}
+  rays=rays.concat(add)}
+ rays.sort((a,b)=>a.theta-b.theta);
+ const n=rays.length,open=[];
+ for(let i=0;i<n;i++){const a=rays[i],b=rays[(i+1)%n];let s=0;
+  while(s<G-1&&Math.abs(a.pts[s+1][0]-b.pts[s+1][0])+Math.abs(a.pts[s+1][1]-b.pts[s+1][1])<.01)s++;open.push(s)}
+
+ // Cracks around the impact: each runs across a few neighbouring lanes and stops.
+ const cuts=rays.map(()=>[]);let chance=st.ringStart;
+ const onScreen=p=>Math.abs(p[0])<980&&Math.abs(p[1])<560;
+ for(let rho=st.ring0;rho<maxR;rho*=st.ringGrow,chance*=st.ringFade){
+  let cur=-1;const first=Math.floor(R()*n);
+  for(let k=0;k<n;k++){
+   const li=(first+k)%n;
+   if(cur<0){if(R()<chance)cur=rho*rnd(.74,1.3);else continue}
+   else if(R()>st.arcKeep){cur=-1;if(R()<chance*.6)cur=rho*rnd(.74,1.3);else continue}
+   const ua=paramOf(cur);if(ua<=open[li]+.25)continue;   // the lane is still closed here; the crack passes on
+   const rb=cur*rnd(.86,1.17),ub=paramOf(rb);
+   const pa=rayPoint(rays[li],ua),pb=rayPoint(rays[(li+1)%n],ub);
+   let ok=ub>open[li]+.25&&ub<G-1.01&&ua<G-1.01&&Math.hypot(pa[0]-pb[0],pa[1]-pb[1])>5&&(onScreen(pa)||onScreen(pb));
+   for(const c of cuts[li])if((cur-c.ra)*(rb-c.rb)<=0||Math.abs(cur-c.ra)<.2*Math.min(cur,c.ra)+4||Math.abs(rb-c.rb)<.2*Math.min(rb,c.rb)+4)ok=false;
+   if(!ok){cur=-1;continue}
+   const reached=Math.max(rayTime(rays[li],ua),rayTime(rays[(li+1)%n],ub));
+   const t=Math.min(2.05,reached+(R()<.5?rnd(.02,.12):rnd(.15,.6)));
+   cuts[li].push({a:ua,b:ub,ra:cur,rb,t,pa,pb});cur=rb}}
+
+ const pattern={fragments:[],cracks:[],debris:[],impact:[ix,iy],gravity:st.burst?1200:[3400,1500,2400,1900][st.motion||0],drag:st.motion===2?3.4:st.motion===3?2.2:0,focal:1500,burst:!!st.burst};
+ const addCrack=(p,q,t0,t1,w)=>{const c=glassClipSegment(p,q);if(!c||c[1]-c[0]<1e-4)return;
+  const L=(f)=>[p[0]+(q[0]-p[0])*f,p[1]+(q[1]-p[1])*f];
+  pattern.cracks.push({a:L(c[0]),b:L(c[1]),t0:t0+(t1-t0)*c[0],t1:t0+(t1-t0)*c[1],w})};
+ for(const ray of rays)for(let j=ray.start;j<G-1;j++)addCrack(ray.pts[j],ray.pts[j+1],rayTime(ray,j+1e-6),rayTime(ray,j+1),ray.weight*rnd(.6,1));
+ for(const list of cuts)for(const c of list)addCrack(c.pa,c.pb,c.t,c.t+.04,rnd(.3,.75));
+ // Crushed glass right at the impact.
+ for(let i=0;i<26;i++){const a=rnd(0,TAU),r0=rnd(0,10),r1=rnd(10,48);
+  addCrack([ix+Math.cos(a)*r0,iy+Math.sin(a)*r0],[ix+Math.cos(a+rnd(-.3,.3))*r1,iy+Math.sin(a+rnd(-.3,.3))*r1],.65,.67,rnd(.3,.8))}
+ // Short dead-end cracks splitting off the long ones.
+ for(let i=0;i<st.spurs;i++){
+  const ray=rays[Math.floor(R()*n)],u=rnd(ray.start+1,(G-1)*.8),p=rayPoint(ray,u),j=Math.floor(u);
+  const turn=rnd(.35,.9)*(R()<.5?-1:1),len=rnd(12,46)*(1+radiusAt(u)/600),t=rayTime(ray,u)+rnd(0,.1);
+  const dir=Math.atan2(ray.pts[j+1][1]-ray.pts[j][1],ray.pts[j+1][0]-ray.pts[j][0])+turn;
+  const mid=[p[0]+Math.cos(dir)*len*.55,p[1]+Math.sin(dir)*len*.55],bend=dir-turn*rnd(.2,.5);
+  const end=[mid[0]+Math.cos(bend)*len*.45,mid[1]+Math.sin(bend)*len*.45];
+  if(!onScreen(p))continue;
+  addCrack(p,mid,t,t+.02,.5);addCrack(mid,end,t+.02,t+.04,.4)}
+
+ // Every lane between two neighbouring cracks, cut into pieces by the cracks across it.
+ let far=1;
+ for(let li=0;li<n;li++){
+  const A=rays[li],B=rays[(li+1)%n],list=cuts[li].slice().sort((x,y)=>x.a-y.a);
+  let pa=open[li],pb=open[li],inner=0;
+  for(let m=0;m<=list.length;m++){
+   const na=m<list.length?list[m].a:G-1,nb=m<list.length?list[m].b:G-1;let poly=[];
+   const push=p=>{const l=poly[poly.length-1];if(!l||Math.abs(l[0]-p[0])+Math.abs(l[1]-p[1])>.01)poly.push(p)};
+   push(rayPoint(A,pa));for(let j=Math.floor(pa)+1;j<na;j++)push(A.pts[j]);push(rayPoint(A,na));
+   push(rayPoint(B,nb));for(let j=Math.ceil(nb)-1;j>pb;j--)push(B.pts[j]);push(rayPoint(B,pb));
+   if(poly.length>1&&Math.abs(poly[0][0]-poly[poly.length-1][0])+Math.abs(poly[0][1]-poly[poly.length-1][1])<=.01)poly.pop();
+   const separated=Math.max(rayTime(A,na),rayTime(B,nb),inner);
+   inner=m<list.length?list[m].t:0;pa=na;pb=nb;
+   poly=glassClip(poly);if(poly.length<3)continue;
+   let area=0,cx=0,cy=0;
+   for(let i=0;i<poly.length;i++){const p=poly[i],q=poly[(i+1)%poly.length],w=p[0]*q[1]-q[0]*p[1];area+=w;cx+=(p[0]+q[0])*w;cy+=(p[1]+q[1])*w}
+   if(area<12)continue;cx/=3*area;cy/=3*area;
+   const dist=Math.hypot(cx-ix,cy-iy);far=Math.max(far,dist);
+   pattern.fragments.push({pts:poly,cx,cy,dist,t:separated})}}
+ // How each piece sits once cracked and how it leaves once the pane breaks.
+ for(const f of pattern.fragments){
+  const dist=f.dist;let ux=dist>1?(f.cx-ix)/dist:0,uy=dist>1?(f.cy-iy)/dist:1;
+  if(st.directed){const fa=st.forceAngle*Math.PI/180,dx=Math.cos(fa)+.3*ux,dy=Math.sin(fa)+.3*uy,dl=Math.hypot(dx,dy);ux=dx/dl;uy=dy/dl}
+  f.ox=rnd(-2.2,2.2);f.oy=rnd(-2.2,2.2);f.turn=rnd(-.004,.004);f.shade=rnd(.9,1);
+  f.axis=rnd(0,Math.PI);f.omega=rnd(2.2,7)*(R()<.5?-1:1);f.spin=rnd(-1.3,1.3);
+  if(!st.burst&&st.motion===1){const kick=2300/(1+dist/480)*rnd(.75,1.2);
+   f.vx=ux*kick+rnd(-50,50);f.vy=uy*kick+rnd(-40,80);f.vz=rnd(80,600)/(1+dist/900);f.delay=.1*dist/far+rnd(0,.03)}
+  else if(!st.burst&&st.motion===2){const kick=5200/(1+dist/520)*rnd(.75,1.2);
+   f.vx=ux*kick+rnd(-80,80);f.vy=uy*kick+rnd(-60,120);f.vz=rnd(200,1400)/(1+dist/900);f.delay=.06*dist/far+rnd(0,.02)}
+  else if(!st.burst&&st.motion===3){const kick=3600/(1+dist/700)*rnd(.8,1.15);
+   f.vx=ux*kick+rnd(-60,60);f.vy=uy*kick+rnd(-50,100);f.vz=rnd(150,900)/(1+dist/900);f.delay=.32*dist/far+rnd(0,.02)}
+  else if(!st.burst){
+   const kick=520/(1+dist/260)*rnd(.5,1.3);
+   f.vx=ux*kick+rnd(-70,70);f.vy=uy*kick+rnd(-40,120);f.vz=rnd(-60,420)/(1+dist/700);
+   f.delay=.3*Math.pow(dist/far,.75)+rnd(0,.06)}
+  else{
+   const kick=rnd(350,800);
+   f.vx=ux*kick+rnd(-120,120);f.vy=uy*kick+rnd(-60,240);f.vz=rnd(600,1500);
+   f.delay=.12*dist/far+rnd(0,.05)}
+  const push=st.force>0?st.force:1;f.vx*=push;f.vy*=push;f.vz*=push}
+ // Glass dust thrown off the cracks nearest the impact.
+ for(let i=0;i<150;i++){
+  const c=pattern.cracks[Math.floor(R()*R()*pattern.cracks.length)],k=R(),a=rnd(0,TAU),speed=rnd(150,1100);
+  pattern.debris.push({x:c.a[0]+(c.b[0]-c.a[0])*k,y:c.a[1]+(c.b[1]-c.a[1])*k,vx:Math.cos(a)*speed,vy:Math.sin(a)*speed*.8+rnd(0,350),
+   size:rnd(1.5,6)*rnd(.4,1),thin:rnd(.15,.6),rot:rnd(0,TAU),omega:rnd(-14,14),phase:rnd(0,TAU),delay:rnd(0,.16)})}
+ return pattern}
+
+// Where a piece is `breakup` (0..1) into the break. Returns null while it still sits in the pane.
+function glassPose(pattern,f,breakup){
+ const tau=(breakup-f.delay)*1.4;if(tau<=0)return null;
+ const travel=pattern.drag>0?(1-Math.exp(-pattern.drag*tau))/pattern.drag:tau;
+ const x=f.cx+f.vx*travel,y=f.cy+f.vy*travel-.5*pattern.gravity*tau*tau,z=f.vz*travel;
+ const phi=f.omega*tau,psi=f.spin*tau,nx=Math.cos(f.axis),ny=Math.sin(f.axis),F=pattern.focal;
+ const cp=Math.cos(phi),sp=Math.sin(phi),cs=Math.cos(psi),ss=Math.sin(psi);
+ let alpha=1-smoothstep01((breakup-.85)/.15);
+ if(pattern.burst)alpha*=Math.max(0,Math.min(1,(F*.8-z)/(F*.25)));
+ return{x,y,z,cp,sp,alpha,scale:F/(F-Math.min(z,F*.85)),
+  // surface normal after the tumble (z towards the viewer)
+  normal:[ny*sp,-nx*sp,cp],
+  move(p){const dx0=p[0]-f.cx,dy0=p[1]-f.cy,dx=dx0*cs-dy0*ss,dy=dx0*ss+dy0*cs,nd=nx*dx+ny*dy;
+   const s=F/(F-Math.min(z+(nx*dy-ny*dx)*sp,F*.85));
+   return[(x+dx*cp+nx*nd*(1-cp))*s,(y+dy*cp+ny*nd*(1-cp))*s]},
+  // the same without per-corner perspective: an affine map for the picture on the piece
+  linear:[cs*cp+nx*(nx*cs+ny*ss)*(1-cp),ss*cp+ny*(nx*cs+ny*ss)*(1-cp),-ss*cp+nx*(-nx*ss+ny*cs)*(1-cp),cs*cp+ny*(-nx*ss+ny*cs)*(1-cp)]}}
+const GLASS_LIGHT=[-.35,.5,.79];
+const FX_GLASS=glassFracture(GLASS_STYLES.web);   // EndTimeScreenGlass.Style
 // Draw the glass at EndTimeScreenGlass timeline `tl` onto ctx (1920x1080 space) with `source` as the screen.
-function drawGlass(c,source,tl,{cracks=true,screen=true}={}){
+function drawGlass(c,source,tl,{cracks=true,screen=true,pattern=FX_GLASS}={}){
  const breakup=Math.max(0,Math.min(1,(tl-2.1)/1.4)),C=p=>[p[0]+960,540-p[1]];
- FX_FRAGMENTS.forEach((f,i)=>{const mv=glassMove(f,i,breakup);
-  if(screen&&source){const alpha=1-smoothstep01(breakup);if(alpha>.003){
-   const s=[C(f.a),C(f.b),C(f.c)],d=[C(mv(f.a)),C(mv(f.b)),C(mv(f.c))];
-   c.save();c.globalAlpha=unityAlpha(alpha);c.beginPath();c.moveTo(...d[0]);c.lineTo(...d[1]);c.lineTo(...d[2]);c.closePath();c.clip();
-   const m=affineFrom(s,d);c.transform(m[0],m[1],m[2],m[3],m[4],m[5]);
-   // Slight overdraw hides hairline seams between fragments.
-   c.drawImage(source,0,0,1920,1080);c.restore()}}
-  if(cracks){const delay=Math.hypot(f.center[0],f.center[1])/1100,growth=Math.max(0,Math.min(1,(tl-.65-delay*.9)/.55)),a=growth*.52*Math.pow(1-breakup,3);
-   if(a>.003&&(i%5===0||i%5===1||i%5===3||i%10===2)){const[p,q]=i%10===2?[f.b,f.c]:[f.a,f.b];
-    c.save();c.strokeStyle=`rgba(199,224,240,${a})`;c.lineWidth=1.2;c.beginPath();let last=C(mv(p));c.moveTo(...last);
-    const dir=[q[0]-p[0],q[1]-p[1]],l=Math.hypot(...dir)||1,nrm=[-dir[1]/l,dir[0]/l];
-    for(let k=1;k<=8;k++){const t=k/8*growth,w=k===8?0:Math.sin(i*13+k*4.7)*2.6;const pt=[p[0]+dir[0]*t+nrm[0]*w,p[1]+dir[1]*t+nrm[1]*w];c.lineTo(...C(mv(pt)))}
-    c.stroke();c.restore()}
-   if(breakup>0){const op=Math.sin(Math.min(1,breakup*5)*Math.PI/2)*(1-breakup);if(op>.003){c.save();c.strokeStyle=`rgba(230,247,255,${op*.65})`;c.lineWidth=1;
-    c.beginPath();c.moveTo(...C(mv(f.a)));c.lineTo(...C(mv(f.b)));c.lineTo(...C(mv(f.c)));c.closePath();c.stroke();c.restore()}}}
- });
+ const path=pts=>{c.beginPath();pts.forEach((p,i)=>i?c.lineTo(p[0],p[1]):c.moveTo(p[0],p[1]));c.closePath()};
+ const poses=pattern.fragments.map(f=>breakup>0?glassPose(pattern,f,breakup):null);
+ if(screen&&source){
+  if(breakup<=0)c.drawImage(source,0,0,1920,1080);   // no hairline seams while the pane holds
+  pattern.fragments.forEach((f,i)=>{const pose=poses[i];
+   if(!pose){if(breakup<=0&&tl<f.t)return;
+    // cracked but in place: the picture sits slightly off across each crack
+    const k=breakup>0?1:Math.min(1,(tl-f.t)/.08);
+    c.save();path(f.pts.map(C));c.clip();const cc=C([f.cx,f.cy]);
+    c.translate(cc[0]+f.ox*k,cc[1]-f.oy*k);c.rotate(-f.turn*k);c.translate(-cc[0],-cc[1]);c.drawImage(source,0,0,1920,1080);
+    c.fillStyle=`rgba(0,0,0,${(1-f.shade)*k})`;c.fillRect(0,0,1920,1080);c.restore();return}
+   if(pose.alpha<=.003)return;
+   const moved=f.pts.map(p=>C(pose.move(p))),facing=Math.abs(pose.cp);
+   c.save();c.globalAlpha=unityAlpha(pose.alpha);path(moved);c.clip();
+   const m=pose.linear,s=pose.scale,cc=C([pose.x*s,pose.y*s]);
+   c.transform(m[0]*s,-m[1]*s,-m[2]*s,m[3]*s,cc[0],cc[1]);c.translate(-(f.cx+960)-f.ox,-(540-f.cy)+f.oy);c.drawImage(source,0,0,1920,1080);
+   c.fillStyle=`rgba(0,0,0,${1-f.shade*(.45+.55*Math.pow(facing,.7))*(pose.cp<0?.8:1)})`;c.fillRect(0,0,1920,1080);c.restore()})}
+ if(!cracks)return;
+ // cracks: a bright line with a dark one beside it; gone once the pieces part
+ const hold=1-smoothstep01(breakup/.18);
+ if(hold>.003&&tl>.6){c.save();c.lineCap='round';
+  for(const k of pattern.cracks){if(tl<=k.t0)continue;
+   const g=Math.min(1,(tl-k.t0)/Math.max(1e-4,k.t1-k.t0)),a=C(k.a),b=C([k.a[0]+(k.b[0]-k.a[0])*g,k.a[1]+(k.b[1]-k.a[1])*g]);
+   const dx=b[0]-a[0],dy=b[1]-a[1],len=Math.hypot(dx,dy)||1,glint=Math.pow(Math.abs((dx*.8+dy*.6)/len),2);
+   const alpha=k.w*(.35+.65*glint)*hold;
+   c.strokeStyle=`rgba(0,6,14,${unityAlpha(alpha*.6)})`;c.lineWidth=1.2;c.beginPath();c.moveTo(a[0]-dy/len*1.2,a[1]+dx/len*1.2);c.lineTo(b[0]-dy/len*1.2,b[1]+dx/len*1.2);c.stroke();
+   c.strokeStyle=`rgba(222,240,250,${unityAlpha(alpha)})`;c.lineWidth=.7+k.w*.6;c.beginPath();c.moveTo(a[0],a[1]);c.lineTo(b[0],b[1]);c.stroke()}
+  c.restore()}
+ if(breakup<=0)return;
+ // loose pieces: the visible edge of the pane's thickness, the light they catch, and dust
+ pattern.fragments.forEach((f,i)=>{const pose=poses[i];if(!pose||pose.alpha<=.003)return;
+  const moved=f.pts.map(p=>C(pose.move(p))),N=pose.normal,s=pose.scale;
+  const off=[-N[0]*7*s,N[1]*7*s];   // canvas y is down
+  c.save();c.globalAlpha=unityAlpha(pose.alpha);
+  for(let k=0;k<moved.length;k++){const a=moved[k],b=moved[(k+1)%moved.length];
+   // the side of the pane's thickness shows where the back face sticks out past this edge
+   const ex=b[0]-a[0],ey=b[1]-a[1],out=ex*off[1]-ey*off[0];
+   if(out*(pose.cp<0?-1:1)<=0)continue;
+   const grad=c.createLinearGradient(a[0],a[1],a[0]+off[0],a[1]+off[1]);grad.addColorStop(0,'rgba(190,226,240,.8)');grad.addColorStop(1,'rgba(16,40,52,.85)');
+   c.fillStyle=grad;c.beginPath();c.moveTo(a[0],a[1]);c.lineTo(b[0],b[1]);c.lineTo(b[0]+off[0],b[1]+off[1]);c.lineTo(a[0]+off[0],a[1]+off[1]);c.closePath();c.fill()}
+  // reflected light: stronger at a glancing angle and when the piece faces the light, graded across the piece
+  const spec=Math.pow(Math.abs(N[0]*GLASS_LIGHT[0]+N[1]*GLASS_LIGHT[1]+N[2]*GLASS_LIGHT[2]),40),sheen=.04+.14*Math.pow(1-Math.abs(pose.cp),2)+.6*spec;
+  let low=Infinity,high=-Infinity;for(const p of moved){const along=p[0]*.6-p[1]*.8;low=Math.min(low,along);high=Math.max(high,along)}
+  const across=c.createLinearGradient(.6*low,-.8*low,.6*high,-.8*high);
+  across.addColorStop(0,`rgba(225,242,255,${unityAlpha(sheen*.35)})`);across.addColorStop(1,`rgba(225,242,255,${unityAlpha(sheen*1.65)})`);
+  path(moved);c.fillStyle=across;c.fill();
+  c.strokeStyle='rgba(230,247,255,.4)';c.lineWidth=1;c.stroke();c.restore()});
+ const G=pattern.gravity;
+ for(const d of pattern.debris){const tau=(breakup-d.delay)*1.4;if(tau<=0)continue;
+  const life=1-tau/1.1;if(life<=0)continue;
+  const p=C([d.x+d.vx*tau,d.y+d.vy*tau-.5*G*tau*tau]),r=d.rot+d.omega*tau,tw=Math.pow(Math.abs(Math.sin(d.phase+d.omega*tau)),3);
+  c.fillStyle=`rgba(225,242,255,${unityAlpha((.25+.75*tw)*Math.min(1,life*3))})`;c.beginPath();
+  for(let k=0;k<3;k++){const a=r+k*2.2,l=d.size*(k===1?d.thin:1);c[k?'lineTo':'moveTo'](p[0]+Math.cos(a)*l,p[1]+Math.sin(a)*l)}
+  c.closePath();c.fill()}
 }
 // OverTempo renders in linear colour space: an alpha a over a dark background looks like
 // the sRGB-encoded a in a browser canvas. Applied wherever the game blends with alpha.
 function toLin(v){return v<=.04045?v/12.92:Math.pow((v+.055)/1.055,2.4)}function toSrgb(v){v=Math.max(0,Math.min(1,v));return v<=.0031308?v*12.92:1.055*Math.pow(v,1/2.4)-.055}
 function unityAlpha(a){a=Math.max(0,Math.min(1,a));return a<=.0031308?a*12.92:1.055*Math.pow(a,1/2.4)-.055}
 function smoothstep01(t){t=Math.max(0,Math.min(1,t));return t*t*(3-2*t)}
-function affineFrom(s,d){// maps source triangle s to destination triangle d
- const[x0,y0]=s[0],[x1,y1]=s[1],[x2,y2]=s[2],[u0,v0]=d[0],[u1,v1]=d[1],[u2,v2]=d[2];
- const den=(x1-x0)*(y2-y0)-(x2-x0)*(y1-y0)||1e-6;
- const a=((u1-u0)*(y2-y0)-(u2-u0)*(y1-y0))/den,c=((u2-u0)*(x1-x0)-(u1-u0)*(x2-x0))/den;
- const b=((v1-v0)*(y2-y0)-(v2-v0)*(y1-y0))/den,d2=((v2-v0)*(x1-x0)-(v1-v0)*(x2-x0))/den;
- return[a,b,c,d2,u0-a*x0-c*y0,v0-b*x0-d2*y0]}
 /* --- game assets --- */
 const gamePreview={geometry:null,background:null,note:null,tinted:null,ready:false,error:''};
 function loadGamePreviewAssets(){
@@ -855,7 +1060,7 @@ function renderEffectsPreview(c,ms){
  const layers=[];
  for(const s of model.shatters){const start=s.timeMs/1000,crack=s.durationMs/1000,brk=s.breakMs/1000,el=now-start;if(el<0||el>crack+brk)continue;
   const tl=el<crack?2.1*el/crack:2.1+(el-crack)/brk*1.4;const snap=s.freeze?snapshotAt(s.timeMs,model):(el>=crack?snapshotAt(s.timeMs+s.durationMs,model):null);
-  layers.push(c2=>drawGlass(c2,snap,tl,{screen:!!snap}));
+  const pattern=glassPatternFor(s);layers.push(c2=>drawGlass(c2,snap,tl,{screen:!!snap,pattern}));
   if(el>=crack){const k=1-(el-crack)/.6;if(k>0&&s.shake>0){const px=g.pixelsPerSecond/g.scrollSetting;shakeX=(Math.random()*2-1)*s.shake*.35*k*px;shakeY=(Math.random()*2-1)*s.shake*.35*k*px}
    const f=s.flash;if(f>0&&el-crack<f)flash=Math.max(flash,f*(1-(el-crack)/f))}}
  let backdrop=null;{let sh=null,bt=0;for(const s of model.shatters){const t=(s.timeMs+s.durationMs)/1000;if(s.reveal&&t<=now){sh=s;bt=t}}
@@ -1090,7 +1295,11 @@ function renderFxEditor(){
  if(scope==='group')f+=fxSelect('연결할 그룹','group',e.group||'',Object.fromEntries([['','(연결 안 됨)'],...fxGroups().map(g=>[g,g])]));
  if(e.type==='glitch')f+=fxField('시작 세기 (0~1)','intensity',e.intensity,'type="number" min="0" max="1" step="0.05"')+fxField('끝 세기 (0~1)','intensityEnd',e.intensityEnd<0?e.intensity:e.intensityEnd,'type="number" min="0" max="1" step="0.05"')+'<div data-curve style="grid-column:1/-1"></div>';
  if(e.type==='shatter'){f+=fxField('흩어지는 시간 (ms)','breakMs',e.breakMs,'type="number" min="100" step="10"')+fxField('흔들림 (0~1)','shake',e.shake,'type="number" min="0" max="1" step="0.05"')+fxField('섬광 (0~1)','flash',e.flash,'type="number" min="0" max="1" step="0.05"')
-  +fxSelect('금 가는 동안','freeze',e.freeze?'1':'0',{'1':'화면 정지','0':'게임 계속 보임'})+fxSelect('깨진 뒤 보일 것','reveal',e.reveal||'',Object.fromEntries([['','게임 화면'],...(state.images||[]).map(i=>[i.id,'사진 '+i.id])]))}
+  +fxSelect('금 가는 동안','freeze',e.freeze?'1':'0',{'1':'화면 정지','0':'게임 계속 보임'})+fxSelect('깨진 뒤 보일 것','reveal',e.reveal||'',Object.fromEntries([['','게임 화면'],...(state.images||[]).map(i=>[i.id,'사진 '+i.id])]))
+  +fxField('균열 촘촘함 (1=기본)','density',e.density??1,'type="number" min="0.25" max="4" step="0.1"')+fxField('조각 크기 (1=기본)','pieceSize',e.pieceSize??1,'type="number" min="0.3" max="4" step="0.1"')
+  +fxField('균열 중심 X (-1 왼쪽 ~ 1 오른쪽)','impactX',e.impactX??-.34375,'type="number" min="-1" max="1" step="0.05"')+fxField('균열 중심 Y (-1 아래 ~ 1 위)','impactY',e.impactY??.2777778,'type="number" min="-1" max="1" step="0.05"')
+  +fxSelect('조각 움직임','motion',e.motion||'drop',{drop:'놓고 떨어짐',blast:'폭발',drag:'폭발 + 공기 저항',shockwave:'충격파'})+fxField('힘 세기 (1=기본)','force',e.force??1,'type="number" min="0" max="5" step="0.1"')
+  +fxField('힘 방향 (도, 0 오른쪽·90 위, -1 = 중심에서 바깥)','forceAngle',e.forceAngle??-1,'type="number" min="-1" max="360" step="5"')}
  if(e.type==='restore')f+=fxSelect('복구 방식','style',e.style,FX_RESTORE_LABELS)+(e.style==='wipe'?fxSelect('와이프 방향','direction',e.direction,{up:'위로',down:'아래로',left:'왼쪽으로',right:'오른쪽으로'}):'')+'<div data-curve style="grid-column:1/-1"></div>';
  if(e.type==='alpha')f+=fxField('시작 투명도 (0~1)','fromValue',e.fromValue??'','type="number" min="0" max="1" step="0.05" placeholder="이전 값에서"')+fxField('끝 투명도 (0~1)','value',e.value,'type="number" min="0" max="1" step="0.05"')+'<div data-curve style="grid-column:1/-1"></div>';
  if(e.type==='offset')f+=fxField('시작 오프셋 (1/12박 단위)','fromValue',e.fromValue??'','type="number" step="1" placeholder="이전 값에서"')+fxField('끝 오프셋 (1/12박 단위, -1 = 1/12박 앞)','value',e.value,'type="number" step="1"')+'<div data-curve style="grid-column:1/-1"></div>';
@@ -1104,7 +1313,7 @@ function renderFxEditor(){
  body.querySelectorAll('[data-k]').forEach(el=>el.addEventListener(el.tagName==='SELECT'?'change':'input',()=>{const k=el.dataset.k,v=el.value;
   if(k==='type'){setFxType(e,v);return}fxEditHistory();
   if(k==='group'){e.group=v;if(e.type==='none'&&v)Object.assign(e,FX_TYPE_DEFAULTS.alpha,{type:'alpha'});fxCache.clear();updateEffectPanels();renderFxEditor();return}
-  if(k==='ease'||k==='reveal'||k==='style'||k==='direction')e[k]=v;else if(k==='freeze')e.freeze=v==='1';
+  if(k==='ease'||k==='reveal'||k==='style'||k==='direction'||k==='motion')e[k]=v;else if(k==='freeze')e.freeze=v==='1';
   else if(k==='timeMs'||k==='durationMs'||k==='breakMs')e[k]=Math.max(0,Math.round(fxNum(v,e[k])));
   else if(k==='fromValue'){if(v.trim()==='')delete e.fromValue;else e.fromValue=fxNum(v,e.fromValue)}else e[k]=fxNum(v,e[k]);
   fxCache.clear();updateEffectPanels();if(k==='style')renderFxEditor()}));

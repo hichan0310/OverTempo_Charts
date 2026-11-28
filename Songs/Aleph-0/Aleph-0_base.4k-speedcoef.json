@@ -1313,7 +1313,10 @@
       "shake": 0.5,
       "flash": 0.35,
       "freeze": false,
-      "reveal": ""
+      "reveal": "",
+      "impactX": 0,
+      "impactY": 0,
+      "motion": "drag"
     },
     {
       "type": "offset",
