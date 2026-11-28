@@ -666,7 +666,8 @@
         "timeMs": 80142,
         "bpm": 250
       }
-    ]
+    ],
+    "measureEndMs": 140622
   },
   "editorSettings": {
     "encryptionEnabled": false,
@@ -11679,7 +11680,7 @@
   ],
   "autoCoef": {
     "schemaVersion": 1,
-    "generatedAt": "2026-11-24T18:24:50.219Z",
+    "generatedAt": "2026-11-28T12:12:22.206Z",
     "description": "Final speedupCoef = baseSpeedupCoef * autoSpeedupCoefMultiplier. Load restores editable coef 0/1 from baseSpeedupCoef.",
     "settings": {
       "sigmaMs": 1600,
