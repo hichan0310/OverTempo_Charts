@@ -667,7 +667,7 @@
         "bpm": 250
       }
     ],
-    "measureEndMs": 140622
+    "measureEndMs": 138702
   },
   "editorSettings": {
     "encryptionEnabled": false,
@@ -1357,7 +1357,7 @@
     {
       "type": "alpha",
       "timeMs": 131982,
-      "durationMs": 8120,
+      "durationMs": 6240,
       "curve": [
         {
           "t": 0,
@@ -1366,16 +1366,16 @@
           "outTan": 0
         },
         {
-          "t": 0.86569,
-          "v": 0.5075,
+          "t": 0.73206,
+          "v": 0.5373,
           "inTan": 2.3438,
           "outTan": 2.3438
         },
         {
           "t": 1,
           "v": 1,
-          "inTan": 5.52072,
-          "outTan": 5.52072
+          "inTan": 0.10637,
+          "outTan": 0.10637
         }
       ],
       "group": "그룹7",
@@ -11605,7 +11605,7 @@
   ],
   "autoCoef": {
     "schemaVersion": 1,
-    "generatedAt": "2026-11-28T15:23:10.395Z",
+    "generatedAt": "2026-11-28T15:31:48.856Z",
     "description": "Final speedupCoef = baseSpeedupCoef * autoSpeedupCoefMultiplier. Load restores editable coef 0/1 from baseSpeedupCoef.",
     "settings": {
       "sigmaMs": 1600,
